@@ -161,7 +161,7 @@ Made entirely by **Olivier Cornelis** ([olicorne.org](https://olicorne.org), Hug
 
 - Version: **v1** (this repo is the frozen v1 corpus: a single voice throughout). A future **v2** will be the same corpus re-synthesized with several voices, published as its own repo; this one stays as it is.
 - Fine-tuned model: [Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx) (a [nvidia/parakeet-tdt-0.6b-v3](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3) fine-tune, released separately, trained with NeMo)
-- Reproduction scripts: [github repo](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-scripts) (the full pipeline is being released to make it easier to adapt to another domain or language)
+- Reproduction scripts: [github repo](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-scripts) (the full pipeline, released to make it easier to adapt to another domain or language)
 
 ## Quick start (TL;DR)
 
@@ -191,7 +191,7 @@ row["text"]   # the transcript, and the field you train an ASR model on
 
 ## How I made UltiMed
 
-Three-stage pipeline (source vocabulary -> written transcript -> synthesized audio), packaged as sharded Parquet with the FLAC bytes embedded (one subset per source). Scripts are being released ([github repo](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-scripts)). Each stage is detailed below.
+Three-stage pipeline (source vocabulary -> written transcript -> synthesized audio), packaged as sharded Parquet with the FLAC bytes embedded (one subset per source). Scripts are released ([github repo](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-scripts)). Each stage is detailed below.
 
 <details>
 <summary><b>Expand</b>: the full build detail, stage by stage (sources, LLM text generation, TTS, hardware, repo layout, row format, loading, splits), plus the standardized benchmark protocol.</summary>

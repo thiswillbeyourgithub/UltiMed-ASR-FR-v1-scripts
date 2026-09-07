@@ -50,9 +50,17 @@ None of the raw source data is committed here. It is all French public open data
 
 Credit: République française, produced by the ANSM (BDPM) and the Caisse nationale de l'Assurance Maladie (OPEN_MEDIC, RETROCEDAM).
 
-## Known data-quality issue
+## The dosage padding fix
 
-`04_drug_freq_dosage.jsonl` still carries near-duplicate dosage artifacts for a single form, for example `500 mg`, `500,0 mg` and `500,00 mg`. They reach the LLM's presentation hint unchanged. De-duplicating them belongs in `create_drug_db.py`, and is not done yet. `TODO`.
+BDPM pads decimal parts inconsistently, so one strength arrived spelled several ways for a single form: `500 mg`, `500,0 mg` and `500,00 mg`. Fed to the LLM as a presentation hint, that reads as three distinct doses of the same drug.
+
+`create_drug_db.py` now fixes it, in `canonical_dosage` and `dedupe_dosages`. Two things were needed, not one. De-duplication handles the 65 presentation lists that carried a padded value *alongside* its clean twin. Canonicalization handles the other case, which plain de-duplication would have missed entirely: 88 presentations carried a padded value with **no** twin to fold into, so `BENZYLTHIOURACILE` shipped `25,00 mg` and nothing else, and would have gone on being read aloud as "vingt-cinq virgule zero zero milligrammes".
+
+Only trailing zeros of the fraction and runs of whitespace are touched. The integer part keeps its grouping (`1 000 mg` stays `1 000 mg`), the decimal separator keeps whichever character was used, and the unit is untouched. Units are compared case-folded and whitespace-collapsed but **not** stripped of punctuation, so `M UI` and `M.U.I.` stay distinct rather than being guessed to be the same thing.
+
+Measured on the real 410-substance input: 1075 dosage entries become 952, 113 substances change, and zero padded values remain. Verified that no substance, no presentation heading and no distinct (form, dose value, unit) triple was lost or gained. Covered by `tests/test_drug_dosage_dedup.py` (`uv run tests/test_drug_dosage_dedup.py`).
+
+**The committed jsonl files are deliberately not regenerated.** They are the exact inputs that built UltiMed-v1, so re-running them through the fixed script would desync the repo from the published dataset. The fix applies to the next build.
 
 ## What was left behind
 

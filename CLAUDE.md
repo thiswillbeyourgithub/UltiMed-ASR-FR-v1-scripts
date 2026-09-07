@@ -37,7 +37,7 @@ sub-steps of that stage.
 | `05_generate_audio/` | active | run local TTS over every stage's text output |
 | `06_hotfixes/` | active | score every clip against its transcript (Whisper CER) and regenerate the bad ones |
 | `07_acronyms/` | active | common medical acronyms (Wikipedia-sourced, hand-filtered) to dictation sentences, with per-pronunciation TTS sources |
-| `99_hf_release/` | active | build NeMo manifests + package as Parquet, upload to HF (all done; the repo is private, making it public is the remaining step) |
+| `99_hf_release/` | done | build NeMo manifests + package as Parquet, upload to HF (all done; the dataset is published) |
 
 `99_hf_release/` first builds the **NeMo-format JSONL manifests** from each stage's
 `generated_dataset.jsonl` + its `.flac` clips: `01_build_nemo_manifest.py`
@@ -74,8 +74,9 @@ cannot leave a split short of shards. Deleted shards still occupy the storage
 quota until `--squash-history` collapses the history.
 `scripts/get_statistics.py` reports over the local manifests. The earlier tarred /
 preview approach was retired (`build_tarred.py` / `build_preview_parquet.py`
-deleted). The dataset is uploaded (NOTICE + card shipped) to the private repo
-`Olicorne/UltiMed-ASR-FR-v1`; making it public is the remaining step. The `-v1`
+deleted). The dataset is published (NOTICE + card shipped) at
+`Olicorne/UltiMed-ASR-FR-v1`, and the pipeline scripts at
+`github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-scripts`. The `-v1`
 suffix is deliberate: a future v2 re-synthesizes the same corpus with several
 voices (v1 is single-voice `fr_female` throughout) and gets its OWN repo, so this
 one is frozen. The repo name is hardcoded as `REPO_ID` in both
@@ -278,10 +279,13 @@ uses the shared boolean `term_present_in_variant`; a single anchor still goes
 through `check_term_in_variants` so its fuzzy-match warnings survive. Rows whose
 `substances` just echoes a generic label (substance-type combos) get no extra
 anchor from it.
-**Data-quality TODO:** `drugs_freq_dosages.jsonl` dosage lists still contain
+**Data-quality note (fixed for the next build):** `drugs_freq_dosages.jsonl` dosage lists still contain
 near-duplicate artifacts (e.g. `500 mg`, `500,0 mg`, `500,00 mg` for one form);
-the upstream builder that produces this file should de-duplicate them so the
-presentation hint is clean. `drugs_dosages.jsonl` / `drugs_frequency_2025.jsonl`
+`sources/base_de_donnee_medicament/create_drug_db.py` now canonicalizes and
+de-duplicates them (`canonical_dosage` / `dedupe_dosages`, covered by
+`tests/test_drug_dosage_dedup.py`). The committed jsonl files are NOT
+regenerated: they are the exact inputs that produced UltiMed-v1, so the fix
+lands on the next build, not retroactively. `drugs_dosages.jsonl` / `drugs_frequency_2025.jsonl`
 are the other committed inputs, and `sources/` now holds the scripts that build
 all three from the public databases: `sources/base_de_donnee_medicament/`
 (BDPM -> `drugs_dosages.jsonl`) and `sources/drugs_frequency/` (OPEN_MEDIC +
