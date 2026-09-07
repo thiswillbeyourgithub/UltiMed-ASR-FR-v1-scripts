@@ -20,7 +20,11 @@
 # alternatively (or in addition), put those in 06_hotfixes/.env (KEY=value lines), which
 # is sourced below, and run plain `sudo ./driver.sh`. .env holds a token: gitignore it.
 #
-# Required env:
+# Required env. The WDOC_WHISPER_* names are not arbitrary: I ran this against my
+# own self-hosted Whisper server rather than a public API, so the endpoint, the
+# bearer token and the model name all had to be supplied explicitly, and I reused
+# the variable names my other tooling already had for that server. Point them at
+# any OpenAI-compatible /v1/audio/transcriptions and it works the same.
 #   CRISPASR_COMPOSE       your CrispASR docker-compose.yml
 #   WDOC_WHISPER_ENDPOINT  STT base URL (/v1/audio/transcriptions is appended)
 #   WDOC_WHISPER_API_KEY   STT bearer token
