@@ -214,10 +214,11 @@ The committed `02_drugs/*.jsonl` files are **deliberately not regenerated**: the
 
 **The code in this repository is [Apache-2.0](LICENSE).** That covers every `.py`, `.sh`, and `.md` file here, including the prompts.
 
-Two deliberate exceptions, both data files rather than code, included by aggregation and licensed by their upstream:
+One deliberate exception, a data file rather than code, included by aggregation and licensed by its upstream:
 
-- [`07_acronyms/wikipedia_acronyms.filtered.authorfiltered.csv`](07_acronyms/wikipedia_acronyms.filtered.authorfiltered.csv) and the `wikipedia_acronyms.expanded.jsonl` derived from it. The `TERM` and `MEANING` columns come from French Wikipedia and remain under **CC BY-SA 4.0**, credited to Wikipedia contributors. The selection of the 511 entries and the `PRONOUNCED_AS` column are original work by the author.
 - The `.jsonl` files in [`02_drugs/`](02_drugs/), derived from French public medicines data under the **Etalab Open Licence 2.0**.
+
+The Wikipedia-derived acronym files are deliberately *not* a second exception. [`07_acronyms/wikipedia_acronyms.filtered.authorfiltered.csv`](07_acronyms/wikipedia_acronyms.filtered.authorfiltered.csv) and the `wikipedia_acronyms.expanded.jsonl` derived from it carry only acronyms and their expansions, read off a French Wikipedia list whose prose is CC BY-SA 4.0. An expansion is a fact, not protected expression: no article text, definition or prose is reproduced, so the ShareAlike term does not reach the CSV, which is why the dataset's acronyms subset ships under CC BY 4.0 with the rest of the main corpus. Wikipedia contributors are credited anyway, in [`99_hf_release/NOTICE.md`](99_hf_release/NOTICE.md). The selection of the 511 entries and the `PRONOUNCED_AS` column are original work by the author.
 
 Licences elsewhere in the project, for completeness:
 
@@ -234,7 +235,7 @@ Full detail, in the form that ships with the dataset, is in [`99_hf_release/NOTI
 - **PARHAF**: HealthDataHub / Plateforme des Données de Santé. Dual-licensed CC BY 4.0 and Etalab 2.0. Cite Tannier et al., arXiv:2603.20494. The data was modified (rewritten and synthesized to audio). Training set only; the test set is embargoed. No endorsement is implied.
 - **PARROT**: Le Guellec, Kuchcinski, Bressem et al. CC BY-NC-SA 4.0. Cite Le Guellec et al., *European Journal of Radiology Artificial Intelligence*, 2026. Kept as a separate, non-commercial, evaluation-only subset.
 - **French public medicines data**: BdPM (ANSM) and OPEN_MEDIC / RETROCEDAM (CNAM), République française, Etalab Open Licence 2.0.
-- **Acronyms**: French Wikipedia, [Liste d'abréviations en santé](https://fr.wikipedia.org/wiki/Liste_d%27abr%C3%A9viations_en_sant%C3%A9), CC BY-SA 4.0, credited to Wikipedia contributors.
+- **Acronyms**: French Wikipedia, [Liste d'abréviations en santé](https://fr.wikipedia.org/wiki/Liste_d%27abr%C3%A9viations_en_sant%C3%A9). The article text is CC BY-SA 4.0, but only the acronyms and their expansions were taken, which are facts rather than protected expression, and none of the prose is redistributed. Wikipedia contributors are credited regardless.
 - **Base ASR model**: `nvidia/parakeet-tdt-0.6b-v3`.
 - **TTS**: `mistralai/Voxtral-4B-TTS-2603`.
 
