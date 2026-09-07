@@ -1,5 +1,16 @@
 # UltiMed-ASR-FR-v1-scripts
 
+> [!WARNING]
+> **This documentation was written by an AI agent (Claude Code) and very likely contains some
+> degree of hallucination.** Treat it as a guided tour, not as a specification: the code, the
+> configs and the commit history are the source of truth, and where they disagree with a
+> sentence below, they win.
+>
+> It is written this way on purpose. I published this to be useful to other people, and I cannot
+> afford the time to document all of it properly by hand. The expected way to onboard is to point
+> an LLM at the repository and have it check every claim against the actual files, which is also
+> how it was written. If you find something wrong, an issue is welcome.
+
 The build scripts behind **[UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1)**, a 3,105-hour French medical speech-recognition dataset, and the fine-tuned ASR model trained on it.
 
 This repository is the **recipe, not the product**. It documents how a single person turned public text sources into a 600k-clip domain-specific ASR corpus on one consumer GPU, so that the same approach can be re-pointed at another specialty, another language, or another ASR model.
