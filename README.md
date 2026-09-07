@@ -39,7 +39,7 @@ This repository is the **recipe, not the product**. It documents how a single pe
 
 | Artifact | What it is |
 |---|---|
-| [Olicorne/UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1) | The dataset. 601,338 clips / 3,105 h main corpus, plus a separate eval-only PARROT subset. Sharded Parquet with FLAC bytes embedded. |
+| [Olicorne/UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1) | The dataset. 601,338 clips / 3,105 h main corpus, plus a separate eval-only PARROT subset. Sharded Parquet with FLAC bytes embedded. Its card, NOTICE and scripts are the ones in [`99_hf_release/`](99_hf_release/). |
 | [Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx) | The fine-tuned model: `parakeet-tdt-0.6b-v3` trained on the above, exported to ONNX. |
 | [Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx) | The re-quantized upstream baseline the fine-tune builds on. |
 | This repository | The scripts that produced all of the above, stages 1 to 4 of the plan below. |
@@ -77,9 +77,22 @@ Top-level numbered folders are ordered pipeline stages. Files numbered inside a 
 | [`05_generate_audio/`](05_generate_audio/) | Runs a local TTS server over every stage's text output. Resumable, with a truncation guard. |
 | [`06_hotfixes/`](06_hotfixes/) | The quality loop: score every clip against its transcript, regenerate the bad ones, keep the best draw. [`manifest_listener/`](06_hotfixes/manifest_listener/) is the human-in-the-loop complement, a small app for listening to clips and flagging them. |
 | [`07_acronyms/`](07_acronyms/) | 511 hand-filtered medical acronyms, each spoken with its real pronunciation while the label keeps the written form. |
-| [`99_hf_release/`](99_hf_release/) | Build NeMo manifests, package as sharded Parquet, publish. |
+| [`99_hf_release/`](99_hf_release/) | Build NeMo manifests, package as sharded Parquet, publish. This folder is also the working copy of the published dataset repo itself: see [below](#99_hf_release-is-the-dataset-repo). |
 | [`utils/`](utils/) | Everything shared by more than one stage. |
 | [`tests/`](tests/) | Stdlib and `uv run` tests for the shared logic. |
+
+### `99_hf_release/` is the dataset repo
+
+Everything on [Olicorne/UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1) that is not audio is written and kept here, then pushed by `scripts/upload_to_hf.py`. The dataset card is edited in this repository, not in the Hub's web editor.
+
+| Local file | Where it lands on the Hub |
+|---|---|
+| [`99_hf_release/README.md`](99_hf_release/README.md) | `README.md`, the dataset card. Its YAML header is what declares the per-source subset configs and their licences. |
+| [`99_hf_release/NOTICE.md`](99_hf_release/NOTICE.md) | `NOTICE.md`, the attribution file that the source licences require to travel with the data. |
+| [`99_hf_release/scripts/build_parquet.py`](99_hf_release/scripts/build_parquet.py) and [`parquet_to_nemo.py`](99_hf_release/scripts/parquet_to_nemo.py) | `scripts/`, so a downloader can rebuild the NeMo training layout from the Parquet. |
+| `data/hf_parquet/<subset>/`, on the external drive behind the uncommitted `data` symlink | `dictionary/`, `drugs/`, `parhaf/`, `acronyms/`, `parrot/` |
+
+The uploader itself is deliberately not committed, for the reason given in [What is deliberately absent](#what-is-deliberately-absent).
 
 Two stage docs are worth reading on their own: [`06_hotfixes/README_alternating_improvement.md`](06_hotfixes/README_alternating_improvement.md) (how the STT and TTS passes alternate when they cannot share one GPU) and [`05_generate_audio/README.md`](05_generate_audio/README.md).
 
