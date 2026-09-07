@@ -161,6 +161,8 @@ Made entirely by **Olivier Cornelis** ([olicorne.org](https://olicorne.org), Hug
 
 - Version: **v1** (this repo is the frozen v1 corpus: a single voice throughout). A future **v2** will be the same corpus re-synthesized with several voices, published as its own repo; this one stays as it is.
 - Fine-tuned model: [Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx) (a [nvidia/parakeet-tdt-0.6b-v3](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3) fine-tune, released separately, trained with NeMo)
+- Multilingual baseline it was fine-tuned from: [Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx) (the upstream ONNX rebuilt for int8 accuracy and browser speed; use it when you do not need French medical vocabulary)
+- In-browser app that runs either model: [Parakeet Web](https://github.com/thiswillbeyourgithub/parakeet_web)
 - Reproduction scripts: [github repo](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-scripts) (the full pipeline, released to make it easier to adapt to another domain or language)
 
 ## Quick start (TL;DR)

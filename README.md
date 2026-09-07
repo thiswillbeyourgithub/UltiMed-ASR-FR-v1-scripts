@@ -43,6 +43,7 @@ This repository is the **recipe, not the product**. It documents how a single pe
 | [Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx) | The fine-tuned model: `parakeet-tdt-0.6b-v3` trained on the above, exported to ONNX. |
 | [Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx) | The re-quantized upstream baseline the fine-tune builds on. |
 | This repository | The scripts that produced all of the above, stages 1 to 4 of the plan below. |
+| [Parakeet Web](https://github.com/thiswillbeyourgithub/parakeet_web) | The in-browser ASR app that loads either ONNX model. Not part of this pipeline, but it is where the models end up. |
 
 The plan, end to end:
 
