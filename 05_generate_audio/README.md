@@ -7,6 +7,11 @@ multilingual), `voxtral-tts` (vLLM serving mistralai/Voxtral-4B-TTS-2603), or
 a qwen3-tts VoiceDesign deployment. The final backend choice is still under
 investigation. Written with Claude Code.
 
+`CrispASR`, referenced here and in stage 06, is a private unpublished project of
+mine: a high-performance self-hosted Whisper server whose compose project also
+hosts these TTS services. You do not need it. Point the client at any server that
+answers on `:8003`.
+
 The `voxtral-tts` container that ended up speaking the dataset is published at
 [UltiMed-ASR-FR-v1-Voxtral](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-Voxtral).
 

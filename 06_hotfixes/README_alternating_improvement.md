@@ -69,6 +69,15 @@ on it: it just runs the other pass (see the paragraph above).
 
 ## One-time setup
 
+**What CrispASR is.** A private, unpublished project of mine: a high-performance
+self-hosted Whisper server (several GPU replicas behind a Caddy load balancer,
+OpenAI-compatible `/v1/audio/transcriptions`), with the TTS service bolted into the
+same compose project so both can take turns on the one GPU. Nothing in this stage
+needs *that* server specifically. Any OpenAI-compatible transcription endpoint works,
+and if your STT and TTS do not have to share a GPU you can skip `switch_server.sh`
+and the alternating driver entirely and just run the passes. The references to it
+throughout stage 05 and 06 are there because it is what actually built the dataset.
+
 Both servers are services in the same CrispASR `docker-compose.yml`:
 
 - STT: `crispasr` (whisper replicas) + `crispasr-lb` (Caddy, host `:8002`)
