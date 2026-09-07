@@ -59,3 +59,7 @@ obsolete
 CLAUDE.local.md
 README.local.md
 TODO.md
+
+# Vendored manifest listener: local inspection state, never committed.
+06_hotfixes/manifest_listener/flagged.jsonl
+06_hotfixes/manifest_listener/dataset/

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeMo dataset tester</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 1rem; max-width: 900px; margin-inline: auto; }
+  header { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: 1rem; }
+  header h1 { font-size: 1.1rem; margin: 0; flex: 1; }
+  button { padding: .5rem .9rem; font-size: 1rem; border-radius: .4rem; border: 1px solid #888; background: #f4f4f4; cursor: pointer; }
+  button.flag { background: #ffd34d; }
+  button.flag.active { background: #e23; color: #fff; border-color: #c10; }
+  @media (prefers-color-scheme: dark) {
+    button { background: #2a2a2a; color: #eee; border-color: #555; }
+    button.flag { background: #8a6a00; color: #fff; }
+  }
+  .card { border: 1px solid #888; border-radius: .5rem; padding: 1rem; margin-bottom: 1rem; }
+  .meta { font-size: .85rem; opacity: .7; margin-bottom: .25rem; }
+  .text { font-size: 1.2rem; line-height: 1.5; margin: .5rem 0 1rem; }
+  audio { width: 100%; }
+  .controls { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+  ul.list { list-style: none; padding: 0; max-height: 50vh; overflow: auto; border: 1px solid #888; border-radius: .5rem; }
+  ul.list li { padding: .4rem .6rem; border-bottom: 1px solid #555; cursor: pointer; display: flex; gap: .5rem; align-items: center; font-size: .9rem; }
+  ul.list li:hover { background: rgba(127,127,127,.2); }
+  ul.list li.current { background: rgba(80,150,255,.25); }
+  ul.list li.flagged { color: #e23; }
+  .idx { font-variant-numeric: tabular-nums; opacity: .6; min-width: 3ch; text-align: right; }
+  .help { font-size: .8rem; opacity: .7; margin-top: .5rem; }
+  kbd { background: #444; color: #eee; padding: 0 .3rem; border-radius: .2rem; font-size: .75rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>NeMo dataset tester</h1>
+  <span id="counter" class="meta"></span>
+</header>
+
+<div class="card">
+  <div class="meta" id="meta">loading…</div>
+  <div class="text" id="text"></div>
+  <audio id="audio" controls preload="auto"></audio>
+  <div class="controls">
+    <button id="prev">◀ Prev (J)</button>
+    <button id="play">Play (Space)</button>
+    <button id="next">Next (K) ▶</button>
+    <button id="flag" class="flag">⚑ Flag (F)</button>
+    <label style="margin-left:auto; display:flex; align-items:center; gap:.3rem;">
+      <input type="checkbox" id="autoplay" checked> auto-advance
+    </label>
+  </div>
+  <div class="help">Shortcuts: <kbd>Space</kbd> play/pause · <kbd>J</kbd>/<kbd>K</kbd> prev/next · <kbd>F</kbd> flag</div>
+</div>
+
+<ul class="list" id="list"></ul>
+
+<script>
+let items = [];
+let flagged = new Set();
+let cur = 0;
+
+const $ = (id) => document.getElementById(id);
+const audio = $("audio");
+
+async function load() {
+  items = await (await fetch("/api/manifest")).json();
+  const fl = await (await fetch("/api/flagged")).json();
+  flagged = new Set(fl.map(e => e.audio_filepath));
+  renderList();
+  goto(0);
+}
+
+function renderList() {
+  const ul = $("list");
+  ul.innerHTML = "";
+  items.forEach((it, i) => {
+    const li = document.createElement("li");
+    li.dataset.i = i;
+    li.innerHTML = `<span class="idx">${i+1}</span><span class="t"></span>`;
+    li.querySelector(".t").textContent = it.text.slice(0, 100);
+    if (flagged.has(it.audio_filepath)) li.classList.add("flagged");
+    li.onclick = () => goto(i);
+    ul.appendChild(li);
+  });
+  updateListSelection();
+}
+
+function updateListSelection() {
+  document.querySelectorAll("ul.list li").forEach((li, i) => {
+    li.classList.toggle("current", i === cur);
+    li.classList.toggle("flagged", flagged.has(items[i].audio_filepath));
+  });
+  const liCur = document.querySelector("ul.list li.current");
+  if (liCur) liCur.scrollIntoView({block: "nearest"});
+}
+
+function goto(i) {
+  if (i < 0 || i >= items.length) return;
+  cur = i;
+  const it = items[i];
+  $("meta").textContent = `#${i+1}/${items.length} · ${it.duration?.toFixed(2)}s · ${it.audio_filepath}`;
+  $("text").textContent = it.text;
+  $("counter").textContent = `${i+1} / ${items.length} · flagged: ${flagged.size}`;
+  audio.src = "/audio?path=" + encodeURIComponent(it.audio_filepath);
+  audio.play().catch(() => {});
+  updateFlagBtn();
+  updateListSelection();
+}
+
+function updateFlagBtn() {
+  $("flag").classList.toggle("active", flagged.has(items[cur].audio_filepath));
+}
+
+async function flagCurrent() {
+  const it = items[cur];
+  if (flagged.has(it.audio_filepath)) return;
+  flagged.add(it.audio_filepath);
+  updateFlagBtn();
+  updateListSelection();
+  $("counter").textContent = `${cur+1} / ${items.length} · flagged: ${flagged.size}`;
+  await fetch("/api/flag", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({...it, flagged_at: new Date().toISOString()}),
+  });
+}
+
+audio.addEventListener("ended", () => {
+  if ($("autoplay").checked && cur + 1 < items.length) goto(cur + 1);
+});
+
+$("prev").onclick = () => goto(cur - 1);
+$("next").onclick = () => goto(cur + 1);
+$("play").onclick = () => audio.paused ? audio.play() : audio.pause();
+$("flag").onclick = flagCurrent;
+
+document.addEventListener("keydown", (e) => {
+  if (e.target.matches("input, textarea")) return;
+  if (e.key === " ") { e.preventDefault(); audio.paused ? audio.play() : audio.pause(); }
+  else if (e.key === "j" || e.key === "ArrowLeft") goto(cur - 1);
+  else if (e.key === "k" || e.key === "ArrowRight") goto(cur + 1);
+  else if (e.key === "f" || e.key === "F") flagCurrent();
+});
+
+load();
+</script>
+</body>
+</html>

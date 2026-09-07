@@ -66,12 +66,12 @@ Top-level numbered folders are ordered pipeline stages. Files numbered inside a 
 
 | Stage | Role |
 |---|---|
-| [`01_dictionnary/`](01_dictionnary/) | ~62.6k French medical dictionary terms. An LLM scores each term 0 to 10 for usefulness, the score sets how many sentences it gets, then one call per term produces those sentences. |
+| [`01_dictionnary/`](01_dictionnary/) | ~62.6k French medical dictionary terms. An LLM scores each term 0 to 10 for usefulness, the score sets how many sentences it gets, then one call per term produces those sentences. Bring your own term list: see [Data you have to bring yourself](#data-you-have-to-bring-yourself). |
 | [`02_drugs/`](02_drugs/) | French and international drug names to medication-dictation sentences. Importance comes from real 2025 sales volumes rather than an LLM, and sentences name real dosages. [`02_drugs/sources/`](02_drugs/sources/) holds the scripts that build the stage's inputs from the public drug databases. |
 | [`03_PARHAF/`](03_PARHAF/) | PARHAF clinical documents, chunked and rewritten into faithful spoken-French paragraphs. |
 | [`04_PARROT/`](04_PARROT/) | PARROT radiology reports, French rows only, same chunk-and-rewrite path. |
 | [`05_generate_audio/`](05_generate_audio/) | Runs a local TTS server over every stage's text output. Resumable, with a truncation guard. |
-| [`06_hotfixes/`](06_hotfixes/) | The quality loop: score every clip against its transcript, regenerate the bad ones, keep the best draw. |
+| [`06_hotfixes/`](06_hotfixes/) | The quality loop: score every clip against its transcript, regenerate the bad ones, keep the best draw. [`manifest_listener/`](06_hotfixes/manifest_listener/) is the human-in-the-loop complement, a small app for listening to clips and flagging them. |
 | [`07_acronyms/`](07_acronyms/) | 511 hand-filtered medical acronyms, each spoken with its real pronunciation while the label keeps the written form. |
 | [`99_hf_release/`](99_hf_release/) | Build NeMo manifests, package as sharded Parquet, publish. |
 | [`utils/`](utils/) | Everything shared by more than one stage. |
@@ -135,7 +135,7 @@ None of these are in this repository. Each has its own licence, which is yours t
 
 | Source | Where | Licence |
 |---|---|---|
-| French medical dictionary (~62.6k terms) | Assorted public sources, principally [Wiktionnaire](https://fr.wiktionary.org/) | CC BY-SA 4.0 for the Wiktionary-derived portion |
+| French medical term list (~62.6k terms) | Bring your own. [Wiktionnaire](https://fr.wiktionary.org/) is a good CC BY-SA starting point for French medical vocabulary. | Depends which source you pick. |
 | PARHAF clinical documents | [HealthDataHub/PARHAF](https://huggingface.co/datasets/HealthDataHub/PARHAF) | CC BY 4.0 **and** Etalab Open Licence 2.0. Training set only; the test set is under embargo and must not be redistributed. |
 | PARROT radiology reports | [PARROT_v1.0](https://github.com/PARROT-reports/PARROT_v1.0) | CC BY-NC-SA 4.0. **NonCommercial and ShareAlike**: keep it in a separate subset and do not merge it into a differently-licensed corpus. |
 | Raw French Wikipedia acronym scrape | [Liste d'abréviations en santé](https://fr.wikipedia.org/wiki/Liste_d%27abr%C3%A9viations_en_sant%C3%A9) | CC BY-SA 4.0. Only the 511-row hand-filtered CSV ships here; the raw scrape carries verbatim article prose and does not. |
