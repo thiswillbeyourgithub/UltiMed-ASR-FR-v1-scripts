@@ -77,4 +77,9 @@ def audio():
 
 
 if __name__ == "__main__":
+    # 0.0.0.0 inside the container is correct and stays: Docker has to reach the
+    # process across the bridge network. Containment is done one level up, where
+    # docker-compose.yml publishes the port on 127.0.0.1 only. There is no auth
+    # here and it serves clinical-derived audio, so it must never be reachable
+    # from outside the host.
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", "5000")))

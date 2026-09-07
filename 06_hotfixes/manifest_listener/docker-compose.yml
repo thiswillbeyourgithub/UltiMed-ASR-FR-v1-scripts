@@ -2,7 +2,9 @@ services:
   tester:
     build: .
     ports:
-      - "5007:5000"
+      # Host side pinned to 127.0.0.1: no auth, and it serves clinical-derived
+      # audio. Drop the prefix only on a machine you trust the whole network of.
+      - "127.0.0.1:5007:5000"
     environment:
       MANIFEST: dataset/fr/nemo_manifest_ordered.json
       PATH_FROM: ./export/
