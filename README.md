@@ -18,6 +18,7 @@ This repository is the **recipe, not the product**. It documents how a single pe
 - [What is deliberately absent](#what-is-deliberately-absent)
 - [Running the scripts](#running-the-scripts)
 - [Scale and cost](#scale-and-cost)
+- [Known issues in v1](#known-issues-in-v1)
 - [Licensing](#licensing)
 - [Third-party attribution](#third-party-attribution)
 - [Credits](#credits)
@@ -178,6 +179,33 @@ For calibration, since the whole point is that this is reproducible by one perso
 | Output | 601,338 clips, 3,105 hours, 254 GB |
 
 The CER reports are committed: [`06_hotfixes/improved/full.stt.statistics.md`](06_hotfixes/improved/full.stt.statistics.md) and [`06_hotfixes/improved_parrot/full.stt.statistics.md`](06_hotfixes/improved_parrot/full.stt.statistics.md).
+
+## Known issues in v1
+
+Both of these were found **after** UltiMed-ASR-FR-v1 was published and after the fine-tune had already been trained on it. The shipped audio and the released model carry them. They are recorded here so anyone reusing this recipe starts from the fixed version, and so nobody rediscovers them the hard way.
+
+<details>
+<summary><b>Expand</b>: the <code>RAS</code> mispronunciation and the dosage zero-padding.</summary>
+
+### `RAS` is spoken as the word "race"
+
+`RAS` (*rien à signaler*, the French clinical shorthand for "nothing to report") is a word-acronym, so the TTS reads it as a word rather than as letters, and Voxtral lands on "race". The written label is correct; only the audio is wrong.
+
+**Scope: 341 clips of 601,338, or 0.06% of the main corpus** (282 dictionary, 15 drugs, 44 PARHAF, none in acronyms or PARROT).
+
+**Not fixed.** It is logged as an open decision in [`01_dictionnary/VOXTRAL_QUIRKS.md`](01_dictionnary/VOXTRAL_QUIRKS.md), because the two candidate remedies are not equivalent. Respelling it so the voice reads letters (`R.A.S.`, `R A S`, `err-a-ess`) is a pure pronunciation fix. Expanding it to `rien à signaler` is not: the audio would then say the full phrase while the label still says `RAS`, which deliberately changes the audio-to-label relationship. Picking between them needs listening data that does not exist yet.
+
+If you are adapting this pipeline, the transferable lesson is that word-acronyms are the dangerous class. Letter-acronyms (`TSH`, `ECG`, `IRM`) all read correctly raw; it is the ones that happen to look like a word in the target language that a TTS will mispronounce, and no amount of CER scoring catches it, because the label and the transcript agree while the audio does not.
+
+### Dosage strings carried BDPM's zero padding
+
+The public drug database pads decimal parts inconsistently, so a single strength arrived spelled several ways for one form: `500 mg`, `500,0 mg` and `500,00 mg`. Those went into the LLM's presentation hint unchanged, where they read as three distinct doses of the same drug. Worse, 88 presentations carried a padded value with **no** clean twin at all, so `BENZYLTHIOURACILE` shipped `25,00 mg` and nothing else and was read aloud as "vingt-cinq virgule zéro zéro milligrammes".
+
+**Fixed** in [`90a6ed6`](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-scripts/commit/90a6ed612ac7ab33f82ad881f1ae3403f8004db8), *"canonicalize and de-duplicate BDPM dosage strings"*, which canonicalizes the padding away and then de-duplicates whatever becomes equal, in `02_drugs/sources/base_de_donnee_medicament/create_drug_db.py`. On the real 410-substance input that takes 1075 dosage entries down to 952 across 113 substances, with zero padded values left and no distinct dose lost. Covered by `tests/test_drug_dosage_dedup.py`.
+
+The committed `02_drugs/*.jsonl` files are **deliberately not regenerated**: they are the exact inputs that built v1, and re-running them through the fixed script would desync this repository from the published dataset. The fix lands on the next build.
+
+</details>
 
 ## Licensing
 
