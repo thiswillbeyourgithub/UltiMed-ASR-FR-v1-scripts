@@ -67,7 +67,7 @@ Top-level numbered folders are ordered pipeline stages. Files numbered inside a 
 | Stage | Role |
 |---|---|
 | [`01_dictionnary/`](01_dictionnary/) | ~62.6k French medical dictionary terms. An LLM scores each term 0 to 10 for usefulness, the score sets how many sentences it gets, then one call per term produces those sentences. |
-| [`02_drugs/`](02_drugs/) | French and international drug names to medication-dictation sentences. Importance comes from real 2025 sales volumes rather than an LLM, and sentences name real dosages. |
+| [`02_drugs/`](02_drugs/) | French and international drug names to medication-dictation sentences. Importance comes from real 2025 sales volumes rather than an LLM, and sentences name real dosages. [`02_drugs/sources/`](02_drugs/sources/) holds the scripts that build the stage's inputs from the public drug databases. |
 | [`03_PARHAF/`](03_PARHAF/) | PARHAF clinical documents, chunked and rewritten into faithful spoken-French paragraphs. |
 | [`04_PARROT/`](04_PARROT/) | PARROT radiology reports, French rows only, same chunk-and-rewrite path. |
 | [`05_generate_audio/`](05_generate_audio/) | Runs a local TTS server over every stage's text output. Resumable, with a truncation guard. |
@@ -147,7 +147,6 @@ The drug data in [`02_drugs/`](02_drugs/) **is** included, because it is French 
 - **All generated corpora and audio.** Hundreds of gigabytes, and derived from sources with licences this repository does not carry.
 - **`99_hf_release/scripts/upload_to_hf.py`.** Kept out of version control on purpose: it resolves paths through a local symlink to an external drive. The `.gitignore` entry explains how to bring it back.
 - **The fine-tuning config.** Training happens in a separate NeMo checkout. `99_hf_release/scripts/parquet_to_nemo.py` rebuilds the NeMo training layout from the published Parquet, in either loose-manifest or tarred form, and that is the handoff point.
-- **The builder for `02_drugs/drugs_freq_dosages.jsonl`.** The file it produces is here; the script that merges the raw drug databases into it is not committed yet. `TODO`.
 - **Sample rows.** There is no `samples/` folder, because real rows would mean redistributing NonCommercial and ShareAlike source text under this repository's licence. Field names and semantics are documented in `CLAUDE.md` and in each script's docstring instead.
 
 ## Running the scripts

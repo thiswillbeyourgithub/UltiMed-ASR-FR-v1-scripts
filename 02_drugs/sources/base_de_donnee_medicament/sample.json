@@ -1,0 +1,41 @@
+{
+  "cis": 61266250,
+  "elementPharmaceutique": "A 313 200 000 UI POUR CENT, pommade",
+  "formePharmaceutique": "pommade",
+  "voiesAdministration": [
+    "cutanée"
+  ],
+  "statusAutorisation": "Autorisation active",
+  "typeProcedure": "Procédure nationale",
+  "etatComercialisation": "Commercialisée",
+  "dateAMM": "12/03/1998",
+  "titulaire": "PHARMA DEVELOPPEMENT",
+  "surveillanceRenforce": "Non",
+  "composition": [
+    {
+      "cis": 61266250,
+      "elementPharmaceutique": "pommade",
+      "codeSubstance": 77887,
+      "denominationSubstance": "CONCENTRAT DE VITAMINE A SYNTHÉTIQUE, FORME HUILEUSE",
+      "dosage": "200 000 UI",
+      "referenceDosage": "100 g de pommade",
+      "natureComposant": "SA"
+    }
+  ],
+  "generiques": null,
+  "presentation": [
+    {
+      "cis": 61266250,
+      "cip7": 3000147,
+      "libelle": "1 tube(s) aluminium verni de 50 g",
+      "statusAdministratif": "PrÃ©sentation active",
+      "etatComercialisation": "DÃ©claration de commercialisation",
+      "dateDeclaration": "19/01/1965",
+      "cip13": 3400930001479,
+      "agreement": "non",
+      "tauxRemboursement": "30%",
+      "prix": 1.61
+    }
+  ],
+  "conditions": null
+}

@@ -282,8 +282,12 @@ anchor from it.
 near-duplicate artifacts (e.g. `500 mg`, `500,0 mg`, `500,00 mg` for one form);
 the upstream builder that produces this file should de-duplicate them so the
 presentation hint is clean. `drugs_dosages.jsonl` / `drugs_frequency_2025.jsonl`
-are the other committed inputs; the file that builds `drugs_freq_dosages.jsonl`
-from them is not committed yet.
+are the other committed inputs, and `sources/` now holds the scripts that build
+all three from the public databases: `sources/base_de_donnee_medicament/`
+(BDPM -> `drugs_dosages.jsonl`) and `sources/drugs_frequency/` (OPEN_MEDIC +
+RETROCEDAM -> `drugs_frequency_2025.jsonl`, then joined with the dosages ->
+`drugs_freq_dosages.jsonl`). See `02_drugs/sources/README.md` for the chain.
+The de-duplication above belongs in `sources/base_de_donnee_medicament/create_drug_db.py`.
 
 ### `03_PARHAF/` (data prepped)
 `01_parquet_to_jsonl.py` extracts `id`, `local_id`, `documents` from the PARHAF
@@ -449,8 +453,7 @@ Flagging these because avoiding silent duplication is a hard rule in this repo:
   term->N-sentences family (acronyms adds a `source_transform` and
   `require_score=False`); PARHAF + PARROT are the raw-text->one-paragraph rewrite
   family (adapter in `utils/text_rewrite.py`, `require_score=False`). Add an
-  adapter, never a fork. The uncommitted builder that produces
-  `02_drugs/drugs_freq_dosages.jsonl` from the raw drug files is still a TODO.
+  adapter, never a fork.
 - **Rewrite paren-strip vs the cleaners' paren peel.** `utils/text_chunking.py`
   and the audit-only `02_clean_split_texts.py` cleaners each peel `(...)` with the
   same `_PAREN` regex, but the cleaner does it per-line inside a larger
