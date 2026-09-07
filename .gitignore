@@ -1,0 +1,61 @@
+.aider*
+**/__pycache__
+**/.serena
+**/.tokensave
+01_dictionnary/test_voxtral
+01_dictionnary/test_qwen3
+01_dictionnary/**/*.wav
+01_dictionnary/**/*.flac
+01_dictionnary/run_statistics.jsonl
+**/*.log
+obsolete
+
+99_hf_release/data
+*/generated_dataset.jsonl
+*/generated_audios
+*/run_statistics.jsonl
+*/*_rewrite_chunks.jsonl
+
+
+06_hotfixes/**/*.flac
+
+# Local env files (hold tokens/paths, e.g. 06_hotfixes/.env for the STT config)
+.env
+**/.env
+
+# ---------------------------------------------------------------------------
+# Public scripts repo: source data and generated corpora are NOT distributed
+# here. Obtain each source yourself from its upstream and comply with its own
+# licence (see README.md, "Data you have to bring yourself").
+# ---------------------------------------------------------------------------
+
+# Stage 01: the medical dictionary and every derived scoring pass.
+01_dictionnary/original_dictionnary*.jsonl
+*/generated_dataset.jsonl.bak
+
+# Stage 03: PARHAF (HealthDataHub, CC BY 4.0 + Etalab 2.0), upstream and derived.
+03_PARHAF/*.parquet
+03_PARHAF/01_parhaf_documents.jsonl
+03_PARHAF/02_parhaf_texts.jsonl
+
+# Stage 04: PARROT (CC BY-NC-SA 4.0, non-commercial), upstream and derived.
+04_PARROT/PARROT_v1_0*.jsonl
+04_PARROT/02_parrot_texts.jsonl
+
+# Stage 06: multi-hundred-MB QC state, and the flagged-clip index it emits.
+06_hotfixes/**/full.stt.jsonl
+06_hotfixes/**/full.stt.jsonl.*
+06_hotfixes/**/full.improved.jsonl
+06_hotfixes/suspicious_audio/
+
+# Stage 07: the raw French Wikipedia scrape and its intermediates carry verbatim
+# CC BY-SA article prose. Only the hand-filtered 511-row CSV ships.
+07_acronyms/wikipedia_acronyms.csv
+07_acronyms/wikipedia_acronyms.filtered.csv
+07_acronyms/wikipedia_acronyms.filtered.authorfiltered.manualedit.csv
+
+# Personal working copies of the docs (the published versions are CLAUDE.md and
+# docs/BUILD_LOG.md).
+CLAUDE.local.md
+README.local.md
+TODO.md

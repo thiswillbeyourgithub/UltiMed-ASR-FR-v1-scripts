@@ -1,0 +1,532 @@
+{"index": 0, "term": "5-FU", "definition": "5-fluroro-uracile", "pronunciation": "5-F-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 1, "term": "5-HTR", "definition": "5-hydroxytryptamine receptor (récepteur de la sérotonine)", "pronunciation": "5-H-T-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 2, "term": "6-MAM", "definition": "6-monoacétylmorphine", "pronunciation": "6-mâme", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 3, "term": "A1At", "definition": "α-1-antitrypsine", "pronunciation": "A-1-A-t", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 4, "term": "A5HIA", "definition": "acide 5-hydroxyindolacétique (synonyme de 5-HiAA, 5-Hydroxyindoleacetic acid en anglais)", "pronunciation": "A-5-H-I-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 5, "term": "AAA", "definition": "anévrisme de l'aorte abdominale", "pronunciation": "A-A-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 6, "term": "AAH", "definition": "allocation aux adultes handicapés", "pronunciation": "A-A-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 7, "term": "AAN", "definition": "anticorps antinucléaire", "pronunciation": "A-A-N", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 8, "term": "AAP", "definition": "antiagrégant plaquettaire", "pronunciation": "A-A-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 9, "term": "AAV", "definition": "adeno-associated virus (virus adéno-associé)", "pronunciation": "A-A-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 10, "term": "ABCDE", "definition": "Asymétrie, Bords irréguliers, Couleur inhomogène, Diamètre supérieur à, Évolution (critères du mélanome)", "pronunciation": "A-B-C-D-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 11, "term": "ABCDEF", "definition": "procédure ABCDEF de traitement des urgences extrahospitalières", "pronunciation": "A-B-C-D-E-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 12, "term": "ACG", "definition": "autocontrôle de la glycémie", "pronunciation": "A-C-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 13, "term": "ACI", "definition": "artère carotide interne", "pronunciation": "A-C-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 14, "term": "ACM", "definition": "artère cérébrale moyenne", "pronunciation": "A-C-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 15, "term": "ACOMI", "definition": "artériopathie chronique oblitérante des membres inférieurs", "pronunciation": "acomi", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 16, "term": "ACPA", "definition": "anticorps dirigés contre les protéines citrullinées", "pronunciation": "A-C-P-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 17, "term": "ACR", "definition": "arrêt cardiorespiratoire", "pronunciation": "A-C-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 18, "term": "ACSOS", "definition": "agressions cérébrales secondaires d'origine systémique", "pronunciation": "ack-sauce", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 19, "term": "ACT", "definition": "artemisinin-based combination therapy (thérapie combinée à base d'artémisinine)", "pronunciation": "A-C-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 20, "term": "ADAMTS-13", "definition": "A disintegrin and metalloprotease with thrombospondin type I repeats-13", "pronunciation": "Adam-T-S-13", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 21, "term": "ADC", "definition": "apparent diffusion coefficient (coefficient de diffusion apparent)", "pronunciation": "A-D-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 22, "term": "ADK", "definition": "adénocarcinome", "pronunciation": "A-D-K", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 23, "term": "ADL", "definition": "Activities of Daily Living (activités de la vie quotidienne)", "pronunciation": "A-D-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 24, "term": "ADMD", "definition": "Association pour le droit de mourir dans la dignité", "pronunciation": "A-D-M-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 25, "term": "ADO", "definition": "antidiabétiques oraux", "pronunciation": "A-D-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 26, "term": "AEEH", "definition": "allocation d'éducation de l'enfant handicapé", "pronunciation": "A-E-E-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 27, "term": "AEG", "definition": "altération de l'état général", "pronunciation": "A-E-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 28, "term": "AEJ", "definition": "apport énergétique journalier", "pronunciation": "A-E-J", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 29, "term": "AEMO", "definition": "action éducative en milieu ouvert", "pronunciation": "A-E-M-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 30, "term": "AESP", "definition": "activité électrique sans pouls", "pronunciation": "A-E-S-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 31, "term": "AET", "definition": "apport énergétique total", "pronunciation": "A-E-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 32, "term": "AFP", "definition": "alpha-fœtoprotéine", "pronunciation": "A-F-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 33, "term": "AGL", "definition": "acide gras libre", "pronunciation": "A-G-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 34, "term": "AGMI", "definition": "apport en graisses mono-insaturées", "pronunciation": "A-G-M-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 35, "term": "AGPI", "definition": "acide gras polyinsaturé", "pronunciation": "A-G-P-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 36, "term": "AHAI", "definition": "anémie hémolytique auto-immune", "pronunciation": "A-H-A-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 37, "term": "AHH", "definition": "axe hypothalamo-hypophysaire", "pronunciation": "A-H-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 38, "term": "AJPP", "definition": "allocation journalière de présence parentale", "pronunciation": "A-J-P-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 39, "term": "ALR", "definition": "anesthésie locorégionale", "pronunciation": "A-L-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 40, "term": "AME", "definition": "aide médicale d'État", "pronunciation": "A-M-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 41, "term": "AMH", "definition": "hormone de régression müllérienne", "pronunciation": "A-M-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 42, "term": "ANC", "definition": "apports nutritionnels conseillés", "pronunciation": "A-N-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 43, "term": "ANOCA", "definition": "Angina with No Obstructive Coronary Arteries (angine sans obstruction des artéres coronaires)", "pronunciation": "anoca", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 44, "term": "AOD", "definition": "anticoagulant oral direct est synonyme de NACO (nouvel anticoagulant oral)", "pronunciation": "A-O-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 45, "term": "AOMI", "definition": "artériopathie oblitérante des membres inférieurs", "pronunciation": "A-O-M-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 46, "term": "APHP", "definition": "Assistance publique - Hôpitaux de Paris", "pronunciation": "A-P-H-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 47, "term": "APLV", "definition": "allergie aux protéines du lait de vache", "pronunciation": "A-P-L-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 48, "term": "ARA2", "definition": "antagoniste des récepteurs de l'angiotensine II", "pronunciation": "à-rà-deux", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 49, "term": "ARCF", "definition": "anomalie du rythme cardiofœtal", "pronunciation": "A-R-C-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 50, "term": "ARDS", "definition": "syndrome de détresse respiratoire aigüe", "pronunciation": "A-R-D-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 51, "term": "ARNm", "definition": "ARN messager", "pronunciation": "A-R-N-m", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 52, "term": "ARV", "definition": "antirétroviral", "pronunciation": "A-R-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 53, "term": "ASE", "definition": "aide sociale à l'enfance", "pronunciation": "azeu", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 54, "term": "ASH", "definition": "agent des services hospitaliers", "pronunciation": "A-S-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 55, "term": "ASIA", "definition": "score ASIA", "pronunciation": "azia", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 56, "term": "ASMR", "definition": "amélioration du service médical rendu", "pronunciation": "A-S-M-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 57, "term": "ASP", "definition": "abdomen sans préparation", "pronunciation": "A-S-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 58, "term": "ATCD", "definition": "antécédents", "pronunciation": "A-T-C-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 59, "term": "AUC", "definition": "area under the curve (aire sous la courbe)", "pronunciation": "A-U-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 60, "term": "AVB", "definition": "accouchement par voie basse", "pronunciation": "A-V-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 61, "term": "AVCi", "definition": "AVC ischémique", "pronunciation": "A-V-C-i", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 62, "term": "AVF", "definition": "algie vasculaire de la face", "pronunciation": "A-V-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 63, "term": "AVP", "definition": "accident sur la voie publique", "pronunciation": "A-V-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 64, "term": "AVQ", "definition": "activités de la vie quotidienne", "pronunciation": "A-V-Q", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 65, "term": "BAT", "definition": "biopsie de l'artère temporale", "pronunciation": "B-A-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 66, "term": "BAVU", "definition": "ballon autoremplisseur à valve unidirectionnelle", "pronunciation": "ba-vu", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 67, "term": "BDA", "definition": "bouffée délirante aigüe", "pronunciation": "B-D-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 68, "term": "BDB", "definition": "bloc de branche", "pronunciation": "B-D-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 69, "term": "BDCA", "definition": "bronchodilatateur de courte durée d'action", "pronunciation": "B-D-C-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 70, "term": "BDLA", "definition": "bronchodilatateur de longue durée d'action", "pronunciation": "B-D-L-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 71, "term": "BEPS", "definition": "brevet européen de premiers secours", "pronunciation": "B-E-P-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 72, "term": "BGSA", "definition": "biopsies des glandes salivaires accessoires", "pronunciation": "B-G-S-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 73, "term": "BHA", "definition": "bruits hydroaériques", "pronunciation": "B-H-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 74, "term": "BHC", "definition": "bilan hépatique complet", "pronunciation": "B-H-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 75, "term": "BHR", "definition": "bactéries hautement résistantes", "pronunciation": "B-H-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 76, "term": "BHRe", "definition": "bactéries hautement résistantes émergentes", "pronunciation": "B-H-R-e", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 77, "term": "BLSE", "definition": "bêta-lactamase à spectre élargi (ou étendu)", "pronunciation": "B-L-S-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 78, "term": "BMI", "definition": "indice de masse corporelle", "pronunciation": "B-M-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 79, "term": "BMR", "definition": "bactérie multirésistante aux antibiotiques", "pronunciation": "B-M-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 80, "term": "BOM", "definition": "biopsie ostéomédullaire", "pronunciation": "B-O-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 81, "term": "BPM", "definition": "battements par minute", "pronunciation": "B-P-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 82, "term": "BREF", "definition": "batterie rapide d'efficience frontale", "pronunciation": "bref", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 83, "term": "BSPP", "definition": "Brigade des sapeurs-pompiers de Paris", "pronunciation": "B-S-P-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 84, "term": "BU", "definition": "bandelette urinaire", "pronunciation": "B-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 85, "term": "C1G", "definition": "céphalosporine de première génération", "pronunciation": "C-1-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 86, "term": "C2G", "definition": "céphalosporine de deuxième génération", "pronunciation": "C-2-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 87, "term": "C3G", "definition": "céphalosporine troisième génération", "pronunciation": "C-3-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 88, "term": "CAARUD", "definition": "centre d'accueil et d'accompagnement à la réduction des risques pour usagers de drogues", "pronunciation": "ka-rude", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 89, "term": "CAFA", "definition": "crise aigüe par fermeture de l'angle", "pronunciation": "ka-fa", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 90, "term": "CAMSP", "definition": "centre d'action médico-sociale précoce", "pronunciation": "C-A-M-S-P", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 91, "term": "CAMSP", "definition": "centre d'action médico-sociale précoce", "pronunciation": "came-S-P", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 92, "term": "CAPTV", "definition": "centre antipoison et de toxicovigilance", "pronunciation": "C-A-P-T-V", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 93, "term": "CAPTV", "definition": "centre antipoison et de toxicovigilance", "pronunciation": "captévé", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 94, "term": "CATTP", "definition": "centre d'accueil thérapeutique à temps partiel", "pronunciation": "C-A-T-T-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 95, "term": "CBC", "definition": "carcinome basocellulaire", "pronunciation": "C-B-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 96, "term": "CBCT", "definition": "cone beam computed tomography", "pronunciation": "C-B-C-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 97, "term": "CBD", "definition": "cannabidiol", "pronunciation": "C-B-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 98, "term": "CBNPC", "definition": "cancer bronchique non à petites cellules", "pronunciation": "C-B-N-P-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 99, "term": "CCA", "definition": "chef de clinique assistant", "pronunciation": "C-C-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 100, "term": "CCMH", "definition": "concentration corpusculaire moyenne en hémoglobine", "pronunciation": "C-C-M-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 101, "term": "CCMR", "definition": "centre de compétence des maladies rares", "pronunciation": "C-C-M-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 102, "term": "CCP", "definition": "peptides citrullinés cyclisés", "pronunciation": "C-C-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 103, "term": "CEE", "definition": "choc électrique externe", "pronunciation": "C-E-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 104, "term": "CEIO", "definition": "corps étranger intraoculaire", "pronunciation": "C-E-I-O", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 105, "term": "CEIO", "definition": "corps étranger intraoculaire", "pronunciation": "cé-èyo", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 106, "term": "CEIP-A", "definition": "centre d'évaluation et d'information sur la pharmacodépendance et centre d'addictovigilance", "pronunciation": "sais-pas", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 107, "term": "CEPS", "definition": "comité économique des produits de santé", "pronunciation": "C-E-P-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 108, "term": "CETD", "definition": "centre d'évaluation et de traitement de la douleur", "pronunciation": "C-E-T-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 109, "term": "CGH", "definition": "comparative genomic hybridation (hybridation génomique comparative)", "pronunciation": "C-G-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 110, "term": "CGR", "definition": "concentré de globules rouges", "pronunciation": "C-G-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 111, "term": "CHATOD", "definition": "centre d’hébergement et d’activités thérapeutiques et occupationnelles pour personnes âgées désorientées", "pronunciation": "chat-tod", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 112, "term": "CHR", "definition": "centre hospitalier régional", "pronunciation": "C-H-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 113, "term": "CHRU", "definition": "centre hospitalier régional universitaire", "pronunciation": "C-H-R-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 114, "term": "CHU", "definition": "centre hospitalier universitaire", "pronunciation": "C-H-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 115, "term": "CICO", "definition": "intubation impossible, oxygénation impossible", "pronunciation": "si-ko", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 116, "term": "CID", "definition": "carotide interne droite", "pronunciation": "C-I-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 117, "term": "CIG", "definition": "carotide interne gauche", "pronunciation": "C-I-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 118, "term": "CK", "definition": "créatine-kinase", "pronunciation": "C-K", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 119, "term": "CLAT", "definition": "centre de lutte antituberculeuse", "pronunciation": "klatte", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 120, "term": "CLCC", "definition": "centre de lutte contre le cancer", "pronunciation": "C-L-C-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 121, "term": "CMA", "definition": "centre médical des armées", "pronunciation": "C-M-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 122, "term": "CMF", "definition": "chirurgie maxillofaciale", "pronunciation": "C-M-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 123, "term": "CMPP", "definition": "centre médicopsychopédagogique", "pronunciation": "C-M-P-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 124, "term": "CMU", "definition": "couverture maladie universelle", "pronunciation": "C-M-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 125, "term": "CMUc", "definition": "couverture maladie universelle complémentaire", "pronunciation": "C-M-U-c", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 126, "term": "CNO", "definition": "compléments nutritionnels oraux", "pronunciation": "C-N-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 127, "term": "CNOM", "definition": "conseil national de l'ordre des médecins", "pronunciation": "knomme", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 128, "term": "CNR", "definition": "centre national de référence", "pronunciation": "C-N-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 129, "term": "COVID", "definition": "coronavirus disease", "pronunciation": "ko-vide", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 130, "term": "COX", "definition": "cyclooxygénase", "pronunciation": "koksse", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 131, "term": "CPP", "definition": "comité de protection des personnes", "pronunciation": "C-P-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 132, "term": "CPS", "definition": "carte des Professionnels de Santé", "pronunciation": "C-P-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 133, "term": "CRA", "definition": "centre ressources autisme", "pronunciation": "kra", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 134, "term": "CRAT", "definition": "centre de référence sur les agents tératogènes", "pronunciation": "kratte", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 135, "term": "CRCC", "definition": "carcinome rénal à cellules claires", "pronunciation": "C-R-C-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 136, "term": "CRCDC", "definition": "centre régional de coordination des dépistages des cancers", "pronunciation": "C-R-C-D-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 137, "term": "CREX", "definition": "comité de retour d'expérience", "pronunciation": "krex", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 138, "term": "CRIP", "definition": "cellule de recueil des informations préoccupantes", "pronunciation": "krippe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 139, "term": "CRMR", "definition": "centre de référence maladies rares (synonyme de CCMR et de CMR)", "pronunciation": "C-R-M-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 140, "term": "CRO", "definition": "compte-rendu opératoire", "pronunciation": "C-R-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 141, "term": "CRPV", "definition": "centre régional de pharmacovigilance", "pronunciation": "C-R-P-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 142, "term": "CSAPA", "definition": "centre de soins, d'accompagnement et de prévention en addictologie", "pronunciation": "ksapa", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 143, "term": "CSH", "definition": "cellule souche hématopoïétique", "pronunciation": "C-S-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 144, "term": "CTF", "definition": "capacité totale de fixation (du fer par la transferrine)", "pronunciation": "C-T-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 145, "term": "CVC", "definition": "circulation veineuse collatérale", "pronunciation": "C-V-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 146, "term": "CVF", "definition": "capacité vitale forcée ou capacité vitale fonctionnelle", "pronunciation": "C-V-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 147, "term": "CVO", "definition": "crise vaso-occlusive", "pronunciation": "C-V-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 148, "term": "CVT", "definition": "capacité vitale totale", "pronunciation": "C-V-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 149, "term": "CvO2", "definition": "contenu veineux en oxygène", "pronunciation": "C-v-O-2", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 150, "term": "CépiDC", "definition": "centre d'épidémiologie sur les causes médicales de décès", "pronunciation": "çépi-D-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 151, "term": "DAAP", "definition": "double anti-agrégation plaquettaire", "pronunciation": "dappe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 152, "term": "DAE", "definition": "défibrillateur automatisé externe", "pronunciation": "D-A-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 153, "term": "DAI", "definition": "défibrillateur automatique implantable", "pronunciation": "D-A-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 154, "term": "DASRI", "definition": "déchets d'activité de soins à risque infectieux", "pronunciation": "dassri", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 155, "term": "DBS", "definition": "deep brain stimulation (stimulation cérébrale profonde ou thalamique)", "pronunciation": "D-B-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 156, "term": "DDAC", "definition": "donneur décédé après arrêt circulatoire", "pronunciation": "D-D-A-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 157, "term": "DDB", "definition": "dilatation des bronches", "pronunciation": "D-D-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 158, "term": "DDCM", "definition": "date de dernière consultation médicale", "pronunciation": "D-D-C-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 159, "term": "DEC", "definition": "déshydratation extracellulaire", "pronunciation": "D-E-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 160, "term": "DES", "definition": "diplôme d'études spécialisées (troisième cycle des études médicales en France)", "pronunciation": "D-E-S", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 161, "term": "DES", "definition": "diplôme d'études spécialisées (troisième cycle des études médicales en France)", "pronunciation": "dèsse", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 162, "term": "DEXA", "definition": "Dual Energy X-ray Absorptiometry (absorptiométrie biphotonique à rayons X)", "pronunciation": "décsa", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 163, "term": "DFASM", "definition": "diplôme de formation approfondie en sciences médicales ( à années d’études de médecine en France)", "pronunciation": "D-F-A-S-M", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 164, "term": "DFASM", "definition": "diplôme de formation approfondie en sciences médicales ( à années d’études de médecine en France)", "pronunciation": "déf-asthme", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 165, "term": "DFG", "definition": "débit de filtration glomérulaire", "pronunciation": "D-F-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 166, "term": "DFGSM", "definition": "diplôme de formation générale en sciences médicales ( et années d’études de médecine en France)", "pronunciation": "D-F-G-S-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 167, "term": "DFT", "definition": "démence frontotemporale ou déficit fonctionnel temporaire", "pronunciation": "D-F-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 168, "term": "DGS", "definition": "direction générale de la santé", "pronunciation": "D-G-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 169, "term": "DHBNN", "definition": "dermohypodermite bactérienne non nécrosante (anciennement érysipèle)", "pronunciation": "D-H-B-N-N", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 170, "term": "DI", "definition": "dérivations frontales sur l'électrocardiogramme", "pronunciation": "D-un", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 171, "term": "DICV", "definition": "déficit immunitaire commun variable", "pronunciation": "D-I-C-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 172, "term": "DII", "definition": "dérivations frontales sur l'électrocardiogramme", "pronunciation": "D-deux", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 173, "term": "DIII", "definition": "dérivations frontales sur l'électrocardiogramme", "pronunciation": "D-trois", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 174, "term": "DLCO", "definition": "diffusion libre du CO", "pronunciation": "D-L-C-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 175, "term": "DLFT", "definition": "dégénérescence lobaire frontotemporale", "pronunciation": "D-L-F-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 176, "term": "DMARD", "definition": "traitement de fond antirhumatismal", "pronunciation": "D-marre", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 177, "term": "DMARD", "definition": "traitement de fond antirhumatismal", "pronunciation": "D-marde", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 178, "term": "DMP", "definition": "dossier médical partagé", "pronunciation": "D-M-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 179, "term": "DMU", "definition": "dispositif médical à usage unique", "pronunciation": "D-M-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 180, "term": "DPI", "definition": "diagnostic préimplantatoire", "pronunciation": "D-P-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 181, "term": "DT1", "definition": "diabète de type 1", "pronunciation": "D-T-1", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 182, "term": "DT2", "definition": "diabète de type 2", "pronunciation": "D-T-2", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 183, "term": "DTP", "definition": "vaccin combiné contre la diphtérie, le tétanos et la poliomyélite", "pronunciation": "D-T-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 184, "term": "DVE", "definition": "dérivation ventriculaire externe", "pronunciation": "D-V-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 185, "term": "DXM", "definition": "dexaméthasone", "pronunciation": "D-X-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 186, "term": "EAL", "definition": "exploration d'une anomalie lipidique", "pronunciation": "E-A-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 187, "term": "ECBC", "definition": "examen cytobactériologique des crachats", "pronunciation": "E-C-B-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 188, "term": "ECN", "definition": "épreuves classantes nationales", "pronunciation": "E-C-N", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 189, "term": "ECR", "definition": "essai contrôlé randomisé", "pronunciation": "E-C-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 190, "term": "ECT", "definition": "électroconvulsivothérapie", "pronunciation": "E-C-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 191, "term": "EDC", "definition": "épisodes dépressifs caractérisés", "pronunciation": "E-D-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 192, "term": "EDM", "definition": "épisode dépressif majeur", "pronunciation": "E-D-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 193, "term": "EDN", "definition": "examen dématérialisé national", "pronunciation": "E-D-N", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 194, "term": "EFR", "definition": "épreuve fonctionnelle respiratoire", "pronunciation": "E-F-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 195, "term": "EFS", "definition": "établissement français du sang", "pronunciation": "E-F-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 196, "term": "EGFR", "definition": "récepteur du facteur de croissance épidermique", "pronunciation": "E-G-F-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 197, "term": "EIAS", "definition": "évènement indésirable associé aux soins ou épine iliaque antérosupérieure", "pronunciation": "E-I-A-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 198, "term": "EMDR", "definition": "eye movement desensitization and reprocessing (intégration neuro-émotionnelle par les mouvements oculaires)", "pronunciation": "E-M-D-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 199, "term": "EMPP", "definition": "équipe mobile psychiatrie précarité", "pronunciation": "E-M-P-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 200, "term": "EMSP", "definition": "équipe mobile en soins palliatifs", "pronunciation": "E-M-S-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 201, "term": "ENMG", "definition": "électroneuromyogramme", "pronunciation": "E-N-M-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 202, "term": "EOGD", "definition": "endoscopie œso-gastro-duodénale", "pronunciation": "E-O-G-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 203, "term": "EPSM", "definition": "établissement public de santé mentale", "pronunciation": "E-P-S-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 204, "term": "ERRSPP", "definition": "équipe régionale ressources en soins palliatifs pédiatriques", "pronunciation": "E-R-R-S-P-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 205, "term": "ESA", "definition": "extrasystole atriale", "pronunciation": "E-S-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 206, "term": "ESAT", "definition": "établissement et service d'accompagnement par le travail (avant 2023: établissement et service d'aide par le travail)", "pronunciation": "E-S-A-T", "pron_index": 0, "n_prons": 3, "category": "acronyms"}
+{"index": 207, "term": "ESAT", "definition": "établissement et service d'accompagnement par le travail (avant 2023: établissement et service d'aide par le travail)", "pronunciation": "e-sath", "pron_index": 1, "n_prons": 3, "category": "acronyms"}
+{"index": 208, "term": "ESAT", "definition": "établissement et service d'accompagnement par le travail (avant 2023: établissement et service d'aide par le travail)", "pronunciation": "é-sath", "pron_index": 2, "n_prons": 3, "category": "acronyms"}
+{"index": 209, "term": "ESPT", "definition": "état de stress post-traumatique", "pronunciation": "E-S-P-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 210, "term": "ETEC", "definition": "Escherichia coli entérotoxinogène", "pronunciation": "é-tèk", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 211, "term": "ETO", "definition": "échocardiographie transœsophagienne", "pronunciation": "E-T-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 212, "term": "ETP", "definition": "éducation thérapeutique du patient", "pronunciation": "E-T-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 213, "term": "ETT", "definition": "échocardiographie transthoracique", "pronunciation": "E-T-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 214, "term": "EUDA", "definition": "Agence de l'Union européenne sur les drogues", "pronunciation": "E-U-D-A", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 215, "term": "EUDA", "definition": "Agence de l'Union européenne sur les drogues", "pronunciation": "heu-da", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 216, "term": "FCU", "definition": "frottis cervico-utérin", "pronunciation": "F-C-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 217, "term": "FCV", "definition": "frottis cervicovaginal", "pronunciation": "F-C-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 218, "term": "FEVD", "definition": "fraction d'éjection du ventricule droit", "pronunciation": "F-E-V-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 219, "term": "FEVG", "definition": "fraction d'éjection du ventricule gauche", "pronunciation": "F-E-V-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 220, "term": "FFI", "definition": "faisant fonction d'interne", "pronunciation": "F-F-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 221, "term": "FLAIR", "definition": "Fluid-attenuated inversion recovery (atténuation fluidique par inversion-récupération)", "pronunciation": "flaire", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 222, "term": "FLOTCH", "definition": "syndrome dermatologique rare incluant notamment une leuchonychie, des kystes pilaires et/ou à une koïlonychie", "pronunciation": "flotch", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 223, "term": "FNAPSY", "definition": "fédération nationale des associations d'usagers en psychiatrie", "pronunciation": "fnapsy", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 224, "term": "FOGD", "definition": "fibroscopie œsogastroduodénale", "pronunciation": "F-O-G-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 225, "term": "FOP", "definition": "foramen ovale perméable", "pronunciation": "foppe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 226, "term": "FRCV", "definition": "facteur de risque cardiovasculaire", "pronunciation": "F-R-C-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 227, "term": "FST", "definition": "formation spécialisée transversale", "pronunciation": "F-S-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 228, "term": "FT", "definition": "facteur tissulaire", "pronunciation": "F-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 229, "term": "GABA", "definition": "acide γ-aminobutyrique (ou gamma-aminobutyrique)", "pronunciation": "ga-ba", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 230, "term": "GAFA", "definition": "glaucome aigu par fermeture de l'angle", "pronunciation": "ga-fa", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 231, "term": "GB", "definition": "globule blanc", "pronunciation": "G-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 232, "term": "GCS", "definition": "(score de Glasgow)", "pronunciation": "G-C-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 233, "term": "GDS", "definition": "gaz du sang", "pronunciation": "G-D-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 234, "term": "GEA", "definition": "gastro-entérite aigüe", "pronunciation": "G-E-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 235, "term": "GEM", "definition": "glomérulonéphrite extramembraneuse", "pronunciation": "G-E-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 236, "term": "GFA", "definition": "glaucome en fermeture d'angle", "pronunciation": "G-F-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 237, "term": "GGT", "definition": "gamma-glutamyl transférase", "pronunciation": "GGT", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 238, "term": "GHB", "definition": "gamma-hydroxybutyrate ou acide gamma-hydroxybutyrique (drogue du viol)", "pronunciation": "G-H-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 239, "term": "GI", "definition": "gastro-intestinal", "pronunciation": "G-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 240, "term": "GIR", "definition": "groupe iso ressource", "pronunciation": "G-I-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 241, "term": "GM-CSF", "definition": "facteur stimulant les colonies de granulocytes et de macrophages", "pronunciation": "G-M-C-S-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 242, "term": "GMSI", "definition": "gammapathie monoclonale de signification indéterminée", "pronunciation": "G-M-S-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 243, "term": "GPAO", "definition": "glaucome primitif à angle ouvert", "pronunciation": "G-P-A-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 244, "term": "GR", "definition": "globule rouge", "pronunciation": "G-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 245, "term": "GREC", "definition": "« glace, repos, élévation, contention » (après une entorse de la cheville)", "pronunciation": "grec", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 246, "term": "HCQ", "definition": "hydroxychloroquine", "pronunciation": "H-C-Q", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 247, "term": "HCSP", "definition": "haut conseil de la santé publique", "pronunciation": "H-C-S-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 248, "term": "HDJ", "definition": "hôpital de jour", "pronunciation": "H-D-J", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 249, "term": "HDT", "definition": "hospitalisation à la demande d'un tiers", "pronunciation": "H-D-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 250, "term": "HEC", "definition": "hyperhydratation extracellulaire", "pronunciation": "H-E-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 251, "term": "HELLP", "definition": "(syndrome d'hémolyse-hépatocytolyse-thrombopénie)", "pronunciation": "elp", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 252, "term": "HLH", "definition": "hémianopsie latérale homonyme", "pronunciation": "H-L-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 253, "term": "HNPCC", "definition": "(cancer colorectal héréditaire sans polypose)", "pronunciation": "H-N-P-C-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 254, "term": "HRP", "definition": "hématome rétroplacentaire", "pronunciation": "H-R-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 255, "term": "HSD", "definition": "hématome sous-dural", "pronunciation": "H-S-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 256, "term": "HSH", "definition": "homme ayant des rapports sexuels avec des hommes", "pronunciation": "H-S-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 257, "term": "HTO", "definition": "hypotension orthostatique", "pronunciation": "H-T-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 258, "term": "HbO2", "definition": "oxyhémoglobine", "pronunciation": "H-b-O-2", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 259, "term": "IADE", "definition": "infirmier(-ière) d'anesthésie diplômé(e) d'État", "pronunciation": "I-ade", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 260, "term": "IADL", "definition": "instrumental activities of daily living (activités instrumentales de la vie quotidienne)", "pronunciation": "I-A-D-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 261, "term": "IAO", "definition": "infirmier d'accueil et orientation (aux urgences) ou insuffisance aortique", "pronunciation": "I-A-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 262, "term": "IAS", "definition": "infection associée aux soins", "pronunciation": "I-A-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 263, "term": "IBODE", "definition": "infirmier de bloc opératoire diplômé d'État", "pronunciation": "I-bode", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 264, "term": "ICM", "definition": "Institut du cerveau et de la moelle épinière", "pronunciation": "I-C-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 265, "term": "IDS", "definition": "idées suicidaires", "pronunciation": "I-D-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 266, "term": "IEC", "definition": "inhibiteur de l'enzyme de conversion", "pronunciation": "I-E-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 267, "term": "IFSI", "definition": "institut de formation en soins infirmiers", "pronunciation": "if-si", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 268, "term": "IMC", "definition": "indice de masse corporelle", "pronunciation": "I-M-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 269, "term": "IMG", "definition": "interruption médicale de grossesse", "pronunciation": "I-M-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 270, "term": "INM", "definition": "intervention non médicamenteuse", "pronunciation": "I-N-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 271, "term": "INTI", "definition": "inhibiteur nucléosidique de la transcriptase inverse", "pronunciation": "inne-ti", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 272, "term": "IPA", "definition": "infirmier en pratique avancée diplômé d'État", "pronunciation": "I-P-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 273, "term": "IPDE", "definition": "infirmière puéricultrice diplômée d'état", "pronunciation": "I-P-D-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 274, "term": "IPDE5", "definition": "inhibiteur de la phosphodiestérase type 5", "pronunciation": "I-P-D-E-5", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 275, "term": "ISR", "definition": "isochores, symétriques et réactives (pupilles) ou insuffisance surrénalienne", "pronunciation": "I-S-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 276, "term": "ISRS", "definition": "inhibiteur sélectif de la recapture de la sérotonine", "pronunciation": "I-S-R-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 277, "term": "ITT", "definition": "incapacité temporaire totale", "pronunciation": "I-T-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 278, "term": "IVSE", "definition": "intraveineuse avec seringue électrique", "pronunciation": "I-V-S-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 279, "term": "JNM", "definition": "jonction neuromusculaire", "pronunciation": "J-N-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 280, "term": "KT", "definition": "cathéter", "pronunciation": "K-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 281, "term": "LADA", "definition": "latent autoimmune diabetes in the adult (diabète de type 1 lent)", "pronunciation": "lada", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 282, "term": "LAM5", "definition": "leucémie aigüe monoblastique (leucémie aigüe myéloblastique de type 5)", "pronunciation": "lame-5", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 283, "term": "LAP", "definition": "lésions anopérinéales (notamment lors des MICI), logiciel d'aide à la prescription ou liste des actes et prestations (actes autorisés par le contrôle médical en cas de maladie de longue durée)", "pronunciation": "lappe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 284, "term": "LCA", "definition": "lecture critique d'article, ligament croisé antérieur", "pronunciation": "L-C-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 285, "term": "LDGCB", "definition": "lymphome diffus à grandes cellules B", "pronunciation": "L-D-G-C-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 286, "term": "LEAD", "definition": "lupus érythémateux aigu disséminé", "pronunciation": "lède", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 287, "term": "LEAD", "definition": "lupus érythémateux aigu disséminé", "pronunciation": "lïde", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 288, "term": "LES", "definition": "lupus érythémateux systémique", "pronunciation": "L-E-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 289, "term": "LID", "definition": "lobe inférieur droit", "pronunciation": "L-I-D", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 290, "term": "LID", "definition": "lobe inférieur droit", "pronunciation": "lïde", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 291, "term": "LIG", "definition": "lobe inférieur gauche", "pronunciation": "L-I-G", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 292, "term": "LIG", "definition": "lobe inférieur gauche", "pronunciation": "ligue", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 293, "term": "LMC", "definition": "leucémie myéloïde chronique", "pronunciation": "L-M-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 294, "term": "LMD", "definition": "lobe moyen droit", "pronunciation": "L-M-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 295, "term": "LMIEBG", "definition": "lésion malpighienne intraépithéliale de bas grade", "pronunciation": "L-M-I-E-B-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 296, "term": "LMIEHG", "definition": "lésion malpighienne intraépithéliale de haut grade", "pronunciation": "L-M-I-E-H-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 297, "term": "LNH", "definition": "lymphome non hodgkinien", "pronunciation": "L-N-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 298, "term": "LP", "definition": "libération prolongée (médicament)", "pronunciation": "L-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 299, "term": "LPPR", "definition": "liste des produits et prestations remboursables", "pronunciation": "L-P-P-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 300, "term": "LPV", "definition": "leucocidine de Panton-Valentine", "pronunciation": "L-P-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 301, "term": "LSG", "definition": "lobe supérieur gauche", "pronunciation": "L-S-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 302, "term": "LSIL", "definition": "low-grade squamous intraepithelial lesion", "pronunciation": "L-çil", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 303, "term": "MAIA", "definition": "maison pour l'autonomie et l'intégration des malades d'Alzheimer", "pronunciation": "maya", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 304, "term": "MAS", "definition": "maison d'accueil spécialisé", "pronunciation": "M-A-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 305, "term": "MAV", "definition": "malformation artérioveineuse", "pronunciation": "mave", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 306, "term": "MBG", "definition": "membrane basale glomérulaire", "pronunciation": "M-B-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 307, "term": "MCE", "definition": "massage cardiaque externe", "pronunciation": "M-C-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 308, "term": "MCU-PH", "definition": "maitre de conférence universitaire-praticien hospitalier", "pronunciation": "M-C-U-P-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 309, "term": "MDO", "definition": "maladie à déclaration obligatoire", "pronunciation": "M-D-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 310, "term": "MDV", "definition": "mode de vie", "pronunciation": "M-D-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 311, "term": "MEOPA", "definition": "mélange équimolaire d'oxygène et de protoxyde d'azote", "pronunciation": "méopah", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 312, "term": "MGG", "definition": "coloration de May-Grünwald Giemsa", "pronunciation": "M-G-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 313, "term": "MMR", "definition": "mismatch repair", "pronunciation": "M-M-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 314, "term": "MNA", "definition": "(évaluation de l'état nutritionnel)", "pronunciation": "M-N-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 315, "term": "MOCA", "definition": "Montreal cognitive assessment (outil d’évaluation des fonctions cognitives)", "pronunciation": "moca", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 316, "term": "MRKH", "definition": "syndrome de Mayer-Rokitansky-Küster-Hauser", "pronunciation": "M-R-K-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 317, "term": "MRSA", "definition": "(staphylococcus aureus résistant à la méticilline)", "pronunciation": "M-R-S-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 318, "term": "MSF", "definition": "Médecins sans frontières", "pronunciation": "M-S-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 319, "term": "MSI", "definition": "microsatellite instability (instabilité des microsatellites)", "pronunciation": "M-S-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 320, "term": "MT", "definition": "médecin traitant", "pronunciation": "M-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 321, "term": "MTEV", "definition": "maladie thromboembolique veineuse", "pronunciation": "M-T-E-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 322, "term": "MTMV", "definition": "modifications thérapeutiques du mode de vie", "pronunciation": "M-T-M-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 323, "term": "NACO", "definition": "nouvel anticoagulant oral", "pronunciation": "naco", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 324, "term": "NCC", "definition": "cotransporteur sodium-chlore", "pronunciation": "N-C-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 325, "term": "NFS", "definition": "numération formule sanguine", "pronunciation": "N-F-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 326, "term": "NGS", "definition": "next generation sequencing (séquençage de nouvelle génération)", "pronunciation": "N-G-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 327, "term": "NIA", "definition": "néphrite interstitielle aigüe", "pronunciation": "N-I-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 328, "term": "NIHSS", "definition": "NIH Stroke Scale (score diagnostique et de gravité des accidents vasculaires cérébraux)", "pronunciation": "N-I-H-S-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 329, "term": "NOIA", "definition": "neuropathie optique ischémique antérieure", "pronunciation": "noya", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 330, "term": "NOIAA", "definition": "neuropathie optique ischémique antérieure aigüe", "pronunciation": "noya-a", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 331, "term": "NORB", "definition": "névrite optique rétrobulbaire", "pronunciation": "norbe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 332, "term": "NOVI", "definition": "nombreuses victimes", "pronunciation": "novi", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 333, "term": "NSTEMI", "definition": "non ST segment elevation myocardial infarction (infarctus du myocarde sans élévation du segment ST)", "pronunciation": "N-stémi", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 334, "term": "NT-proBNP", "definition": "Prohormone N-terminale du peptide cérébral natriurétique", "pronunciation": "N-T-pro-B-N-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 335, "term": "NTA", "definition": "nécrose tubulaire aigüe", "pronunciation": "N-T-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 336, "term": "NTI", "definition": "néphrite tubulo-interstitielle", "pronunciation": "N-T-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 337, "term": "NTIA", "definition": "néphrite tubulo-interstitielle aigüe", "pronunciation": "N-T-I-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 338, "term": "NVCI", "definition": "nausées/vomissements chimio-induits", "pronunciation": "N-V-C-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 339, "term": "NYHA", "definition": "classification de la NYHA évaluant la sévérité de l'insuffisance cardiaque", "pronunciation": "N-Y-H-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 340, "term": "OEDT", "definition": "Observatoire européen des drogues et toxicomanies", "pronunciation": "O-E-D-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 341, "term": "OGE", "definition": "organes génitaux externes (voir appareil reproducteur)", "pronunciation": "O-G-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 342, "term": "OMA", "definition": "otite moyenne aigüe", "pronunciation": "O-M-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 343, "term": "OMAP", "definition": "otite moyenne aiguë purulente", "pronunciation": "O-M-A-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 344, "term": "OMI", "definition": "œdème des membres inférieurs", "pronunciation": "O-M-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 345, "term": "OPP", "definition": "ordonnance de placement provisoire", "pronunciation": "O-P-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 346, "term": "OPSI", "definition": "overwhelming post-splenectomy infection", "pronunciation": "o-psy", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 347, "term": "OPSI", "definition": "overwhelming post-splenectomy infection", "pronunciation": "oupsie", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 348, "term": "ORSAN", "definition": "organisation de la réponse du système sanitaire", "pronunciation": "hors-sanne", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 349, "term": "ORSEC NOVI", "definition": "organisation de la réponse de sécurité civile nombreuses victimes", "pronunciation": "hors-sec-novi", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 350, "term": "PAI", "definition": "projet d'accueil individualisé", "pronunciation": "P-A-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 351, "term": "PASS", "definition": "permanences d'accès aux soins de santé ou parcours d’accès spécifique santé", "pronunciation": "passe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 352, "term": "PBH", "definition": "ponction biopsie hépatique", "pronunciation": "P-B-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 353, "term": "PBR", "definition": "ponction biopsie rénale", "pronunciation": "P-B-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 354, "term": "PCEM", "definition": "premier cycle des études médicales (remplacé par la PACES et le DFGSM en 2011)", "pronunciation": "P-C-E-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 355, "term": "PCI", "definition": "produit de contraste iodé", "pronunciation": "P-C-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 356, "term": "PDC", "definition": "produit de contraste", "pronunciation": "P-D-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 357, "term": "PDL", "definition": "produit dose x longueur en radiologie", "pronunciation": "P-D-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 358, "term": "PDS", "definition": "prise de sang", "pronunciation": "P-D-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 359, "term": "PEAG", "definition": "pustulose exanthématique aigüe généralisée", "pronunciation": "P-E-A-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 360, "term": "PF", "definition": "paralysie faciale", "pronunciation": "P-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 361, "term": "PID", "definition": "pneumopathie interstitielle diffuse", "pronunciation": "pidde", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 362, "term": "PMO", "definition": "prélèvements multi-organes", "pronunciation": "P-M-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 363, "term": "PPE", "definition": "prophylaxie post-exposition", "pronunciation": "P-P-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 364, "term": "PPR", "definition": "pseudo-polyarthrite rhizomélique", "pronunciation": "P-P-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 365, "term": "PPROM", "definition": "(rupture prématurée des membranes)", "pronunciation": "P-prome", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 366, "term": "PRADO", "definition": "programme d'accompagnement du retour à domicile", "pronunciation": "prado", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 367, "term": "PSDP", "definition": "pneumocoque de sensibilité diminuée à la pénicilline", "pronunciation": "P-S-D-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 368, "term": "PSE", "definition": "pousse-seringue électrique", "pronunciation": "P-S-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 369, "term": "PSL", "definition": "produit sanguin labile", "pronunciation": "P-S-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 370, "term": "PTG", "definition": "prothèse totale du genou", "pronunciation": "P-T-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 371, "term": "PTH", "definition": "prothèse totale de hanche", "pronunciation": "P-T-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 372, "term": "PU-PH", "definition": "professeur des universités – praticien hospitalier", "pronunciation": "P-U-P-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 373, "term": "PUI", "definition": "pharmacie à usage intérieur", "pronunciation": "P-U-I", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 374, "term": "PUI", "definition": "pharmacie à usage intérieur", "pronunciation": "puï", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 375, "term": "PVL", "definition": "Penton-Valentine Leucocidine", "pronunciation": "P-V-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 376, "term": "PaO2", "definition": "pression artérielle partielle en oxygène", "pronunciation": "P-a-O-2", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 377, "term": "QRS", "definition": "complexe QRS", "pronunciation": "Q-R-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 378, "term": "QSOFA", "definition": "Quick Sepsis-related Organ Failure Assessment", "pronunciation": "Q-sofa", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 379, "term": "QSP", "definition": "quantité suffisante pour", "pronunciation": "Q-S-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 380, "term": "RACS", "definition": "retour à une activité circulatoire spontanée", "pronunciation": "racksse", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 381, "term": "RAI", "definition": "recherche d'anticorps irréguliers", "pronunciation": "R-A-I", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 382, "term": "RAI", "definition": "recherche d'anticorps irréguliers", "pronunciation": "räye", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 383, "term": "RCF", "definition": "rythme cardiaque fœtal", "pronunciation": "R-C-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 384, "term": "RCH", "definition": "rectocolite hémorragique", "pronunciation": "R-C-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 385, "term": "RCIU", "definition": "retard de croissance intra-utérin", "pronunciation": "R-C-I-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 386, "term": "RCT", "definition": "randomized controlled trial (essai randomisé contrôlé)", "pronunciation": "R-C-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 387, "term": "RETEX", "definition": "retour d'expérience", "pronunciation": "retex", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 388, "term": "RGO", "definition": "Reflux gastro oesophagien", "pronunciation": "R-G-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 389, "term": "RHD", "definition": "règles hygiénodiététiques", "pronunciation": "R-H-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 390, "term": "RHJ", "definition": "reflux hépato-jugulaire", "pronunciation": "R-H-J", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 391, "term": "RIPH", "definition": "recherche impliquant la personne humaine", "pronunciation": "R-I-P-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 392, "term": "RMM", "definition": "revue de mortalité et de morbidité", "pronunciation": "R-M-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 393, "term": "ROR", "definition": "rougeole-oreillons-rubéole", "pronunciation": "R-O-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 394, "term": "ROS", "definition": "reactive oxygen species (dérivé réactif de l'oxygène)", "pronunciation": "R-O-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 395, "term": "ROT", "definition": "réflexe ostéotendineux", "pronunciation": "R-O-T", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 396, "term": "ROT", "definition": "réflexe ostéotendineux", "pronunciation": "rotte", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 397, "term": "RQTH", "definition": "reconnaissance de la qualité de travailleur handicapé", "pronunciation": "R-Q-T-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 398, "term": "RR", "definition": "risque relatif", "pronunciation": "R-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 399, "term": "RS", "definition": "rythme sinusal", "pronunciation": "R-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 400, "term": "SA", "definition": "semaines d'aménorrhée", "pronunciation": "S-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 401, "term": "SAF", "definition": "syndrome d'alcoolisation fœtale", "pronunciation": "saffe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 402, "term": "SAMSAH", "definition": "service d'accompagnement médico-social pour adultes handicapés", "pronunciation": "çamme-çah", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 403, "term": "SAOS", "definition": "syndrome des apnées obstructives du sommeil", "pronunciation": "S-A-O-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 404, "term": "SAPL", "definition": "syndrome des antiphospholipides", "pronunciation": "S-A-P-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 405, "term": "SARM", "definition": "Staphylococcus aureus résistant à la méticilline", "pronunciation": "çarme", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 406, "term": "SARV", "definition": "Staphylococcus aureus résistant à la vancomycine", "pronunciation": "çarve", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 407, "term": "SAS", "definition": "syndrome d'apnées du sommeil", "pronunciation": "çasse", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 408, "term": "SASM", "definition": "sensible à la méticilline", "pronunciation": "çassme", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 409, "term": "SB", "definition": "substance blanche", "pronunciation": "S-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 410, "term": "SBHGA", "definition": "streptocoque bêta-hémolytique du groupe A", "pronunciation": "S-B-H-G-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 411, "term": "SBI", "definition": "syndrome biologique inflammatoire", "pronunciation": "S-B-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 412, "term": "SCAM", "definition": "sortie contre avis médical", "pronunciation": "çcame", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 413, "term": "SCM", "definition": "(muscle) sterno-cléido-mastoïdien", "pronunciation": "S-C-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 414, "term": "SDRA", "definition": "syndrome de détresse respiratoire aigüe", "pronunciation": "sdra", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 415, "term": "SERM", "definition": "modulateurs sélectifs des récepteurs aux estrogènes", "pronunciation": "çerme", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 416, "term": "SESSAD", "definition": "services d'éducation spéciale et de soins à domicile", "pronunciation": "çè-Sade", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 417, "term": "SFU", "definition": "signes fonctionnels urinaires", "pronunciation": "S-F-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 418, "term": "SGA", "definition": "streptocoque du groupe A", "pronunciation": "S-G-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 419, "term": "SGB", "definition": "streptocoque du groupe B", "pronunciation": "S-G-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 420, "term": "SHA", "definition": "solution hydroalcoolique", "pronunciation": "chat", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 421, "term": "SHU", "definition": "syndrome hémolytique et urémique", "pronunciation": "S-H-U", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 422, "term": "SIB", "definition": "syndrome inflammatoire biologique", "pronunciation": "S-I-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 423, "term": "SJSR", "definition": "syndrome des jambes sans repos", "pronunciation": "S-J-S-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 424, "term": "SLA", "definition": "sclérose latérale amyotrophique", "pronunciation": "S-L-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 425, "term": "SLD", "definition": "soins de longue durée", "pronunciation": "S-L-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 426, "term": "SMIT", "definition": "service des maladies infectieuses et tropicales", "pronunciation": "smitte", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 427, "term": "SMR", "definition": "service médical rendu", "pronunciation": "S-M-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 428, "term": "SNG", "definition": "sonde naso-gastrique", "pronunciation": "S-N-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 429, "term": "SNS", "definition": "système nerveux sympathique", "pronunciation": "S-N-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 430, "term": "SNV", "definition": "système nerveux végétatif", "pronunciation": "S-N-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 431, "term": "SOFA", "definition": "évaluation des défaillances d'organes liées au sepsis", "pronunciation": "sofa", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 432, "term": "SOPK", "definition": "syndrome des ovaires polykystiques", "pronunciation": "S-O-P-K", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 433, "term": "SPA", "definition": "spondylarthrite ankylosante", "pronunciation": "S-P-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 434, "term": "SPCMD", "definition": "sédation profonde et continue maintenue jusqu'au décès", "pronunciation": "S-P-C-M-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 435, "term": "SPDRE", "definition": "soins psychiatriques à la demande du représentant de l'État", "pronunciation": "S-P-D-R-E", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 436, "term": "SPDRE", "definition": "soins psychiatriques à la demande du représentant de l'État", "pronunciation": "sdreuh", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 437, "term": "SPDT", "definition": "soins psychiatriques à la demande d'un tiers", "pronunciation": "S-P-D-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 438, "term": "SPF", "definition": "Santé Publique France", "pronunciation": "S-P-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 439, "term": "SPL", "definition": "soins psychiatriques libres", "pronunciation": "S-P-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 440, "term": "SPPI", "definition": "soins psychiatriques péril imminent", "pronunciation": "S-P-P-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 441, "term": "SPSC", "definition": "soins psychiatriques sans consentement", "pronunciation": "S-P-S-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 442, "term": "SRAA", "definition": "système rénine-angiotensine-aldostérone ou substance réticulée activatrice ascendante", "pronunciation": "S-R-A-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 443, "term": "SSIAD", "definition": "service de soins infirmiers à domicile", "pronunciation": "S-S-I-ade", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 444, "term": "SSMG", "definition": "Société Scientifique de Médecine Générale", "pronunciation": "S-S-M-G", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 445, "term": "SSPI", "definition": "salle de surveillance postinterventionnelle", "pronunciation": "S-S-P-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 446, "term": "SSPO", "definition": "salle de surveillance postopératoire", "pronunciation": "S-S-P-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 447, "term": "ST", "definition": "segment ST à l’ECG", "pronunciation": "S-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 448, "term": "ST-plus", "definition": "sus-décalage du segment ST", "pronunciation": "S-T-plus", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 449, "term": "STEC", "definition": "shiga toxin-producing Escherichia coli (Escherichia coli productrice de shigatoxines)", "pronunciation": "stèk", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 450, "term": "STEMI", "definition": "ST elevation myocardial infarction (infarctus du myocarde avec sus-décalage du segment ST)", "pronunciation": "stémi", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 451, "term": "SURSAUD", "definition": "surveillance sanitaire des urgences et des décès", "pronunciation": "sur-saut", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 452, "term": "SVCR", "definition": "syndrome de vasoconstriction cérébrale réversible", "pronunciation": "S-V-C-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 453, "term": "SaO2", "definition": "saturation artérielle en oxygène", "pronunciation": "S-a-O-2", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 454, "term": "TACFA", "definition": "tachyarythmie complète par fibrillation atriale (= auriculaire)", "pronunciation": "tack-fa", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 455, "term": "TAP", "definition": "thoraco-abdomino-pelvien", "pronunciation": "tappe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 456, "term": "TCC", "definition": "thérapie comportementale et cognitive", "pronunciation": "T-C-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 457, "term": "TDA", "definition": "trouble du déficit de l'attention", "pronunciation": "T-D-A", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 458, "term": "TDA", "definition": "trouble du déficit de l'attention", "pronunciation": "tadah", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 459, "term": "TDAH", "definition": "trouble du déficit de l'attention avec ou sans hyperactivité", "pronunciation": "T-D-A-H", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 460, "term": "TDAH", "definition": "trouble du déficit de l'attention avec ou sans hyperactivité", "pronunciation": "tadache", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 461, "term": "TENS", "definition": "(neurostimulation électrique transcutanée)", "pronunciation": "tènsse", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 462, "term": "TFPI", "definition": "inhibiteur de la voie du facteur tissulaire", "pronunciation": "T-F-P-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 463, "term": "THC", "definition": "tétrahydrocannabinol", "pronunciation": "T-H-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 464, "term": "TJ", "definition": "turgescence jugulaire", "pronunciation": "T-J", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 465, "term": "TLCO", "definition": "transfer factor for carbon monoxide (capacité de transfert du monoxyde de carbone)", "pronunciation": "T-L-C-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 466, "term": "TNM", "definition": "(classification tumeur-nœuds-métastases)", "pronunciation": "T-N-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 467, "term": "TOP", "definition": "trouble oppositionnel avec provocation", "pronunciation": "T-O-P", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 468, "term": "TOP", "definition": "trouble oppositionnel avec provocation", "pronunciation": "toppe", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 469, "term": "TP", "definition": "taux de prothrombine", "pronunciation": "T-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 470, "term": "TPO", "definition": "thyroperoxydase", "pronunciation": "T-P-O", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 471, "term": "TQ", "definition": "Temps de Quick (test de coagulation lié au taux de prothrombine)", "pronunciation": "T-Q", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 472, "term": "TRAK", "definition": "TSH-Rezeptor-AutoantiKörper (Anticorps anti-récepteur de la TSH)", "pronunciation": "traque", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 473, "term": "TRALI", "definition": "(Œdème pulmonaire lésionnel post-transfusionnel)", "pronunciation": "trali", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 474, "term": "TRC", "definition": "temps de recoloration cutanée pour estimer la pression artérielle", "pronunciation": "T-R-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 475, "term": "TROD", "definition": "fest rapide d'orientation diagnostique", "pronunciation": "trodde", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 476, "term": "TSA", "definition": "troncs supra-aortiques, trouble du spectre de l’autisme", "pronunciation": "T-S-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 477, "term": "TUS", "definition": "troubles liés à l'usage de substances", "pronunciation": "T-U-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 478, "term": "TVP", "definition": "thrombose veineuse profonde", "pronunciation": "T-V-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 479, "term": "TVPD", "definition": "thrombose veineuse profonde distale", "pronunciation": "T-V-P-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 480, "term": "TVPP", "definition": "thrombose veineuse profonde proximale", "pronunciation": "T-V-P-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 481, "term": "TVS", "definition": "thrombose veineuse superficielle", "pronunciation": "T-V-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 482, "term": "ToF", "definition": "temps de vol", "pronunciation": "T-O-F", "pron_index": 0, "n_prons": 2, "category": "acronyms"}
+{"index": 483, "term": "ToF", "definition": "temps de vol", "pronunciation": "toffe", "pron_index": 1, "n_prons": 2, "category": "acronyms"}
+{"index": 484, "term": "UA", "definition": "urgence absolue ou urgences ambulatoires", "pronunciation": "U-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 485, "term": "UFC", "definition": "unité formant colonie", "pronunciation": "U-F-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 486, "term": "UHCD", "definition": "unité d'hospitalisation de courte durée", "pronunciation": "U-H-C-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 487, "term": "UHSA", "definition": "unité hospitalière spécialement aménagée", "pronunciation": "U-H-S-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 488, "term": "ULIS", "definition": "unité localisée pour l'inclusion scolaire", "pronunciation": "Ulysse", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 489, "term": "UMASP", "definition": "unité mobile d'accompagnement et de soins palliatifs", "pronunciation": "U-M-A-S-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 490, "term": "UMB", "definition": "unité mère-bébé", "pronunciation": "U-M-B", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 491, "term": "UME", "definition": "unité mère-enfant", "pronunciation": "U-M-E", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 492, "term": "UMF", "definition": "unité de médecine familiale", "pronunciation": "U-M-F", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 493, "term": "UNACS", "definition": "union nationale des associations citoyennes de santé", "pronunciation": "unacksse", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 494, "term": "UNAFAM", "definition": "union nationale des familles et amis des maladies souffrant de troubles psychiatriques", "pronunciation": "une-affame", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 495, "term": "UNCAM", "definition": "union nationale des caisses d'assurance maladie", "pronunciation": "U-N-C-A-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 496, "term": "UR", "definition": "urgence relative", "pronunciation": "U-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 497, "term": "USI", "definition": "unité de soins intensifs", "pronunciation": "üzi", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 498, "term": "USIC", "definition": "unité de soins intensifs cardiologique", "pronunciation": "ü-zik", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 499, "term": "USIP", "definition": "unité de soins intensifs de pneumologie", "pronunciation": "ü-zippe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 500, "term": "USLD", "definition": "unité de soins de longue durée", "pronunciation": "U-S-L-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 501, "term": "USP", "definition": "unité de soins palliatifs", "pronunciation": "U-S-P", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 502, "term": "VAC", "definition": "(thérapie par pression négative ou traitement des plaies par pression négative)", "pronunciation": "vak", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 503, "term": "VACTREL", "definition": "syndrome de malformations vertébrales, atrésie anale, anomalies cardiaques, fistule trachéo-oesophagienne, anomalie rénale, anomalie des membres", "pronunciation": "vaktrel", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 504, "term": "VAD", "definition": "visite à domicile", "pronunciation": "V-A-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 505, "term": "VAS", "definition": "voies aériennes supérieures", "pronunciation": "V-A-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 506, "term": "VBEH", "definition": "voies biliaires extrahépatiques", "pronunciation": "V-B-E-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 507, "term": "VBIH", "definition": "voies biliaires intrahépatiques", "pronunciation": "V-B-I-H", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 508, "term": "VCI", "definition": "veine cave inférieure", "pronunciation": "V-C-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 509, "term": "VCO2", "definition": "débit de CO2 expiré", "pronunciation": "V-C-O-2", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 510, "term": "VCS", "definition": "veine cave supérieure", "pronunciation": "V-C-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 511, "term": "VD", "definition": "ventricule droit", "pronunciation": "V-D", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 512, "term": "VES", "definition": "volume d'éjection systolique", "pronunciation": "V-E-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 513, "term": "VHL", "definition": "von Hippel-Lindau", "pronunciation": "V-H-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 514, "term": "VM", "definition": "valve mitrale ou ventilation mécanique", "pronunciation": "V-M", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 515, "term": "VNI", "definition": "ventilation non invasive", "pronunciation": "V-N-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 516, "term": "VNR", "definition": "valeur nutritionnelle de référence", "pronunciation": "V-N-R", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 517, "term": "VS-PAP", "definition": "ventilation spontanée en pression aspiration positive (CPAP en anglais)", "pronunciation": "V-S-pappe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 518, "term": "VS-PEP", "definition": "ventilation spontanée avec pression expiratoire positive", "pronunciation": "V-S-peppe", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 519, "term": "VSAI", "definition": "ventilation spontanée avec aide inspiratoire", "pronunciation": "V-S-A-I", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 520, "term": "VSAV", "definition": "véhicule de secours et d'assistance aux victimes (depuis 2022, renommé VSSUAP, véhicule de secours et de soins d'urgence aux personnes)", "pronunciation": "V-S-A-V", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 521, "term": "VSL", "definition": "véhicule sanitaire léger", "pronunciation": "V-S-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 522, "term": "Vmax", "definition": "consommation maximale d'oxygène, exprimée en L/min", "pronunciation": "V-max", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 523, "term": "aVL", "definition": "dérivations électrocardiographiques unipolaires", "pronunciation": "a-V-L", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 524, "term": "aVf", "definition": "dérivations électrocardiographiques unipolaires", "pronunciation": "a-V-f", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 525, "term": "aVr", "definition": "dérivations électrocardiographiques unipolaires", "pronunciation": "a-V-r", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 526, "term": "gamma-GT", "definition": "gamma-glutamyl transférase", "pronunciation": "gamma-G-T", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 527, "term": "mMRC", "definition": "modified Medical Research Council (échelle d'évaluation des dyspnées)", "pronunciation": "m-M-R-C", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 528, "term": "rTMS", "definition": "stimulation magnétique transcrânienne", "pronunciation": "r-T-M-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 529, "term": "t-PA", "definition": "tissue plasminogen activator (activateur tissulaire du plasminogène)", "pronunciation": "t-P-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 530, "term": "tDCS", "definition": "stimulation transcrânienne à courant direct", "pronunciation": "t-D-C-S", "pron_index": 0, "n_prons": 1, "category": "acronyms"}
+{"index": 531, "term": "u-PA", "definition": "urokinase-type plasminogen activator", "pronunciation": "u-P-A", "pron_index": 0, "n_prons": 1, "category": "acronyms"}

@@ -1,0 +1,10 @@
+# Local HF upload helper: kept out of version control on purpose (per request),
+# so neither the parent repo nor an HF repo git-init'd here can publish it.
+# It resolves paths from the local `data` symlink; delete this line to track it.
+scripts/upload_to_hf.py
+
+# The audio/manifests live on the SSD behind this symlink, never inside the repo.
+data
+
+email*.md
+private_demo
