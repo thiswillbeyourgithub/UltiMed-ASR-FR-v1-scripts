@@ -7,6 +7,9 @@ multilingual), `voxtral-tts` (vLLM serving mistralai/Voxtral-4B-TTS-2603), or
 a qwen3-tts VoiceDesign deployment. The final backend choice is still under
 investigation. Written with Claude Code.
 
+The `voxtral-tts` container that ended up speaking the dataset is published at
+[UltiMed-ASR-FR-v1-Voxtral](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-Voxtral).
+
 ## `01_generate_audio.py`
 
 A minimal client for `POST /v1/audio/speech`, simplified from the full
