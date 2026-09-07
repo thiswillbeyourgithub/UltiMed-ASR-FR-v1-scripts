@@ -63,3 +63,7 @@ TODO.md
 # Vendored manifest listener: local inspection state, never committed.
 06_hotfixes/manifest_listener/flagged.jsonl
 06_hotfixes/manifest_listener/dataset/
+
+# Agent scratch files. Excluded globally on my machine too, but that does not
+# travel with the repo, so pin it here.
+.claude/
