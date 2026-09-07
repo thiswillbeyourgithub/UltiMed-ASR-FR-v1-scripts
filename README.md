@@ -44,6 +44,7 @@ This repository is the **recipe, not the product**. It documents how a single pe
 | [Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx) | The re-quantized upstream baseline the fine-tune builds on. |
 | This repository | The scripts that produced all of the above, stages 1 to 4 of the plan below. |
 | [UltiMed-ASR-FR-v1-Voxtral](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-Voxtral) | The Voxtral TTS container that spoke every clip: Dockerfile, tuning, and the vllm-omni patches. |
+| [UltiMed-ASR-FR-v1-NeMo_training_scripts](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-NeMo_training_scripts) | The NeMo fork and training scripts used for the fine-tune itself: step 5 of the plan below. |
 | [Parakeet Web](https://github.com/thiswillbeyourgithub/parakeet_web) | The in-browser ASR app that loads either ONNX model. Not part of this pipeline, but it is where the models end up. |
 
 The plan, end to end:
@@ -52,7 +53,7 @@ The plan, end to end:
 2. Use LLM calls to turn those terms and documents into short, natural, dictation-style sentences (the written ASR transcript).
 3. Speak those sentences with a local TTS model to produce audio.
 4. Package and publish the resulting audio dataset.
-5. Fine-tune the ASR model on it. **This step is not in this repo**: it happens in a separate [NeMo](https://github.com/NVIDIA/NeMo) checkout with a standard NeMo training config.
+5. Fine-tune the ASR model on it. **This step is not in this repo**: it happens in a separate [NeMo](https://github.com/NVIDIA/NeMo) checkout with a standard NeMo training config, published as [UltiMed-ASR-FR-v1-NeMo_training_scripts](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-NeMo_training_scripts).
 6. Release the fine-tuned model.
 
 ## The core idea
@@ -149,7 +150,7 @@ The drug data in [`02_drugs/`](02_drugs/) **is** included, because it is French 
 
 - **All generated corpora and audio.** Hundreds of gigabytes, and derived from sources with licences this repository does not carry.
 - **`99_hf_release/scripts/upload_to_hf.py`.** Kept out of version control on purpose: it resolves paths through a local symlink to an external drive. The `.gitignore` entry explains how to bring it back.
-- **The fine-tuning config.** Training happens in a separate NeMo checkout. `99_hf_release/scripts/parquet_to_nemo.py` rebuilds the NeMo training layout from the published Parquet, in either loose-manifest or tarred form, and that is the handoff point.
+- **The fine-tuning config.** Training happens in a separate NeMo checkout, [UltiMed-ASR-FR-v1-NeMo_training_scripts](https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-NeMo_training_scripts). `99_hf_release/scripts/parquet_to_nemo.py` rebuilds the NeMo training layout from the published Parquet, in either loose-manifest or tarred form, and that is the handoff point.
 - **Sample rows.** There is no `samples/` folder, because real rows would mean redistributing NonCommercial and ShareAlike source text under this repository's licence. Field names and semantics are documented in `CLAUDE.md` and in each script's docstring instead.
 
 ## Running the scripts
