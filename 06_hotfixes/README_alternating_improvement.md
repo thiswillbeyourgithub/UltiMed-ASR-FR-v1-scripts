@@ -518,14 +518,18 @@ recorded win (it tracks audio that really was overwritten, whatever the manifest
 today), and a `<clip>.flac.bak` stays next to its clip as the pristine original. Both
 survive a re-chunk on purpose.
 
-### Alternative: driver as your user + NOPASSWD switch
+### Why there is no NOPASSWD sudoers alternative
 
-If you would rather not run the driver as root, run it as yourself and grant a narrow
-NOPASSWD entry for just `switch_server.sh` (so each server flip needs no password):
-see `switch_server.sudoers.example` (two TODOs: your username and the absolute
-`switch_server.sh` path), install with `sudo visudo -f /etc/sudoers.d/crispasr-switch`.
-You would then change the driver's `"${SWITCH}" ...` call to `sudo "${SWITCH}" ...` and
-drop the run-as-root / `runuser` wrapper.
+An earlier revision of this repo shipped a `switch_server.sudoers.example` offering a
+"narrow" NOPASSWD entry for `switch_server.sh`, so the driver could run as your user
+and still flip servers without a password. It has been removed, because the entry was
+not narrow at all: `switch_server.sh` takes the compose file path from its caller, and
+`docker compose up` on a caller-chosen compose file is arbitrary code as root (a
+compose file can bind-mount `/` and run any image). Granting NOPASSWD on it is
+equivalent to granting full passwordless root, which is not what the file said.
+
+The `sudo -E ./driver.sh` flow above is one password prompt for an unattended run that
+lasts hours, and it drops back to your user for every Python pass, so use that.
 
 ## Listening to what the numbers flagged: `03_collect_suspicious.py`
 
@@ -573,5 +577,3 @@ uv run 01_recursive_improvement.py --mode tts  ...   # generate candidates
 - `.env`: gitignore it (it holds `WDOC_WHISPER_API_KEY`).
 - `CRISPASR_STT_SCALE` (optional, default 6) if you want a different whisper replica count.
 - `GPU_POWER_LIMIT` (optional, default 350) watts for `nvidia-smi -pl` at start.
-- Only if you use the alternative driver-as-user path: fill the two TODOs in
-  `switch_server.sudoers.example`.

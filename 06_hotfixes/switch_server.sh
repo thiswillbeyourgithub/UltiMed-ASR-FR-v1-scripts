@@ -6,15 +6,18 @@
 # started stack is healthy (using the compose healthchecks) so the caller can launch
 # the Python improvement pass immediately.
 #
-# Runs as ROOT and touches only docker (never the long Python pass). Two ways in:
-#   * driver.sh runs as root (sudo -E ./driver.sh) and calls this directly, no sudoers.
-#   * standalone / driver-as-user: invoke via a narrow NOPASSWD sudoers entry (see
-#     switch_server.sudoers.example).
+# Runs as ROOT and touches only docker (never the long Python pass). The intended
+# entry point is driver.sh, which is itself launched once as root (sudo -E ./driver.sh)
+# and calls this directly. Do NOT try to make this passwordless with a NOPASSWD sudoers
+# entry: this script takes the compose path from its caller, and `docker compose up`
+# on an attacker-chosen compose file is arbitrary code as root (a compose file can
+# bind-mount / and run any image). Any sudoers entry for this script is therefore a
+# full root grant, however narrowly it is written.
 # The compose file path comes from the environment / an argument so no local absolute
 # path (which would embed a username) is committed.
 #
 # Usage:  switch_server.sh {stt|tts} [/path/to/docker-compose.yml]     # already root
-#         sudo switch_server.sh {stt|tts} [/path/to/docker-compose.yml] # standalone
+#         sudo switch_server.sh {stt|tts} [/path/to/docker-compose.yml] # interactive
 #         (or export CRISPASR_COMPOSE and omit the 2nd argument)
 #
 # This file was written with Claude Code.
