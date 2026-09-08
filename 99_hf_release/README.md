@@ -126,7 +126,7 @@ configs:
 
 ## What is UltiMed-v1
 
-A 3000+ hours corpus of **dictation-style French medical sentences** spoken by a high-quality open-weights TTS model. As far as I know, the largest French medical speech dataset of its kind. Each clip pairs a written French medical transcript with its synthesized speech, so the audio trains and evaluates ASR on the technical vocabulary (anatomy, pathology, drug names, clinical phrasing) that general-purpose ASR handles badly. A small radiology subset from [PARROT][parrot-repo] ships separately under a different licence (see [Licensing](#licensing)).
+A 3000+ hours corpus of **dictation-style French medical sentences** spoken by a high-quality open-weights TTS model. As far as I know, the largest French medical speech dataset of its kind. Each clip pairs a written French medical transcript with its synthesized speech, so the audio trains and evaluates ASR on the technical vocabulary (anatomy, pathology, drug names, clinical phrasing) that general-purpose ASR handles badly. A small radiology subset from [PARROT][parrot-paper] ships separately under a different licence (see [Licensing](#licensing)).
 
 | | |
 |---|---|
@@ -209,7 +209,7 @@ Three-stage pipeline (source vocabulary -> written transcript -> synthesized aud
 | Drug names | the exhaustive 2025 list of French drug names, i.e. the DCI (INN, active-substance names) plus the commercial brand names -> LLM-written sentences that name a medication and often a real dosage | built by the author from French open data (below) |
 | [PARHAF](https://huggingface.co/datasets/HealthDataHub/PARHAF) | French clinical documents -> faithful LLM rewrites, one spoken-style paragraph per chunk | [HealthDataHub/PARHAF](https://huggingface.co/datasets/HealthDataHub/PARHAF) |
 | Medical acronyms | 511 common medical acronyms (eg: `BPCO`, `CPAP`), hand-filtered from French Wikipedia's list of health abbreviations -> dictation sentences, spoken with their real French pronunciation | [Wikipedia][wiki-abbrev] |
-| [PARROT](https://github.com/PARROT-reports/PARROT_v1.0) (French rows only) | radiology reports, given the same rewrite treatment | [paper][parrot-paper] / [PARROT-reports/PARROT_v1.0](https://github.com/PARROT-reports/PARROT_v1.0) |
+| [PARROT][parrot-paper] (French rows only) | radiology reports, given the same rewrite treatment | [PARROT-reports/PARROT_v1.0](https://github.com/PARROT-reports/PARROT_v1.0) |
 
 **The drug vocabulary is original work.** It was built from **official 2025 France
 data** and ranked by real prescription frequency:

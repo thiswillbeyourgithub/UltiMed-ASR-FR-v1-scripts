@@ -123,7 +123,7 @@ uv run 04_generate_texts.py --no-max-len-ratio --n-jobs 8 --model="openrouter/de
 
 # 04_PARROT
 
-Source: PARROT radiology reports, French rows only. Source link and license note are done, in `99_hf_release/NOTICE.md`: CC BY-NC-SA 4.0, shipped as a separate non-commercial eval-only subset.
+Source: [PARROT radiology reports](https://doi.org/10.1016/j.ejrai.2025.100066), French rows only. Source link and license note are done, in `99_hf_release/NOTICE.md`: CC BY-NC-SA 4.0, shipped as a separate non-commercial eval-only subset.
 
 ## Text generation
 

@@ -38,7 +38,7 @@ This repository is the **recipe, not the product**. It documents how a single pe
 
 **Research use only.** Neither this code, nor the dataset it builds, nor any model trained on that dataset is validated or intended for clinical decision-making, clinical validation, or clinical deployment. Do not use any of it to make medical decisions. No performance or fitness claim is made for any clinical setting.
 
-**No source data is distributed here.** This repository contains code, prompts and documentation. It does not redistribute the medical dictionary, the PARHAF corpus, the PARROT corpus, the drug databases, or any generated audio. You obtain each source yourself from its upstream and comply with its own licence. See [Data you have to bring yourself](#data-you-have-to-bring-yourself).
+**No source data is distributed here.** This repository contains code, prompts and documentation. It does not redistribute the medical dictionary, the [PARHAF](https://huggingface.co/datasets/HealthDataHub/PARHAF) corpus, the [PARROT](https://doi.org/10.1016/j.ejrai.2025.100066) corpus, the drug databases, or any generated audio. You obtain each source yourself from its upstream and comply with its own licence. See [Data you have to bring yourself](#data-you-have-to-bring-yourself).
 
 **The generated text is LLM output.** Every transcript in the dataset was written or rewritten by a large language model and was not reviewed clinically. It is training material for a speech recognizer, which only ever has to learn how the words *sound*, and it should not be read as medically accurate prose.
 
@@ -167,7 +167,7 @@ None of these are in this repository. Each has its own licence, which is yours t
 |---|---|---|
 | French medical term list (~62.6k terms) | Bring your own. [Wiktionnaire](https://fr.wiktionary.org/) is a good CC BY-SA starting point for French medical vocabulary. | Depends which source you pick. |
 | PARHAF clinical documents | [HealthDataHub/PARHAF](https://huggingface.co/datasets/HealthDataHub/PARHAF) | CC BY 4.0 **and** Etalab Open Licence 2.0. Training set only; the test set is under embargo and must not be redistributed. |
-| PARROT radiology reports | [PARROT_v1.0](https://github.com/PARROT-reports/PARROT_v1.0) | CC BY-NC-SA 4.0. **NonCommercial and ShareAlike**: keep it in a separate subset and do not merge it into a differently-licensed corpus. |
+| PARROT radiology reports | [paper](https://doi.org/10.1016/j.ejrai.2025.100066) / [PARROT_v1.0](https://github.com/PARROT-reports/PARROT_v1.0) | CC BY-NC-SA 4.0. **NonCommercial and ShareAlike**: keep it in a separate subset and do not merge it into a differently-licensed corpus. |
 | Raw French Wikipedia acronym scrape | [Liste d'abréviations en santé](https://fr.wikipedia.org/wiki/Liste_d%27abr%C3%A9viations_en_sant%C3%A9) | CC BY-SA 4.0. Only the 511-row hand-filtered CSV ships here; the raw scrape carries verbatim article prose and does not. |
 
 The drug data in [`02_drugs/`](02_drugs/) **is** included, because it is French public open data under Etalab Open Licence 2.0. See [Third-party attribution](#third-party-attribution).
@@ -259,7 +259,7 @@ If you keep this repository under Apache-2.0, note that a dataset you produce by
 Full detail, in the form that ships with the dataset, is in [`99_hf_release/NOTICE.md`](99_hf_release/NOTICE.md). In summary:
 
 - **PARHAF**: HealthDataHub / Plateforme des Données de Santé. Dual-licensed CC BY 4.0 and Etalab 2.0. Cite Tannier et al., arXiv:2603.20494. The data was modified (rewritten and synthesized to audio). Training set only; the test set is embargoed. No endorsement is implied.
-- **PARROT**: Le Guellec, Kuchcinski, Bressem et al. CC BY-NC-SA 4.0. Cite Le Guellec et al., *European Journal of Radiology Artificial Intelligence*, 2026. Kept as a separate, non-commercial, evaluation-only subset.
+- **PARROT**: Le Guellec, Kuchcinski, Bressem et al. CC BY-NC-SA 4.0. Cite [Le Guellec et al., *European Journal of Radiology Artificial Intelligence*, 2026](https://doi.org/10.1016/j.ejrai.2025.100066). Kept as a separate, non-commercial, evaluation-only subset.
 - **French public medicines data**: BdPM (ANSM) and OPEN_MEDIC / RETROCEDAM (CNAM), République française, Etalab Open Licence 2.0.
 - **Acronyms**: French Wikipedia, [Liste d'abréviations en santé](https://fr.wikipedia.org/wiki/Liste_d%27abr%C3%A9viations_en_sant%C3%A9). The article text is CC BY-SA 4.0, but only the acronyms and their expansions were taken, which are facts rather than protected expression, and none of the prose is redistributed. Wikipedia contributors are credited regardless.
 - **Base ASR model**: `nvidia/parakeet-tdt-0.6b-v3`.
