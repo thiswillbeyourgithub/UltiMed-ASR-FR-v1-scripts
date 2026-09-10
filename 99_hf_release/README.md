@@ -14,18 +14,10 @@ pretty_name: "UltiMed-ASR-FR-v1"
 size_categories:
   - 100K<n<1M
 source_datasets:
-  # Upstream corpora the written transcripts derive from, in the order of the
-  # "Sources" table below. Only PARHAF is a Hub dataset, so it is the one written
-  # as a Hub id; the others live outside the Hub and are listed by name here and
-  # linked properly in the body. HF does not render this field as clickable links,
-  # it is provenance metadata, so keep the body links in sync with it.
-  - wiktionary
-  - BDPM
-  - OPEN_MEDIC
-  - RETROCEDAM
+  # PARHAF is the only upstream corpus that lives on the Hub, so it is the only one
+  # worth a Hub id here. The other sources (Wiktionnaire, BDPM / Open Medic /
+  # Retrocedam, Wikipedia, PARROT) are off-Hub and stay linked in "Sources" below.
   - HealthDataHub/PARHAF
-  - wikipedia
-  - PARROT_v1.0
 tags:
   - medical
   - french
