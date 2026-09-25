@@ -57,7 +57,13 @@ mistake) and the val/test clips whose text repeats a training text after normali
 sentence can straddle splits). Its `normalize_text` is a deliberate copy of the NeMo
 fork's `data_leak_check.normalize_text` (separate repo); keep them identical. The
 row-level audio-path join (`resolve_audio`) lives in `utils/nemo_manifest.py`, shared
-with 03. It keeps the `.flac` files. The audio lives under the `data/` symlink
+with 03. It keeps the `.flac` files. `05_normalize_text.py` (dry run unless `--apply`) then
+rewrites the texts: percentages become `%` in the ASR label (`text`) and the one-word
+`pourcent` in the TTS text (`asr_training_source`), guarded so a "per hundred X"
+(`garçons pour cent filles`, `pour cent millilitres`) and the vol% / g% units stay; the
+label also gets its whitespace collapsed (raw newlines existed) and every character
+`parakeet_tokenizer` flags as uncovered replaced by its NFKC form (`CO₂` -> `CO2`,
+`™` dropped). Order: 03, 04, 05, then the parquet build. The audio lives under the `data/` symlink
 (`data/{dictionary,drugs,PARHAF,PARROT}/`, an external SSD) and manifests are
 written to `data/NeMO_files/`; neither the symlink nor the generated manifests are
 committed (the SSD path embeds the username).
