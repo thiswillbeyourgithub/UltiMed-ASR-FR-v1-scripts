@@ -17,8 +17,9 @@ different readers:
   ``%`` there: ``95 pour cent`` and ``95 pourcent`` both become ``95 %``. UltiMed v1
   mixed the three spellings (16.6k ``pour cent``, 0.4k ``pourcent``, 11.6k ``%``), so
   the model learnt no consistent form.
-- ``asr_training_source`` is what the TTS READ. There ``pour cent`` becomes the
-  single-word ``pourcent``. The audio itself is unchanged: both spellings are spoken
+- ``asr_training_source`` is what the TTS READ. There ``pour cent`` and ``%`` both
+  become the single-word ``pourcent``, the form ``voxtral_normalize`` gives a fresh
+  source. The audio itself is unchanged: both spellings are spoken
   identically, so this only makes the shipped source text consistent with its audio.
 
 Both rewrites live in ``utils/percent_normalize.py``, which documents the guards that
@@ -55,7 +56,9 @@ _HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(_HERE.parent / "utils"))
 from nemo_manifest import read_jsonl, write_jsonl  # noqa: E402
 from parakeet_tokenizer import ParakeetTokenizer  # noqa: E402
-from percent_normalize import LEFTOVER_RE, percent_to_one_word, percent_to_symbol  # noqa: E402
+from percent_normalize import (  # noqa: E402
+    LEFTOVER_RE, percent_sign_to_one_word, percent_to_one_word, percent_to_symbol,
+)
 
 # Same manifest set 03 and 04 process.
 MANIFEST_GLOBS = ("data/NeMO_files/*.jsonl", "data/NeMO_files/*/*.jsonl")
@@ -70,8 +73,8 @@ def normalize_row(row: dict, tok: ParakeetTokenizer) -> dict:
     out["text"] = percent_to_symbol(tok.clean_label(row["text"]))
     if "asr_training_source" in row:
         # One space between words here too, without clean_label's character fold.
-        out["asr_training_source"] = " ".join(
-            percent_to_one_word(row["asr_training_source"]).split())
+        out["asr_training_source"] = " ".join(percent_sign_to_one_word(
+            percent_to_one_word(row["asr_training_source"])).split())
     return out
 
 

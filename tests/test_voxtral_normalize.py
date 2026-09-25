@@ -21,6 +21,9 @@ from voxtral_normalize import (  # noqa: E402
 
 # (input, expected output) for the FIX rows.
 FIX_CASES = [
+    # percent sign: one-word "pourcent" by convention (voxtral reads % fine)
+    ("Saturation à 95 %.", "Saturation à 95 pourcent."),
+    ("Ki67 à 30%, HbA1c à 7,5 %.", "Ki67 à 30 pourcent, HbA1c à 7,5 pourcent."),
     # units with '/'
     ("La CRP est à 42 mg/L.", "La CRP est à 42 milligrammes par litre."),
     ("Créatinine à 120 µmol/L.", "Créatinine à 120 micromoles par litre."),
@@ -53,7 +56,6 @@ KEEP_RAW = [
     "Codé selon la CIM-10, critères du DSM-V remplis.",
     "Tension à 140 mmHg.",              # bare unit voxtral reads fine
     "Dexaméthasone 0,5 mg le matin.",   # bare mg
-    "Saturation à 95 %.",               # percent
     "Opéré le 12/07/1998.",             # date slash
     "Contrôle prévu le 2024-04-15.",    # ISO date
     "Admis à 14h30.",                   # time

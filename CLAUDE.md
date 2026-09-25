@@ -59,7 +59,7 @@ fork's `data_leak_check.normalize_text` (separate repo); keep them identical. Th
 row-level audio-path join (`resolve_audio`) lives in `utils/nemo_manifest.py`, shared
 with 03. It keeps the `.flac` files. `05_normalize_text.py` (dry run unless `--apply`) then
 rewrites the texts: percentages become `%` in the ASR label (`text`) and the one-word
-`pourcent` in the TTS text (`asr_training_source`), guarded so a "per hundred X"
+`pourcent` in the TTS text (`asr_training_source`, where `%` becomes `pourcent` too), guarded so a "per hundred X"
 (`garçons pour cent filles`, `pour cent millilitres`) and the vol% / g% units stay
 (`utils/percent_normalize.py`); the label also goes through
 `ParakeetTokenizer.clean_label` (whitespace collapsed, raw newlines existed; every
@@ -200,8 +200,11 @@ from _pipeline_shared import call_llm, PricingTracker  # noqa: E402
   only by `99_hf_release/05_normalize_text.py` on the v1 TTS sources, which were read
   from `pour cent`), with the guards that keep a "per hundred X" and the vol% / g%
   units. The prompts still let the LLM write `pour cent` (they are the v1 provenance
-  and stay unchanged); the parse-time rewrite is what makes the label consistent. A
-  fresh source keeps `%` raw, since voxtral reads it correctly (VOXTRAL_QUIRKS.md).
+  and stay unchanged); the parse-time rewrite is what makes the label consistent.
+  `percent_sign_to_one_word` (`95 %` -> `95 pourcent`) is what `voxtral_normalize`
+  applies to derive a fresh source, and 05 applies to the v1 sources: every TTS source
+  spells a percentage `pourcent`. That is a convention, not an audio fix (voxtral reads
+  `%` fine, see VOXTRAL_QUIRKS.md).
   Not to be confused with the CER scorer's own percent fold in
   `06_hotfixes/01_compute_stt.py`, which folds EVERY form (label and Whisper output)
   to one scoring token and needs no guard. Tested by `tests/test_percent_normalize.py`.

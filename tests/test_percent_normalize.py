@@ -15,7 +15,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "utils"))
-from percent_normalize import LEFTOVER_RE, percent_to_one_word, percent_to_symbol  # noqa: E402
+from percent_normalize import (  # noqa: E402
+    LEFTOVER_RE, percent_sign_to_one_word, percent_to_one_word, percent_to_symbol,
+)
 
 # (input, expected label, expected TTS source)
 PERCENT_CASES = [
@@ -73,6 +75,18 @@ def test_percent() -> None:
     print("test_percent: OK")
 
 
+def test_percent_sign() -> None:
+    # The fresh-source rule voxtral_normalize applies to the canonical label.
+    for label, source in [("à 95 %.", "à 95 pourcent."), ("Ki67 à 30%,", "Ki67 à 30 pourcent,"),
+                          ("à 95\u202f%", "à 95 pourcent")]:
+        assert percent_sign_to_one_word(label) == source, (label, percent_sign_to_one_word(label))
+        assert percent_sign_to_one_word(source) == source
+    # Every label form of PERCENT_CASES reaches the same source as the v1 rewrite.
+    for _, label, source in PERCENT_CASES:
+        assert percent_sign_to_one_word(label) == source, label
+    print("test_percent_sign: OK")
+
+
 def test_generator_parse() -> None:
     try:
         from _pipeline_shared import parse_asr_training_target
@@ -88,4 +102,5 @@ def test_generator_parse() -> None:
 
 if __name__ == "__main__":
     test_percent()
+    test_percent_sign()
     test_generator_parse()

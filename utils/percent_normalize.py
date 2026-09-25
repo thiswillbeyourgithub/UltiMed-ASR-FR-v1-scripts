@@ -12,12 +12,17 @@ provenance. The label is instead canonicalized AFTER the LLM:
   ``_pipeline_shared.parse_asr_training_target``, so every freshly generated
   ``asr_training_target`` uses ``%``; ``99_hf_release/05_normalize_text.py`` applies
   it to the v1 manifests, generated before that.
-- ``percent_to_one_word`` gives ``95 pourcent``. Only 05 uses it, on the v1
-  ``asr_training_source`` (the text the TTS read): those clips were synthesized from
-  ``pour cent``, which is spoken exactly like ``pourcent``, so the rewrite only makes
-  the shipped source text consistent. A fresh generation never needs it: its label
-  says ``95 %`` and ``voxtral_normalize`` keeps ``%`` raw in the source, since Voxtral
-  reads it correctly (``01_dictionnary/VOXTRAL_QUIRKS.md``, row ``95 %``).
+- The TTS source (``asr_training_source``) says ``pourcent``, one word, whatever the
+  label wrote. ``percent_sign_to_one_word`` (``95 %`` -> ``95 pourcent``) is the rule
+  ``voxtral_normalize`` applies when it derives a fresh source from the canonical
+  label. Voxtral reads ``%`` correctly too (``01_dictionnary/VOXTRAL_QUIRKS.md``, row
+  ``95 %``), so this is a consistency convention, not an audio fix: every source spells
+  a percentage the same way, and that way matches the majority of the v1 audio, which
+  was read from ``pour cent``. ``percent_to_one_word`` (``95 pour cent`` ->
+  ``95 pourcent``) covers the spelled-out forms; ``99_hf_release/05_normalize_text.py``
+  applies both to the v1 sources, whose clips were read from ``pour cent`` or ``%``,
+  all spoken exactly like ``pourcent``, so the rewrite only makes the shipped text
+  consistent.
 
 "pour cent" is only a percentage after a quantity. The rewrite skips it when the
 preceding word is not a number (``106 garçons pour cent filles``, ``2 grammes pour cent
@@ -69,3 +74,14 @@ def percent_to_symbol(text: str) -> str:
 def percent_to_one_word(text: str) -> str:
     """TTS source form: ``95 pour cent`` -> ``95 pourcent``. Idempotent."""
     return _PERCENT_RE.sub(r"\1\2pourcent", text)
+
+
+# A written percent sign, with any space before it: "95 %", "95%" and "95 %" all
+# become "95 pourcent". No guard needed, unlike "pour cent": "%" is never anything
+# but "percent".
+_PERCENT_SIGN_RE = re.compile(r"\s*%")
+
+
+def percent_sign_to_one_word(text: str) -> str:
+    """TTS source form of a written sign: ``95 %`` / ``95%`` -> ``95 pourcent``. Idempotent."""
+    return _PERCENT_SIGN_RE.sub(" pourcent", text)

@@ -38,12 +38,17 @@ because respelling a token voxtral already knows makes it worse (e.g. `T S H`).
 | `ARA2` | acronym+digit | correct | **KEEP RAW** | drop trailing-digit spelling (`A R A deux`) |
 | `CIM-10` | acronym-hyphen-digit | correct | **KEEP RAW** | keep hyphenated form whole |
 | `DSM-V` | acronym-hyphen-roman | correct | **KEEP RAW** | drop Roman-numeral spelling here |
-| `95 %` | percent | correct | **KEEP RAW** | drop `% -> pourcent` |
+| `95 %` | percent | correct | **CONVENTION** `% -> pourcent` | audio does not need it; see the percent note below |
 | `RAS` | word-acronym (rare, FR-clinical) | read as the French word "race" | **FIX** | needs a targeted respelling |
 
-Since v1.1 every generated label writes a percentage as `95 %` (the generators
-canonicalize `pour cent` / `pourcent` at parse time, `utils/percent_normalize.py`), so
-the `95 %` row above is the only percent form voxtral is fed on a fresh run.
+Percent note (v1.1): voxtral reads `95 %` correctly, so the old `% -> pourcent` rule
+was first dropped as unnecessary. It is back as a CONVENTION, not a fix: since v1.1
+every generated label writes a percentage as `95 %` (the generators canonicalize
+`pour cent` / `pourcent` at parse time, `utils/percent_normalize.py`), and
+`voxtral_normalize` turns that into `95 pourcent` in the source, so every TTS source
+spells a percentage one way. The v1 sources (read from `pour cent` or `%`, spoken
+identically) were rewritten to `pourcent` by `99_hf_release/05_normalize_text.py` to
+match.
 
 ### Open FIX decisions
 
@@ -60,7 +65,7 @@ the `95 %` row above is the only percent form voxtral is fed on a fresh run.
 with `/`, `µ` or `°`**. So the deterministic normalizer only has to handle:
 
 1. **Units containing `/`, `µ`, `°`** -> spell out in French. Bare units that
-   read fine stay raw (`mmHg`, bare `mg`), as do dates, numbers, `%`, decimals.
+   read fine stay raw (`mmHg`, bare `mg`), as do dates, numbers, decimals (`%` becomes `pourcent` by convention, see the percent note).
 2. **Roman numeral after a staging/anatomy word** (`stade IV`, `nerf X`) ->
    French number word. NOT `type II` / `Henri IV` / `en IV`, which read correct
    raw (we normalize the staging cases anyway, since it is harmless and voxtral
@@ -87,7 +92,7 @@ audio. That backstop is why the unit table does not need to be exhaustive.
 **KEEP RAW (confirmed, do NOT transform):** all letter-acronyms
 (ECG/IRM/ADN/VIH/NFS/CRP/BPCO/AVC/IEC/LCR/ECBU/EEG/ORL/HbA1c), word-acronyms
 (SIDA/SAMU/SMUR/OMS/AVK), acronym+digit (ARA2/DSM-V/DSM-5/CIM-10/SpO2/T4/CO2/IgG/ASA 3),
-`mmHg`, bare `mg`, decimals, `%`, all date formats, `8h`/`14h30`, `type II`,
+`mmHg`, bare `mg`, decimals, all date formats, `8h`/`14h30`, `type II`,
 `Henri IV`, `en IV`.
 
 ## Sweep results (voxtral_sweep.txt)

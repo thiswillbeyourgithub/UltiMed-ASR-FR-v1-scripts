@@ -6,6 +6,7 @@ transforms voxtral demonstrably needs. Everything else passes through
 unchanged: the sweep in ``01_dictionnary/VOXTRAL_QUIRKS.md`` showed voxtral
 already reads written acronyms, numbers, dates, ``%`` and bare units correctly,
 and that respelling those (spacing letters, spelling digits) makes it *worse*.
+The one exception is a convention, not a fix: ``%`` is written ``pourcent`` (see 4).
 
 The FIX set the sweep left is small and fully deterministic, so this is a
 regex/lookup module, NOT an LLM pass:
@@ -13,7 +14,13 @@ regex/lookup module, NOT an LLM pass:
   1. units written with ``/``, ``µ`` or ``°``      -> spelled out in French
   2. Roman numeral after a staging/anatomy word    -> French cardinal word
   3. ``ARNm``                                       -> ``ARN-m``
-  4. ``RAS``                                        -> TODO (see quirks file)
+  4. ``%``                                          -> ``pourcent`` (convention)
+  5. ``RAS``                                        -> TODO (see quirks file)
+
+Rule 4 is not needed for the audio (voxtral reads ``95 %`` fine). It makes every
+source spell a percentage one way: the generators write every label percentage as
+``%`` (``utils/percent_normalize.py``), and the v1 sources, read from ``pour cent``,
+were rewritten to ``pourcent`` too, so a fresh source and a shipped one agree.
 
 This module is the executable form of the FIX list in ``VOXTRAL_QUIRKS.md``;
 keep the two in sync. The unit table does NOT need to be exhaustive:
@@ -26,6 +33,15 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+
+# percent_normalize lives next to this module; put its directory on the path so this
+# works whatever the caller's CWD (every caller also adds utils/, this is the backstop).
+import sys  # noqa: E402
+
+_UTILS_DIR = str(Path(__file__).resolve().parent)
+if _UTILS_DIR not in sys.path:
+    sys.path.insert(0, _UTILS_DIR)
+from percent_normalize import percent_sign_to_one_word  # noqa: E402
 
 __all__ = [
     "normalize_for_voxtral",
@@ -202,13 +218,15 @@ _RESIDUAL_CONTEXT = 14
 def normalize_for_voxtral(text: str) -> str:
     """Apply the deterministic voxtral FIX transforms to one text.
 
-    Order: unit spell-out, then staging-Roman, then ARNm. Idempotent on already
-    normalised text (no rule matches a spelled-out form).
+    Order: unit spell-out, then staging-Roman, then ARNm, then ``%`` ->
+    ``pourcent``. Idempotent on already normalised text (no rule matches a
+    spelled-out form).
     """
     for pattern, replacement in _UNIT_RULES:
         text = pattern.sub(replacement, text)
     text = STAGING_ROMAN_RE.sub(_replace_staging, text)
     text = _ARNM_RE.sub("ARN-m", text)
+    text = percent_sign_to_one_word(text)
     if _RAS_FIX is not None:
         text = re.sub(r"\bRAS\b", _RAS_FIX, text)
     return text

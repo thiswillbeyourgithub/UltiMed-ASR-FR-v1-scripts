@@ -312,7 +312,7 @@ def parse_asr_training_target(text: str, expected: int) -> list[str]:
     # utils/percent_normalize.py). The LLM picks its own spelling (v1 labels mixed all
     # three), and the prompts stay as they generated v1, so this is where the label
     # becomes consistent. The TTS source is derived from this canonical label by
-    # voxtral_normalize, which keeps "%" raw (Voxtral reads it correctly).
+    # voxtral_normalize, which writes "%" as the one word "pourcent" there.
     parsed = [percent_to_symbol(_normalize_tokenizable_text(m.group("t"))).strip()
               for m in matches]
     empty = [i for i, v in enumerate(parsed) if not v]

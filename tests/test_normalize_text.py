@@ -20,11 +20,11 @@ def test_normalize_row() -> None:
     row = {
         "audio_filepath": "a.flac",
         "text": "Laser CO₂ et séquence CUBE™,\nantigène Brª  espaçons 10 pour cent.",
-        "asr_training_source": "Laser CO2,\nà 10 pour cent.",
+        "asr_training_source": "Laser CO2,\nà 10 pour cent, puis 5%.",
     }
     out = mod.normalize_row(row, tok)
     assert out["text"] == "Laser CO2 et séquence CUBE, antigène Bra espaçons 10 %.", out["text"]
-    assert out["asr_training_source"] == "Laser CO2, à 10 pourcent.", out["asr_training_source"]
+    assert out["asr_training_source"] == "Laser CO2, à 10 pourcent, puis 5 pourcent.", out["asr_training_source"]
     assert not tok.offending_chars(out["text"])
     assert mod.normalize_row(out, tok) == out  # idempotent
     assert row["text"].startswith("Laser CO₂")  # input not mutated
