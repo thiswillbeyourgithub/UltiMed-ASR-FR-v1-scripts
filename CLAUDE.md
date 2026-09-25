@@ -60,11 +60,13 @@ row-level audio-path join (`resolve_audio`) lives in `utils/nemo_manifest.py`, s
 with 03. It keeps the `.flac` files. `05_normalize_text.py` (dry run unless `--apply`) then
 rewrites the texts: percentages become `%` in the ASR label (`text`) and the one-word
 `pourcent` in the TTS text (`asr_training_source`), guarded so a "per hundred X"
-(`garçons pour cent filles`, `pour cent millilitres`) and the vol% / g% units stay; the
-label also goes through `ParakeetTokenizer.clean_label` (whitespace collapsed, raw
-newlines existed; every character the vocab does not cover as written replaced by its
-NFKC form, `CO₂` -> `CO2`, `™` dropped). The generators now apply that same method at
-parse time, so 05's share of it only matters for the v1 manifests. Order: 03, 04, 05, then the parquet build. The audio lives under the `data/` symlink
+(`garçons pour cent filles`, `pour cent millilitres`) and the vol% / g% units stay
+(`utils/percent_normalize.py`); the label also goes through
+`ParakeetTokenizer.clean_label` (whitespace collapsed, raw newlines existed; every
+character the vocab does not cover as written replaced by its NFKC form, `CO₂` ->
+`CO2`, `™` dropped). The generators now apply both label rewrites at parse time
+(`_pipeline_shared.parse_asr_training_target`), so 05 only matters for the v1
+manifests, generated before that. Order: 03, 04, 05, then the parquet build. The audio lives under the `data/` symlink
 (`data/{dictionary,drugs,PARHAF,PARROT}/`, an external SSD) and manifests are
 written to `data/NeMO_files/`; neither the symlink nor the generated manifests are
 committed (the SSD path embeds the username).
@@ -192,6 +194,17 @@ from _pipeline_shared import call_llm, PricingTracker  # noqa: E402
   character the model is never taught. `_pipeline_shared._normalize_tokenizable_text`
   (every generator's parse step) and `99_hf_release/05_normalize_text.py` both call it;
   covered by `tests/test_uncovered_fold.py`.
+- **`percent_normalize.py`** (stdlib only) holds the one percent rule:
+  `percent_to_symbol` (`95 pour cent` / `95 pourcent` -> `95 %`, the label form every
+  generator applies at parse time) and `percent_to_one_word` (`-> 95 pourcent`, used
+  only by `99_hf_release/05_normalize_text.py` on the v1 TTS sources, which were read
+  from `pour cent`), with the guards that keep a "per hundred X" and the vol% / g%
+  units. The prompts still let the LLM write `pour cent` (they are the v1 provenance
+  and stay unchanged); the parse-time rewrite is what makes the label consistent. A
+  fresh source keeps `%` raw, since voxtral reads it correctly (VOXTRAL_QUIRKS.md).
+  Not to be confused with the CER scorer's own percent fold in
+  `06_hotfixes/01_compute_stt.py`, which folds EVERY form (label and Whisper output)
+  to one scoring token and needs no guard. Tested by `tests/test_percent_normalize.py`.
 - **`voxtral_normalize.py`** deterministically turns an `asr_training_target`
   (written label) into the `asr_training_source` (text fed to the local
   voxtral-tts engine): it applies only the small, proven set of fixes voxtral

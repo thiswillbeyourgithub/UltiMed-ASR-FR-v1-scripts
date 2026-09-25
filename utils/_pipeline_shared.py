@@ -222,6 +222,7 @@ _UTILS_DIR = Path(__file__).resolve().parent
 if str(_UTILS_DIR) not in sys.path:
     sys.path.insert(0, str(_UTILS_DIR))
 from parakeet_tokenizer import ParakeetTokenizer, describe  # noqa: E402
+from percent_normalize import percent_to_symbol  # noqa: E402
 
 # One shared coverage detector (loads the vocab once). nfkc=True mirrors what
 # Parakeet's SentencePiece tokenizer does at train time, so offending_chars()
@@ -305,7 +306,15 @@ def parse_asr_training_target(text: str, expected: int) -> list[str]:
             f"expected exactly {expected} <t> blocks, parsed {len(matches)} from "
             f"{len(text)} chars of output. Emit exactly {expected} blocks."
         )
-    parsed = [_normalize_tokenizable_text(m.group("t")).strip() for m in matches]
+    # Deterministic label canonicalization, BEFORE any validator sees the text:
+    # typography / NFKC-only folds (_normalize_tokenizable_text), then one written form
+    # for a percentage ("95 pour cent" / "95 pourcent" -> "95 %", see
+    # utils/percent_normalize.py). The LLM picks its own spelling (v1 labels mixed all
+    # three), and the prompts stay as they generated v1, so this is where the label
+    # becomes consistent. The TTS source is derived from this canonical label by
+    # voxtral_normalize, which keeps "%" raw (Voxtral reads it correctly).
+    parsed = [percent_to_symbol(_normalize_tokenizable_text(m.group("t"))).strip()
+              for m in matches]
     empty = [i for i, v in enumerate(parsed) if not v]
     if empty:
         raise BlockCountError(

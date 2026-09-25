@@ -41,6 +41,10 @@ because respelling a token voxtral already knows makes it worse (e.g. `T S H`).
 | `95 %` | percent | correct | **KEEP RAW** | drop `% -> pourcent` |
 | `RAS` | word-acronym (rare, FR-clinical) | read as the French word "race" | **FIX** | needs a targeted respelling |
 
+Since v1.1 every generated label writes a percentage as `95 %` (the generators
+canonicalize `pour cent` / `pourcent` at parse time, `utils/percent_normalize.py`), so
+the `95 %` row above is the only percent form voxtral is fed on a fresh run.
+
 ### Open FIX decisions
 
 - **`RAS`**: voxtral reads it as "race". Candidate fixes (pick after more data):
