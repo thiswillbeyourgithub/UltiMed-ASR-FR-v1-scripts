@@ -49,10 +49,15 @@ mtime) and attaches the QC columns the release ships (`cer`, `cer_tail`,
 `stt_transcript`, `stt_model`, `n_stt_check`, `cfg_alpha`, `regenerated`, `qc_status`).
 It joins on the resolved absolute audio path, so manifests that store it relative to
 different directories all match, and it is idempotent. Run it after any improvement run
-and before the parquet build. `04_drop_exhausted.py` (dry run unless `--apply`) then
-removes the `qc_status == "exhausted"` rows from every manifest: those clips failed QC
-and no redraw fixed them, so their audio does not say their label (v1 shipped them by
-mistake). It keeps the `.flac` files. The audio lives under the `data/` symlink
+and before the parquet build. `04_drop_bad_rows.py` (dry run unless `--apply`) then
+removes from every manifest the `qc_status == "exhausted"` rows (those clips failed QC
+and no redraw fixed them, so their audio does not say their label; v1 shipped them by
+mistake) and the val/test clips whose text repeats a training text after normalization
+(the splitter groups by document, not by text, so two PARHAF documents sharing a
+sentence can straddle splits). Its `normalize_text` is a deliberate copy of the NeMo
+fork's `data_leak_check.normalize_text` (separate repo); keep them identical. The
+row-level audio-path join (`resolve_audio`) lives in `utils/nemo_manifest.py`, shared
+with 03. It keeps the `.flac` files. The audio lives under the `data/` symlink
 (`data/{dictionary,drugs,PARHAF,PARROT}/`, an external SSD) and manifests are
 written to `data/NeMO_files/`; neither the symlink nor the generated manifests are
 committed (the SSD path embeds the username).

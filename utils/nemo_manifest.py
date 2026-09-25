@@ -382,6 +382,14 @@ def relativize(audio_abs: str | Path, manifest_dir: Path) -> str:
     return Path(os.path.relpath(Path(audio_abs), manifest_dir)).as_posix()
 
 
+def resolve_audio(manifest_dir: Path, rel: str) -> str:
+    """A row's audio path as one absolute string, so manifests that store it relative to
+    different directories still join onto each other. Pure string work (no
+    ``Path.resolve``): it runs on every row of every manifest, and touching the SSD
+    600k times per manifest would dominate the run."""
+    return os.path.normpath(os.path.join(manifest_dir, rel))
+
+
 def read_jsonl(path: Path) -> list[dict]:
     rows = []
     with path.open() as f:

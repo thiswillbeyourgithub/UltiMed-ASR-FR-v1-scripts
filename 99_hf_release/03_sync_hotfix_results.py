@@ -54,7 +54,7 @@ from loguru import logger
 
 _HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(_HERE.parent / "utils"))
-from nemo_manifest import read_jsonl, write_jsonl  # noqa: E402
+from nemo_manifest import read_jsonl, resolve_audio, write_jsonl  # noqa: E402
 
 # The STT side of the corpus, named as it actually is rather than as the OpenAI-compatible
 # alias the client sends (`whisper-1`). Confirmed against the serving endpoint itself,
@@ -111,12 +111,6 @@ def running_passes() -> list[int]:
     return sorted(pids)
 
 
-def resolve(base: Path, rel: str) -> str:
-    """A row's audio path as one absolute string, so manifests that store it relative to
-    different directories still join onto each other."""
-    return os.path.normpath(os.path.join(base, rel))
-
-
 def load_hotfix(root: Path, stt_model: str) -> dict[str, dict]:
     """Everything stage 06 knows, keyed by absolute audio path."""
     index: dict[str, dict] = {}
@@ -131,7 +125,7 @@ def load_hotfix(root: Path, stt_model: str) -> dict[str, dict]:
             reading = (row.get("transcriptions") or {}).get(STT_KEY) or {}
             imp = row.get("improvement") or {}
             status = imp.get("status")
-            index[resolve(base, row["audio_filepath"])] = {
+            index[resolve_audio(base, row["audio_filepath"])] = {
                 "duration": row.get("duration"),
                 "cer": reading.get("cer"),
                 "cer_tail": reading.get("cer_tail"),
@@ -169,7 +163,7 @@ def sync_manifest(path: Path, hotfix: dict[str, dict], apply: bool) -> tuple[int
         rel = row.get("audio_filepath")
         if rel is None:
             continue
-        qc = hotfix.get(resolve(path.parent, rel))
+        qc = hotfix.get(resolve_audio(path.parent, rel))
         if qc is None:
             continue
         matched += 1
