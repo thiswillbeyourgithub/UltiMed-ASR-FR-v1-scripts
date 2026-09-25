@@ -61,9 +61,10 @@ with 03. It keeps the `.flac` files. `05_normalize_text.py` (dry run unless `--a
 rewrites the texts: percentages become `%` in the ASR label (`text`) and the one-word
 `pourcent` in the TTS text (`asr_training_source`), guarded so a "per hundred X"
 (`garçons pour cent filles`, `pour cent millilitres`) and the vol% / g% units stay; the
-label also gets its whitespace collapsed (raw newlines existed) and every character
-`parakeet_tokenizer` flags as uncovered replaced by its NFKC form (`CO₂` -> `CO2`,
-`™` dropped). Order: 03, 04, 05, then the parquet build. The audio lives under the `data/` symlink
+label also goes through `ParakeetTokenizer.clean_label` (whitespace collapsed, raw
+newlines existed; every character the vocab does not cover as written replaced by its
+NFKC form, `CO₂` -> `CO2`, `™` dropped). The generators now apply that same method at
+parse time, so 05's share of it only matters for the v1 manifests. Order: 03, 04, 05, then the parquet build. The audio lives under the `data/` symlink
 (`data/{dictionary,drugs,PARHAF,PARROT}/`, an external SSD) and manifests are
 written to `data/NeMO_files/`; neither the symlink nor the generated manifests are
 committed (the SSD path embeds the username).
@@ -184,6 +185,13 @@ from _pipeline_shared import call_llm, PricingTracker  # noqa: E402
   `uv run utils/parakeet_tokenizer.py --input 03_PARHAF/02_parhaf_texts.jsonl --field text`)
   and groups the still-untokenizable characters by how many entries they hit, so
   you know what to normalize next. Do not fork this per stage.
+  `ParakeetTokenizer.clean_label` is the matching lossless FIX: NFC, each character
+  uncovered as written replaced by its NFKC form (trademark signs dropped), whitespace
+  collapsed. It exists because the gate checks WITH NFKC (SentencePiece folds `CO₂`
+  to `CO2` at training time, so no `<unk>`), which let v1 store labels showing a
+  character the model is never taught. `_pipeline_shared._normalize_tokenizable_text`
+  (every generator's parse step) and `99_hf_release/05_normalize_text.py` both call it;
+  covered by `tests/test_uncovered_fold.py`.
 - **`voxtral_normalize.py`** deterministically turns an `asr_training_target`
   (written label) into the `asr_training_source` (text fed to the local
   voxtral-tts engine): it applies only the small, proven set of fixes voxtral

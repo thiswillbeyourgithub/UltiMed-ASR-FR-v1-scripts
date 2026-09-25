@@ -264,8 +264,16 @@ def _normalize_tokenizable_text(text: str) -> str:
     """Fold typography-only glyphs to their covered equivalents.
 
     Replaces every Unicode space separator (NBSP, narrow NBSP, thin space, ...)
-    with a plain ASCII space and applies :data:`_TOKENIZABLE_FOLDS`. Leaves
-    every meaning-bearing character untouched.
+    with a plain ASCII space and applies :data:`_TOKENIZABLE_FOLDS`, then
+    ``ParakeetTokenizer.clean_label``: NFC, every remaining character the vocab
+    does not cover as written replaced by its NFKC form (``CO₂`` -> ``CO2``,
+    ``Brª`` -> ``Bra``, ``™`` dropped) and whitespace runs, newlines included,
+    collapsed to one space. The ``<unk>`` gate below checks with NFKC, so
+    without that last step such a character passes (SentencePiece folds it at
+    training time) yet stays in the stored label: UltiMed v1 shipped ``CO₂`` and
+    three others that way, fixed afterwards by ``99_hf_release/05_normalize_text.py``.
+    Leaves every meaning-bearing character untouched (clean_label only does
+    lossless folds; ``≥`` or ``+`` still reach the gate and get re-prompted).
     """
     out: list[str] = []
     for ch in text:
@@ -275,7 +283,7 @@ def _normalize_tokenizable_text(text: str) -> str:
             out.append(" ")
         else:
             out.append(ch)
-    return "".join(out)
+    return _PARAKEET_TOK.clean_label("".join(out))
 
 
 # ---------------------------------------------------------------------------

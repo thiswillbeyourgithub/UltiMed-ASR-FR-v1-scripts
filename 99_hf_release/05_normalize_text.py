@@ -32,18 +32,16 @@ alone: they are the vol% and g% concentration units, and ``volumes %`` would be 
 better a label. Rows left with a "pour cent" are reported so they can be eyeballed
 (26 in UltiMed v1, all of the kinds above).
 
-``text`` is also cleaned of what the Parakeet tokenizer cannot represent as written:
-
-- Whitespace runs (newlines, tabs, non-breaking or narrow non-breaking spaces) become
-  one plain space and the ends are stripped. A label is one line of speech, and a
-  raw newline there is an artefact of the source document.
-- Every character ``utils/parakeet_tokenizer.py`` flags as uncovered (checked WITHOUT
-  NFKC, i.e. as the manifest stores it) is replaced by its NFKC form: ``CO₂`` ->
-  ``CO2``, ``Brª`` -> ``Bra``, a decomposed ``c`` + combining cedilla -> ``ç``.
-  SentencePiece's own NFKC would map these the same way at training time, so none of
-  them ever produced ``<unk>``; fixing them here makes the label say what the model is
-  really taught. Trademark-like signs are dropped instead (``CUBE™`` -> ``CUBE``,
-  where NFKC would teach ``CUBETM``).
+``text`` also goes through ``ParakeetTokenizer.clean_label`` (``utils/parakeet_tokenizer.py``),
+which collapses whitespace runs (6 v1 labels held a raw newline, an artefact of the source
+document) and replaces every character the Parakeet vocab does not cover AS WRITTEN by
+its NFKC form: ``CO₂`` -> ``CO2``, ``Brª`` -> ``Bra``, a decomposed ``c`` + combining
+cedilla -> ``ç``, with trademark-like signs dropped (``CUBE™`` -> ``CUBE``). None of these
+ever produced ``<unk>`` (SentencePiece NFKC-folds them at training time), but the label
+then showed a character the model is never taught. The text generators now apply the
+same method when they parse the LLM output, so a fresh generation no longer needs this
+step for it; 05 applies it to the v1 manifests, which were generated before that fix.
+``asr_training_source`` is left alone there: the TTS read it, and Parakeet never does.
 
 Every manifest is rewritten independently, like 04, and the run is idempotent.
 
@@ -53,7 +51,6 @@ from __future__ import annotations
 
 import re
 import sys
-import unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -90,10 +87,6 @@ _PERCENT_RE = re.compile(
 )
 _LEFTOVER_RE = re.compile(r"\bpour\s+cent\b|\bpourcent\b", re.IGNORECASE)
 
-# Uncovered signs that name a brand, not a sound: dropped rather than NFKC-expanded.
-_DROP_CHARS = frozenset("™®©℠")
-
-
 def percent_to_symbol(text: str) -> str:
     """ASR label form: ``95 pour cent`` / ``95 pourcent`` -> ``95 %``."""
     return _PERCENT_RE.sub(r"\1\2%", text)
@@ -104,43 +97,18 @@ def percent_to_one_word(text: str) -> str:
     return _PERCENT_RE.sub(r"\1\2pourcent", text)
 
 
-def collapse_whitespace(text: str) -> str:
-    """One plain space between words (``str.split`` also splits on U+00A0 / U+202F)."""
-    return " ".join(text.split())
-
-
-def fix_uncovered(text: str, tok: ParakeetTokenizer) -> str:
-    """Replace the characters the tokenizer cannot represent as written.
-
-    NFC first, so a decomposed accent (``c`` + U+0327) is composed into the covered
-    ``ç`` instead of being flagged. Then each remaining uncovered character becomes its
-    NFKC form, or nothing for ``_DROP_CHARS``.
-
-    Parameters
-    ----------
-    text : str
-        An ASR label.
-    tok : ParakeetTokenizer
-        Loaded with ``nfkc=False`` so it sees the characters as stored.
-
-    Returns
-    -------
-    str
-        The label with every fixable uncovered character replaced.
-    """
-    text = unicodedata.normalize("NFC", text)
-    for ch in tok.offending_chars(text):
-        text = text.replace(ch, "" if ch in _DROP_CHARS else unicodedata.normalize("NFKC", ch))
-    return text
-
-
 def normalize_row(row: dict, tok: ParakeetTokenizer) -> dict:
-    """Return a copy of ``row`` with ``text`` and ``asr_training_source`` normalized."""
+    """Return a copy of ``row`` with ``text`` and ``asr_training_source`` normalized.
+
+    ``tok`` is a ``ParakeetTokenizer``; its ``clean_label`` checks coverage raw, so
+    its ``nfkc`` setting does not matter here.
+    """
     out = dict(row)
-    out["text"] = collapse_whitespace(percent_to_symbol(fix_uncovered(row["text"], tok)))
+    out["text"] = percent_to_symbol(tok.clean_label(row["text"]))
     if "asr_training_source" in row:
-        out["asr_training_source"] = collapse_whitespace(
-            percent_to_one_word(row["asr_training_source"]))
+        # One space between words here too, without clean_label's character fold.
+        out["asr_training_source"] = " ".join(
+            percent_to_one_word(row["asr_training_source"]).split())
     return out
 
 

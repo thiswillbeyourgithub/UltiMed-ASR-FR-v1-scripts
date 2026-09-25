@@ -69,6 +69,10 @@ SPACE_MARKER = "▁"  # ▁
 # path. Resolve relative to this file (not the CWD) so it works from anywhere.
 DEFAULT_VOCAB_PATH = Path(__file__).resolve().parent / "parakeet_vocab.txt"
 
+# Uncovered signs that name a brand, not a sound: ParakeetTokenizer.clean_label
+# drops them rather than NFKC-expanding them (NFKC turns "™" into "TM").
+DROP_CHARS = frozenset("™®©℠")
+
 
 def is_special(piece: str) -> bool:
     """
@@ -307,6 +311,49 @@ class ParakeetTokenizer:
             True if at least one character is uncovered.
         """
         return any(ch not in self.coverage for ch in self._prepare(text))
+
+    def clean_label(self, text: str) -> str:
+        """
+        Make an ASR label say exactly what the model will be taught.
+
+        The ``nfkc=True`` check above answers "would this become ``<unk>``?", and
+        for a character like ``₂`` the answer is no: SentencePiece NFKC-folds it
+        to ``2`` at training time. But the label then still SHOWS ``CO₂`` while
+        the model learns ``CO2``. UltiMed v1 shipped four such characters
+        (``₂``, ``ª``, ``™`` and a decomposed ``c`` + combining cedilla), because
+        the generators gated with NFKC and stored the text unfolded. This method
+        does the fold explicitly so the stored label and the learnt label agree:
+
+        1. NFC, so a decomposed accent (``c`` + U+0327) becomes the covered ``ç``.
+        2. Every character still outside :attr:`coverage` (checked raw, whatever
+           ``self.nfkc`` says) becomes its NFKC form: ``CO₂`` -> ``CO2``,
+           ``Brª`` -> ``Bra``. Trademark-like signs are dropped instead
+           (``CUBE™`` -> ``CUBE``), because NFKC would teach ``CUBETM``.
+        3. Whitespace runs (newline, tab, non-breaking space) collapse to one
+           plain space and the ends are stripped: a label is one line of speech.
+
+        A character whose NFKC form is itself uncovered (``≥`` stays ``≥``) is
+        left in place for the ``<unk>`` gate to reject: only lossless folds
+        happen here, never a guess at meaning.
+
+        Used at parse time by the text generators
+        (``_pipeline_shared._normalize_tokenizable_text``) and, for the already
+        generated v1 manifests, by ``99_hf_release/05_normalize_text.py``.
+
+        Parameters
+        ----------
+        text : str
+            An ASR label (``asr_training_target`` / manifest ``text``).
+
+        Returns
+        -------
+        str
+            The cleaned label. Idempotent.
+        """
+        text = unicodedata.normalize("NFC", text)
+        for ch in {c for c in text if c not in self.coverage}:
+            text = text.replace(ch, "" if ch in DROP_CHARS else unicodedata.normalize("NFKC", ch))
+        return " ".join(text.split())
 
 
 @click.command()
