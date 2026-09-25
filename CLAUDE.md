@@ -49,7 +49,10 @@ mtime) and attaches the QC columns the release ships (`cer`, `cer_tail`,
 `stt_transcript`, `stt_model`, `n_stt_check`, `cfg_alpha`, `regenerated`, `qc_status`).
 It joins on the resolved absolute audio path, so manifests that store it relative to
 different directories all match, and it is idempotent. Run it after any improvement run
-and before the parquet build. The audio lives under the `data/` symlink
+and before the parquet build. `04_drop_exhausted.py` (dry run unless `--apply`) then
+removes the `qc_status == "exhausted"` rows from every manifest: those clips failed QC
+and no redraw fixed them, so their audio does not say their label (v1 shipped them by
+mistake). It keeps the `.flac` files. The audio lives under the `data/` symlink
 (`data/{dictionary,drugs,PARHAF,PARROT}/`, an external SSD) and manifests are
 written to `data/NeMO_files/`; neither the symlink nor the generated manifests are
 committed (the SSD path embeds the username).

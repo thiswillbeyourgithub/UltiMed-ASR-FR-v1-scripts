@@ -14,8 +14,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 
-def load_sync_module():
-    """Import the uv script without its (irrelevant here) click / loguru dependencies."""
+def load_sync_module(script: str = "03_sync_hotfix_results.py"):
+    """Import a 99_hf_release uv script without its (irrelevant here) click / loguru
+    dependencies. Other tests reuse it with another ``script`` name."""
     click = types.ModuleType("click")
 
     def passthrough(*_args, **_kwargs):
@@ -31,8 +32,8 @@ def load_sync_module():
     sys.modules.setdefault("loguru", loguru)
 
     import importlib.util
-    path = ROOT / "99_hf_release" / "03_sync_hotfix_results.py"
-    spec = importlib.util.spec_from_file_location("sync_hotfix", path)
+    path = ROOT / "99_hf_release" / script
+    spec = importlib.util.spec_from_file_location(Path(script).stem, path)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod
