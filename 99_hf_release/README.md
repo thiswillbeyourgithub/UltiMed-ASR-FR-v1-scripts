@@ -127,6 +127,7 @@ configs:
 
 ## Changelog
 
+- **v1.1** (2026-09-25): data fixes, no new audio. Dropped the 6 `qc_status: exhausted` clips (they failed QC and no redraw fixed them, so their audio does not match their label; v1.0 shipped them by mistake) and 2 PARHAF val/test clips whose sentence also appears in a training clip. Main corpus is now 601,330 clips / 3,105.0 h / 254.65 GB. Normalized the `text` labels: every percentage is written `%` (v1.0 mixed `pour cent`, `pourcent` and `%`; a "per hundred X" such as `pour cent millilitres` is kept), whitespace runs including 6 raw newlines collapse to one space, and the 4 characters the Parakeet tokenizer cannot represent as written are replaced by their NFKC form (`CO₂` -> `CO2`) or dropped (`™`). `asr_training_source` uses the one-word `pourcent`. The val/test labels changed with it, so WER on v1.1 is not directly comparable with v1.0 numbers.
 - **v1.0** (2026-08-19): initial release. Main corpus 601,338 clips / 3,105.0 h / 254.66 GB (dictionary + drugs + PARHAF + acronyms, CC BY 4.0), plus a separate **test-only** 1,549-clip / 10.1 h PARROT radiology subset (CC BY-NC-SA 4.0). [Voxtral][voxtral] `fr_female`.
 
 ## What is UltiMed-v1
@@ -139,9 +140,9 @@ A 3000+ hours corpus of **dictation-style French medical sentences** spoken by a
 | Task | Automatic Speech Recognition (training **and** evaluation) |
 | Audio | **24 kHz, mono, FLAC (PCM 16-bit), straight out of [Voxtral][voxtral]**, unprocessed (see [Audio synthesis](#audio-synthesis-tts)) |
 | Packaging | **Sharded Parquet with embedded FLAC** (one subset per source, split into `<source>/<split>-*.parquet`); rebuild NeMo loose/tarred data with `scripts/parquet_to_nemo.py`; see [Repository layout](#repository-layout-on-the-hub) |
-| Clips | **601,338** (main corpus) + 1,549 (PARROT subset) |
+| Clips | **601,330** (main corpus) + 1,549 (PARROT subset) |
 | Duration | **3,105.0 h** (main corpus) + 10.1 h (PARROT subset) |
-| On-disk size | **254.66 GB** (main corpus) + 851 MB (PARROT subset) |
+| On-disk size | **254.65 GB** (main corpus) + 851 MB (PARROT subset) |
 | Splits | train / val / test, target 80 / 10 / 10, balanced by **audio duration** |
 | Sources | public French medical dictionaries (Wiktionary + others), French drug names, PARHAF, common medical acronyms (Wikipedia-sourced, hand-filtered) (main corpus, CC BY 4.0); PARROT radiology (separate CC BY-NC-SA 4.0, test-only subset) |
 | Voice | a single voice (`fr_female`) everywhere -- see [the drawback](#the-single-voice-drawback) |
@@ -187,7 +188,7 @@ row["audio"]  # 24 kHz mono waveform, decoded from the embedded FLAC
 row["text"]   # the transcript, and the field you train an ASR model on
 ```
 
-- **What you get**: ~3,105 h (601,338 clips) of clean, studio-quality **synthetic** French medical speech. Each clip is a short dictation-style sentence (anatomy, pathology, drug names, clinical phrasing) spoken by a single high-quality voice and paired with its exact transcript. Built to train **and** evaluate medical ASR.
+- **What you get**: ~3,105 h (601,330 clips) of clean, studio-quality **synthetic** French medical speech. Each clip is a short dictation-style sentence (anatomy, pathology, drug names, clinical phrasing) spoken by a single high-quality voice and paired with its exact transcript. Built to train **and** evaluate medical ASR.
 - **Train on the `text` field.** Everything else (`asr_training_source`, provenance columns) is there for transparency, not as a label.
 - **Subsets, picked by config name**: `dictionary_CC_BY_4.0`, `drugs_CC_BY_4.0`, `parhaf_CC_BY_4.0`, `acronyms_CC_BY_4.0` are the main corpus (**CC BY 4.0**); `parrot_CC_BY-NC-SA_4.0` is a small, separate, **evaluation-only** radiology set under a **non-commercial** licence. Download or skip each independently.
 - **`val` / `test` are ready-made in-domain benchmarks**: held out group-disjoint from `train`, so report WER on `test` to benchmark technical French medical speech.
@@ -234,11 +235,11 @@ Joined on drug codes, aggregated per substance and per brand, then scored 0-10 b
 
 | Source | Clips | % clips | Hours | % duration | Size | Mean clip |
 |--------|------:|------:|------:|-----------:|-----:|----------:|
-| dictionary | 534,385 | 88.9% | 2,656.7 | 85.6% | 217.69 GB | 17.9 s |
+| dictionary | 534,383 | 88.9% | 2,656.7 | 85.6% | 217.69 GB | 17.9 s |
 | drugs | 21,901 | 3.6% | 77.0 | 2.5% | 6.27 GB | 12.7 s |
-| PARHAF | 43,456 | 7.2% | 367.2 | 11.8% | 30.35 GB | 30.4 s |
-| acronyms | 1,596 | 0.3% | 4.1 | 0.1% | 351 MB | 9.3 s |
-| **main corpus** | **601,338** | 100% | **3,105.0** | 100% | **254.66 GB** | 18.6 s |
+| PARHAF | 43,452 | 7.2% | 367.2 | 11.8% | 30.35 GB | 30.4 s |
+| acronyms | 1,594 | 0.3% | 4.1 | 0.1% | 351 MB | 9.3 s |
+| **main corpus** | **601,330** | 100% | **3,105.0** | 100% | **254.65 GB** | 18.6 s |
 
 Shipped separately as the `parrot` subset under CC BY-NC-SA 4.0, evaluation-only:
 
@@ -383,7 +384,7 @@ Every clip was also transcribed back and scored, and those results ship with it:
 - `stt_model`: which model produced them, `whisper.cpp/ggml-large-v3-turbo` (Whisper large-v3-turbo served by whisper.cpp through an OpenAI-compatible endpoint). Spelled out on purpose: the API alias the client sends is `whisper-1`, which says nothing about what actually ran.
 - `n_stt_check`: how many readings a clip needed. `null` for the vast majority (read once); set when a bad score triggered a re-transcription at a higher temperature to rule out an STT hallucination, in which case the best reading is the one scored.
 - `cfg_alpha`: the classifier-free guidance the audio was drawn at (1.3 for the original pass, 1.0 to 3.0 for a regenerated clip).
-- `regenerated` / `qc_status`: whether the quality pass replaced this clip. `qc_status` is `improved` (a better draw replaced the original), `exhausted` (the clip tripped a gate but no redraw was good enough, so **the original audio ships**: these are the known-weak clips, 6 of them), or `original` (never tripped a gate). Across the corpus 946 clips were replaced and the mean CER of the shipped audio against its label is **0.012**.
+- `regenerated` / `qc_status`: whether the quality pass replaced this clip. `qc_status` is `improved` (a better draw replaced the original), `exhausted` (the clip tripped a gate but no redraw was good enough, so **the original audio ships**: v1.0 shipped 6 of them by mistake and v1.1 dropped them, so the value no longer appears), or `original` (never tripped a gate). Across the corpus 932 clips were replaced and the mean CER of the shipped audio against its label is **0.012**.
 
 **On seeds.** The per-clip TTS seed is deliberately **not** shipped. The serving stack ignored the per-request seed for most of the corpus (it reached a sampler that this model does not use, while the flow-matching noise came from a global RNG), so a seed column would have implied a reproducibility that does not exist. Regenerating a byte-identical clip from the released text is not possible; the audio itself is the artifact.
 
@@ -441,10 +442,10 @@ Main corpus balanced 80 / 10 / 10 by **audio duration**, group-aware so nothing 
 
 | Split | Clips | % clips | Hours | % duration | Size |
 |-------|------:|------:|------:|-----------:|-----:|
-| train | 486,007 | 80.8% | 2,484.0 | 80.0% | 203.71 GB |
-| val | 57,712 | 9.6% | 310.5 | 10.0% | 25.48 GB |
-| test | 57,619 | 9.6% | 310.5 | 10.0% | 25.47 GB |
-| **all** | **601,338** | 100% | **3,105.0** | 100% | **254.66 GB** |
+| train | 486,002 | 80.8% | 2,484.0 | 80.0% | 203.71 GB |
+| val | 57,710 | 9.6% | 310.5 | 10.0% | 25.48 GB |
+| test | 57,618 | 9.6% | 310.5 | 10.0% | 25.47 GB |
+| **all** | **601,330** | 100% | **3,105.0** | 100% | **254.65 GB** |
 
 These splits are the **main corpus** (dictionary + drugs + PARHAF + acronyms). PARROT is **not** mixed in: it ships as its own eval-only `parrot` subset (all 1,549 clips as one `test` split) under its own licence, **test-only on purpose** because the source authors ask that it not be trained on, and one untouched `test` split keeps it a clean out-of-domain benchmark (not split into val/test: the main corpus already has a large `val`, and halving 10.1 h would only add noise). Counts run slightly above 80% while duration lands exactly at 80% because the dictionary's short clips are the most numerous. Grouping rules:
 

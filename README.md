@@ -52,7 +52,7 @@ This repository is one piece of a French medical ASR stack; every other piece is
 
 | Repository | What it is |
 | --- | --- |
-| [Olicorne/UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1) | The dataset. 601,338 clips / 3,105 h main corpus, plus a separate eval-only PARROT subset. Sharded Parquet with FLAC bytes embedded. Its card, NOTICE and scripts are the ones in [`99_hf_release/`](99_hf_release/). |
+| [Olicorne/UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1) | The dataset. 601,330 clips / 3,105 h main corpus, plus a separate eval-only PARROT subset. Sharded Parquet with FLAC bytes embedded. Its card, NOTICE and scripts are the ones in [`99_hf_release/`](99_hf_release/). |
 | [Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx) | The fine-tuned model: `parakeet-tdt-0.6b-v3` trained on the dataset above, exported to ONNX. |
 | [Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx) | The multilingual baseline the fine-tune builds on: the upstream ONNX re-quantized for int8 accuracy on long audio and graph-optimized for browser speed. The fine-tune builds on it. |
 | **This repository** | The scripts that produced the dataset, stages 1 to 4 of the plan below. |
@@ -205,7 +205,7 @@ For calibration, since the whole point is that this is reproducible by one perso
 | TTS | Voxtral 4B TTS on vLLM, single `fr_female` voice, 24 kHz mono FLAC, no post-processing |
 | Quality loop | 599,740 clips transcribed with Whisper and scored; median CER **0.0095** |
 | Hardware | **One RTX 3090 Ti**, power-capped to 100-200 W, in a Paris apartment with no air conditioning during the 2026 heatwave |
-| Output | 601,338 clips, 3,105 hours, 254 GB |
+| Output | 601,330 clips, 3,105 hours, 254 GB |
 
 The CER reports are committed: [`06_hotfixes/improved/full.stt.statistics.md`](06_hotfixes/improved/full.stt.statistics.md) and [`06_hotfixes/improved_parrot/full.stt.statistics.md`](06_hotfixes/improved_parrot/full.stt.statistics.md).
 
@@ -220,7 +220,7 @@ Both of these were found **after** UltiMed-ASR-FR-v1 was published and after the
 
 `RAS` (*rien à signaler*, the French clinical shorthand for "nothing to report") is a word-acronym, so the TTS reads it as a word rather than as letters, and Voxtral lands on "race". The written label is correct; only the audio is wrong.
 
-**Scope: 341 clips of 601,338, or 0.06% of the main corpus** (282 dictionary, 15 drugs, 44 PARHAF, none in acronyms or PARROT).
+**Scope: 341 clips of 601,330, or 0.06% of the main corpus** (282 dictionary, 15 drugs, 44 PARHAF, none in acronyms or PARROT).
 
 **Not fixed.** It is logged as an open decision in [`01_dictionnary/VOXTRAL_QUIRKS.md`](01_dictionnary/VOXTRAL_QUIRKS.md), because the two candidate remedies are not equivalent. Respelling it so the voice reads letters (`R.A.S.`, `R A S`, `err-a-ess`) is a pure pronunciation fix. Expanding it to `rien à signaler` is not: the audio would then say the full phrase while the label still says `RAS`, which deliberately changes the audio-to-label relationship. Picking between them needs listening data that does not exist yet.
 
