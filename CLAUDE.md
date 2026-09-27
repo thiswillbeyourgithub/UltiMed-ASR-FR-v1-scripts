@@ -54,7 +54,8 @@ removes from every manifest the `qc_status == "exhausted"` rows (those clips fai
 and no redraw fixed them, so their audio does not say their label; v1 shipped them by
 mistake) and the val/test clips whose text repeats a training text after normalization
 (the splitter groups by document, not by text, so two PARHAF documents sharing a
-sentence can straddle splits). Its `normalize_text` is a deliberate copy of the NeMo
+sentence can straddle splits), plus the labels holding an ellipsis (`...` / `…`: a
+truncated LLM output or a PARHAF anonymized date, 2 in v1). Its `normalize_text` is a deliberate copy of the NeMo
 fork's `data_leak_check.normalize_text` (separate repo); keep them identical. The
 row-level audio-path join (`resolve_audio`) lives in `utils/nemo_manifest.py`, shared
 with 03. It keeps the `.flac` files. `05_normalize_text.py` (dry run unless `--apply`) then
@@ -64,7 +65,9 @@ rewrites the texts: percentages become `%` in the ASR label (`text`) and the one
 (`utils/percent_normalize.py`); the label also goes through
 `ParakeetTokenizer.clean_label` (whitespace collapsed, raw newlines existed; every
 character the vocab does not cover as written replaced by its NFKC form, `CO₂` ->
-`CO2`, `™` dropped). The generators now apply both label rewrites at parse time
+`CO2`, `™` dropped). Both texts then get the label conventions of
+`utils/label_conventions.py` (titles, dates, clock times, drug casing; see below). The
+generators now apply all these label rewrites at parse time
 (`_pipeline_shared.parse_asr_training_target`), so 05 only matters for the v1
 manifests, generated before that. Order: 03, 04, 05, then the parquet build. The audio lives under the `data/` symlink
 (`data/{dictionary,drugs,PARHAF,PARROT}/`, an external SSD) and manifests are
@@ -208,6 +211,22 @@ from _pipeline_shared import call_llm, PricingTracker  # noqa: E402
   Not to be confused with the CER scorer's own percent fold in
   `06_hotfixes/01_compute_stt.py`, which folds EVERY form (label and Whisper output)
   to one scoring token and needs no guard. Tested by `tests/test_percent_normalize.py`.
+- **`label_conventions.py`** (stdlib only) gives one written form to what the LLM
+  spells several ways, always the corpus majority: titles (`M. Dupont` -> `Monsieur
+  Dupont`, `Mme` -> `Madame`, `Dr` / `Pr` -> `docteur` / `professeur`, lowercase
+  mid-sentence, `monsieur Dupont` -> `Monsieur Dupont`; `PCR M. tuberculosis`, `Madame
+  M. présente`, `le monsieur du lit 4` untouched), dates (spelled years 1900 to 2099 ->
+  digits after a month or after `en` / `depuis` in year position, spelled days ->
+  digits before a month, `premier mai` -> `1er mai`), clock times (`14h30` -> `14
+  heures 30`) and drug casing (`DrugCaser`, driven by the committed lexicon
+  `utils/drug_casing.json`: `PRIMPERAN` / `Primperan` -> `Primpéran`, `PARACETAMOL` ->
+  `paracétamol`, `UVEDOSE` -> `Uvedose`, acronyms like `LP` / `BCG` protected).
+  `apply_label_conventions` runs all four; the generators' parse step and
+  `99_hf_release/05_normalize_text.py` (label AND source, every rewrite is spoken
+  identically) call it. The lexicon is built by `02_drugs/02_build_drug_casing.py` from
+  the stage `generated_dataset.jsonl` files (local, not committed), the ANSM accents in
+  `02_drugs/drugs_dosages.jsonl` and the acronym lists; rerun it only after
+  regenerating texts and review the JSON diff. Tested by `tests/test_label_conventions.py`.
 - **`voxtral_normalize.py`** deterministically turns an `asr_training_target`
   (written label) into the `asr_training_source` (text fed to the local
   voxtral-tts engine): it applies only the small, proven set of fixes voxtral
