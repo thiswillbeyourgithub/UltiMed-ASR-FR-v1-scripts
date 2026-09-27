@@ -1,0 +1,158 @@
+"""Stdlib test for utils/label_conventions.py and its use by the text generators.
+
+The cases are real UltiMed v1 label fragments: every rewrite must reach the corpus
+majority form, leave the look-alikes alone (``PCR M. tuberculosis``, ``le monsieur du
+lit 4``, ``les 4H et 4T``, ``mille neuf cent soixante-quatorze grammes``), and be
+idempotent. ``test_generator_parse`` checks that ``parse_asr_training_target`` (every
+generator's parse step) applies them; it needs the LLM stack and is skipped when that
+is not installed.
+
+Run: python tests/test_label_conventions.py
+
+This file was written by Claude Code.
+"""
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "utils"))
+from label_conventions import (  # noqa: E402
+    DrugCaser, apply_label_conventions, default_drug_caser, expand_titles, normalize_clock,
+    normalize_dates,
+)
+
+
+def check(fn, cases) -> None:
+    for raw, expected in cases:
+        got = fn(raw)
+        assert got == expected, (raw, got, expected)
+        assert fn(got) == got, ("not idempotent", got, fn(got))
+
+
+def test_titles() -> None:
+    check(expand_titles, [
+        ("Compte rendu de M. Lefèvre, 45 ans.", "Compte rendu de Monsieur Lefèvre, 45 ans."),
+        ("Ordonnance pour M. et Mme Petit.", "Ordonnance pour Monsieur et Madame Petit."),
+        ("La patiente, Mme Dubois, 24 ans, et Mlle Girard.",
+         "La patiente, Madame Dubois, 24 ans, et Mademoiselle Girard."),
+        ("Transmission de soins pour M. Le Corre, 34 ans.",
+         "Transmission de soins pour Monsieur Le Corre, 34 ans."),
+        ("Adressée par le Dr Moreau. Pr Girard a validé.",
+         "Adressée par le docteur Moreau. Professeur Girard a validé."),
+        ("Dr Martin a vu la patiente.", "Docteur Martin a vu la patiente."),
+        # Casing of the spelled-out titles before a name, mid-sentence.
+        ("Le dossier de monsieur Girard et de madame Colin.",
+         "Le dossier de Monsieur Girard et de Madame Colin."),
+        ("Suivi pour le Docteur Lefèvre, médecin traitant : Professeur Dubois.",
+         "Suivi pour le docteur Lefèvre, médecin traitant : professeur Dubois."),
+        ("Docteur Lefèvre est informé.", "Docteur Lefèvre est informé."),
+    ])
+    for untouched in [
+        "La PCR M. tuberculosis est négative.",
+        "Madame M. présente une odynophagie.",
+        "Plaque de taille M. La plaque n'est pas déplacée.",
+        "Cellules en phase M. On propose une chimiothérapie.",
+        "Le monsieur du lit 4 est sorti.",
+        "Stade T2 N0 M0, madame, vous allez bien.",
+        "Prescription pour M. le docteur Martin.",
+    ]:
+        assert expand_titles(untouched) == untouched, (untouched, expand_titles(untouched))
+    print("test_titles: OK")
+
+
+def test_dates() -> None:
+    check(normalize_dates, [
+        ("Opérée le quinze mars deux mille vingt.", "Opérée le 15 mars 2020."),
+        ("Née le premier janvier mille neuf cent quatre-vingt-deux.", "Née le 1er janvier 1982."),
+        ("Le trente et un octobre deux-mille-vingt-et-un, puis",
+         "Le 31 octobre 2021, puis"),
+        ("Né le 3 mai mil neuf cent soixante et onze.", "Né le 3 mai 1971."),
+        ("Le 3 mai dix-neuf cent quatre-vingts.", "Le 3 mai 1980."),
+        ("Hospitalisé du six au treize mai deux mille vingt-cinq.",
+         "Hospitalisé du 6 au 13 mai 2025."),
+        ("Du premier au trois juin.", "Du 1er au 3 juin."),
+        ("Fracture en deux mille onze. Opéré depuis deux mille dix-neuf,",
+         "Fracture en 2011. Opéré depuis 2019,"),
+        ("Suivi en deux mille dix et deux mille onze.", "Suivi en 2010 et deux mille onze."),
+        ("Bilan du premier mai 2025.", "Bilan du 1er mai 2025."),
+    ])
+    for untouched in [
+        "Une dose de mille neuf cent soixante-quatorze grammes.",
+        "Il vit depuis deux mille ans dans la légende.",
+        "Tiré en deux mille exemplaires.",
+        "Il reviendra dans deux mois.",
+        "Un mars pluvieux.",
+    ]:
+        assert normalize_dates(untouched) == untouched, (untouched, normalize_dates(untouched))
+    print("test_dates: OK")
+
+
+def test_clock() -> None:
+    check(normalize_clock, [
+        ("Arrivée aux urgences à 14h30 pour brûlure.", "Arrivée aux urgences à 14 heures 30 pour brûlure."),
+        ("Injecté à 10 h 15, la douleur cède.", "Injecté à 10 heures 15, la douleur cède."),
+        ("Plan rouge à 09h45, décès à 02h15.", "Plan rouge à 9 heures 45, décès à 2 heures 15."),
+        ("Reprendre à 8 h 00 avec le reste, alimentation à 17h00.",
+         "Reprendre à 8 heures avec le reste, alimentation à 17 heures."),
+        ("Antalgiques à 20h, constantes à 14 h : stables.",
+         "Antalgiques à 20 heures, constantes à 14 heures : stables."),
+        ("Pause de 1h puis 14H30.", "Pause de 1 heure puis 14 heures 30."),
+    ])
+    for untouched in [
+        "Selon l'algorithme des 4H et 4T.",
+        "Blocs 1a à 1h, 2, 3a.",
+        "Une perfusion de 0,5 h par jour.",
+        "Glycémie à J6h de la greffe.",
+    ]:
+        assert normalize_clock(untouched) == untouched, (untouched, normalize_clock(untouched))
+    print("test_clock: OK")
+
+
+def test_drug_caser() -> None:
+    caser = DrugCaser(
+        caps={"PRIMPERAN": "Primpéran", "PARACETAMOL": "paracétamol", "UVEDOSE": "Uvedose",
+              "FORTE": "forte"},
+        variants={"primperan": "Primpéran", "skénan": "Skenan", "paracetamol": "paracétamol"},
+    )
+    check(caser, [
+        ("PRIMPERAN et Primperan puis primperan.", "Primpéran et Primpéran puis Primpéran."),
+        ("Prendre PARACETAMOL 1 g, puis paracetamol. PARACETAMOL encore.",
+         "Prendre paracétamol 1 g, puis paracétamol. Paracétamol encore."),
+        ("UVEDOSE une ampoule, l'UVEDOSE FORTE aussi.", "Uvedose une ampoule, l'Uvedose forte aussi."),
+        ("Du Skénan.", "Du Skenan."),
+    ])
+    # Canonical forms of the committed lexicon, and a protected acronym.
+    default = default_drug_caser()
+    assert default("PARACETAMOL LP et KARDEGIC.") == "Paracétamol LP et Kardégic.", default("PARACETAMOL LP et KARDEGIC.")
+    assert default("un comprimé SANS SUCRE") == "un comprimé SANS sucre", default("un comprimé SANS SUCRE")
+    assert default("paracétamol codéiné") == "paracétamol codéiné"
+    assert default("une note de menthe") == "une note de menthe"
+    print("test_drug_caser: OK")
+
+
+def test_all() -> None:
+    raw = "M. Dupont prend du DOLIPRANE à 14h30 depuis le quinze mars deux mille vingt."
+    want = "Monsieur Dupont prend du Doliprane à 14 heures 30 depuis le 15 mars 2020."
+    assert apply_label_conventions(raw) == want, apply_label_conventions(raw)
+    assert apply_label_conventions(want) == want
+    print("test_all: OK")
+
+
+def test_generator_parse() -> None:
+    try:
+        from _pipeline_shared import parse_asr_training_target
+    except ImportError as exc:
+        print(f"test_generator_parse: SKIPPED ({exc})")
+        return
+    raw = "<t>Mme Petit prend du KARDEGIC.</t><t>Vu le premier mai à 9h.</t>"
+    assert parse_asr_training_target(raw, expected=2) == [
+        "Madame Petit prend du Kardégic.", "Vu le 1er mai à 9 heures."], parse_asr_training_target(raw, expected=2)
+    print("test_generator_parse: OK")
+
+
+if __name__ == "__main__":
+    test_titles()
+    test_dates()
+    test_clock()
+    test_drug_caser()
+    test_all()
+    test_generator_parse()
