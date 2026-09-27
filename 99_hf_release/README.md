@@ -127,6 +127,7 @@ configs:
 
 ## Changelog
 
+- **v1.2** (2026-09-27): label conventions, no new audio. Every `text` label and its `asr_training_source` now follow one written form per spoken thing, chosen as the corpus majority, applied to both so audio and label still say the same words (18,777 clips changed). Drug names get one spelling each: the ALLCAPS copies of the drug database are recased (`DOLIPRANE` -> `Doliprane`, `PARACETAMOL` -> `paracétamol`, `UVEDOSE` -> `Uvedose`) and accent variants harmonized (`Primperan` -> `Primpéran`); substances take the ANSM accents, brands the spelling the corpus uses most (a brand never written other than ALLCAPS gets Title case with no accent, since nothing tells its accents), and acronyms stay ALLCAPS (`LP`, `AINS`). Titles before a name are written out (`M.` -> `Monsieur`, `Mme` -> `Madame`, `Mlle` -> `Mademoiselle`, `Dr` / `Pr` -> `docteur` / `professeur`, capitalized at a sentence start), with `Monsieur` / `Madame` capitalized before a name and left lowercase otherwise (`le monsieur du lit 4`). Dates use digits (`le quinze mars deux mille vingt` -> `le 15 mars 2020`, `premier janvier` -> `1er janvier`), and clock times read `14 heures 30` (v1.1 mixed `14h30`, `14 h 30` and the spoken form). Dropped the 2 clips whose label held an ellipsis (truncated or anonymized text). Main corpus now 601,328 clips / 3,105.0 h / 254.65 GB. The per-source `<source>/{train,val,test}` NeMo manifests now match the release-wide split (the Parquet always used the release-wide one). val/test labels changed, so WER on v1.2 is not directly comparable to v1.1 numbers.
 - **v1.1** (2026-09-25): data fixes, no new audio. Dropped the 6 `qc_status: exhausted` clips (they failed QC and no redraw fixed them, so their audio does not match their label; v1.0 shipped them by mistake) and 2 PARHAF val/test clips whose sentence also appears in a training clip. Main corpus is now 601,330 clips / 3,105.0 h / 254.65 GB. Normalized the `text` labels: every percentage is written `%` (v1.0 mixed `pour cent`, `pourcent` and `%`; a "per hundred X" such as `pour cent millilitres` is kept), whitespace runs including 6 raw newlines collapse to one space, and the 4 characters the Parakeet tokenizer cannot represent as written are replaced by their NFKC form (`CO₂` -> `CO2`) or dropped (`™`). `asr_training_source` uses the one-word `pourcent` everywhere (those clips were read from `pour cent` or `%`, spoken identically). The pipeline's generators now write `%` in the label directly, so a rebuild reproduces this. The val/test labels changed with it, so WER on v1.1 is not directly comparable with v1.0 numbers.
 - **v1.0** (2026-08-19): initial release. Main corpus 601,338 clips / 3,105.0 h / 254.66 GB (dictionary + drugs + PARHAF + acronyms, CC BY 4.0), plus a separate **test-only** 1,549-clip / 10.1 h PARROT radiology subset (CC BY-NC-SA 4.0). [Voxtral][voxtral] `fr_female`.
 
@@ -140,7 +141,7 @@ A 3000+ hours corpus of **dictation-style French medical sentences** spoken by a
 | Task | Automatic Speech Recognition (training **and** evaluation) |
 | Audio | **24 kHz, mono, FLAC (PCM 16-bit), straight out of [Voxtral][voxtral]**, unprocessed (see [Audio synthesis](#audio-synthesis-tts)) |
 | Packaging | **Sharded Parquet with embedded FLAC** (one subset per source, split into `<source>/<split>-*.parquet`); rebuild NeMo loose/tarred data with `scripts/parquet_to_nemo.py`; see [Repository layout](#repository-layout-on-the-hub) |
-| Clips | **601,330** (main corpus) + 1,549 (PARROT subset) |
+| Clips | **601,328** (main corpus) + 1,549 (PARROT subset) |
 | Duration | **3,105.0 h** (main corpus) + 10.1 h (PARROT subset) |
 | On-disk size | **254.65 GB** (main corpus) + 851 MB (PARROT subset) |
 | Splits | train / val / test, target 80 / 10 / 10, balanced by **audio duration** |
@@ -188,7 +189,7 @@ row["audio"]  # 24 kHz mono waveform, decoded from the embedded FLAC
 row["text"]   # the transcript, and the field you train an ASR model on
 ```
 
-- **What you get**: ~3,105 h (601,330 clips) of clean, studio-quality **synthetic** French medical speech. Each clip is a short dictation-style sentence (anatomy, pathology, drug names, clinical phrasing) spoken by a single high-quality voice and paired with its exact transcript. Built to train **and** evaluate medical ASR.
+- **What you get**: ~3,105 h (601,328 clips) of clean, studio-quality **synthetic** French medical speech. Each clip is a short dictation-style sentence (anatomy, pathology, drug names, clinical phrasing) spoken by a single high-quality voice and paired with its exact transcript. Built to train **and** evaluate medical ASR.
 - **Train on the `text` field.** Everything else (`asr_training_source`, provenance columns) is there for transparency, not as a label.
 - **Subsets, picked by config name**: `dictionary_CC_BY_4.0`, `drugs_CC_BY_4.0`, `parhaf_CC_BY_4.0`, `acronyms_CC_BY_4.0` are the main corpus (**CC BY 4.0**); `parrot_CC_BY-NC-SA_4.0` is a small, separate, **evaluation-only** radiology set under a **non-commercial** licence. Download or skip each independently.
 - **`val` / `test` are ready-made in-domain benchmarks**: held out group-disjoint from `train`, so report WER on `test` to benchmark technical French medical speech.
@@ -235,11 +236,11 @@ Joined on drug codes, aggregated per substance and per brand, then scored 0-10 b
 
 | Source | Clips | % clips | Hours | % duration | Size | Mean clip |
 |--------|------:|------:|------:|-----------:|-----:|----------:|
-| dictionary | 534,383 | 88.9% | 2,656.7 | 85.6% | 217.69 GB | 17.9 s |
+| dictionary | 534,382 | 88.9% | 2,656.7 | 85.6% | 217.69 GB | 17.9 s |
 | drugs | 21,901 | 3.6% | 77.0 | 2.5% | 6.27 GB | 12.7 s |
-| PARHAF | 43,452 | 7.2% | 367.2 | 11.8% | 30.35 GB | 30.4 s |
+| PARHAF | 43,451 | 7.2% | 367.2 | 11.8% | 30.35 GB | 30.4 s |
 | acronyms | 1,594 | 0.3% | 4.1 | 0.1% | 351 MB | 9.3 s |
-| **main corpus** | **601,330** | 100% | **3,105.0** | 100% | **254.65 GB** | 18.6 s |
+| **main corpus** | **601,328** | 100% | **3,105.0** | 100% | **254.65 GB** | 18.6 s |
 
 Shipped separately as the `parrot` subset under CC BY-NC-SA 4.0, evaluation-only:
 
@@ -353,7 +354,7 @@ UltiMed-ASR-FR-v1/
   preview_samples/  dictionary/  drugs/  parhaf/  acronyms/  parrot/                # 5 clips + manifest.jsonl each
 ```
 
-- **`<source>/<split>-NNNNN-of-NNNNN.parquet`**: ~2,500 clips each. Every row embeds the **original FLAC bytes verbatim** (byte-identical round-trip) in the `datasets` `Audio` feature, plus `text`, `duration`, `category`, provenance (`group_id`, `group_mode`, `item_index`), `filename` and the quality-control columns (`cer`, `cer_tail`, `stt_transcript`, `stt_model`, `n_stt_check`, `cfg_alpha`, `regenerated`, `qc_status`). Rebuild with `uv run scripts/build_parquet.py`, after `uv run 03_sync_hotfix_results.py --apply` has carried stage 06's results into the manifests. To drop the known-weak `exhausted` clips and the val/test clips whose text repeats a training text first, run `uv run 04_drop_bad_rows.py --apply` between those two steps (script written with Claude Code). Then `uv run 05_normalize_text.py --apply` writes every percentage as `%` in the label and `pourcent` in the TTS text, collapses whitespace, and replaces the few characters the Parakeet tokenizer cannot represent as written (also Claude Code).
+- **`<source>/<split>-NNNNN-of-NNNNN.parquet`**: ~2,500 clips each. Every row embeds the **original FLAC bytes verbatim** (byte-identical round-trip) in the `datasets` `Audio` feature, plus `text`, `duration`, `category`, provenance (`group_id`, `group_mode`, `item_index`), `filename` and the quality-control columns (`cer`, `cer_tail`, `stt_transcript`, `stt_model`, `n_stt_check`, `cfg_alpha`, `regenerated`, `qc_status`). Rebuild with `uv run scripts/build_parquet.py`, after `uv run 03_sync_hotfix_results.py --apply` has carried stage 06's results into the manifests. To drop the known-weak `exhausted` clips and the val/test clips whose text repeats a training text first, run `uv run 04_drop_bad_rows.py --apply` between those two steps (script written with Claude Code). Then `uv run 05_normalize_text.py --apply` writes every percentage as `%` in the label and `pourcent` in the TTS text, collapses whitespace, replaces the few characters the Parakeet tokenizer cannot represent as written, and applies the label conventions of `utils/label_conventions.py` to both texts (one spelling per drug name, titles written out, dates in digits, clock times as `14 heures 30`; also Claude Code). `04` also drops labels holding an ellipsis.
 - **One subset per source**, each a declared config, browsable and downloadable independently. The licence is encoded in the config name (`dictionary_CC_BY_4.0`, `drugs_CC_BY_4.0`, `parhaf_CC_BY_4.0`, `acronyms_CC_BY_4.0`, `parrot_CC_BY-NC-SA_4.0`) so it shows in the viewer's subset dropdown; the Parquet still lives under the plain `dictionary/`, `drugs/`, `parhaf/`, `acronyms/`, `parrot/` folders.
 - **`dictionary` + `drugs` + `parhaf` + `acronyms`** are the main corpus (CC BY 4.0); **`parrot`** is separate (CC BY-NC-SA 4.0, **test-only**), download or skip independently.
 - **`scripts/`**: `build_parquet.py` (how the Parquet was built) and `parquet_to_nemo.py` (rebuilds the NeMo layout, loose or tarred; see [Loading and training](#loading-and-training)).
@@ -442,10 +443,10 @@ Main corpus balanced 80 / 10 / 10 by **audio duration**, group-aware so nothing 
 
 | Split | Clips | % clips | Hours | % duration | Size |
 |-------|------:|------:|------:|-----------:|-----:|
-| train | 486,002 | 80.8% | 2,484.0 | 80.0% | 203.71 GB |
-| val | 57,710 | 9.6% | 310.5 | 10.0% | 25.48 GB |
+| train | 486,001 | 80.8% | 2,484.0 | 80.0% | 203.71 GB |
+| val | 57,709 | 9.6% | 310.5 | 10.0% | 25.48 GB |
 | test | 57,618 | 9.6% | 310.5 | 10.0% | 25.47 GB |
-| **all** | **601,330** | 100% | **3,105.0** | 100% | **254.65 GB** |
+| **all** | **601,328** | 100% | **3,105.0** | 100% | **254.65 GB** |
 
 These splits are the **main corpus** (dictionary + drugs + PARHAF + acronyms). PARROT is **not** mixed in: it ships as its own eval-only `parrot` subset (all 1,549 clips as one `test` split) under its own licence, **test-only on purpose** because the source authors ask that it not be trained on, and one untouched `test` split keeps it a clean out-of-domain benchmark (not split into val/test: the main corpus already has a large `val`, and halving 10.1 h would only add noise). Counts run slightly above 80% while duration lands exactly at 80% because the dictionary's short clips are the most numerous. Grouping rules:
 
