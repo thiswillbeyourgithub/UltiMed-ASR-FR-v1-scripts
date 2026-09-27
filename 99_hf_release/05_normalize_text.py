@@ -39,6 +39,16 @@ then showed a character the model is never taught. The generators apply it at pa
 time too.
 ``asr_training_source`` is left alone there: the TTS read it, and Parakeet never does.
 
+Both texts then go through ``utils/label_conventions.apply_label_conventions``: one
+written form for titles (``M. Dupont`` -> ``Monsieur Dupont``, ``Dr`` -> ``docteur``),
+dates (``le quinze mars deux mille vingt`` -> ``le 15 mars 2020``, ``premier mai`` ->
+``1er mai``), clock times (``14h30`` -> ``14 heures 30``) and drug names (``PRIMPERAN``
+/ ``Primperan`` -> ``Primpéran``, ``UVEDOSE`` -> ``Uvedose``, from
+``utils/drug_casing.json``). The source gets them too because each rewrite is spoken
+exactly like the original (``M.`` was read ``monsieur``, casing is silent), so the
+shipped source keeps matching both the audio and what ``voxtral_normalize`` derives
+from the new label. The generators apply the same rewrites at parse time.
+
 Every manifest is rewritten independently, like 04, and the run is idempotent.
 
 This file was written by Claude Code.
@@ -55,6 +65,7 @@ from loguru import logger
 _HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(_HERE.parent / "utils"))
 from nemo_manifest import read_jsonl, write_jsonl  # noqa: E402
+from label_conventions import apply_label_conventions  # noqa: E402
 from parakeet_tokenizer import ParakeetTokenizer  # noqa: E402
 from percent_normalize import (  # noqa: E402
     LEFTOVER_RE, percent_sign_to_one_word, percent_to_one_word, percent_to_symbol,
@@ -70,11 +81,11 @@ def normalize_row(row: dict, tok: ParakeetTokenizer) -> dict:
     its ``nfkc`` setting does not matter here.
     """
     out = dict(row)
-    out["text"] = percent_to_symbol(tok.clean_label(row["text"]))
+    out["text"] = apply_label_conventions(percent_to_symbol(tok.clean_label(row["text"])))
     if "asr_training_source" in row:
         # One space between words here too, without clean_label's character fold.
-        out["asr_training_source"] = " ".join(percent_sign_to_one_word(
-            percent_to_one_word(row["asr_training_source"])).split())
+        out["asr_training_source"] = apply_label_conventions(" ".join(percent_sign_to_one_word(
+            percent_to_one_word(row["asr_training_source"])).split()))
     return out
 
 

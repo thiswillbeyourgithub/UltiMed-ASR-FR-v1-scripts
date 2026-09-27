@@ -2,7 +2,8 @@
 
 Checks that a v1 manifest row gets both of its texts normalized: the label through
 ``ParakeetTokenizer.clean_label`` + ``%``, the TTS source through ``pourcent``. The percent
-rewrite itself is tested in ``tests/test_percent_normalize.py``.
+rewrite itself is tested in ``tests/test_percent_normalize.py``, the label conventions
+(titles, dates, clock, drug casing, applied to both texts) in ``tests/test_label_conventions.py``.
 
 Run: python tests/test_normalize_text.py
 """
@@ -31,5 +32,20 @@ def test_normalize_row() -> None:
     print("test_normalize_row: OK")
 
 
+def test_label_conventions_both_texts() -> None:
+    mod = load_sync_module(script=SCRIPT)
+    tok = mod.ParakeetTokenizer(nfkc=False)
+    row = {"audio_filepath": "a.flac",
+           "text": "M. Petit prend du KARDEGIC depuis le quinze mars à 14h30.",
+           "asr_training_source": "M. Petit prend du KARDEGIC depuis le quinze mars à 14h30."}
+    out = mod.normalize_row(row, tok)
+    want = "Monsieur Petit prend du Kardégic depuis le 15 mars à 14 heures 30."
+    assert out["text"] == want, out["text"]
+    assert out["asr_training_source"] == want, out["asr_training_source"]
+    assert mod.normalize_row(out, tok) == out
+    print("test_label_conventions_both_texts: OK")
+
+
 if __name__ == "__main__":
     test_normalize_row()
+    test_label_conventions_both_texts()
