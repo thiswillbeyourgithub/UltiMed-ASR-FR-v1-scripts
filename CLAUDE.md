@@ -42,7 +42,10 @@ sub-steps of that stage.
 `99_hf_release/` first builds the **NeMo-format JSONL manifests** from each stage's
 `generated_dataset.jsonl` + its `.flac` clips: `01_build_nemo_manifest.py`
 (per dataset) and `02_combine_nemo_manifests.py` (release-wide combine), both thin
-wrappers over `utils/nemo_manifest.py`. `03_sync_hotfix_results.py` then carries stage
+wrappers over `utils/nemo_manifest.py`. The combine re-splits the pooled rows, then
+rewrites each `<name>/{train,val,test}.jsonl` to that dataset's rows of the top-level
+split, so the per-source and release-wide splits never disagree
+(`--sync-per-source-only` redoes just that on existing manifests). `03_sync_hotfix_results.py` then carries stage
 06's results into every manifest: it refreshes the `duration` of clips whose audio was
 regenerated (a rebuild would NOT, since `probe_durations` caches by file name with no
 mtime) and attaches the QC columns the release ships (`cer`, `cer_tail`,

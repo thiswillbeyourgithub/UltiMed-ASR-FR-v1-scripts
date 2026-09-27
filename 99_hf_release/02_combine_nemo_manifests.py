@@ -31,8 +31,14 @@ so no home path leaks).
 * **off**: plain concat of each dataset's own train/val/test (already ~ratio by
   count), only fixing the paths, and report how far off the duration balance is.
 
+After a global re-split, each ``<name>/{train,val,test}.jsonl`` is rewritten to
+hold exactly that dataset's rows of the top-level split (``sync_per_source_splits``),
+so the per-source and release-wide splits never disagree. ``--sync-per-source-only``
+does just that step on already-combined manifests, leaving the top-level split as is.
+
     uv run 02_combine_nemo_manifests.py                 # global duration re-split
     uv run 02_combine_nemo_manifests.py --no-stratify-duration   # plain concat
+    uv run 02_combine_nemo_manifests.py --exclude PARROT --sync-per-source-only
 
 Written with Claude Code.
 """
@@ -52,6 +58,7 @@ from nemo_manifest import (  # noqa: E402
     parse_split,
     read_jsonl,
     relativize,
+    resolve_audio,
     summarize,
     write_jsonl,
     write_splits,
@@ -73,6 +80,43 @@ def load_full(subdir: Path) -> list[dict]:
     for r in rows:
         r["_audio_abs"] = (subdir / r["audio_filepath"]).resolve()
     return rows
+
+
+def sync_per_source_splits(root: Path, subdirs: list[Path]) -> dict[str, dict[str, int]]:
+    """Rewrite every ``<name>/{train,val,test}.jsonl`` from the release-wide split.
+
+    ``01_build_nemo_manifest.py`` gives each dataset its own train/val/test, and the
+    global re-split above draws a NEW partition over the pooled rows. Without this
+    step the two disagree (measured on v1: a fifth of the dictionary clips and two
+    fifths of the PARHAF clips sat in a different split per source than release-wide),
+    so anything reading ``<name>/val.jsonl`` would score clips the trainer trains on.
+    After it, ``<name>/<split>.jsonl`` is exactly the ``<name>`` rows of the top-level
+    ``<split>.jsonl``.
+
+    Rows are taken from ``<name>/full.jsonl`` untouched (every column kept, paths
+    already relative to the subfolder), only their split label comes from the
+    top-level files, matched on the resolved audio path. A row of ``full.jsonl`` that
+    no top-level split holds means the two levels were built from different data, so
+    it raises instead of guessing. Excluded datasets (not in ``subdirs``, e.g. the
+    test-only PARROT) keep their own split. Returns ``{name: {split: count}}``.
+    """
+    label_of: dict[str, str] = {}
+    for s in SPLITS:
+        for r in read_jsonl(root / f"{s}.jsonl"):
+            label_of[resolve_audio(root, r["audio_filepath"])] = s
+    counts: dict[str, dict[str, int]] = {}
+    for sd in subdirs:
+        rows = read_jsonl(sd / "full.jsonl")
+        labels = [label_of.get(resolve_audio(sd, r["audio_filepath"])) for r in rows]
+        missing = [r["audio_filepath"] for r, lab in zip(rows, labels) if lab is None]
+        if missing:
+            raise click.ClickException(
+                f"{len(missing)} rows of {sd.name}/full.jsonl are in no top-level split "
+                f"(e.g. {missing[0]}); rerun the combine instead of syncing")
+        counts[sd.name] = {s: write_jsonl(sd / f"{s}.jsonl",
+                                          (r for r, lab in zip(rows, labels) if lab == s))
+                           for s in SPLITS}
+    return counts
 
 
 def refix_row(row: dict, subdir: Path, parent_dir: Path) -> dict:
@@ -103,8 +147,13 @@ def refix_row(row: dict, subdir: Path, parent_dir: Path) -> dict:
                    "differently-licensed subset shipped on its own (repeatable).")
 @click.option("--absolute", is_flag=True,
               help="Write absolute audio_filepath (embeds the machine path; off by default).")
+@click.option("--sync-per-source-only", is_flag=True,
+              help="Only rewrite each <name>/{train,val,test}.jsonl from the EXISTING "
+                   "top-level split (no re-split), e.g. on manifests built before the "
+                   "combine did it.")
 def main(root: Path, split_spec: str, stratify_duration: bool, stratify: bool,
-         strict_coverage: bool, exclude: tuple[str, ...], absolute: bool):
+         strict_coverage: bool, exclude: tuple[str, ...], absolute: bool,
+         sync_per_source_only: bool):
     logger.remove()
     logger.add(sys.stderr, level="INFO",
                format="<green>{time:HH:mm:ss}</green> <level>{message}</level>")
@@ -123,6 +172,10 @@ def main(root: Path, split_spec: str, stratify_duration: bool, stratify: bool,
         subdirs = [d for d in subdirs if d.name not in skip]
     if not subdirs:
         raise click.UsageError(f"no <name>/full.jsonl found under {root}; run 01_build_nemo_manifest.py first")
+    if sync_per_source_only:
+        for name, c in sync_per_source_splits(root, subdirs).items():
+            logger.info("  {}: per-source split synced to the release-wide one: {}", name, c)
+        return
     logger.info("combining {} datasets: {}", len(subdirs), ", ".join(d.name for d in subdirs))
     ratios = parse_split(split_spec)
 
@@ -141,6 +194,8 @@ def main(root: Path, split_spec: str, stratify_duration: bool, stratify: bool,
         logger.info("global duration re-split -> full={} train={} val={} test={}\n{}",
                     counts["full"], counts["train"], counts["val"], counts["test"],
                     format_summary(agg))
+        for name, c in sync_per_source_splits(root, subdirs).items():
+            logger.info("  {}: per-source split synced to the release-wide one: {}", name, c)
         return
 
     # Plain concat: keep each dataset's own split, only fix the paths, then

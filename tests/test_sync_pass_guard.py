@@ -24,6 +24,7 @@ def load_sync_module(script: str = "03_sync_hotfix_results.py"):
 
     click.command = click.option = click.argument = passthrough
     click.Path = lambda *a, **k: None
+    click.ClickException = click.UsageError = type("ClickException", (Exception,), {})
     loguru = types.ModuleType("loguru")
     loguru.logger = types.SimpleNamespace(
         info=lambda *a, **k: None, warning=lambda *a, **k: None,
