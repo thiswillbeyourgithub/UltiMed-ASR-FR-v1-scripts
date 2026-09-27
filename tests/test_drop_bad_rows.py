@@ -3,7 +3,8 @@
 Checks that `qc_status == "exhausted"` rows are dropped, that rows never synced by
 03_sync_hotfix_results.py (no `qc_status` key) are kept but counted, and that an eval
 clip whose text repeats a training text (up to punctuation and case) is dropped from
-every manifest that references its audio, whatever directory that manifest lives in.
+every manifest that references its audio, whatever directory that manifest lives in,
+and that a label holding an ellipsis (truncated LLM output, anonymized date) is dropped.
 
 Run: python tests/test_drop_bad_rows.py
 """
@@ -63,6 +64,22 @@ def test_eval_duplicates() -> None:
     print("test_eval_duplicates: OK")
 
 
+def test_ellipsis() -> None:
+    mod = load_sync_module(script=SCRIPT)
+    rows = [
+        {"audio_filepath": "a.flac", "qc_status": "original",
+         "text": "Les taux de rénine active à 12 milliu..."},
+        {"audio_filepath": "b.flac", "qc_status": "original",
+         "text": "La date de l'intervention est le …"},
+        {"audio_filepath": "c.flac", "qc_status": "original", "text": "Tension à 12,8."},
+    ]
+    kept, dropped, _ = mod.filter_rows(rows, Path("/m"))
+    assert [r["audio_filepath"] for r in kept] == ["c.flac"], kept
+    assert [why for _, why in dropped] == [mod.ELLIPSIS, mod.ELLIPSIS], dropped
+    print("test_ellipsis: OK")
+
+
 if __name__ == "__main__":
     test_filter_exhausted()
     test_eval_duplicates()
+    test_ellipsis()

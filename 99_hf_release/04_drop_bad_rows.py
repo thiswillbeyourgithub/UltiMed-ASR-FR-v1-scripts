@@ -11,7 +11,7 @@ into the manifests) and BEFORE ``05_normalize_text.py`` and ``scripts/build_parq
     uv run 04_drop_bad_rows.py            # dry run, reports what would be dropped
     uv run 04_drop_bad_rows.py --apply
 
-Two kinds of rows are dropped:
+Three kinds of rows are dropped:
 
 1. **Exhausted clips.** A clip is ``exhausted`` when stage 06 flagged it (its STT
    reading disagreed too much with its label) and no regenerated draw was good
@@ -33,6 +33,12 @@ Two kinds of rows are dropped:
    whitespace collapsed), the same key the trainer's ``data_leak_check`` uses (see
    below). Fixing it here rather than in the splitter keeps the v1 split stable: a
    splitter change would reshuffle every row.
+
+3. **Labels with an ellipsis.** ``...`` (or ``…``) in a label marks text that is not
+   there: an LLM output cut short (``rénine active à 12 milliu...``) or a date PARHAF
+   anonymized away (``La date de l'intervention est le ...``). The audio says the
+   truncated text, so the pair is consistent, but it teaches the model to write an
+   ellipsis for a trailing-off sentence, which no dictation wants. UltiMed v1 had 2.
 
 A dropped clip is dropped from EVERY manifest (matched on its resolved audio path),
 including the per-source ``<source>/*.jsonl`` partitions and the down-sampled
@@ -72,6 +78,8 @@ EVAL_MANIFESTS = ("data/NeMO_files/val.jsonl", "data/NeMO_files/test.jsonl",
 
 EXHAUSTED = "exhausted"
 DUPLICATE = "duplicate-of-train"
+ELLIPSIS = "ellipsis"
+_ELLIPSIS = re.compile(r"\.\.\.|…")
 
 _PUNCT = re.compile(r"[^\w\s]")
 
@@ -130,7 +138,7 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
     kept : list[dict]
         Rows that stay (order preserved).
     dropped : list[tuple[dict, str]]
-        Each dropped row with its reason, ``EXHAUSTED`` or ``DUPLICATE``.
+        Each dropped row with its reason, ``EXHAUSTED``, ``DUPLICATE`` or ``ELLIPSIS``.
     n_unsynced : int
         How many rows carry no ``qc_status`` key at all, i.e. were never touched by
         ``03_sync_hotfix_results.py``: their status is unknown, so they are kept, but
@@ -146,6 +154,8 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
             dropped.append((row, EXHAUSTED))
         elif drop_audio and resolve_audio(manifest_dir, row["audio_filepath"]) in drop_audio:
             dropped.append((row, DUPLICATE))
+        elif _ELLIPSIS.search(row.get("text", "")):
+            dropped.append((row, ELLIPSIS))
         else:
             kept.append(row)
     return kept, dropped, n_unsynced
@@ -157,7 +167,7 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
               help="Release stage root, holding the `data` symlink.")
 @click.option("--apply", is_flag=True, help="Write. Without it this is a dry run.")
 def main(manifests: tuple[Path, ...], root: str, apply: bool) -> None:
-    """Remove exhausted clips and eval duplicates of training texts from the release manifests."""
+    """Remove exhausted clips, eval duplicates of training texts and ellipsis labels from the release manifests."""
     root_path = Path(root).resolve()
     targets = [Path(m) for m in manifests]
     if not targets:
