@@ -17,7 +17,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "utils"))
 from label_conventions import (  # noqa: E402
     DrugCaser, apply_label_conventions, default_drug_caser, expand_titles, normalize_clock,
-    normalize_compounds, normalize_dates, normalize_quantities, normalize_spelling, normalize_sutures, parse_french_number,
+    normalize_compounds, normalize_dates, normalize_quantities, normalize_spelling, normalize_staging, normalize_sutures,
+    parse_french_number,
 )
 
 
@@ -141,9 +142,15 @@ def test_quantities() -> None:
         # A ratio converts both halves, never "5 jours sur sept".
         ("cinq jours sur sept, vingt-quatre heures sur vingt-quatre, trois semaines sur quatre",
          "5 jours sur 7, 24 heures sur 24, 3 semaines sur 4"),
+        # Counts of times / sessions, range heads and scores: digits (author's choice).
+        ("deux comprimés trois fois par jour, dix séances", "deux comprimés 3 fois par jour, 10 séances"),
+        ("pendant deux à trois jours, un à 2 fois, et deux à 4 semaines",
+         "pendant 2 à 3 jours, 1 à 2 fois, et 2 à 4 semaines"),
+        ("douleur à deux sur dix, EVA zéro sur dix", "douleur à 2 sur 10, EVA 0 sur 10"),
     ])
     for untouched in [
-        "deux comprimés trois fois par jour",
+        "deux comprimés",
+        "une fois par jour",
         "un milligramme, une heure, un an",
         "pendant deux trois jours",
         "Une dose de 4 milligrammes.",
@@ -186,6 +193,7 @@ def test_spelling() -> None:
         ("Pancréatite aigüe, lésions subaigües, ambigüité.", "Pancréatite aiguë, lésions subaiguës, ambiguïté."),
         ("Compte-rendu opératoire, les comptes-rendus.", "Compte rendu opératoire, les comptes rendus."),
         ("Bêta-bloquants, bêtabloquant, bêta bloqueur.", "Bétabloquants, bétabloquant, bétabloqueur."),
+        ("Anévrysme, urèthre, sténose uréthrale, périuréthral.", "Anévrisme, urètre, sténose urétrale, périurétral."),
     ])
     assert normalize_spelling("Docteur Argüelles") == "Docteur Argüelles"
     print("test_spelling: OK")
@@ -211,6 +219,18 @@ def test_drug_caser() -> None:
     assert default("paracétamol codéiné") == "paracétamol codéiné"
     assert default("une note de menthe") == "une note de menthe"
     print("test_drug_caser: OK")
+
+
+def test_staging() -> None:
+    check(normalize_staging, [
+        ("Cancer de stade IIIb, grade I à II, type I et II.", "Cancer de stade 3b, grade 1 à 2, type 1 et 2."),
+        ("Antalgique de palier deux, classe III NYHA, NYHA II.", "Antalgique de palier 2, classe 3 NYHA, NYHA 2."),
+        ("Diabète de type 2, stades IVB.", "Diabète de type 2, stades 4B."),
+    ])
+    # Roman numerals that are names, letters that happen to be Roman, "un peu".
+    for kept in ("angiotensine II", "APACHE II", "métaphase II", "type C", "un type un peu particulier"):
+        assert normalize_staging(kept) == kept, kept
+    print("test_staging: OK")
 
 
 def test_all() -> None:
@@ -244,6 +264,7 @@ if __name__ == "__main__":
     test_compounds()
     test_sutures_and_decimals()
     test_spelling()
+    test_staging()
     test_drug_caser()
     test_all()
     test_generator_parse()

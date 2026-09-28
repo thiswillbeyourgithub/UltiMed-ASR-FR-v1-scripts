@@ -33,8 +33,10 @@ rewrites the minority spellings to it:
 - **Quantities** (``normalize_quantities``). A spelled number before a unit of measure
   or a duration becomes digits (``quatre milligrammes`` -> ``4 milligrammes``, 62k
   against 1.9k; ``zéro virgule vingt-cinq microgrammes`` -> ``0,25 microgrammes``;
-  ``pendant dix-huit mois`` -> ``pendant 18 mois``). Counts of things stay spelled, as
-  the corpus spells them (``deux comprimés``, ``trois fois``), and so does a single
+  ``pendant dix-huit mois`` -> ``pendant 18 mois``), and so do ``fois`` / ``séances``
+  counts, a range head and a score (``deux fois`` -> ``2 fois``, ``un à deux jours`` ->
+  ``1 à 2 jours``, ``deux sur dix`` -> ``2 sur 10``, 2026-09-28). Other counts of things
+  stay spelled, as the corpus spells them (``deux comprimés``), and so does a single
   ``un``/``une`` (``un an``, ``une heure``). Added 2026-09-28 because the hand-made
   ``drug_sentence`` sets spelled every dose while UltiMed writes digits: the model
   wrote ``4 milligrammes`` on the synthetic voice and 63% of that set's WER was
@@ -45,11 +47,17 @@ rewrites the minority spellings to it:
   ``Vicryl 3 zéros`` / ``Vicryl 3/0`` -> ``Vicryl 3-0``, only after a suture material.
   Skipped for a TTS source (``tts_source=True``) because voxtral does not read ``3-0``
   reliably as what the source said.
+- **Staging numbers** (``normalize_staging``). After ``stade``, ``grade``, ``type``,
+  ``classe``, ``palier``, ``niveau`` or ``NYHA``, a Roman or spelled number becomes digits
+  (``stade IIIb`` -> ``stade 3b``, ``palier deux`` -> ``palier 2``), the author's choice
+  (2026-09-28) over a corpus that mixed all three. Roman numerals elsewhere
+  (``angiotensine II``) stay.
 - **Compounds** (``normalize_compounds``). ``petit déjeuner`` -> ``petit-déjeuner``
   (213 against 35, and the dictionary spelling of the noun).
 - **Spelling variants** (``normalize_spelling``). ``œ`` -> ``oe`` everywhere (``cœur`` ->
   ``coeur``), ``aigüe`` -> ``aiguë``, ``compte-rendu`` -> ``compte rendu``,
-  ``bêta-bloquant`` / ``bêtabloquant`` -> ``bétabloquant``. Added 2026-09-28 from an
+  ``bêta-bloquant`` / ``bêtabloquant`` -> ``bétabloquant``, ``anévrysme`` -> ``anévrisme``,
+  ``urèthre`` / ``uréthral`` -> ``urètre`` / ``urétral``. Added 2026-09-28 from an
   inference sweep of val/test, where these pairs were among the most frequent diffs.
 - **Drug names** (``DrugCaser``). One spelling per drug word, from the lexicon
   ``drug_casing.json`` built by ``02_drugs/02_build_drug_casing.py`` (see its
@@ -75,9 +83,14 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
+
+# voxtral_normalize is a sibling module (stdlib only too), whatever the caller's sys.path.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from voxtral_normalize import roman_to_int  # noqa: E402
 
 # One alphabetic word (Unicode letters only, so digits, "×" and apostrophes split).
 WORD_RE = re.compile(r"[^\W\d_]+")
@@ -301,14 +314,16 @@ def normalize_clock(text: str) -> str:
 
 # Units of measure and durations: the corpus writes the number before them in digits
 # (``milligrammes`` 62k digits against 1.9k words, ``ans`` 241k / 2.9k, ``mois``
-# 64k / 11k, ``heures`` 38k / 3.3k). Counts of things are NOT here, because the
-# corpus spells them (``comprimés`` 263 digits / 406 words, ``fois`` 7k / 21k,
-# ``bouffées``, ``gélules``, ``prises``, ``doses``, ``séances``): "deux comprimés de
-# 4 milligrammes" is the majority form. The singular forms only follow a decimal
-# (``zéro virgule cinq milligramme``), since ``un``/``une`` is never converted.
+# 64k / 11k, ``heures`` 38k / 3.3k). ``fois`` and ``séances`` were split (8.9k digits
+# against 31.7k words, 1.8k against 2.2k) and the author chose digits (2026-09-28,
+# "2 fois par jour"), although words were the majority. Other counts of things are NOT
+# here, the corpus spells them (``comprimés`` 263 digits / 406 words, ``bouffées``,
+# ``gélules``, ``prises``, ``doses``): "deux comprimés de 4 milligrammes". The singular
+# forms only follow a decimal (``zéro virgule cinq milligramme``), since ``un``/``une``
+# is never converted (``une fois par jour``: 4.8k against 64 ``1 fois``).
 _QTY_UNITS = (r"(?:(?:milli|micro|nano|kilo)?grammes?|kilos?|(?:milli|micro|centi)?litres?"
               r"|(?:milli|centi|kilo)?mètres?|(?:milli|micro)moles?|unités?|degrés?"
-              r"|heures?|minutes?|secondes?|jours?|semaines?|mois|ans?"
+              r"|heures?|minutes?|secondes?|jours?|semaines?|mois|ans?|fois|séances?"
               # Radiology units: 588 labels write "N grays", 11 spelled them; hertz
               # 356 / 3, teslas 114 / 3.
               r"|(?:milli|centi)?grays?|(?:kilo|méga)?hertz|teslas?)")
@@ -324,6 +339,14 @@ _QUANTITY_RE = re.compile(rf"({_QTY_SEQ})(?:(\s+virgule\s+)({_QTY_SEQ}))?(\s+{_Q
 # A decimal the LLM wrote half in digits (94 labels, "3 virgule 5 mégahertz"): the
 # corpus writes "3,5" everywhere else.
 _DIGIT_VIRGULE_RE = re.compile(r"(?<![\w,])(\d+) virgule (\d+)\b")
+# The first number of a range whose second one is already digits ("deux à 3 jours",
+# ~200 labels, and what ``_QUANTITY_RE`` alone makes of "deux à trois jours", since only
+# the number next to the unit matches it). "un à 2 jours" -> "1 à 2 jours" too.
+_RANGE_HEAD_RE = re.compile(rf"({_QTY_SEQ})(\s+(?:à|ou)\s+\d+(?:,\d+)?\s+{_QTY_UNITS})\b")
+# A score out of ten, twenty or a hundred (pain scale, "deux sur dix"): 6k labels write
+# "2 sur 10", 146 spell it.
+_SCORE_BASE = {"dix": 10, "vingt": 20, "cent": 100}
+_SCORE_RE = re.compile(rf"({_QTY_SEQ})(\s+sur\s+)(dix|vingt|cent)\b")
 # Suture gauges: "Vicryl trois zéro" (~250), "Vicryl 3 zéro" (~255), "Vicryl 3-0" (~300,
 # also what the model writes). Only right after a suture material, optionally followed
 # by "rapide" / "résorbable" / "fast", because "N zéro" elsewhere is not a gauge
@@ -423,13 +446,29 @@ def normalize_quantities(text: str) -> str:
     """``quatre milligrammes`` -> ``4 milligrammes``, ``zéro virgule vingt-cinq microgrammes``
     -> ``0,25 microgrammes``, ``toutes les huit heures`` -> ``toutes les 8 heures``.
 
-    Only before a unit of measure or a duration (``_QTY_UNITS``); counts (``deux
-    comprimés``, ``trois fois``) and a single ``un``/``une`` stay spelled. Minutes after
+    Only before a unit of measure, a duration, ``fois`` or ``séances`` (``_QTY_UNITS``);
+    other counts (``deux comprimés``) and a single ``un``/``une`` stay spelled, except as
+    the head of a range (``un à deux jours`` -> ``1 à 2 jours``). A score becomes digits
+    too (``deux sur dix`` -> ``2 sur 10``). Minutes after
     a spelled hour (``huit heures trente``) are left alone: telling them from a count
     that follows (``deux heures deux fois par jour``) needs more than a regex. Idempotent.
     """
     text = _QUANTITY_RE.sub(_replace_quantity, text)
+    text = _RANGE_HEAD_RE.sub(lambda m: _digits_or_keep(m, 1) + m.group(2), text)
+    text = _SCORE_RE.sub(lambda m: f"{_digits_or_keep(m, 1)}{m.group(2)}{_SCORE_BASE[m.group(3)]}"
+                         if parse_french_number(_words(m.group(1))) is not None else m.group(0), text)
     return _DIGIT_VIRGULE_RE.sub(r"\1,\2", text)
+
+
+def _digits_or_keep(m: re.Match, group: int) -> str:
+    """Group ``group`` of ``m`` (spelled number words, maybe led by a sentence "et") as
+    digits, or unchanged when the words do not spell one number."""
+    whole = _words(m.group(group))
+    head = ""
+    while whole and whole[0].lower() == "et":
+        head += whole.pop(0) + " "
+    value = parse_french_number(whole) if whole else None
+    return m.group(group) if value is None else f"{head}{value}"
 
 
 def normalize_sutures(text: str) -> str:
@@ -447,6 +486,41 @@ def _replace_suture(m: re.Match) -> str:
     num = m.group(2)
     value = num if num.isdigit() else parse_french_number([num.lower()])
     return f"{m.group(1)}{value}-0"
+
+
+# ---------------------------------------------------------------------------
+# Staging numbers
+# ---------------------------------------------------------------------------
+
+# After a staging / classification word the corpus mixed Roman numerals, digits and
+# words (stade 5.4k Roman / 0.4k digits, grade 2.9k / 2.4k, type 6.2k / 3.4k, classe
+# 0.6k / 0.7k, palier 0.8k / 5.0k / 0.5k "palier deux"), the same sound written three
+# ways. The author chose digits for all of them (2026-09-28): "stade 3", "grade 2b",
+# "type 1 et 2". Only these words: a Roman numeral elsewhere is a name ("angiotensine
+# II", "APACHE II", "métaphase II", "Henri IV") and stays. Voxtral read every form the
+# same, so the TTS source gets the rewrite too.
+_STAGING_WORD = r"\b(?:[Ss]tades?|[Gg]rades?|[Tt]ypes?|[Cc]lasses?|[Pp]aliers?|[Nn]iveaux?|NYHA)"
+# A Roman numeral (uppercase only: "civil" is valid Roman letters) with an optional
+# sub-stage letter ("IIIb", "IVB"), a spelled number, or digits. "un" not before "peu"
+# ("un type un peu particulier").
+_STAGE_NUM = (r"(?:[IVX]+[A-Da-d]?|(?:un(?!\s+peu\b)|deux|trois|quatre|cinq|six|sept|huit|neuf|dix)"
+              r"|\d+[A-Da-d]?)")
+_STAGING_RE = re.compile(rf"({_STAGING_WORD}\s+)({_STAGE_NUM}(?:\s*(?:-|/|à|et|ou|,)\s*{_STAGE_NUM})*)\b")
+_STAGE_TOKEN_RE = re.compile(r"\b([IVX]+)([A-Da-d]?)\b|\b(un|deux|trois|quatre|cinq|six|sept|huit|neuf|dix)\b")
+
+
+def _stage_token(m: re.Match) -> str:
+    if m.group(3):
+        return str(_NUMBER_VALUES[m.group(3)])
+    n = roman_to_int(m.group(1))
+    # A letter that happens to be Roman ("type C" is 100, "classe D" is 500) is not a stage.
+    return m.group(0) if n is None or not 1 <= n <= 20 else f"{n}{m.group(2)}"
+
+
+def normalize_staging(text: str) -> str:
+    """``stade IIIb`` -> ``stade 3b``, ``palier deux`` -> ``palier 2``, ``grade I à II``
+    -> ``grade 1 à 2``, ``classe III NYHA`` -> ``classe 3 NYHA``. Idempotent."""
+    return _STAGING_RE.sub(lambda m: m.group(1) + _STAGE_TOKEN_RE.sub(_stage_token, m.group(2)), text)
 
 
 # ---------------------------------------------------------------------------
@@ -480,6 +554,10 @@ def normalize_compounds(text: str) -> str:
 #   is left alone because ``güe`` must end the word.
 # - ``compte rendu`` (81k) over ``compte-rendu`` (2k).
 # - ``bétabloquant`` (1.2k) over ``bêtabloquant`` (1.1k) / ``bêta-bloquant`` (0.1k).
+# - ``anévrisme`` (2.7k) over ``anévrysme`` (1.0k).
+# - ``urètre`` / ``urétral`` without the h, everywhere (2.8k against 2.3k over the
+#   noun and its derivatives together; the noun alone preferred ``urèthre``, 741 / 274,
+#   but one rule for the family beats a noun and adjective spelled differently).
 _SPELLING_RULES = (
     (re.compile("œ"), "oe"),
     (re.compile("Œ"), "Oe"),
@@ -487,12 +565,16 @@ _SPELLING_RULES = (
     (re.compile(r"güité"), "guïté"),
     (re.compile(r"\b([Cc]omptes?)-(rendus?)\b"), r"\1 \2"),
     (re.compile(r"\b([Bb])[êée]ta[- ]?(bloqu(?:ant|eur)\w*)"), r"\1éta\2"),
+    (re.compile(r"([Aa])névrysm"), r"\1névrism"),
+    (re.compile(r"([Uu])réthr"), r"\1rétr"),
+    (re.compile(r"([Uu])rèthr"), r"\1rètr"),
 )
 
 
 def normalize_spelling(text: str) -> str:
     """``cœur`` -> ``coeur``, ``aigüe`` -> ``aiguë``, ``compte-rendu`` -> ``compte rendu``,
-    ``bêta-bloquant`` -> ``bétabloquant``. Idempotent."""
+    ``bêta-bloquant`` -> ``bétabloquant``, ``anévrysme`` -> ``anévrisme``, ``urèthre`` ->
+    ``urètre``. Idempotent."""
     for pattern, repl in _SPELLING_RULES:
         text = pattern.sub(repl, text)
     return text
@@ -555,7 +637,7 @@ def apply_label_conventions(text: str, tts_source: bool = False) -> str:
     ``tts_source=True`` is for a text the TTS already read (05 on the v1 sources): it
     skips ``normalize_sutures``, the one rewrite voxtral does not speak identically.
     """
-    text = normalize_quantities(normalize_clock(normalize_dates(expand_titles(text))))
+    text = normalize_staging(normalize_quantities(normalize_clock(normalize_dates(expand_titles(text)))))
     if not tts_source:
         text = normalize_sutures(text)
     return default_drug_caser()(normalize_spelling(normalize_compounds(text)))
