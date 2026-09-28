@@ -11,7 +11,7 @@ into the manifests) and BEFORE ``05_normalize_text.py`` and ``scripts/build_parq
     uv run 04_drop_bad_rows.py            # dry run, reports what would be dropped
     uv run 04_drop_bad_rows.py --apply
 
-Three kinds of rows are dropped:
+Five kinds of rows are dropped:
 
 1. **Exhausted clips.** A clip is ``exhausted`` when stage 06 flagged it (its STT
    reading disagreed too much with its label) and no regenerated draw was good
@@ -40,12 +40,31 @@ Three kinds of rows are dropped:
    truncated text, so the pair is consistent, but it teaches the model to write an
    ellipsis for a trailing-off sentence, which no dictation wants. UltiMed v1 had 2.
 
+4. **Leaked LLM reasoning.** A label holding the generator's own chatter instead of
+   a sentence: ``tags Let me create varied contexts: - Sentence 1: 300 mg comprimé -
+   initial prescription ...``, found 2026-09-28 in the hand-made ``drug_sentence``
+   train set (the TTS then read it all). Matched on English meta-talk markers only
+   (``let me``, ``I'll``, ``here are``, ``Sentence 1:``, a ``<t>`` tag), never on a
+   lone English word: UltiMed holds legitimate English terms (``bed nucleus of the
+   accessory olfactory tract``) and French ``sentence arbitrale``. UltiMed v1.2 has 0.
+
+5. **Impossible speaking rate.** More than ``MAX_WORDS_PER_SECOND`` words per second
+   of the manifest ``duration``: the audio cannot say the label. Found 2026-09-28 in
+   ``drug_sentence`` train: a 16-word label on a 0.3 s clip (53 words/s), a broken
+   TTS output. Real speech in UltiMed tops out at 4.2 words/s (99.99th percentile
+   3.6), so 8 leaves a wide margin and drops no UltiMed row.
+
 A dropped clip is dropped from EVERY manifest (matched on its resolved audio path),
 including the per-source ``<source>/*.jsonl`` partitions and the down-sampled
 ``*.down-N`` fixtures, since each is a copy of rows and the parquet / trainer read
 them directly. The ``.flac`` files are NOT deleted: nothing references them once the
 manifests are filtered (``build_parquet.py`` embeds only manifest rows), and keeping
 them lets a later stage-06 retry still reach them.
+
+The hand-made NeMo-repo sets (``perso/drug_sentence_dataset/*.json``, the private
+``perso/oli_spoken_dataset`` manifests) are filtered by passing them explicitly:
+``uv run 04_drop_bad_rows.py --apply <manifest> ...`` (the eval-duplicate check still
+compares against the release train split only).
 
 Idempotent: a second run finds nothing left to drop.
 
@@ -80,6 +99,11 @@ EXHAUSTED = "exhausted"
 DUPLICATE = "duplicate-of-train"
 ELLIPSIS = "ellipsis"
 _ELLIPSIS = re.compile(r"\.\.\.|…")
+LLM_LEAK = "llm-leak"
+_LLM_LEAK = re.compile(r"(?i:\blet me\b|\bI'll\b|\bI will\b|\bhere (?:is|are)\b|\bas requested\b)"
+                       r"|\bSentence \d+\s*:|</?t>")
+TOO_FAST = "too-fast"
+MAX_WORDS_PER_SECOND = 8.0
 
 _PUNCT = re.compile(r"[^\w\s]")
 
@@ -120,6 +144,13 @@ def eval_duplicates(train_rows: list[dict],
             if normalize_text(r["text"]) in train_keys}
 
 
+def _too_fast(row: dict) -> bool:
+    """More words than the clip can hold (``MAX_WORDS_PER_SECOND``); a row without a
+    ``duration`` cannot be judged and is kept."""
+    duration = row.get("duration")
+    return bool(duration) and len(row.get("text", "").split()) / duration > MAX_WORDS_PER_SECOND
+
+
 def filter_rows(rows: list[dict], manifest_dir: Path,
                 drop_audio: Collection[str] = ()) -> tuple[list[dict], list[tuple[dict, str]], int]:
     """Split manifest rows into kept and dropped ones.
@@ -138,7 +169,8 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
     kept : list[dict]
         Rows that stay (order preserved).
     dropped : list[tuple[dict, str]]
-        Each dropped row with its reason, ``EXHAUSTED``, ``DUPLICATE`` or ``ELLIPSIS``.
+        Each dropped row with its reason: ``EXHAUSTED``, ``DUPLICATE``, ``ELLIPSIS``,
+        ``LLM_LEAK`` or ``TOO_FAST``.
     n_unsynced : int
         How many rows carry no ``qc_status`` key at all, i.e. were never touched by
         ``03_sync_hotfix_results.py``: their status is unknown, so they are kept, but
@@ -156,6 +188,10 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
             dropped.append((row, DUPLICATE))
         elif _ELLIPSIS.search(row.get("text", "")):
             dropped.append((row, ELLIPSIS))
+        elif _LLM_LEAK.search(row.get("text", "")):
+            dropped.append((row, LLM_LEAK))
+        elif _too_fast(row):
+            dropped.append((row, TOO_FAST))
         else:
             kept.append(row)
     return kept, dropped, n_unsynced
@@ -167,7 +203,8 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
               help="Release stage root, holding the `data` symlink.")
 @click.option("--apply", is_flag=True, help="Write. Without it this is a dry run.")
 def main(manifests: tuple[Path, ...], root: str, apply: bool) -> None:
-    """Remove exhausted clips, eval duplicates of training texts and ellipsis labels from the release manifests."""
+    """Remove exhausted clips, eval duplicates of training texts, ellipsis labels, leaked LLM
+    reasoning and impossibly fast labels from the release manifests (or the given ones)."""
     root_path = Path(root).resolve()
     targets = [Path(m) for m in manifests]
     if not targets:

@@ -58,7 +58,11 @@ and no redraw fixed them, so their audio does not say their label; v1 shipped th
 mistake) and the val/test clips whose text repeats a training text after normalization
 (the splitter groups by document, not by text, so two PARHAF documents sharing a
 sentence can straddle splits), plus the labels holding an ellipsis (`...` / `…`: a
-truncated LLM output or a PARHAF anonymized date, 2 in v1). Its `normalize_text` is a deliberate copy of the NeMo
+truncated LLM output or a PARHAF anonymized date, 2 in v1), leaked LLM reasoning
+(`Let me`, `Sentence 1:`, `<t>`; never a lone English word, UltiMed has real English
+terms) and labels over 8 words/s of audio (real speech tops out at 4.2). The last two
+found 1 row each in the hand-made NeMo-repo `drug_sentence` train set (2026-09-28), 0 in
+UltiMed; pass such manifests explicitly to 04 and 05. Its `normalize_text` is a deliberate copy of the NeMo
 fork's `data_leak_check.normalize_text` (separate repo); keep them identical. The
 row-level audio-path join (`resolve_audio`) lives in `utils/nemo_manifest.py`, shared
 with 03. It keeps the `.flac` files. `05_normalize_text.py` (dry run unless `--apply`) then

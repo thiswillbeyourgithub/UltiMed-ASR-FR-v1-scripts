@@ -4,7 +4,8 @@ Checks that `qc_status == "exhausted"` rows are dropped, that rows never synced 
 03_sync_hotfix_results.py (no `qc_status` key) are kept but counted, and that an eval
 clip whose text repeats a training text (up to punctuation and case) is dropped from
 every manifest that references its audio, whatever directory that manifest lives in,
-and that a label holding an ellipsis (truncated LLM output, anonymized date) is dropped.
+that a label holding an ellipsis (truncated LLM output, anonymized date) is dropped,
+and that leaked LLM reasoning and a label too long for its clip are dropped.
 
 Run: python tests/test_drop_bad_rows.py
 """
@@ -79,7 +80,30 @@ def test_ellipsis() -> None:
     print("test_ellipsis: OK")
 
 
+def test_llm_leak_and_too_fast() -> None:
+    mod = load_sync_module(script=SCRIPT)
+    rows = [
+        # The two real drug_sentence train rows found on 2026-09-28.
+        {"audio_filepath": "leak.flac", "qc_status": "original", "duration": 9.6,
+         "text": "tags Let me create varied contexts: - Sentence 1: 300 mg comprimé - initial prescription"},
+        {"audio_filepath": "fast.flac", "qc_status": "original", "duration": 0.3,
+         "text": "Renouvellement du traitement par nitrofurantoïne une gélule de 50 milligrammes "
+                 "quatre prises quotidiennes pendant 7 jours."},
+        # Legitimate English terms and French "sentence" stay.
+        {"audio_filepath": "ok1.flac", "qc_status": "original", "duration": 15.5,
+         "text": "Hypersignal FLAIR au niveau du bed nucleus of the accessory olfactory tract."},
+        {"audio_filepath": "ok2.flac", "qc_status": "original", "duration": 8.0,
+         "text": "Le tribunal a rendu une sentence arbitrale le 15 mars 2024."},
+        {"audio_filepath": "nodur.flac", "qc_status": "original", "text": "Pas de durée connue."},
+    ]
+    kept, dropped, _ = mod.filter_rows(rows, Path("/m"))
+    assert [r["audio_filepath"] for r in kept] == ["ok1.flac", "ok2.flac", "nodur.flac"], kept
+    assert [why for _, why in dropped] == [mod.LLM_LEAK, mod.TOO_FAST], dropped
+    print("test_llm_leak_and_too_fast: OK")
+
+
 if __name__ == "__main__":
     test_filter_exhausted()
     test_eval_duplicates()
     test_ellipsis()
+    test_llm_leak_and_too_fast()
