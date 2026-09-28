@@ -11,7 +11,7 @@ into the manifests) and BEFORE ``05_normalize_text.py`` and ``scripts/build_parq
     uv run 04_drop_bad_rows.py            # dry run, reports what would be dropped
     uv run 04_drop_bad_rows.py --apply
 
-Five kinds of rows are dropped:
+Six kinds of rows are dropped:
 
 1. **Exhausted clips.** A clip is ``exhausted`` when stage 06 flagged it (its STT
    reading disagreed too much with its label) and no regenerated draw was good
@@ -54,6 +54,13 @@ Five kinds of rows are dropped:
    TTS output. Real speech in UltiMed tops out at 4.2 words/s (99.99th percentile
    3.6), so 8 leaves a wide margin and drops no UltiMed row.
 
+6. **ASR-flagged clips.** The clips listed in ``asr_flagged_clips.jsonl`` (committed,
+   next to this script), written by ``06_hotfixes/04_flag_asr_defects.py`` from a
+   fine-tuned Parakeet transcription of the corpus: a TTS preamble (voxtral babbled
+   words before the sentence, which Whisper QC skipped) or a phrase both Parakeet and
+   Whisper agree the audio lacks. See that script for the rules. Matched on
+   ``nemo_manifest.clip_key`` (``<source>/<file>``). A missing list drops nothing.
+
 A dropped clip is dropped from EVERY manifest (matched on its resolved audio path),
 including the per-source ``<source>/*.jsonl`` partitions and the down-sampled
 ``*.down-N`` fixtures, since each is a copy of rows and the parquet / trainer read
@@ -83,7 +90,7 @@ from loguru import logger
 
 _HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(_HERE.parent / "utils"))
-from nemo_manifest import read_jsonl, resolve_audio, write_jsonl  # noqa: E402
+from nemo_manifest import clip_key, read_jsonl, resolve_audio, write_jsonl  # noqa: E402
 
 # Same manifest set 03_sync_hotfix_results.py refreshes, so every manifest that got a
 # `qc_status` is also one this filters.
@@ -104,6 +111,8 @@ _LLM_LEAK = re.compile(r"(?i:\blet me\b|\bI'll\b|\bI will\b|\bhere (?:is|are)\b|
                        r"|\bSentence \d+\s*:|</?t>")
 TOO_FAST = "too-fast"
 MAX_WORDS_PER_SECOND = 8.0
+ASR_FLAGGED = "asr-flagged"
+ASR_FLAGGED_LIST = _HERE / "asr_flagged_clips.jsonl"
 
 _PUNCT = re.compile(r"[^\w\s]")
 
@@ -151,8 +160,13 @@ def _too_fast(row: dict) -> bool:
     return bool(duration) and len(row.get("text", "").split()) / duration > MAX_WORDS_PER_SECOND
 
 
-def filter_rows(rows: list[dict], manifest_dir: Path,
-                drop_audio: Collection[str] = ()) -> tuple[list[dict], list[tuple[dict, str]], int]:
+def load_asr_flagged(path: Path = ASR_FLAGGED_LIST) -> set[str]:
+    """Clip keys listed by ``06_hotfixes/04_flag_asr_defects.py``; empty if no list."""
+    return {r["clip"] for r in read_jsonl(path)} if path.is_file() else set()
+
+
+def filter_rows(rows: list[dict], manifest_dir: Path, drop_audio: Collection[str] = (),
+                asr_flagged: Collection[str] = ()) -> tuple[list[dict], list[tuple[dict, str]], int]:
     """Split manifest rows into kept and dropped ones.
 
     Parameters
@@ -163,6 +177,8 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
         Directory of the manifest, which relative ``audio_filepath`` values resolve against.
     drop_audio : Collection[str]
         Resolved audio paths to drop whatever their status (from ``eval_duplicates``).
+    asr_flagged : Collection[str]
+        ``clip_key`` values to drop (from ``load_asr_flagged``).
 
     Returns
     -------
@@ -170,7 +186,7 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
         Rows that stay (order preserved).
     dropped : list[tuple[dict, str]]
         Each dropped row with its reason: ``EXHAUSTED``, ``DUPLICATE``, ``ELLIPSIS``,
-        ``LLM_LEAK`` or ``TOO_FAST``.
+        ``LLM_LEAK``, ``TOO_FAST`` or ``ASR_FLAGGED``.
     n_unsynced : int
         How many rows carry no ``qc_status`` key at all, i.e. were never touched by
         ``03_sync_hotfix_results.py``: their status is unknown, so they are kept, but
@@ -192,6 +208,8 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
             dropped.append((row, LLM_LEAK))
         elif _too_fast(row):
             dropped.append((row, TOO_FAST))
+        elif asr_flagged and clip_key(resolve_audio(manifest_dir, row["audio_filepath"])) in asr_flagged:
+            dropped.append((row, ASR_FLAGGED))
         else:
             kept.append(row)
     return kept, dropped, n_unsynced
@@ -204,7 +222,8 @@ def filter_rows(rows: list[dict], manifest_dir: Path,
 @click.option("--apply", is_flag=True, help="Write. Without it this is a dry run.")
 def main(manifests: tuple[Path, ...], root: str, apply: bool) -> None:
     """Remove exhausted clips, eval duplicates of training texts, ellipsis labels, leaked LLM
-    reasoning and impossibly fast labels from the release manifests (or the given ones)."""
+    reasoning, impossibly fast labels and ASR-flagged clips from the release manifests (or the
+    given ones)."""
     root_path = Path(root).resolve()
     targets = [Path(m) for m in manifests]
     if not targets:
@@ -220,12 +239,15 @@ def main(manifests: tuple[Path, ...], root: str, apply: bool) -> None:
     for audio, text in duplicates.items():
         logger.info(f"eval clip repeats a training text: {audio} ({text[:80]!r})")
 
+    asr_flagged = load_asr_flagged()
+    logger.info(f"{len(asr_flagged)} ASR-flagged clips listed in {ASR_FLAGGED_LIST.name}")
+
     total_dropped = 0
     for path in targets:
         if not path.is_file() or path.name.startswith("."):
             continue
         rows = read_jsonl(path)
-        kept, dropped, n_unsynced = filter_rows(rows, path.parent, duplicates)
+        kept, dropped, n_unsynced = filter_rows(rows, path.parent, duplicates, asr_flagged)
         label = path.relative_to(root_path) if path.is_relative_to(root_path) else path
         if n_unsynced:
             logger.warning(f"{label}: {n_unsynced}/{len(rows)} rows WITHOUT qc_status, run "

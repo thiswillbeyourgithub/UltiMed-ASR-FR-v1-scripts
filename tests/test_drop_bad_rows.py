@@ -102,8 +102,22 @@ def test_llm_leak_and_too_fast() -> None:
     print("test_llm_leak_and_too_fast: OK")
 
 
+def test_asr_flagged() -> None:
+    # Matched on <source>/<file> whatever directory the manifest resolves from.
+    mod = load_sync_module(script=SCRIPT)
+    rows = [{"audio_filepath": "../dictionary/a.flac", "text": "ok", "qc_status": "original"},
+            {"audio_filepath": "../dictionary/b.flac", "text": "ok", "qc_status": "original"},
+            {"audio_filepath": "../drugs/a.flac", "text": "ok", "qc_status": "original"}]
+    kept, dropped, _ = mod.filter_rows(rows, Path("/x/NeMO_files"), asr_flagged={"dictionary/a.flac"})
+    assert [r["audio_filepath"] for r in kept] == ["../dictionary/b.flac", "../drugs/a.flac"], kept
+    assert [reason for _, reason in dropped] == [mod.ASR_FLAGGED]
+    assert mod.load_asr_flagged(Path("/nonexistent.jsonl")) == set()
+    print("test_asr_flagged: OK")
+
+
 if __name__ == "__main__":
     test_filter_exhausted()
     test_eval_duplicates()
     test_ellipsis()
     test_llm_leak_and_too_fast()
+    test_asr_flagged()

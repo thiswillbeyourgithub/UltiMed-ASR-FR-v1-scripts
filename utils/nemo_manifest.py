@@ -390,6 +390,13 @@ def resolve_audio(manifest_dir: Path, rel: str) -> str:
     return os.path.normpath(os.path.join(manifest_dir, rel))
 
 
+def clip_key(path: str) -> str:
+    """``<source folder>/<file>`` of an audio path (``dictionary/012095_0006_x.flac``):
+    unique across the corpus (stage-05 names are unique within a source) and free of the
+    machine's absolute path, so it can key a committed list (06's ASR-flagged clips)."""
+    return "/".join(os.path.normpath(path).split(os.sep)[-2:])
+
+
 def read_jsonl(path: Path) -> list[dict]:
     rows = []
     with path.open() as f:

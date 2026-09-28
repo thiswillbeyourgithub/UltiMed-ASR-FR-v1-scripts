@@ -60,7 +60,8 @@ mistake) and the val/test clips whose text repeats a training text after normali
 sentence can straddle splits), plus the labels holding an ellipsis (`...` / `…`: a
 truncated LLM output or a PARHAF anonymized date, 2 in v1), leaked LLM reasoning
 (`Let me`, `Sentence 1:`, `<t>`; never a lone English word, UltiMed has real English
-terms) and labels over 8 words/s of audio (real speech tops out at 4.2). The last two
+terms) and labels over 8 words/s of audio (real speech tops out at 4.2), and the clips listed in
+the committed `99_hf_release/asr_flagged_clips.jsonl` (see `06_hotfixes/04_flag_asr_defects.py`). The last two
 found 1 row each in the hand-made NeMo-repo `drug_sentence` train set (2026-09-28), 0 in
 UltiMed; pass such manifests explicitly to 04 and 05. Its `normalize_text` is a deliberate copy of the NeMo
 fork's `data_leak_check.normalize_text` (separate repo); keep them identical. The
@@ -440,6 +441,14 @@ the transcript against the label (CER), regenerate the bad clips, keep the best 
   the alternating run continue to the `tts` pass instead of dropping the dataset, and that
   `RETRY_EXHAUSTED` rides the first `stt` pass of each dataset only (otherwise the retry
   would reopen the markers it just wrote and never converge).
+- `04_flag_asr_defects.py`: the QC Whisper cannot do. Voxtral sometimes babbles a few
+  words BEFORE the sentence and Whisper skips them, so those clips scored clean; a
+  Parakeet fine-tuned on UltiMed transcribes them. From a hypotheses file (the NeMo repo's
+  `perso/transcribe_manifests.py`) it flags a >= 2-word insertion at the start
+  (`preamble`) or >= 3 real words missing that Whisper's `stt_transcript` also lacks
+  (`skipped`), and writes `99_hf_release/asr_flagged_clips.jsonl`, which 04 drops. Tuned
+  on val/test 2026-09-28 (25 of 116,876 clips); spelled codes, glued compounds and
+  mid-sentence misreads are deliberately not flagged. Tested by `tests/test_flag_asr_defects.py`.
 - `02_statistics.py`: report over a scored file (CER by category, duration ceiling
   audit). `03_collect_suspicious.py`: copy every clip the gates flagged into one local
   folder with an index, so they can be listened to rather than trusted to a number.
