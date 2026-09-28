@@ -53,11 +53,14 @@ rewrites the minority spellings to it:
   (2026-09-28) over a corpus that mixed all three. Roman numerals elsewhere
   (``angiotensine II``) stay.
 - **Compounds** (``normalize_compounds``). ``petit déjeuner`` -> ``petit-déjeuner``
-  (213 against 35, and the dictionary spelling of the noun).
+  (213 against 35, and the dictionary spelling of the noun), and a split prefix is glued
+  (``extra hépatiques`` -> ``extra-hépatiques``, ``multi lithiasique`` ->
+  ``multilithiasique``).
 - **Spelling variants** (``normalize_spelling``). ``œ`` -> ``oe`` everywhere (``cœur`` ->
   ``coeur``), ``aigüe`` -> ``aiguë``, ``compte-rendu`` -> ``compte rendu``,
   ``bêta-bloquant`` / ``bêtabloquant`` -> ``bétabloquant``, ``anévrysme`` -> ``anévrisme``,
-  ``urèthre`` / ``uréthral`` -> ``urètre`` / ``urétral``. Added 2026-09-28 from an
+  ``urèthre`` / ``uréthral`` -> ``urètre`` / ``urétral``, and a sentence-initial ``A``
+  before an infinitive -> ``À`` (``A surveiller`` -> ``À surveiller``). Added 2026-09-28 from an
   inference sweep of val/test, where these pairs were among the most frequent diffs.
 - **Drug names** (``DrugCaser``). One spelling per drug word, from the lexicon
   ``drug_casing.json`` built by ``02_drugs/02_build_drug_casing.py`` (see its
@@ -537,9 +540,26 @@ def normalize_staging(text: str) -> str:
 _PETIT_DEJEUNER_RE = re.compile(r"\b([Pp]etits?) (déjeuners?)\b")
 
 
+# Prefixes that are never a word on their own, written split before an adjective in
+# ~560 labels ("extra hépatiques", "multi lithiasique", "péri ombilicale") against 13.6k
+# hyphenated ("intra-utérin") and many glued ("intracrânienne"). The normaliser deletes
+# hyphens, so hyphenated and glued are the same token and only the split form costs a
+# word. Glued, or hyphenated when the word starts with a vowel ("intra-abdominal", not
+# "intraabdominal"), the author's choice (2026-09-28). Not before a conjunction or a
+# preposition: "intra et extra-hépatiques" keeps its "intra".
+_PREFIX_RE = re.compile(r"\b((?i:multi|extra|intra|supra|infra|péri)) "
+                        r"(?!(?:et|ou|ni|sur|de|du|des|à|en)\b)([a-zà-ÿ][^\W\d_]{3,})")
+
+
+def _glue_prefix(m: re.Match) -> str:
+    sep = "-" if m.group(2)[0] in "aeiouyàâéèêëîïôöûüh" else ""
+    return f"{m.group(1)}{sep}{m.group(2)}"
+
+
 def normalize_compounds(text: str) -> str:
-    """``petit déjeuner`` -> ``petit-déjeuner``. Idempotent."""
-    return _PETIT_DEJEUNER_RE.sub(r"\1-\2", text)
+    """``petit déjeuner`` -> ``petit-déjeuner``, ``extra hépatiques`` -> ``extra-hépatiques``,
+    ``multi lithiasique`` -> ``multilithiasique``. Idempotent."""
+    return _PREFIX_RE.sub(_glue_prefix, _PETIT_DEJEUNER_RE.sub(r"\1-\2", text))
 
 
 # ---------------------------------------------------------------------------
@@ -574,12 +594,24 @@ _SPELLING_RULES = (
 )
 
 
+# "A surveiller", "A jeun", "A l'examen" at a sentence start (~720 labels, against 8.9k
+# "À"): the preposition lost its accent. Only before an infinitive, "jeun", "distance"
+# or an article: before a participle it is the verb ("A présenté", "A bien toléré",
+# telegraphic notes drop the subject), and "A encore" is ambiguous.
+_A_GRAVE_RE = re.compile(r"\bA (?=(?:l'|la\b|jeun\b|distance\b|(?!encore\b|\w+oire\b)[^\W\d_]+(?:er|ir|oir|re)\b))")
+
+
+def _a_grave(text: str) -> str:
+    return _A_GRAVE_RE.sub(lambda m: "À " if at_sentence_start(text, m.start()) else m.group(0), text)
+
+
 def normalize_spelling(text: str) -> str:
     """``cœur`` -> ``coeur``, ``aigüe`` -> ``aiguë``, ``compte-rendu`` -> ``compte rendu``,
     ``bêta-bloquant`` -> ``bétabloquant``, ``anévrysme`` -> ``anévrisme``, ``urèthre`` ->
-    ``urètre``. Idempotent."""
+    ``urètre``, ``A surveiller.`` -> ``À surveiller.`` Idempotent."""
     for pattern, repl in _SPELLING_RULES:
         text = pattern.sub(repl, text)
+    text = _a_grave(text)
     return text
 
 

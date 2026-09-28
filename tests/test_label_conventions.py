@@ -165,6 +165,10 @@ def test_compounds() -> None:
     check(normalize_compounds, [
         ("À prendre au petit déjeuner.", "À prendre au petit-déjeuner."),
         ("Les petits déjeuners. Petit déjeuner léger.", "Les petits-déjeuners. Petit-déjeuner léger."),
+        ("Voies biliaires extra hépatiques, rein multi lithiasique, Intra abdominal.",
+         "Voies biliaires extra-hépatiques, rein multilithiasique, Intra-abdominal."),
+        ("Lésions intra et extra-hépatiques, supra ou infra centimétriques.",
+         "Lésions intra et extra-hépatiques, supra ou infracentimétriques."),
     ])
     assert normalize_compounds("un petit déjeune") == "un petit déjeune"
     print("test_compounds: OK")
@@ -196,6 +200,10 @@ def test_spelling() -> None:
         ("Compte-rendu opératoire, les comptes-rendus.", "Compte rendu opératoire, les comptes rendus."),
         ("Bêta-bloquants, bêtabloquant, bêta bloqueur.", "Bétabloquants, bétabloquant, bétabloqueur."),
         ("Anévrysme, urèthre, sténose uréthrale, périuréthral.", "Anévrisme, urètre, sténose urétrale, périurétral."),
+        ("A surveiller. A jeun. A l'examen, A renouveler.", "À surveiller. À jeun. À l'examen, A renouveler."),
+        # The verb avoir, mid-sentence, ambiguous: unchanged.
+        ("A présenté une fièvre. A bien toléré. A encore mal. Il A voir.",
+         "A présenté une fièvre. A bien toléré. A encore mal. Il A voir."),
     ])
     assert normalize_spelling("Docteur Argüelles") == "Docteur Argüelles"
     print("test_spelling: OK")
