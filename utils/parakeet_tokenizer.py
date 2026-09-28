@@ -52,6 +52,7 @@ Created with assistance from Claude Code.
 """
 
 import json
+import re
 import sys
 import unicodedata
 from collections import Counter, namedtuple
@@ -72,6 +73,17 @@ DEFAULT_VOCAB_PATH = Path(__file__).resolve().parent / "parakeet_vocab.txt"
 # Uncovered signs that name a brand, not a sound: ParakeetTokenizer.clean_label
 # drops them rather than NFKC-expanding them (NFKC turns "™" into "TM").
 DROP_CHARS = frozenset("™®©℠")
+
+
+# C1 control characters: cp1252 bytes mis-decoded as Latin-1 (see ``clean_label``).
+_C1_RE = re.compile("[\u0080-\u009f]")
+
+
+def _cp1252_char(m: "re.Match") -> str:
+    try:
+        return bytes([ord(m.group(0))]).decode("cp1252")
+    except UnicodeDecodeError:
+        return m.group(0)
 
 
 def is_special(piece: str) -> bool:
@@ -324,6 +336,11 @@ class ParakeetTokenizer:
         the generators gated with NFKC and stored the text unfolded. This method
         does the fold explicitly so the stored label and the learnt label agree:
 
+        0. A C1 control character (U+0080 to U+009F) is a cp1252 byte decoded as
+           Latin-1 somewhere upstream (the byte 0x9C of ``œ`` read back as U+009C, so
+           ``œil`` showed as ``<U+009C>il`` in a hand-made manifest). It is mapped
+           back to its cp1252 character; the five bytes cp1252 leaves undefined are
+           left for the gate. No speech label holds a real control character.
         1. NFC, so a decomposed accent (``c`` + U+0327) becomes the covered ``ç``.
         2. Every character still outside :attr:`coverage` (checked raw, whatever
            ``self.nfkc`` says) becomes its NFKC form: ``CO₂`` -> ``CO2``,
@@ -350,6 +367,7 @@ class ParakeetTokenizer:
         str
             The cleaned label. Idempotent.
         """
+        text = _C1_RE.sub(_cp1252_char, text)
         text = unicodedata.normalize("NFC", text)
         for ch in {c for c in text if c not in self.coverage}:
             text = text.replace(ch, "" if ch in DROP_CHARS else unicodedata.normalize("NFKC", ch))

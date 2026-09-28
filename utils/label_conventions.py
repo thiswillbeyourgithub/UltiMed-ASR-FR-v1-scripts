@@ -1,4 +1,4 @@
-"""One written form for titles, dates, clock times and drug names in the ASR label.
+"""One written form for titles, dates, clock times, quantities, compounds and drug names in the ASR label.
 
 Like ``percent_normalize.py``, this canonicalizes what the LLM wrote AFTER the LLM:
 UltiMed v1 labels spell the same spoken thing several ways, so the model learns no
@@ -30,19 +30,31 @@ rewrites the minority spellings to it:
   (a few dozen) -> ``14 heures 30`` / ``9 heures 45`` / ``20 heures`` (47k labels write
   ``N heures``), ``1 heure`` in the singular. Durations (``24h``) get the same form,
   which is also how they are written elsewhere.
+- **Quantities** (``normalize_quantities``). A spelled number before a unit of measure
+  or a duration becomes digits (``quatre milligrammes`` -> ``4 milligrammes``, 62k
+  against 1.9k; ``zéro virgule vingt-cinq microgrammes`` -> ``0,25 microgrammes``;
+  ``pendant dix-huit mois`` -> ``pendant 18 mois``). Counts of things stay spelled, as
+  the corpus spells them (``deux comprimés``, ``trois fois``), and so does a single
+  ``un``/``une`` (``un an``, ``une heure``). Added 2026-09-28 because the hand-made
+  ``drug_sentence`` sets spelled every dose while UltiMed writes digits: the model
+  wrote ``4 milligrammes`` on the synthetic voice and 63% of that set's WER was
+  number formatting, not recognition.
+- **Compounds** (``normalize_compounds``). ``petit déjeuner`` -> ``petit-déjeuner``
+  (213 against 35, and the dictionary spelling of the noun).
 - **Drug names** (``DrugCaser``). One spelling per drug word, from the lexicon
   ``drug_casing.json`` built by ``02_drugs/02_build_drug_casing.py`` (see its
   docstring for how the canonical form is chosen): ``PRIMPERAN`` / ``Primperan`` ->
   ``Primpéran``, ``PARACETAMOL`` -> ``paracétamol``, ``UVEDOSE`` -> ``Uvedose``, with
   ALLCAPS acronyms (``LP``, ``BCG``) protected by the lexicon.
 
-``apply_label_conventions`` runs all four. The text generators apply it in
+``apply_label_conventions`` runs them all. The text generators apply it in
 ``_pipeline_shared.parse_asr_training_target``, so every freshly generated label is
 canonical (and so is the TTS source ``voxtral_normalize`` derives from it);
 ``99_hf_release/05_normalize_text.py`` applies it to the v1 manifests, to both the
 label and the TTS source: every rewrite here is spoken identically before and after
 (``M.`` was read ``monsieur``, ``2019`` and ``deux mille dix-neuf`` are the same
-words, casing is silent), so the audio still says the rewritten text.
+words, ``4 milligrammes`` is read ``quatre milligrammes``, a hyphen and casing are
+silent), so the audio still says the rewritten text.
 
 Stdlib only, so both the LLM stack and the light release scripts can import it.
 Tested by ``tests/test_label_conventions.py``.
@@ -274,6 +286,132 @@ def normalize_clock(text: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Quantities
+# ---------------------------------------------------------------------------
+
+# Units of measure and durations: the corpus writes the number before them in digits
+# (``milligrammes`` 62k digits against 1.9k words, ``ans`` 241k / 2.9k, ``mois``
+# 64k / 11k, ``heures`` 38k / 3.3k). Counts of things are NOT here, because the
+# corpus spells them (``comprimés`` 263 digits / 406 words, ``fois`` 7k / 21k,
+# ``bouffées``, ``gélules``, ``prises``, ``doses``, ``séances``): "deux comprimés de
+# 4 milligrammes" is the majority form. The singular forms only follow a decimal
+# (``zéro virgule cinq milligramme``), since ``un``/``une`` is never converted.
+_QTY_UNITS = (r"(?:(?:milli|micro|nano|kilo)?grammes?|kilos?|(?:milli|micro|centi)?litres?"
+              r"|(?:milli|centi|kilo)?mètres?|(?:milli|micro)moles?|unités?|degrés?"
+              r"|heures?|minutes?|secondes?|jours?|semaines?|mois|ans?)")
+# Every word a French number up to 999,999 is spelled with ("et" only inside one).
+_NUMBER_VALUES = {w: i for i, w in enumerate(_UNITS)} | {w: n for n, w in _TENS.items()}
+_NUMBER_VALUES |= {"une": 1, "vingts": 20}
+_QTY_WORD = rf"(?:{'|'.join(sorted(_NUMBER_VALUES, key=len, reverse=True))}|cents?|mille|mil|et)"
+_QTY_SEQ = rf"(?i:(?<![\w-]){_QTY_WORD}(?:[\s-]+{_QTY_WORD})*)"
+_QUANTITY_RE = re.compile(rf"({_QTY_SEQ})(?:(\s+virgule\s+)({_QTY_SEQ}))?(\s+{_QTY_UNITS})\b")
+
+
+def parse_french_number(words: list[str]) -> int | None:
+    """Value of spelled-out French number words, or None when they do not spell one.
+
+    ``["deux", "cent", "cinquante"]`` -> 250, ``["quatre", "vingt", "dix", "sept"]``
+    -> 97, ``["trois", "mille", "cinq", "cents"]`` -> 3500. Hyphens must already be
+    split off. Lenient on spelling variants (``cent``/``cents``, ``vingt``/``vingts``),
+    strict on structure (``_can_follow``, one ``mille``, one ``cent`` per thousand).
+    """
+    total, current = 0, 0
+    for i, raw in enumerate(words):
+        w = raw.lower()
+        if w == "et":
+            if i == 0 or i == len(words) - 1:
+                return None
+            continue
+        if w in ("cent", "cents"):
+            if current >= 100:
+                return None
+            current = (current or 1) * 100
+        elif w in ("mille", "mil"):
+            if total:
+                return None
+            total, current = (current or 1) * 1000, 0
+        elif w in ("vingt", "vingts") and current % 100 == 4:
+            current += 76  # "quatre vingt" is 80
+        elif w in _NUMBER_VALUES:
+            if not _can_follow(current % 100, _NUMBER_VALUES[w]):
+                return None
+            current += _NUMBER_VALUES[w]
+        else:
+            return None
+    return total + current
+
+
+def _can_follow(r: int, v: int) -> bool:
+    """Whether a unit/tens word worth ``v`` may follow a number ending in ``r`` (its last
+    two digits). Rejects juxtapositions that are not one number: ``deux trois jours``
+    (two or three days) is not 5, ``vingt trente`` is not 50."""
+    if r == 0:
+        return True
+    if r % 10 == 0 and r >= 20:
+        return v < 20 if r in (60, 80) else v < 10
+    return r in (10, 70, 90) and v in (7, 8, 9)
+
+
+def _decimal_digits(words: list[str]) -> str | None:
+    """Digits after "virgule" as said: ``zéro cinq`` -> ``05``, ``cinquante`` -> ``50``."""
+    zeros = 0
+    while zeros < len(words) and words[zeros].lower() == "zéro":
+        zeros += 1
+    rest = parse_french_number(words[zeros:]) if words[zeros:] else None
+    if words[zeros:] and rest is None:
+        return None
+    return "0" * zeros + ("" if rest is None else str(rest))
+
+
+def _replace_quantity(m: re.Match) -> str:
+    whole = _words(m.group(1))
+    # A leading "et" belongs to the sentence ("et deux milligrammes"), not the number.
+    head = ""
+    while whole and whole[0].lower() == "et":
+        head += whole.pop(0) + " "
+    value = parse_french_number(whole) if whole else None
+    if value is None:
+        return m.group(0)
+    if m.group(3) is not None:
+        decimals = _decimal_digits(_words(m.group(3)))
+        if decimals is None:
+            return m.group(0)
+        return f"{head}{value},{decimals}{m.group(4)}"
+    if value == 1:
+        # "un milligramme", "une heure", "un an": the corpus spells a single one.
+        return m.group(0)
+    return f"{head}{value}{m.group(4)}"
+
+
+def normalize_quantities(text: str) -> str:
+    """``quatre milligrammes`` -> ``4 milligrammes``, ``zéro virgule vingt-cinq microgrammes``
+    -> ``0,25 microgrammes``, ``toutes les huit heures`` -> ``toutes les 8 heures``.
+
+    Only before a unit of measure or a duration (``_QTY_UNITS``); counts (``deux
+    comprimés``, ``trois fois``) and a single ``un``/``une`` stay spelled. Minutes after
+    a spelled hour (``huit heures trente``) are left alone: telling them from a count
+    that follows (``deux heures deux fois par jour``) needs more than a regex. Idempotent.
+    """
+    return _QUANTITY_RE.sub(_replace_quantity, text)
+
+
+# ---------------------------------------------------------------------------
+# Hyphenated compounds
+# ---------------------------------------------------------------------------
+
+# ``petit-déjeuner`` (213 labels) against ``petit déjeuner`` (35); also the
+# dictionary spelling of the noun. The WER normaliser deletes hyphens, so the two
+# spellings are two different tokens (``petitdéjeuner`` / ``petit déjeuner``) and
+# cost a word every time they disagree.
+_PETIT_DEJEUNER_RE = re.compile(r"\b([Pp]etits?) (déjeuners?)\b")
+
+
+def normalize_compounds(text: str) -> str:
+    """``petit déjeuner`` -> ``petit-déjeuner``. Idempotent."""
+    return _PETIT_DEJEUNER_RE.sub(r"\1-\2", text)
+
+
+# ---------------------------------------------------------------------------
 # Drug names
 # ---------------------------------------------------------------------------
 
@@ -324,5 +462,7 @@ def default_drug_caser() -> DrugCaser:
 
 
 def apply_label_conventions(text: str) -> str:
-    """All four rewrites, titles first so ``M.`` is gone before sentence starts are judged."""
-    return default_drug_caser()(normalize_clock(normalize_dates(expand_titles(text))))
+    """Every rewrite, titles first so ``M.`` is gone before sentence starts are judged,
+    and dates before quantities so a spelled year is read as a year, not as a count."""
+    text = normalize_quantities(normalize_clock(normalize_dates(expand_titles(text))))
+    return default_drug_caser()(normalize_compounds(text))

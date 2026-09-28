@@ -33,7 +33,8 @@ be eyeballed (26 in UltiMed v1, all "per hundred X" or units).
 which collapses whitespace runs (6 v1 labels held a raw newline, an artefact of the source
 document) and replaces every character the Parakeet vocab does not cover AS WRITTEN by
 its NFKC form: ``CO₂`` -> ``CO2``, ``Brª`` -> ``Bra``, a decomposed ``c`` + combining
-cedilla -> ``ç``, with trademark-like signs dropped (``CUBE™`` -> ``CUBE``). None of these
+cedilla -> ``ç``, with trademark-like signs dropped (``CUBE™`` -> ``CUBE``), and repairs
+cp1252 mojibake (U+009C + ``il`` -> ``œil``, seen in a hand-made manifest). None of these
 ever produced ``<unk>`` (SentencePiece NFKC-folds them at training time), but the label
 then showed a character the model is never taught. The generators apply it at parse
 time too.
@@ -42,12 +43,18 @@ time too.
 Both texts then go through ``utils/label_conventions.apply_label_conventions``: one
 written form for titles (``M. Dupont`` -> ``Monsieur Dupont``, ``Dr`` -> ``docteur``),
 dates (``le quinze mars deux mille vingt`` -> ``le 15 mars 2020``, ``premier mai`` ->
-``1er mai``), clock times (``14h30`` -> ``14 heures 30``) and drug names (``PRIMPERAN``
-/ ``Primperan`` -> ``Primpéran``, ``UVEDOSE`` -> ``Uvedose``, from
+``1er mai``), clock times (``14h30`` -> ``14 heures 30``), quantities (``quatre
+milligrammes`` -> ``4 milligrammes``, counts like ``deux comprimés`` kept), compounds
+(``petit déjeuner`` -> ``petit-déjeuner``) and drug names (``PRIMPERAN`` / ``Primperan``
+-> ``Primpéran``, ``UVEDOSE`` -> ``Uvedose``, from
 ``utils/drug_casing.json``). The source gets them too because each rewrite is spoken
 exactly like the original (``M.`` was read ``monsieur``, casing is silent), so the
 shipped source keeps matching both the audio and what ``voxtral_normalize`` derives
 from the new label. The generators apply the same rewrites at parse time.
+
+The hand-made NeMo-repo sets (``perso/drug_sentence_dataset/*.json``, the private
+``perso/oli_spoken_dataset`` manifests) are normalized by passing them explicitly:
+``uv run 05_normalize_text.py --apply <manifest> ...``.
 
 Every manifest is rewritten independently, like 04, and the run is idempotent.
 

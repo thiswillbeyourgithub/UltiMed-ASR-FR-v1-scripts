@@ -69,7 +69,7 @@ rewrites the texts: percentages become `%` in the ASR label (`text`) and the one
 `ParakeetTokenizer.clean_label` (whitespace collapsed, raw newlines existed; every
 character the vocab does not cover as written replaced by its NFKC form, `CO₂` ->
 `CO2`, `™` dropped). Both texts then get the label conventions of
-`utils/label_conventions.py` (titles, dates, clock times, drug casing; see below). The
+`utils/label_conventions.py` (titles, dates, clock times, quantities, compounds, drug casing; see below). The
 generators now apply all these label rewrites at parse time
 (`_pipeline_shared.parse_asr_training_target`), so 05 only matters for the v1
 manifests, generated before that. Order: 03, 04, 05, then the parquet build. The audio lives under the `data/` symlink
@@ -221,15 +221,23 @@ from _pipeline_shared import call_llm, PricingTracker  # noqa: E402
   M. présente`, `le monsieur du lit 4` untouched), dates (spelled years 1900 to 2099 ->
   digits after a month or after `en` / `depuis` in year position, spelled days ->
   digits before a month, `premier mai` -> `1er mai`), clock times (`14h30` -> `14
-  heures 30`) and drug casing (`DrugCaser`, driven by the committed lexicon
+  heures 30`), quantities (a spelled number before a unit of measure or a duration ->
+  digits, `quatre milligrammes` -> `4 milligrammes`, `zéro virgule vingt-cinq` ->
+  `0,25`; counts like `deux comprimés` / `trois fois` and a lone `un`/`une` stay
+  spelled), compounds (`petit déjeuner` -> `petit-déjeuner`) and drug casing (`DrugCaser`, driven by the committed lexicon
   `utils/drug_casing.json`: `PRIMPERAN` / `Primperan` -> `Primpéran`, `PARACETAMOL` ->
   `paracétamol`, `UVEDOSE` -> `Uvedose`, acronyms like `LP` / `BCG` protected).
-  `apply_label_conventions` runs all four; the generators' parse step and
+  `apply_label_conventions` runs them all; the generators' parse step and
   `99_hf_release/05_normalize_text.py` (label AND source, every rewrite is spoken
   identically) call it. The lexicon is built by `02_drugs/02_build_drug_casing.py` from
   the stage `generated_dataset.jsonl` files (local, not committed), the ANSM accents in
   `02_drugs/drugs_dosages.jsonl` and the acronym lists; rerun it only after
   regenerating texts and review the JSON diff. Tested by `tests/test_label_conventions.py`.
+  The hand-made NeMo-repo sets (`perso/drug_sentence_dataset/*.json` and the private
+  `perso/oli_spoken_dataset/*.json`) go through the same 05 by passing their paths;
+  the quantities rule exists because they spelled every dose while UltiMed writes
+  digits (2026-09-28). The v1.2 release manifests have NOT been re-run with the
+  quantities/compounds rules yet: doing so is a new dataset version (v1.3).
 - **`voxtral_normalize.py`** deterministically turns an `asr_training_target`
   (written label) into the `asr_training_source` (text fed to the local
   voxtral-tts engine): it applies only the small, proven set of fixes voxtral

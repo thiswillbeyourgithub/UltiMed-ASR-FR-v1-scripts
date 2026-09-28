@@ -2,8 +2,8 @@
 
 The cases are real UltiMed v1 label fragments: every rewrite must reach the corpus
 majority form, leave the look-alikes alone (``PCR M. tuberculosis``, ``le monsieur du
-lit 4``, ``les 4H et 4T``, ``mille neuf cent soixante-quatorze grammes``), and be
-idempotent. ``test_generator_parse`` checks that ``parse_asr_training_target`` (every
+lit 4``, ``les 4H et 4T``, ``mille neuf cent soixante-quatorze grammes``, ``deux
+comprimés``, ``deux trois jours``), and be idempotent. ``test_generator_parse`` checks that ``parse_asr_training_target`` (every
 generator's parse step) applies them; it needs the LLM stack and is skipped when that
 is not installed.
 
@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "utils"))
 from label_conventions import (  # noqa: E402
     DrugCaser, apply_label_conventions, default_drug_caser, expand_titles, normalize_clock,
-    normalize_dates,
+    normalize_compounds, normalize_dates, normalize_quantities, parse_french_number,
 )
 
 
@@ -107,6 +107,57 @@ def test_clock() -> None:
     print("test_clock: OK")
 
 
+def test_parse_french_number() -> None:
+    for words, want in [
+        ("deux cent cinquante", 250), ("quatre vingt dix sept", 97), ("soixante et onze", 71),
+        ("trois mille cinq cents", 3500), ("cent quatre vingts", 180), ("vingt et une", 21),
+        ("dix sept", 17), ("mille", 1000), ("zéro", 0),
+        # Juxtaposed numbers are not one number: "deux trois jours" is 2 or 3 days.
+        ("deux trois", None), ("vingt trente", None), ("cent cent", None),
+        ("et deux", None), ("deux et", None), ("comprimé", None),
+    ]:
+        assert parse_french_number(words.split()) == want, (words, parse_french_number(words.split()))
+    print("test_parse_french_number: OK")
+
+
+def test_quantities() -> None:
+    # Real drug_sentence references: the dose is a measure (digits), the count of
+    # tablets is not (words), like the UltiMed majority.
+    check(normalize_quantities, [
+        ("On réduit la dose de silodosine à une gélule de quatre milligrammes par jour.",
+         "On réduit la dose de silodosine à une gélule de 4 milligrammes par jour."),
+        ("deux comprimés de deux cent cinquante microgrammes par jour",
+         "deux comprimés de 250 microgrammes par jour"),
+        ("une capsule de zéro virgule vingt-cinq microgrammes chaque matin",
+         "une capsule de 0,25 microgrammes chaque matin"),
+        ("un flacon de deux cent cinquante-sept virgule cinquante milligrammes",
+         "un flacon de 257,50 milligrammes"),
+        ("zéro virgule zéro cinq milligramme", "0,05 milligramme"),
+        ("une goutte toutes les deux heures pendant dix-huit mois",
+         "une goutte toutes les 2 heures pendant 18 mois"),
+        ("Soixante-quinze milligrammes et quatre-vingt-dix-sept ans, trois mille cinq cents unités.",
+         "75 milligrammes et 97 ans, 3500 unités."),
+        ("vingt et une heures", "21 heures"),
+    ])
+    for untouched in [
+        "deux comprimés trois fois par jour",
+        "un milligramme, une heure, un an",
+        "pendant deux trois jours",
+        "Une dose de 4 milligrammes.",
+    ]:
+        assert normalize_quantities(untouched) == untouched, (untouched, normalize_quantities(untouched))
+    print("test_quantities: OK")
+
+
+def test_compounds() -> None:
+    check(normalize_compounds, [
+        ("À prendre au petit déjeuner.", "À prendre au petit-déjeuner."),
+        ("Les petits déjeuners. Petit déjeuner léger.", "Les petits-déjeuners. Petit-déjeuner léger."),
+    ])
+    assert normalize_compounds("un petit déjeune") == "un petit déjeune"
+    print("test_compounds: OK")
+
+
 def test_drug_caser() -> None:
     caser = DrugCaser(
         caps={"PRIMPERAN": "Primpéran", "PARACETAMOL": "paracétamol", "UVEDOSE": "Uvedose",
@@ -130,8 +181,10 @@ def test_drug_caser() -> None:
 
 
 def test_all() -> None:
-    raw = "M. Dupont prend du DOLIPRANE à 14h30 depuis le quinze mars deux mille vingt."
-    want = "Monsieur Dupont prend du Doliprane à 14 heures 30 depuis le 15 mars 2020."
+    raw = ("M. Dupont prend du DOLIPRANE à 14h30 depuis le quinze mars deux mille vingt, "
+           "deux comprimés de cinq cents milligrammes au petit déjeuner.")
+    want = ("Monsieur Dupont prend du Doliprane à 14 heures 30 depuis le 15 mars 2020, "
+            "deux comprimés de 500 milligrammes au petit-déjeuner.")
     assert apply_label_conventions(raw) == want, apply_label_conventions(raw)
     assert apply_label_conventions(want) == want
     print("test_all: OK")
@@ -153,6 +206,9 @@ if __name__ == "__main__":
     test_titles()
     test_dates()
     test_clock()
+    test_parse_french_number()
+    test_quantities()
+    test_compounds()
     test_drug_caser()
     test_all()
     test_generator_parse()

@@ -46,6 +46,20 @@ def test_label_conventions_both_texts() -> None:
     print("test_label_conventions_both_texts: OK")
 
 
+def test_cp1252_mojibake() -> None:
+    # The oli_drug_sentence manifest stored "œil" as U+009C + "il" (the cp1252 byte of
+    # "œ" read as Latin-1), so the reference could never match a correct transcript.
+    mod = load_sync_module(script=SCRIPT)
+    tok = mod.ParakeetTokenizer(nfkc=False)
+    row = {"audio_filepath": "a.flac", "text": "Une goutte dans chaque \u009cil, c\u009cur \u0081."}
+    out = mod.normalize_row(row, tok)
+    # U+0081 is undefined in cp1252: left for the <unk> gate, never guessed.
+    assert out["text"] == "Une goutte dans chaque œil, cœur \u0081.", out["text"]
+    assert mod.normalize_row(out, tok) == out
+    print("test_cp1252_mojibake: OK")
+
+
 if __name__ == "__main__":
     test_normalize_row()
     test_label_conventions_both_texts()
+    test_cp1252_mojibake()
