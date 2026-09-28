@@ -138,6 +138,9 @@ def test_quantities() -> None:
         ("Soixante-quinze milligrammes et quatre-vingt-dix-sept ans, trois mille cinq cents unités.",
          "75 milligrammes et 97 ans, 3500 unités."),
         ("vingt et une heures", "21 heures"),
+        # A ratio converts both halves, never "5 jours sur sept".
+        ("cinq jours sur sept, vingt-quatre heures sur vingt-quatre, trois semaines sur quatre",
+         "5 jours sur 7, 24 heures sur 24, 3 semaines sur 4"),
     ])
     for untouched in [
         "deux comprimés trois fois par jour",

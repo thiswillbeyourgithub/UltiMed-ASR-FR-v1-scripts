@@ -304,7 +304,10 @@ _NUMBER_VALUES = {w: i for i, w in enumerate(_UNITS)} | {w: n for n, w in _TENS.
 _NUMBER_VALUES |= {"une": 1, "vingts": 20}
 _QTY_WORD = rf"(?:{'|'.join(sorted(_NUMBER_VALUES, key=len, reverse=True))}|cents?|mille|mil|et)"
 _QTY_SEQ = rf"(?i:(?<![\w-]){_QTY_WORD}(?:[\s-]+{_QTY_WORD})*)"
-_QUANTITY_RE = re.compile(rf"({_QTY_SEQ})(?:(\s+virgule\s+)({_QTY_SEQ}))?(\s+{_QTY_UNITS})\b")
+# A ratio's second number ("cinq jours sur sept") follows the first, else the label
+# mixes forms ("5 jours sur sept") the corpus never uses (362 all-words, 280 all-digits).
+_QUANTITY_RE = re.compile(rf"({_QTY_SEQ})(?:(\s+virgule\s+)({_QTY_SEQ}))?(\s+{_QTY_UNITS})\b"
+                          rf"(?:(\s+sur\s+)({_QTY_SEQ})\b)?")
 
 
 def parse_french_number(words: list[str]) -> int | None:
@@ -372,15 +375,20 @@ def _replace_quantity(m: re.Match) -> str:
     value = parse_french_number(whole) if whole else None
     if value is None:
         return m.group(0)
+    ratio = ""
+    if m.group(6) is not None:
+        per = parse_french_number(_words(m.group(6)))
+        # Not a ratio number ("sur deux trois"): leave the tail as written.
+        ratio = f"{m.group(5)}{per}" if per is not None else f"{m.group(5)}{m.group(6)}"
     if m.group(3) is not None:
         decimals = _decimal_digits(_words(m.group(3)))
         if decimals is None:
             return m.group(0)
-        return f"{head}{value},{decimals}{m.group(4)}"
+        return f"{head}{value},{decimals}{m.group(4)}{ratio}"
     if value == 1:
         # "un milligramme", "une heure", "un an": the corpus spells a single one.
         return m.group(0)
-    return f"{head}{value}{m.group(4)}"
+    return f"{head}{value}{m.group(4)}{ratio}"
 
 
 def normalize_quantities(text: str) -> str:
