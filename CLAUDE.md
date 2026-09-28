@@ -228,10 +228,15 @@ from _pipeline_shared import call_llm, PricingTracker  # noqa: E402
   digits before a month, `premier mai` -> `1er mai`), clock times (`14h30` -> `14
   heures 30`), quantities (a spelled number before a unit of measure or a duration ->
   digits, `quatre milligrammes` -> `4 milligrammes`, `zéro virgule vingt-cinq` ->
-  `0,25`; counts like `deux comprimés` / `trois fois` and a lone `un`/`une` stay
-  spelled), compounds (`petit déjeuner` -> `petit-déjeuner`), suture gauges (`Vicryl trois zéro` -> `Vicryl 3-0`, label only,
+  `0,25`; `fois` / `séances` counts, a range head and a score too, `deux fois` -> `2 fois`,
+  `deux sur dix` -> `2 sur 10`, by the author's choice against the majority; other
+  counts like `deux comprimés` and a lone `un`/`une` stay spelled), staging numbers
+  (`stade IIIb` -> `stade 3b`, `palier deux` -> `palier 2`, only after a staging word),
+  compounds (`petit déjeuner` -> `petit-déjeuner`, split prefixes glued: `extra
+  hépatiques` -> `extra-hépatiques`), suture gauges (`Vicryl trois zéro` -> `Vicryl 3-0`, label only,
   `tts_source=True` skips it), spelling variants (`œ` -> `oe`, `aigüe` -> `aiguë`,
-  `compte-rendu` -> `compte rendu`, `bétabloquant`) and drug casing (`DrugCaser`, driven by the committed lexicon
+  `compte-rendu` -> `compte rendu`, `bétabloquant`, `anévrisme`, `urètre`, `A surveiller` ->
+  `À surveiller`) and drug casing (`DrugCaser`, driven by the committed lexicon
   `utils/drug_casing.json`: `PRIMPERAN` / `Primperan` -> `Primpéran`, `PARACETAMOL` ->
   `paracétamol`, `UVEDOSE` -> `Uvedose`, acronyms like `LP` / `BCG` protected).
   `apply_label_conventions` runs them all; the generators' parse step and
@@ -245,7 +250,9 @@ from _pipeline_shared import call_llm, PricingTracker  # noqa: E402
   the quantities rule exists because they spelled every dose while UltiMed writes
   digits (2026-09-28). Re-running 05 with those rules (plus the sutures and
   spelling variants found by an inference sweep the same day) over the release made
-  dataset v1.3 (no clip dropped).
+  dataset v1.3. A second sweep (Parakeet over val/test/PARROT and half of train, diffs
+  ranked where Whisper agrees with Parakeet against the label) added the counts, staging,
+  prefix, `anévrisme` / `urètre` and `À` rules the same day.
 - **`voxtral_normalize.py`** deterministically turns an `asr_training_target`
   (written label) into the `asr_training_source` (text fed to the local
   voxtral-tts engine): it applies only the small, proven set of fixes voxtral
