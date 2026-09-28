@@ -240,8 +240,8 @@ from _pipeline_shared import call_llm, PricingTracker  # noqa: E402
   The hand-made NeMo-repo sets (`perso/drug_sentence_dataset/*.json` and the private
   `perso/oli_spoken_dataset/*.json`) go through the same 05 by passing their paths;
   the quantities rule exists because they spelled every dose while UltiMed writes
-  digits (2026-09-28). The v1.2 release manifests have NOT been re-run with the
-  quantities/compounds rules yet: doing so is a new dataset version (v1.3).
+  digits (2026-09-28). Re-running 05 with those rules over the release made
+  dataset v1.3 (33,229 clips changed, none dropped).
 - **`voxtral_normalize.py`** deterministically turns an `asr_training_target`
   (written label) into the `asr_training_source` (text fed to the local
   voxtral-tts engine): it applies only the small, proven set of fixes voxtral
