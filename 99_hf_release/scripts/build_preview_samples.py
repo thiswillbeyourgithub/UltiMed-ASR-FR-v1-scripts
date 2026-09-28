@@ -80,6 +80,12 @@ def build_subset(manifest_sub: str, out_name: str, n: int, out_root: Path,
     rows = [json.loads(l) for l in reservoir_sample(manifest, n, rng)]
     out_dir = out_root / out_name
     out_dir.mkdir(parents=True, exist_ok=True)
+    # Clips of an earlier sampling are removed first: after a drop or relabel the
+    # reservoir picks other rows, and the old FLACs would otherwise stay beside the new
+    # ones (the folder held 15 clips for a 5-line manifest after the v1.3 rebuild) and
+    # be uploaded along with them.
+    for old in out_dir.glob("*.flac"):
+        old.unlink()
     lines: list[str] = []
     copied = 0
     for row in rows:
