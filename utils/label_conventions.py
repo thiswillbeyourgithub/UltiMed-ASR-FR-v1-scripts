@@ -334,7 +334,9 @@ _QTY_WORD = rf"(?:{'|'.join(sorted(_NUMBER_VALUES, key=len, reverse=True))}|cent
 _QTY_SEQ = rf"(?i:(?<![\w-]){_QTY_WORD}(?:[\s-]+{_QTY_WORD})*)"
 # A ratio's second number ("cinq jours sur sept") follows the first, else the label
 # mixes forms ("5 jours sur sept") the corpus never uses (362 all-words, 280 all-digits).
-_QUANTITY_RE = re.compile(rf"({_QTY_SEQ})(?:(\s+virgule\s+)({_QTY_SEQ}))?(\s+{_QTY_UNITS})\b"
+# Not right after "pour": "0,10 gramme pour cent une fois par jour" is a percentage
+# followed by a count, not "101 fois" (the match then starts at "une", which stays).
+_QUANTITY_RE = re.compile(rf"(?<!\bpour )({_QTY_SEQ})(?:(\s+virgule\s+)({_QTY_SEQ}))?(\s+{_QTY_UNITS})\b"
                           rf"(?:(\s+sur\s+)({_QTY_SEQ})\b)?")
 # A decimal the LLM wrote half in digits (94 labels, "3 virgule 5 mégahertz"): the
 # corpus writes "3,5" everywhere else.
@@ -513,8 +515,9 @@ def _stage_token(m: re.Match) -> str:
     if m.group(3):
         return str(_NUMBER_VALUES[m.group(3)])
     n = roman_to_int(m.group(1))
-    # A letter that happens to be Roman ("type C" is 100, "classe D" is 500) is not a stage.
-    return m.group(0) if n is None or not 1 <= n <= 20 else f"{n}{m.group(2)}"
+    # A letter that happens to be Roman ("type C" is 100, "classe D" is 500) is not a
+    # stage, nor is a karyotype ("type XX" is not 20): stages stop at 12.
+    return m.group(0) if n is None or not 1 <= n <= 12 else f"{n}{m.group(2)}"
 
 
 def normalize_staging(text: str) -> str:

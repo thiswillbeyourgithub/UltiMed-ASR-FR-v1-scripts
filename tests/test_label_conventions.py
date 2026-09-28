@@ -147,6 +147,8 @@ def test_quantities() -> None:
         ("pendant deux à trois jours, un à 2 fois, et deux à 4 semaines",
          "pendant 2 à 3 jours, 1 à 2 fois, et 2 à 4 semaines"),
         ("douleur à deux sur dix, EVA zéro sur dix", "douleur à 2 sur 10, EVA 0 sur 10"),
+        # A percentage before a count is not one number.
+        ("0,10 gramme pour cent une fois par jour", "0,10 gramme pour cent une fois par jour"),
     ])
     for untouched in [
         "deux comprimés",
@@ -228,7 +230,7 @@ def test_staging() -> None:
         ("Diabète de type 2, stades IVB.", "Diabète de type 2, stades 4B."),
     ])
     # Roman numerals that are names, letters that happen to be Roman, "un peu".
-    for kept in ("angiotensine II", "APACHE II", "métaphase II", "type C", "un type un peu particulier"):
+    for kept in ("angiotensine II", "APACHE II", "métaphase II", "type C", "type XX", "un type un peu particulier"):
         assert normalize_staging(kept) == kept, kept
     print("test_staging: OK")
 
