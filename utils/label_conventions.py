@@ -1,4 +1,4 @@
-"""One written form for titles, dates, clock times, quantities, compounds and drug names in the ASR label.
+"""One written form for titles, dates, clock times, quantities, sutures, compounds, spelling variants and drug names in the ASR label.
 
 Like ``percent_normalize.py``, this canonicalizes what the LLM wrote AFTER the LLM:
 UltiMed v1 labels spell the same spoken thing several ways, so the model learns no
@@ -38,9 +38,19 @@ rewrites the minority spellings to it:
   ``un``/``une`` (``un an``, ``une heure``). Added 2026-09-28 because the hand-made
   ``drug_sentence`` sets spelled every dose while UltiMed writes digits: the model
   wrote ``4 milligrammes`` on the synthetic voice and 63% of that set's WER was
-  number formatting, not recognition.
+  number formatting, not recognition. The radiology units (``grays``, ``hertz``,
+  ``teslas``) count as units, and a decimal written half in digits becomes a decimal
+  (``3 virgule 5 mégahertz`` -> ``3,5 mégahertz``).
+- **Suture gauges** (``normalize_sutures``, label only). ``Vicryl trois zéro`` /
+  ``Vicryl 3 zéros`` / ``Vicryl 3/0`` -> ``Vicryl 3-0``, only after a suture material.
+  Skipped for a TTS source (``tts_source=True``) because voxtral does not read ``3-0``
+  reliably as what the source said.
 - **Compounds** (``normalize_compounds``). ``petit déjeuner`` -> ``petit-déjeuner``
   (213 against 35, and the dictionary spelling of the noun).
+- **Spelling variants** (``normalize_spelling``). ``œ`` -> ``oe`` everywhere (``cœur`` ->
+  ``coeur``), ``aigüe`` -> ``aiguë``, ``compte-rendu`` -> ``compte rendu``,
+  ``bêta-bloquant`` / ``bêtabloquant`` -> ``bétabloquant``. Added 2026-09-28 from an
+  inference sweep of val/test, where these pairs were among the most frequent diffs.
 - **Drug names** (``DrugCaser``). One spelling per drug word, from the lexicon
   ``drug_casing.json`` built by ``02_drugs/02_build_drug_casing.py`` (see its
   docstring for how the canonical form is chosen): ``PRIMPERAN`` / ``Primperan`` ->
@@ -298,7 +308,10 @@ def normalize_clock(text: str) -> str:
 # (``zéro virgule cinq milligramme``), since ``un``/``une`` is never converted.
 _QTY_UNITS = (r"(?:(?:milli|micro|nano|kilo)?grammes?|kilos?|(?:milli|micro|centi)?litres?"
               r"|(?:milli|centi|kilo)?mètres?|(?:milli|micro)moles?|unités?|degrés?"
-              r"|heures?|minutes?|secondes?|jours?|semaines?|mois|ans?)")
+              r"|heures?|minutes?|secondes?|jours?|semaines?|mois|ans?"
+              # Radiology units: 588 labels write "N grays", 11 spelled them; hertz
+              # 356 / 3, teslas 114 / 3.
+              r"|(?:milli|centi)?grays?|(?:kilo|méga)?hertz|teslas?)")
 # Every word a French number up to 999,999 is spelled with ("et" only inside one).
 _NUMBER_VALUES = {w: i for i, w in enumerate(_UNITS)} | {w: n for n, w in _TENS.items()}
 _NUMBER_VALUES |= {"une": 1, "vingts": 20}
@@ -308,6 +321,21 @@ _QTY_SEQ = rf"(?i:(?<![\w-]){_QTY_WORD}(?:[\s-]+{_QTY_WORD})*)"
 # mixes forms ("5 jours sur sept") the corpus never uses (362 all-words, 280 all-digits).
 _QUANTITY_RE = re.compile(rf"({_QTY_SEQ})(?:(\s+virgule\s+)({_QTY_SEQ}))?(\s+{_QTY_UNITS})\b"
                           rf"(?:(\s+sur\s+)({_QTY_SEQ})\b)?")
+# A decimal the LLM wrote half in digits (94 labels, "3 virgule 5 mégahertz"): the
+# corpus writes "3,5" everywhere else.
+_DIGIT_VIRGULE_RE = re.compile(r"(?<![\w,])(\d+) virgule (\d+)\b")
+# Suture gauges: "Vicryl trois zéro" (~250), "Vicryl 3 zéro" (~255), "Vicryl 3-0" (~300,
+# also what the model writes). Only right after a suture material, optionally followed
+# by "rapide" / "résorbable" / "fast", because "N zéro" elsewhere is not a gauge
+# ("schéma zéro un zéro", a score). "Vicryl zéro" (a gauge of plain 0) stays.
+_SUTURE_MATERIAL = (r"vicryl|monocryl|prol[èe]ne|pds|surgil[èe]ne|ticron|monofil(?:ament)?|fils?"
+                    r"|[dl]'[eé]th[iy]lon|[eé]th[iy]lon|polysorb|fil ?[àa] ?peau|polydioxanone"
+                    r"|monosyn|v-?lo[c]?k|velock|flexocrin|nylon|soie|caprosyn|dafilon"
+                    r"|polypropyl[èe]ne|r[ée]sorbables?")
+_GAUGE_NUM = r"un|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|\d{1,2}"
+_SUTURE_RE = re.compile(
+    rf"(?i:\b((?:{_SUTURE_MATERIAL})(?:\s+(?:rapide|r[ée]sorbable|fast))?\s+)({_GAUGE_NUM})"
+    rf"(?:[\s-]+zéros?\b|/0\b))")
 
 
 def parse_french_number(words: list[str]) -> int | None:
@@ -400,7 +428,25 @@ def normalize_quantities(text: str) -> str:
     a spelled hour (``huit heures trente``) are left alone: telling them from a count
     that follows (``deux heures deux fois par jour``) needs more than a regex. Idempotent.
     """
-    return _QUANTITY_RE.sub(_replace_quantity, text)
+    text = _QUANTITY_RE.sub(_replace_quantity, text)
+    return _DIGIT_VIRGULE_RE.sub(r"\1,\2", text)
+
+
+def normalize_sutures(text: str) -> str:
+    """Suture gauges to ``N-0``: ``Vicryl trois zéro`` -> ``Vicryl 3-0``.
+
+    Label only (``apply_label_conventions(..., tts_source=True)`` skips it): voxtral
+    does not read ``3-0`` reliably as "trois zéro" (Whisper heard ``3-0``, ``3.0`` and
+    ``2 à 0`` on such clips), so a TTS source that said ``trois zéro`` keeps saying it.
+    """
+    return _SUTURE_RE.sub(_replace_suture, text)
+
+
+def _replace_suture(m: re.Match) -> str:
+    """``Vicryl trois zéro`` / ``Vicryl 3 zéros`` / ``Vicryl 3/0`` -> ``Vicryl 3-0``."""
+    num = m.group(2)
+    value = num if num.isdigit() else parse_french_number([num.lower()])
+    return f"{m.group(1)}{value}-0"
 
 
 # ---------------------------------------------------------------------------
@@ -417,6 +463,39 @@ _PETIT_DEJEUNER_RE = re.compile(r"\b([Pp]etits?) (déjeuners?)\b")
 def normalize_compounds(text: str) -> str:
     """``petit déjeuner`` -> ``petit-déjeuner``. Idempotent."""
     return _PETIT_DEJEUNER_RE.sub(r"\1-\2", text)
+
+
+# ---------------------------------------------------------------------------
+# Spelling variants
+# ---------------------------------------------------------------------------
+
+# Pairs spelled two ways with no difference in sound. The WER normaliser keeps both
+# spellings apart, so every disagreement costs a word even though the audio cannot
+# tell them apart. The choices below are the author's (2026-09-28), mostly the majority:
+# - ``oe`` for the ``œ`` ligature, everywhere (``oeil`` 10.7k against ``œil`` 1.5k,
+#   ``oedème`` 4.4k against 2.7k; ``cœur`` and ``œsophage`` were the majority but one
+#   rule for every word beats a per-word choice nobody can remember).
+# - ``aiguë`` (28.4k) over ``aigüe`` (1.4k), same for ``subaiguë``, ``contiguë``,
+#   ``ambiguïté``... (the pre-1990 spelling, the corpus majority). ``Argüelles`` (a name)
+#   is left alone because ``güe`` must end the word.
+# - ``compte rendu`` (81k) over ``compte-rendu`` (2k).
+# - ``bétabloquant`` (1.2k) over ``bêtabloquant`` (1.1k) / ``bêta-bloquant`` (0.1k).
+_SPELLING_RULES = (
+    (re.compile("œ"), "oe"),
+    (re.compile("Œ"), "Oe"),
+    (re.compile(r"güe(s?)\b"), r"guë\1"),
+    (re.compile(r"güité"), "guïté"),
+    (re.compile(r"\b([Cc]omptes?)-(rendus?)\b"), r"\1 \2"),
+    (re.compile(r"\b([Bb])[êée]ta[- ]?(bloqu(?:ant|eur)\w*)"), r"\1éta\2"),
+)
+
+
+def normalize_spelling(text: str) -> str:
+    """``cœur`` -> ``coeur``, ``aigüe`` -> ``aiguë``, ``compte-rendu`` -> ``compte rendu``,
+    ``bêta-bloquant`` -> ``bétabloquant``. Idempotent."""
+    for pattern, repl in _SPELLING_RULES:
+        text = pattern.sub(repl, text)
+    return text
 
 
 # ---------------------------------------------------------------------------
@@ -469,8 +548,14 @@ def default_drug_caser() -> DrugCaser:
     return DrugCaser.from_json()
 
 
-def apply_label_conventions(text: str) -> str:
+def apply_label_conventions(text: str, tts_source: bool = False) -> str:
     """Every rewrite, titles first so ``M.`` is gone before sentence starts are judged,
-    and dates before quantities so a spelled year is read as a year, not as a count."""
+    and dates before quantities so a spelled year is read as a year, not as a count.
+
+    ``tts_source=True`` is for a text the TTS already read (05 on the v1 sources): it
+    skips ``normalize_sutures``, the one rewrite voxtral does not speak identically.
+    """
     text = normalize_quantities(normalize_clock(normalize_dates(expand_titles(text))))
-    return default_drug_caser()(normalize_compounds(text))
+    if not tts_source:
+        text = normalize_sutures(text)
+    return default_drug_caser()(normalize_spelling(normalize_compounds(text)))

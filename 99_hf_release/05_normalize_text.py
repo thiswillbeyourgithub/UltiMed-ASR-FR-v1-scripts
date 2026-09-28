@@ -92,7 +92,7 @@ def normalize_row(row: dict, tok: ParakeetTokenizer) -> dict:
     if "asr_training_source" in row:
         # One space between words here too, without clean_label's character fold.
         out["asr_training_source"] = apply_label_conventions(" ".join(percent_sign_to_one_word(
-            percent_to_one_word(row["asr_training_source"])).split()))
+            percent_to_one_word(row["asr_training_source"])).split()), tts_source=True)
     return out
 
 

@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "utils"))
 from label_conventions import (  # noqa: E402
     DrugCaser, apply_label_conventions, default_drug_caser, expand_titles, normalize_clock,
-    normalize_compounds, normalize_dates, normalize_quantities, parse_french_number,
+    normalize_compounds, normalize_dates, normalize_quantities, normalize_spelling, normalize_sutures, parse_french_number,
 )
 
 
@@ -161,6 +161,36 @@ def test_compounds() -> None:
     print("test_compounds: OK")
 
 
+def test_sutures_and_decimals() -> None:
+    check(normalize_sutures, [
+        ("Fermeture au Vicryl trois zéro.", "Fermeture au Vicryl 3-0."),
+        ("Surjet au Monocryl 4 zéros, PDS rapide 3/0.", "Surjet au Monocryl 4-0, PDS rapide 3-0."),
+        ("Points à l'Ethilon neuf zéro.", "Points à l'Ethilon 9-0."),
+    ])
+    # Not a gauge: no suture material before it, or a plain "Vicryl zéro".
+    for kept in ("schéma zéro un zéro", "surjet de Vicryl zéro", "Monocryl 4-0."):
+        assert normalize_sutures(kept) == kept, kept
+    check(normalize_quantities, [
+        ("un transducteur de 3 virgule 5 mégahertz", "un transducteur de 3,5 mégahertz"),
+        ("cent vingt milligrays centimètres", "120 milligrays centimètres"),
+        ("une IRM trois teslas", "une IRM 3 teslas"),
+    ])
+    # The TTS source keeps what voxtral said.
+    assert apply_label_conventions("Vicryl trois zéro", tts_source=True) == "Vicryl trois zéro"
+    print("test_sutures_and_decimals: OK")
+
+
+def test_spelling() -> None:
+    check(normalize_spelling, [
+        ("Le cœur, l'Œdème, une manœuvre.", "Le coeur, l'Oedème, une manoeuvre."),
+        ("Pancréatite aigüe, lésions subaigües, ambigüité.", "Pancréatite aiguë, lésions subaiguës, ambiguïté."),
+        ("Compte-rendu opératoire, les comptes-rendus.", "Compte rendu opératoire, les comptes rendus."),
+        ("Bêta-bloquants, bêtabloquant, bêta bloqueur.", "Bétabloquants, bétabloquant, bétabloqueur."),
+    ])
+    assert normalize_spelling("Docteur Argüelles") == "Docteur Argüelles"
+    print("test_spelling: OK")
+
+
 def test_drug_caser() -> None:
     caser = DrugCaser(
         caps={"PRIMPERAN": "Primpéran", "PARACETAMOL": "paracétamol", "UVEDOSE": "Uvedose",
@@ -212,6 +242,8 @@ if __name__ == "__main__":
     test_parse_french_number()
     test_quantities()
     test_compounds()
+    test_sutures_and_decimals()
+    test_spelling()
     test_drug_caser()
     test_all()
     test_generator_parse()

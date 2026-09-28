@@ -53,8 +53,9 @@ def test_cp1252_mojibake() -> None:
     tok = mod.ParakeetTokenizer(nfkc=False)
     row = {"audio_filepath": "a.flac", "text": "Une goutte dans chaque \u009cil, c\u009cur \u0081."}
     out = mod.normalize_row(row, tok)
-    # U+0081 is undefined in cp1252: left for the <unk> gate, never guessed.
-    assert out["text"] == "Une goutte dans chaque œil, cœur \u0081.", out["text"]
+    # U+0081 is undefined in cp1252: left for the <unk> gate, never guessed. The repaired
+    # "œ" then follows the label convention like any other, hence "oe".
+    assert out["text"] == "Une goutte dans chaque oeil, coeur \u0081.", out["text"]
     assert mod.normalize_row(out, tok) == out
     print("test_cp1252_mojibake: OK")
 
