@@ -71,14 +71,15 @@ def words(text: str) -> list[str]:
     return _PUNCT.sub(" ", text.lower()).split()
 
 
-# Spelled numbers, which a recognizer writes as digits (one token for several words).
+# Spelled numbers, which a recognizer writes as digits (one token for several words),
+# and spoken signs it writes as symbols ("CD20 plus, CD5 moins" -> "CD20+, CD5-").
 _NUMBER_WORDS = frozenset("""zéro un une deux trois quatre cinq six sept huit neuf dix onze douze
 treize quatorze quinze seize vingt vingts trente quarante cinquante soixante cent cents mille
-virgule et""".split())
+virgule et plus moins""".split())
 
 
 def _is_content(word: str) -> bool:
-    """A word of >= 3 letters that is not a spelled number."""
+    """A word of >= 3 letters that is not a spelled number or sign."""
     return len(word) >= 3 and word.isalpha() and word not in _NUMBER_WORDS
 
 
@@ -109,6 +110,8 @@ def find_defect(label: str, hyp: str, stt: str | None) -> tuple[str, str] | None
     >>> find_defect("le patient est sorti hier soir", "le patient", "le patient est sorti hier soir") is None
     True
     >>> find_defect("marqueurs cd 11 cd 18 positifs", "marqueurs cd11 cd18 positifs", "marqueurs positifs") is None
+    True
+    >>> find_defect("cellules cd20 plus cd5 moins bcl2 plus cd10 plus et", "cellules cd20 cd5 bcl2 cd10 et", "cellules et") is None
     True
     >>> find_defect("une uvulo palato pharyngo plastie", "une uvulopalatopharyngoplastie", "une") is None
     True
