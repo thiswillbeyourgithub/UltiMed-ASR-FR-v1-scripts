@@ -11,7 +11,7 @@
 > an LLM at the repository and have it check every claim against the actual files, which is also
 > how it was written. If you find something wrong, an issue is welcome.
 
-The build scripts behind **[UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1)**, a 3,105-hour French medical speech-recognition dataset, and the fine-tuned ASR model trained on it.
+The build scripts behind **[UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1)**, a 3,104-hour French medical speech-recognition dataset, and the fine-tuned ASR model trained on it.
 
 This repository is the **recipe, not the product**. It documents how a single person turned public text sources into a 600k-clip domain-specific ASR corpus on one consumer GPU, so that the same approach can be re-pointed at another specialty, another language, or another ASR model.
 
@@ -52,7 +52,7 @@ This repository is one piece of a French medical ASR stack; every other piece is
 
 | Repository | What it is |
 | --- | --- |
-| [Olicorne/UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1) | The dataset. 601,330 clips / 3,105 h main corpus, plus a separate eval-only PARROT subset. Sharded Parquet with FLAC bytes embedded. Its card, NOTICE and scripts are the ones in [`99_hf_release/`](99_hf_release/). |
+| [Olicorne/UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1) | The dataset. 601,264 clips / 3,104 h main corpus, plus a separate eval-only PARROT subset. Sharded Parquet with FLAC bytes embedded. Its card, NOTICE and scripts are the ones in [`99_hf_release/`](99_hf_release/). |
 | [Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx) | The fine-tuned model: `parakeet-tdt-0.6b-v3` trained on the dataset above, exported to ONNX. |
 | [Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-optimized-onnx) | The multilingual baseline the fine-tune builds on: the upstream ONNX re-quantized for int8 accuracy on long audio and graph-optimized for browser speed. The fine-tune builds on it. |
 | **This repository** | The scripts that produced the dataset, stages 1 to 4 of the plan below. |
@@ -205,7 +205,7 @@ For calibration, since the whole point is that this is reproducible by one perso
 | TTS | Voxtral 4B TTS on vLLM, single `fr_female` voice, 24 kHz mono FLAC, no post-processing |
 | Quality loop | 599,740 clips transcribed with Whisper and scored; median CER **0.0095** |
 | Hardware | **One RTX 3090 Ti**, power-capped to 100-200 W, in a Paris apartment with no air conditioning during the 2026 heatwave |
-| Output | 601,330 clips, 3,105 hours, 254 GB |
+| Output | 601,264 clips, 3,104 hours, 254 GB |
 
 The CER reports are committed: [`06_hotfixes/improved/full.stt.statistics.md`](06_hotfixes/improved/full.stt.statistics.md) and [`06_hotfixes/improved_parrot/full.stt.statistics.md`](06_hotfixes/improved_parrot/full.stt.statistics.md).
 
