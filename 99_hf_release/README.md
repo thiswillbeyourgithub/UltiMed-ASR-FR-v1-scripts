@@ -90,6 +90,9 @@ configs:
 
 # UltiMed-ASR-FR-v1
 
+> [!TIP]
+> **More improvements are planned for October 2026, stay tuned.**
+
 *A large, fully documented French medical speech dataset for evaluating or training models, plus an open recipe to rebuild it in any language or topic.*
 
 ## Contents
