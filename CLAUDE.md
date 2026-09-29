@@ -37,6 +37,7 @@ sub-steps of that stage.
 | `05_generate_audio/` | active | run local TTS over every stage's text output |
 | `06_hotfixes/` | active | score every clip against its transcript (Whisper CER) and regenerate the bad ones |
 | `07_acronyms/` | active | common medical acronyms (Wikipedia-sourced, hand-filtered) to dictation sentences, with per-pronunciation TTS sources |
+| `08_drug_asr_rules/` | active | from fine-tuned Parakeet hypotheses over the drugs subset, per-drug misspellings and ordered regex fix rules for ASR output |
 | `99_hf_release/` | done | build NeMo manifests + package as Parquet, upload to HF (all done; the dataset is published) |
 
 `99_hf_release/` first builds the **NeMo-format JSONL manifests** from each stage's
@@ -484,6 +485,9 @@ base target prompt + `PROMPT_GENERATE_ASR_TRAINING_TARGET_ACRONYMS.md` (the
 `Pronounced as:` line's semantics: it only steers articles/elision, and is
 never written in a variant). Tested by `tests/test_acronyms_stage.py`
 (`uv run tests/test_acronyms_stage.py`).
+
+### `08_drug_asr_rules/` (active)
+Post-processing rules, not dataset building. `01_extract_drug_errors.py` joins a hypotheses file (the NeMo repo's `perso/transcribe_manifests.py`) to manifest labels on `clip_key`, spots drug words in each label (the `utils/drug_casing.json` spellings plus every word of the stage-02 `_acceptable_needles`, imported from `02_drugs/01_generate_drug_texts.py` rather than copied, which is why its header carries the LLM deps), and records each drug's misspelled variants in `drug_asr_errors.json` (a glued elision like `létoposide` gets the target `l'étoposide`). `02_build_fix_rules.py` turns them into `drug_fix_rules.json`: whole-word, case- and accent-insensitive patterns, longest variant first, rejecting variants that are short, appear in a correct corpus label, are another drug, are ambiguous or fire mostly where the label has something else. See the stage README for the commands. Tested by `tests/test_drug_asr_rules.py`.
 
 ## Running scripts
 
