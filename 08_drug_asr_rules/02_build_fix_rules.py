@@ -18,6 +18,9 @@ A variant becomes a rule only if rewriting it can hardly be wrong. It is REJECTE
   error for that drug (precision = error count / all hypothesis occurrences, below
   ``--min-precision``), so the model also writes it where the label has something else;
 - ``rare``: seen fewer than ``--min-count`` times;
+- ``far``: its letters are too far from the target's (``similarity`` below ``--min-ratio``):
+  ``myrtazapine`` or ``mire taz apine`` -> ``mirtazapine`` are slips, a garbled stretch like
+  ``reea iutis aeec et are`` -> ``oméga`` is not;
 - ``contains_target``: the variant already holds the whole target as its own word(s),
   so the rule could only delete the neighbours (``anti-tnf-alpha`` -> ``alpha``,
   ``sous-kardégic`` -> ``Kardégic``): a hyphenation slip of 01, not a misspelling.
@@ -59,6 +62,7 @@ from pathlib import Path
 
 import click
 from loguru import logger
+from rapidfuzz.distance import Levenshtein
 
 _HERE = Path(__file__).resolve().parent
 _spec = importlib.util.spec_from_file_location("extract_drug_errors", _HERE / "01_extract_drug_errors.py")
@@ -67,7 +71,7 @@ _spec.loader.exec_module(extract)
 fold, tokens, load_lexicon = extract.fold, extract.tokens, extract.load_lexicon
 
 DEFAULT_ERRORS = extract.DEFAULT_OUT
-DEFAULT_OUT = _HERE / "drug_fix_rules.json"
+DEFAULT_OUT = _HERE / "drug_fix_rules.jsonl"
 DEFAULT_LABELS = _HERE.parent / "99_hf_release" / "data" / "NeMO_files" / "full.jsonl"
 
 # Every accented form a folded letter stands for, so a rule written from "phélodipine"
@@ -128,6 +132,20 @@ def contains_target(variant: str, target: str) -> bool:
     return len(v) > len(t) and any(v[i:i + len(t)] == t for i in range(len(v) - len(t) + 1))
 
 
+def similarity(variant: str, target: str) -> float:
+    """Normalised Levenshtein similarity of the folded letters (spaces, hyphens and
+    apostrophes dropped, so a split word or a glued article costs nothing).
+
+    >>> similarity("mir taz apine", "mirtazapine"), similarity("létoposide", "l'étoposide")
+    (1.0, 1.0)
+    >>> [round(similarity(v, t), 2) for v, t in [("myrtazapine", "mirtazapine"), ("mire taz apine", "mirtazapine"),
+    ...                                         ("reea iutis aeec et are", "oméga")]]
+    [0.91, 0.92, 0.11]
+    """
+    v, t = ("".join(_key(x)).replace("-", "").replace("'", "") for x in (variant, target))
+    return Levenshtein.normalized_similarity(v, t)
+
+
 def count_ngrams(texts, keys: set[tuple[str, ...]]) -> Counter:
     """How many times each key (a folded token tuple) occurs in ``texts``.
 
@@ -147,7 +165,7 @@ def count_ngrams(texts, keys: set[tuple[str, ...]]) -> Counter:
 
 def build_rules(report: dict, hyps: list[str], labels, lex: dict,
                 min_len: int = 5, min_count: int = 2, min_share: float = 0.9,
-                min_precision: float = 0.8) -> tuple[list[dict], list[dict]]:
+                min_precision: float = 0.8, min_ratio: float = 0.0) -> tuple[list[dict], list[dict]]:
     """``(rules, rejected)`` from the 01 report, the hypotheses and the corpus labels.
 
     >>> report = {"mirtazapine": {"errors": {"mire tazapine": 2, "de mi": 1, "mirtazapinne": 1}, "targets": {}},
@@ -179,6 +197,7 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
         total = sum(targets.values())
         occ = hyp_hits[k]
         precision = n / occ if occ else 1.0
+        ratio = similarity(variant, target)
         reason = None
         if len("".join(k).replace("'", "")) < min_len or re.search(r"\d", variant):
             reason = "short"
@@ -194,12 +213,14 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             reason = "imprecise"
         elif n < min_count:
             reason = "rare"
+        elif ratio < min_ratio:
+            reason = "far"
         row = {"variant": variant, "drug": drug_of[k][target], "count": n}
         if reason:
             rejected.append({**row, "reason": reason})
             continue
         rules.append({"pattern": variant_pattern(variant), "replacement": target, **row,
-                      "hyp_occurrences": occ, "precision": round(precision, 3)})
+                      "hyp_occurrences": occ, "precision": round(precision, 3), "similarity": round(ratio, 3)})
     rules.sort(key=lambda r: (-len(_key(r["variant"])), -len(r["variant"]), -r["count"], r["variant"]))
     rejected.sort(key=lambda r: (r["reason"], -r["count"], r["variant"]))
     return rules, rejected
@@ -253,25 +274,34 @@ def _read_texts(path: Path, field: str):
               help="Manifests whose `text` counts as correct text (repeatable). "
                    "Default: 99_hf_release/data/NeMO_files/full.jsonl")
 @click.option("--out", default=str(DEFAULT_OUT), type=click.Path(path_type=Path),
-              show_default="08_drug_asr_rules/drug_fix_rules.json")
+              show_default="08_drug_asr_rules/drug_fix_rules.jsonl",
+              help="one rule per line, in application order; the rejected variants go to <out stem>.rejected.jsonl")
 @click.option("--min-len", default=5, show_default=True)
 @click.option("--min-count", default=2, show_default=True,
               help="a variant seen once is as likely noise as a pattern (e.g. \"reea iutis aeec et are\" -> oméga)")
 @click.option("--min-share", default=0.9, show_default=True)
 @click.option("--min-precision", default=0.8, show_default=True)
+@click.option("--min-ratio", default=0.0, show_default=True, help="minimum similarity() of variant and target")
 def main(hyps: Path, errors: Path, labels_paths: tuple[Path, ...], out: Path, min_len: int,
-         min_count: int, min_share: float, min_precision: float) -> None:
+         min_count: int, min_share: float, min_precision: float, min_ratio: float) -> None:
     """Write the ordered drug fix rules."""
     report = json.loads(errors.read_text(encoding="utf-8"))
     labels_paths = labels_paths or (DEFAULT_LABELS,)
     labels = (t for p in labels_paths for t in _read_texts(p, "text"))
     rules, rejected = build_rules(report, list(_read_texts(hyps, "hyp")), labels, load_lexicon(),
-                                  min_len, min_count, min_share, min_precision)
+                                  min_len, min_count, min_share, min_precision, min_ratio)
     logger.info(f"{len(rules)} rules covering {sum(r['count'] for r in rules)} errors; rejected "
                 f"{dict(Counter(r['reason'] for r in rejected))}")
-    out.write_text(json.dumps({"rules": rules, "rejected": rejected}, ensure_ascii=False, indent=1) + "\n",
-                   encoding="utf-8")
-    logger.info(f"wrote {out}")
+    rejected_out = out.with_suffix(".rejected.jsonl")
+    for path, rows in ((out, rules), (rejected_out, rejected)):
+        path.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    logger.info(f"wrote {out} and {rejected_out}")
+
+
+def load_rules(path: Path) -> list[dict]:
+    """The ordered rules of a ``drug_fix_rules.jsonl``."""
+    with Path(path).open(encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
 
 
 if __name__ == "__main__":
