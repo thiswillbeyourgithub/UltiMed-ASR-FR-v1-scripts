@@ -1,0 +1,719 @@
+{"variant": "spirivarespimate", "drug": "Respimat", "count": 7, "reason": "ambiguous"}
+{"variant": "méthylaminolévulinate", "drug": "aminolévulinate", "count": 6, "reason": "ambiguous"}
+{"variant": "spioltorespimate", "drug": "Respimat", "count": 6, "reason": "ambiguous"}
+{"variant": "méthyldoparacémique", "drug": "méthyldopa", "count": 5, "reason": "ambiguous"}
+{"variant": "mofétylviatrice", "drug": "mofétil", "count": 4, "reason": "ambiguous"}
+{"variant": "striverdirespimate", "drug": "Respimat", "count": 4, "reason": "ambiguous"}
+{"variant": "benzatine-benzyl-pénicilline", "drug": "benzathine", "count": 3, "reason": "ambiguous"}
+{"variant": "chibrocadron", "drug": "Cadron", "count": 3, "reason": "ambiguous"}
+{"variant": "diroxymelfumarate", "drug": "fumarate", "count": 3, "reason": "ambiguous"}
+{"variant": "majoli-spindler", "drug": "mayoly", "count": 3, "reason": "ambiguous"}
+{"variant": "anétholtritione", "drug": "anéthole", "count": 2, "reason": "ambiguous"}
+{"variant": "eulebrato-elipta", "drug": "Ellipta", "count": 2, "reason": "ambiguous"}
+{"variant": "hertapénem", "drug": "ertapénem", "count": 2, "reason": "ambiguous"}
+{"variant": "insulinispro", "drug": "insuline", "count": 2, "reason": "ambiguous"}
+{"variant": "miflonylbréjalaire", "drug": "Breezhaler", "count": 2, "reason": "ambiguous"}
+{"variant": "mofétilviatrice", "drug": "mofétil", "count": 2, "reason": "ambiguous"}
+{"variant": "nicopassement", "drug": "Nicopass", "count": 2, "reason": "ambiguous"}
+{"variant": "nicopassmente", "drug": "Menthe", "count": 2, "reason": "ambiguous"}
+{"variant": "ténofovir-alaphénamide", "drug": "alafénamide", "count": 2, "reason": "ambiguous"}
+{"variant": "éthyl-loflazépate", "drug": "éthyle", "count": 2, "reason": "ambiguous"}
+{"variant": "éthyloflazépate", "drug": "éthyle", "count": 2, "reason": "ambiguous"}
+{"variant": "abilifimaintena", "drug": "Abilify", "count": 1, "reason": "ambiguous"}
+{"variant": "acidniflumique", "drug": "acide", "count": 1, "reason": "ambiguous"}
+{"variant": "acidobéticholique", "drug": "acide", "count": 1, "reason": "ambiguous"}
+{"variant": "amtricitabine-ténofovir-alaphénamide", "drug": "emtricitabine", "count": 1, "reason": "ambiguous"}
+{"variant": "anoro-elipta", "drug": "Ellipta", "count": 1, "reason": "ambiguous"}
+{"variant": "anoroelipta", "drug": "Ellipta", "count": 1, "reason": "ambiguous"}
+{"variant": "anéthol-tritione", "drug": "anéthole", "count": 1, "reason": "ambiguous"}
+{"variant": "anétholtrition", "drug": "anéthole", "count": 1, "reason": "ambiguous"}
+{"variant": "anétoltritione", "drug": "anéthole", "count": 1, "reason": "ambiguous"}
+{"variant": "asmeller-novalizer", "drug": "Novolizer", "count": 1, "reason": "ambiguous"}
+{"variant": "asmellonovolizer", "drug": "Novolizer", "count": 1, "reason": "ambiguous"}
+{"variant": "aspirinaro", "drug": "Arrow", "count": 1, "reason": "ambiguous"}
+{"variant": "atrovennasal", "drug": "Atrovent", "count": 1, "reason": "ambiguous"}
+{"variant": "bemdrex-ezi-shaler", "drug": "Easyhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "benzatine-benzylpénicilline", "drug": "benzathine", "count": 1, "reason": "ambiguous"}
+{"variant": "cebri-braisaler", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "chibro-cadrone", "drug": "Cadron", "count": 1, "reason": "ambiguous"}
+{"variant": "chibrocadrome", "drug": "Cadron", "count": 1, "reason": "ambiguous"}
+{"variant": "claradolcaféine", "drug": "caféine", "count": 1, "reason": "ambiguous"}
+{"variant": "claudronicacide", "drug": "clodronique", "count": 1, "reason": "ambiguous"}
+{"variant": "cymbicorthrapie", "drug": "Symbicort", "count": 1, "reason": "ambiguous"}
+{"variant": "cérévendiscus", "drug": "Diskus", "count": 1, "reason": "ambiguous"}
+{"variant": "disoproxylérilpiverine", "drug": "disoproxil", "count": 1, "reason": "ambiguous"}
+{"variant": "dutectile-unfant", "drug": "enfants", "count": 1, "reason": "ambiguous"}
+{"variant": "edeucythectrygillay-enfans", "drug": "enfants", "count": 1, "reason": "ambiguous"}
+{"variant": "elbrato-elipta", "drug": "Ellipta", "count": 1, "reason": "ambiguous"}
+{"variant": "elebratho-elipta", "drug": "Ellipta", "count": 1, "reason": "ambiguous"}
+{"variant": "enerzair-brisaller", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "enerzheir-brisheiler", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "gabiskonorrisons", "drug": "nourrissons", "count": 1, "reason": "ambiguous"}
+{"variant": "gaviscomment", "drug": "Menthe", "count": 1, "reason": "ambiguous"}
+{"variant": "gaviskon-ment", "drug": "Menthe", "count": 1, "reason": "ambiguous"}
+{"variant": "genotonorminique", "drug": "Genotonorm", "count": 1, "reason": "ambiguous"}
+{"variant": "ginergencafféine", "drug": "Gynergène", "count": 1, "reason": "ambiguous"}
+{"variant": "ginergencaféine", "drug": "Gynergène", "count": 1, "reason": "ambiguous"}
+{"variant": "glycérolphénylbutyrate", "drug": "phénylbutyrate", "count": 1, "reason": "ambiguous"}
+{"variant": "incrusellipta", "drug": "Ellipta", "count": 1, "reason": "ambiguous"}
+{"variant": "indacatérol-hémométasone", "drug": "mométasone", "count": 1, "reason": "ambiguous"}
+{"variant": "indacatérol-hémométhasone", "drug": "mométasone", "count": 1, "reason": "ambiguous"}
+{"variant": "innovernexthaler", "drug": "Innovair", "count": 1, "reason": "ambiguous"}
+{"variant": "inovernexthaler", "drug": "Innovair", "count": 1, "reason": "ambiguous"}
+{"variant": "insulinlispro", "drug": "insuline", "count": 1, "reason": "ambiguous"}
+{"variant": "insulinoglulizine", "drug": "insuline", "count": 1, "reason": "ambiguous"}
+{"variant": "jibiter-ezyhaler", "drug": "Easyhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "levemir-penfield", "drug": "Penfill", "count": 1, "reason": "ambiguous"}
+{"variant": "levemirflexpen", "drug": "Levemir", "count": 1, "reason": "ambiguous"}
+{"variant": "liléocontinu", "drug": "Leeloo", "count": 1, "reason": "ambiguous"}
+{"variant": "majolispindler", "drug": "mayoly", "count": 1, "reason": "ambiguous"}
+{"variant": "mofétyl-biogaran", "drug": "mofétil", "count": 1, "reason": "ambiguous"}
+{"variant": "mofétylaro", "drug": "mofétil", "count": 1, "reason": "ambiguous"}
+{"variant": "mofétylbiogarand", "drug": "mofétil", "count": 1, "reason": "ambiguous"}
+{"variant": "mofétylbiogarant", "drug": "mofétil", "count": 1, "reason": "ambiguous"}
+{"variant": "mupirosintopique", "drug": "mupirocine", "count": 1, "reason": "ambiguous"}
+{"variant": "niflurilenfant", "drug": "enfants", "count": 1, "reason": "ambiguous"}
+{"variant": "nnifleurilenfant", "drug": "enfants", "count": 1, "reason": "ambiguous"}
+{"variant": "ohnbrez-brezhaler", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "olebrato-elipta", "drug": "Ellipta", "count": 1, "reason": "ambiguous"}
+{"variant": "ombre-brisale", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "ombrébrijalaire", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "oroken-nurrisons", "drug": "nourrissons", "count": 1, "reason": "ambiguous"}
+{"variant": "pentamidinicétionate", "drug": "iséthionate", "count": 1, "reason": "ambiguous"}
+{"variant": "phiaspenfil", "drug": "Penfill", "count": 1, "reason": "ambiguous"}
+{"variant": "polériad", "drug": "adultes", "count": 1, "reason": "ambiguous"}
+{"variant": "prénasal", "drug": "nasal", "count": 1, "reason": "ambiguous"}
+{"variant": "prénasale", "drug": "nasal", "count": 1, "reason": "ambiguous"}
+{"variant": "serévendiscus", "drug": "Diskus", "count": 1, "reason": "ambiguous"}
+{"variant": "simbicort-trapihaler", "drug": "Symbicort", "count": 1, "reason": "ambiguous"}
+{"variant": "spray-nasale", "drug": "nasal", "count": 1, "reason": "ambiguous"}
+{"variant": "spénasal", "drug": "nasal", "count": 1, "reason": "ambiguous"}
+{"variant": "symbicortrapihaler", "drug": "Symbicort", "count": 1, "reason": "ambiguous"}
+{"variant": "sébribalaire", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "sébribézalaire", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "ticoeroscre", "drug": "Trixeo", "count": 1, "reason": "ambiguous"}
+{"variant": "tomato-local", "drug": "stomato", "count": 1, "reason": "ambiguous"}
+{"variant": "tresybaflextouch", "drug": "Tresiba", "count": 1, "reason": "ambiguous"}
+{"variant": "trezibaflextouch", "drug": "Tresiba", "count": 1, "reason": "ambiguous"}
+{"variant": "trixéoaérosphère", "drug": "Trixeo", "count": 1, "reason": "ambiguous"}
+{"variant": "trésibaflextoche", "drug": "Tresiba", "count": 1, "reason": "ambiguous"}
+{"variant": "ténofovir-alafhénamide", "drug": "alafénamide", "count": 1, "reason": "ambiguous"}
+{"variant": "ténofovir-disoproxyl", "drug": "disoproxil", "count": 1, "reason": "ambiguous"}
+{"variant": "ultibro-bre-jâleur", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "ultibro-brishaler", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
+{"variant": "viskenquanz", "drug": "quinze", "count": 1, "reason": "ambiguous"}
+{"variant": "voltaren-emulgel", "drug": "Voltarène", "count": 1, "reason": "ambiguous"}
+{"variant": "voltaren-emulgell", "drug": "Voltarène", "count": 1, "reason": "ambiguous"}
+{"variant": "zanoro-elipta", "drug": "Ellipta", "count": 1, "reason": "ambiguous"}
+{"variant": "zeiprexavellotab", "drug": "Zyprexa", "count": 1, "reason": "ambiguous"}
+{"variant": "éthylloflazépat", "drug": "éthyle", "count": 1, "reason": "ambiguous"}
+{"variant": "éthylloflazépate", "drug": "éthyle", "count": 1, "reason": "ambiguous"}
+{"variant": "oméga-e", "drug": "oméga", "count": 12, "reason": "contains_target"}
+{"variant": "insuline-glargine", "drug": "insuline", "count": 11, "reason": "contains_target"}
+{"variant": "aluminium-phosphate", "drug": "aluminium", "count": 5, "reason": "contains_target"}
+{"variant": "ténofovir-alafénamide", "drug": "alafénamide", "count": 5, "reason": "contains_target"}
+{"variant": "aluminium-hydroxyde", "drug": "aluminium", "count": 4, "reason": "contains_target"}
+{"variant": "insuline-glulisine", "drug": "insuline", "count": 4, "reason": "contains_target"}
+{"variant": "anoro-ellipta", "drug": "Ellipta", "count": 2, "reason": "contains_target"}
+{"variant": "anti-tnf-alpha", "drug": "alpha", "count": 2, "reason": "contains_target"}
+{"variant": "calcium-gluconate", "drug": "calcium", "count": 2, "reason": "contains_target"}
+{"variant": "hyphtérie-tétanos-poliomyélite", "drug": "poliomyélite", "count": 2, "reason": "contains_target"}
+{"variant": "polyéthylène-glycol", "drug": "polyéthylène", "count": 2, "reason": "contains_target"}
+{"variant": "polyéthylène-glycol-époétine", "drug": "polyéthylène", "count": 2, "reason": "contains_target"}
+{"variant": "soufre-hexafluorure", "drug": "hexafluorure", "count": 2, "reason": "contains_target"}
+{"variant": "sous-kardégic", "drug": "Kardégic", "count": 2, "reason": "contains_target"}
+{"variant": "alpha-péguilé", "drug": "alpha", "count": 1, "reason": "contains_target"}
+{"variant": "anti-hépatite", "drug": "hépatite", "count": 1, "reason": "contains_target"}
+{"variant": "aspirine-upsa", "drug": "aspirine", "count": 1, "reason": "contains_target"}
+{"variant": "benzathine-benzylpénicilline", "drug": "benzathine", "count": 1, "reason": "contains_target"}
+{"variant": "bricanyl-turbuhaler", "drug": "turbuhaler", "count": 1, "reason": "contains_target"}
+{"variant": "butyrate-locian", "drug": "butyrate", "count": 1, "reason": "contains_target"}
+{"variant": "bétadine-scrub", "drug": "bétadine", "count": 1, "reason": "contains_target"}
+{"variant": "bétadine-skrib", "drug": "bétadine", "count": 1, "reason": "contains_target"}
+{"variant": "daikin-cooper", "drug": "cooper", "count": 1, "reason": "contains_target"}
+{"variant": "dakin-cooper", "drug": "cooper", "count": 1, "reason": "contains_target"}
+{"variant": "darbépoétine-alpha", "drug": "darbepoetine", "count": 1, "reason": "contains_target"}
+{"variant": "fucidine-enfants", "drug": "enfants", "count": 1, "reason": "contains_target"}
+{"variant": "indocollyre-collyre", "drug": "Indocollyre", "count": 1, "reason": "contains_target"}
+{"variant": "innovair-nextaller", "drug": "Innovair", "count": 1, "reason": "contains_target"}
+{"variant": "insuline-aspar", "drug": "insuline", "count": 1, "reason": "contains_target"}
+{"variant": "insuline-glucide", "drug": "insuline", "count": 1, "reason": "contains_target"}
+{"variant": "ivermectine-peros", "drug": "ivermectine", "count": 1, "reason": "contains_target"}
+{"variant": "lasmellor-novolizer", "drug": "Novolizer", "count": 1, "reason": "contains_target"}
+{"variant": "lth-hyroxine-henning", "drug": "Henning", "count": 1, "reason": "contains_target"}
+{"variant": "lthyroxine-henning", "drug": "Henning", "count": 1, "reason": "contains_target"}
+{"variant": "morphine-sulfate", "drug": "morphine", "count": 1, "reason": "contains_target"}
+{"variant": "méthynaltrexone-bromure", "drug": "bromure", "count": 1, "reason": "contains_target"}
+{"variant": "naltrexone-bromure", "drug": "bromure", "count": 1, "reason": "contains_target"}
+{"variant": "polyéthylène-glycolépoétine", "drug": "polyéthylène", "count": 1, "reason": "contains_target"}
+{"variant": "post-thérapeutique", "drug": "thérapeutique", "count": 1, "reason": "contains_target"}
+{"variant": "pré-nasal", "drug": "nasal", "count": 1, "reason": "contains_target"}
+{"variant": "purifi-conjugue", "drug": "conjugué", "count": 1, "reason": "contains_target"}
+{"variant": "pyridoxal-phosphate", "drug": "phosphate", "count": 1, "reason": "contains_target"}
+{"variant": "sacubitril-valsartan", "drug": "sacubitril", "count": 1, "reason": "contains_target"}
+{"variant": "saint-sucre", "drug": "sucre", "count": 1, "reason": "contains_target"}
+{"variant": "sous-acarbose", "drug": "acarbose", "count": 1, "reason": "contains_target"}
+{"variant": "sous-minocycline", "drug": "minocycline", "count": 1, "reason": "contains_target"}
+{"variant": "spasfon-lyok", "drug": "Spasfon", "count": 1, "reason": "contains_target"}
+{"variant": "spray-nasal", "drug": "nasal", "count": 1, "reason": "contains_target"}
+{"variant": "stomato-local", "drug": "stomato", "count": 1, "reason": "contains_target"}
+{"variant": "stomato-locales", "drug": "stomato", "count": 1, "reason": "contains_target"}
+{"variant": "willebrand-antigène", "drug": "willebrand", "count": 1, "reason": "contains_target"}
+{"variant": "bréjalaire", "drug": "Breezhaler", "count": 5, "reason": "far"}
+{"variant": "gynotroside", "drug": "Trosyd", "count": 4, "reason": "far"}
+{"variant": "cyclose", "drug": "Siklos", "count": 2, "reason": "far"}
+{"variant": "d'hyphtérie-tétanos-poliomyélite", "drug": "diphtérie", "count": 2, "reason": "far"}
+{"variant": "iproméloscollyre", "drug": "hypromellose", "count": 2, "reason": "far"}
+{"variant": "kalkens", "drug": "Calquence", "count": 2, "reason": "far"}
+{"variant": "malogmix", "drug": "Humalog", "count": 2, "reason": "far"}
+{"variant": "osampique", "drug": "Ozempic", "count": 2, "reason": "far"}
+{"variant": "qfens", "drug": "Cufence", "count": 2, "reason": "far"}
+{"variant": "trocidovule", "drug": "Trosyd", "count": 2, "reason": "far"}
+{"variant": "achibrucuvia", "drug": "Hyqvia", "count": 1, "reason": "far"}
+{"variant": "achiliquite", "drug": "Helikit", "count": 1, "reason": "far"}
+{"variant": "achya", "drug": "Hydrea", "count": 1, "reason": "far"}
+{"variant": "act ayaki", "drug": "Actiq", "count": 1, "reason": "far"}
+{"variant": "aflavicollyre", "drug": "Aflavis", "count": 1, "reason": "far"}
+{"variant": "air guiday au apett", "drug": "Rydapt", "count": 1, "reason": "far"}
+{"variant": "aktékie", "drug": "Actiq", "count": 1, "reason": "far"}
+{"variant": "allergollyre", "drug": "Zalerg", "count": 1, "reason": "far"}
+{"variant": "allergues", "drug": "Zalerg", "count": 1, "reason": "far"}
+{"variant": "alrgodil-collyre", "drug": "Allergodil", "count": 1, "reason": "far"}
+{"variant": "amaqueur", "drug": "Amycor", "count": 1, "reason": "far"}
+{"variant": "arcalp", "drug": "Tarka", "count": 1, "reason": "far"}
+{"variant": "aschrimose", "drug": "Hyrimoz", "count": 1, "reason": "far"}
+{"variant": "ashibrec cuvia", "drug": "Hyqvia", "count": 1, "reason": "far"}
+{"variant": "atoaillar", "drug": "Autohaler", "count": 1, "reason": "far"}
+{"variant": "atuergie ili contrompi", "drug": "Aturgyl", "count": 1, "reason": "far"}
+{"variant": "azadictaire", "drug": "Azyter", "count": 1, "reason": "far"}
+{"variant": "bable et iskix", "drug": "Wakix", "count": 1, "reason": "far"}
+{"variant": "bachycymie", "drug": "Baqsimi", "count": 1, "reason": "far"}
+{"variant": "backycimies", "drug": "Baqsimi", "count": 1, "reason": "far"}
+{"variant": "bictarve driguier", "drug": "Biktarvy", "count": 1, "reason": "far"}
+{"variant": "bictarve ivraigris", "drug": "Biktarvy", "count": 1, "reason": "far"}
+{"variant": "bik ou eisz", "drug": "Byooviz", "count": 1, "reason": "far"}
+{"variant": "brige à l'air", "drug": "Breezhaler", "count": 1, "reason": "far"}
+{"variant": "brise alheure", "drug": "Breezhaler", "count": 1, "reason": "far"}
+{"variant": "brome phénaxodique", "drug": "bromfénac", "count": 1, "reason": "far"}
+{"variant": "brège alaire", "drug": "Breezhaler", "count": 1, "reason": "far"}
+{"variant": "béimicylor", "drug": "Missilor", "count": 1, "reason": "far"}
+{"variant": "bémycilor", "drug": "Missilor", "count": 1, "reason": "far"}
+{"variant": "cahuven", "drug": "Kuvan", "count": 1, "reason": "far"}
+{"variant": "calcayens", "drug": "Calquence", "count": 1, "reason": "far"}
+{"variant": "calcéans", "drug": "Calquence", "count": 1, "reason": "far"}
+{"variant": "calouble-icpen", "drug": "Kwikpen", "count": 1, "reason": "far"}
+{"variant": "carysaxap", "drug": "Acarizax", "count": 1, "reason": "far"}
+{"variant": "caïcriel", "drug": "Kytril", "count": 1, "reason": "far"}
+{"variant": "celluloz", "drug": "Selozok", "count": 1, "reason": "far"}
+{"variant": "chibrédéréa", "drug": "Hydrea", "count": 1, "reason": "far"}
+{"variant": "chimosaux", "drug": "Kimozo", "count": 1, "reason": "far"}
+{"variant": "chirurgose", "drug": "Hyrimoz", "count": 1, "reason": "far"}
+{"variant": "ciniphore", "drug": "Signifor", "count": 1, "reason": "far"}
+{"variant": "cleric j", "drug": "Clairyg", "count": 1, "reason": "far"}
+{"variant": "cuthi", "drug": "Cutacnyl", "count": 1, "reason": "far"}
+{"variant": "cymbicor trapihaller", "drug": "Symbicort", "count": 1, "reason": "far"}
+{"variant": "cébribré", "drug": "Seebri", "count": 1, "reason": "far"}
+{"variant": "cébribré à l'air", "drug": "Breezhaler", "count": 1, "reason": "far"}
+{"variant": "d'abseux", "drug": "Firdapse", "count": 1, "reason": "far"}
+{"variant": "dak peptigril", "drug": "Décapeptyl", "count": 1, "reason": "far"}
+{"variant": "dakeptigi", "drug": "Décapeptyl", "count": 1, "reason": "far"}
+{"variant": "ddutkil", "drug": "Eductyl", "count": 1, "reason": "far"}
+{"variant": "dek peptig riel", "drug": "Décapeptyl", "count": 1, "reason": "far"}
+{"variant": "dek peptique", "drug": "Décapeptyl", "count": 1, "reason": "far"}
+{"variant": "deolecheo", "drug": "Dolko", "count": 1, "reason": "far"}
+{"variant": "des odk", "drug": "Dodecavit", "count": 1, "reason": "far"}
+{"variant": "deux uticliels", "drug": "Eductyl", "count": 1, "reason": "far"}
+{"variant": "deux utikielenfans", "drug": "Eductyl", "count": 1, "reason": "far"}
+{"variant": "diop de haut pa", "drug": "Duodopa", "count": 1, "reason": "far"}
+{"variant": "disconce", "drug": "Diskus", "count": 1, "reason": "far"}
+{"variant": "dkp il", "drug": "Décapeptyl", "count": 1, "reason": "far"}
+{"variant": "dkpril", "drug": "Décapeptyl", "count": 1, "reason": "far"}
+{"variant": "duinzizea", "drug": "Onglyza", "count": 1, "reason": "far"}
+{"variant": "dyroxy malfumarate", "drug": "diroximel", "count": 1, "reason": "far"}
+{"variant": "déiligué", "drug": "Daily", "count": 1, "reason": "far"}
+{"variant": "eau flossée", "drug": "Oflocet", "count": 1, "reason": "far"}
+{"variant": "ecuville", "drug": "Eqwilate", "count": 1, "reason": "far"}
+{"variant": "edeucetie criel", "drug": "Eductyl", "count": 1, "reason": "far"}
+{"variant": "edeussectic riel", "drug": "Eductyl", "count": 1, "reason": "far"}
+{"variant": "ejsaaa", "drug": "Hyzaar", "count": 1, "reason": "far"}
+{"variant": "eli kraperza", "drug": "Lynparza", "count": 1, "reason": "far"}
+{"variant": "elikrine-perza", "drug": "Lynparza", "count": 1, "reason": "far"}
+{"variant": "embryzant", "drug": "ambrisentan", "count": 1, "reason": "far"}
+{"variant": "empique", "drug": "Ozempic", "count": 1, "reason": "far"}
+{"variant": "en alaprilédiurétique", "drug": "énalapril", "count": 1, "reason": "far"}
+{"variant": "entose érégri", "drug": "Ontozry", "count": 1, "reason": "far"}
+{"variant": "eric apiate", "drug": "Rydapt", "count": 1, "reason": "far"}
+{"variant": "erthèmes", "drug": "Artirem", "count": 1, "reason": "far"}
+{"variant": "eryzé moaïque", "drug": "Rizmoic", "count": 1, "reason": "far"}
+{"variant": "eyrick-enfantz", "drug": "enfants", "count": 1, "reason": "far"}
+{"variant": "fiterus", "drug": "Cuvitru", "count": 1, "reason": "far"}
+{"variant": "flagigillel", "drug": "Flagyl", "count": 1, "reason": "far"}
+{"variant": "fleuquen", "drug": "flécaïne", "count": 1, "reason": "far"}
+{"variant": "flighty", "drug": "Vanflyta", "count": 1, "reason": "far"}
+{"variant": "floy dibagac", "drug": "Fluidabak", "count": 1, "reason": "far"}
+{"variant": "fluvaque", "drug": "Influvac", "count": 1, "reason": "far"}
+{"variant": "flux conchollyre", "drug": "Flucon", "count": 1, "reason": "far"}
+{"variant": "flux concollyre", "drug": "Flucon", "count": 1, "reason": "far"}
+{"variant": "founten", "drug": "Comtan", "count": 1, "reason": "far"}
+{"variant": "futalmique", "drug": "Fucithalmic", "count": 1, "reason": "far"}
+{"variant": "genre vesa", "drug": "Jorveza", "count": 1, "reason": "far"}
+{"variant": "guiderel", "drug": "Gydrelle", "count": 1, "reason": "far"}
+{"variant": "guinotroside", "drug": "Trosyd", "count": 1, "reason": "far"}
+{"variant": "harry keys", "drug": "Arikayce", "count": 1, "reason": "far"}
+{"variant": "heitekund", "drug": "Hytacand", "count": 1, "reason": "far"}
+{"variant": "hespereiricacel", "drug": "Sprycel", "count": 1, "reason": "far"}
+{"variant": "hraïcique subis", "drug": "Rixubis", "count": 1, "reason": "far"}
+{"variant": "ilorique", "drug": "Zyloric", "count": 1, "reason": "far"}
+{"variant": "inicetsa", "drug": "Inhixa", "count": 1, "reason": "far"}
+{"variant": "ixigsat", "drug": "Izixate", "count": 1, "reason": "far"}
+{"variant": "j villarie", "drug": "Givlaari", "count": 1, "reason": "far"}
+{"variant": "jeanne humay", "drug": "Janumet", "count": 1, "reason": "far"}
+{"variant": "jiclek", "drug": "Jyseleca", "count": 1, "reason": "far"}
+{"variant": "jiderel", "drug": "Gydrelle", "count": 1, "reason": "far"}
+{"variant": "jzeleceleka", "drug": "Jyseleca", "count": 1, "reason": "far"}
+{"variant": "kaecryl", "drug": "Kytril", "count": 1, "reason": "far"}
+{"variant": "kaentesh eme", "drug": "Kyntheum", "count": 1, "reason": "far"}
+{"variant": "kai white ilel", "drug": "Kytril", "count": 1, "reason": "far"}
+{"variant": "kaikryl", "drug": "Kytril", "count": 1, "reason": "far"}
+{"variant": "kaiwentetum", "drug": "Kyntheum", "count": 1, "reason": "far"}
+{"variant": "kazim", "drug": "Quasym", "count": 1, "reason": "far"}
+{"variant": "keazim", "drug": "Quasym", "count": 1, "reason": "far"}
+{"variant": "keolkymax", "drug": "colchimax", "count": 1, "reason": "far"}
+{"variant": "ki crétri", "drug": "Kytril", "count": 1, "reason": "far"}
+{"variant": "kiaiitl", "drug": "Kytril", "count": 1, "reason": "far"}
+{"variant": "kieasim", "drug": "Quasym", "count": 1, "reason": "far"}
+{"variant": "kutakenimi", "drug": "Cutacnyl", "count": 1, "reason": "far"}
+{"variant": "l'eau dose", "drug": "Lodoz", "count": 1, "reason": "far"}
+{"variant": "l'eau-dose", "drug": "Lodoz", "count": 1, "reason": "far"}
+{"variant": "l'îlot au", "drug": "Leeloo", "count": 1, "reason": "far"}
+{"variant": "l-inicra nprca", "drug": "Lynparza", "count": 1, "reason": "far"}
+{"variant": "lamvas", "drug": "Elonva", "count": 1, "reason": "far"}
+{"variant": "lhrhfrin", "drug": "Ferring", "count": 1, "reason": "far"}
+{"variant": "lichios", "drug": "Lytos", "count": 1, "reason": "far"}
+{"variant": "lipendrigli", "drug": "Lipanthyl", "count": 1, "reason": "far"}
+{"variant": "lippen tumfant", "drug": "Lipanthyl", "count": 1, "reason": "far"}
+{"variant": "logicstas", "drug": "Lojuxta", "count": 1, "reason": "far"}
+{"variant": "lohrun", "drug": "Oroken", "count": 1, "reason": "far"}
+{"variant": "lphazet", "drug": "Elfasette", "count": 1, "reason": "far"}
+{"variant": "lysème", "drug": "Alizem", "count": 1, "reason": "far"}
+{"variant": "lévopathacollyre", "drug": "Levophta", "count": 1, "reason": "far"}
+{"variant": "miflonylbré à l'air", "drug": "Breezhaler", "count": 1, "reason": "far"}
+{"variant": "mollvenes", "drug": "Hemoleven", "count": 1, "reason": "far"}
+{"variant": "mono-tildi mlp", "drug": "Tildiem", "count": 1, "reason": "far"}
+{"variant": "monothyldième", "drug": "Tildiem", "count": 1, "reason": "far"}
+{"variant": "médecine naltrexone-bromure", "drug": "méthylnaltrexone", "count": 1, "reason": "far"}
+{"variant": "new ibique", "drug": "Nuwiq", "count": 1, "reason": "far"}
+{"variant": "newwicki", "drug": "Nuwiq", "count": 1, "reason": "far"}
+{"variant": "nicopassement de", "drug": "Menthe", "count": 1, "reason": "far"}
+{"variant": "nicorette esprit ment", "drug": "verte", "count": 1, "reason": "far"}
+{"variant": "nicorète esprit ment de pulvérisation", "drug": "verte", "count": 1, "reason": "far"}
+{"variant": "nicsoïdie", "drug": "Nyxoid", "count": 1, "reason": "far"}
+{"variant": "nouvelle iq", "drug": "Nuwiq", "count": 1, "reason": "far"}
+{"variant": "nphkwen", "drug": "Kwikpen", "count": 1, "reason": "far"}
+{"variant": "nphkwkipn", "drug": "Kwikpen", "count": 1, "reason": "far"}
+{"variant": "occycdu", "drug": "Xigduo", "count": 1, "reason": "far"}
+{"variant": "ontozederigrae", "drug": "Ontozry", "count": 1, "reason": "far"}
+{"variant": "ophényl", "drug": "Zofenil", "count": 1, "reason": "far"}
+{"variant": "osequeanatos", "drug": "Octanate", "count": 1, "reason": "far"}
+{"variant": "oxhexir nalp", "drug": "Oxsynia", "count": 1, "reason": "far"}
+{"variant": "oxyki srea", "drug": "Oxsynia", "count": 1, "reason": "far"}
+{"variant": "partiapal", "drug": "Tiapridal", "count": 1, "reason": "far"}
+{"variant": "pequinone", "drug": "Apokinon", "count": 1, "reason": "far"}
+{"variant": "pictar vrigor", "drug": "Biktarvy", "count": 1, "reason": "far"}
+{"variant": "pneumoecocusnt gen", "drug": "antigène", "count": 1, "reason": "far"}
+{"variant": "poiasix", "drug": "Wakix", "count": 1, "reason": "far"}
+{"variant": "prochi-ini grigle", "drug": "Prokinyl", "count": 1, "reason": "far"}
+{"variant": "préotropsysb", "drug": "Procysbi", "count": 1, "reason": "far"}
+{"variant": "pégryra", "drug": "Pyléra", "count": 1, "reason": "far"}
+{"variant": "qef efiki", "drug": "Quviviq", "count": 1, "reason": "far"}
+{"variant": "qefi efiqi", "drug": "Quviviq", "count": 1, "reason": "far"}
+{"variant": "queens the", "drug": "quinze", "count": 1, "reason": "far"}
+{"variant": "questigno", "drug": "Kestinlyo", "count": 1, "reason": "far"}
+{"variant": "recan psygies", "drug": "Rekambys", "count": 1, "reason": "far"}
+{"variant": "reea iutis aeec", "drug": "Reanutriflex", "count": 1, "reason": "far"}
+{"variant": "reea iutis aeec et are", "drug": "oméga", "count": 1, "reason": "far"}
+{"variant": "rhizmeque", "drug": "Rizmoic", "count": 1, "reason": "far"}
+{"variant": "rhosique", "drug": "Reblozyl", "count": 1, "reason": "far"}
+{"variant": "ruicovel", "drug": "Rekovelle", "count": 1, "reason": "far"}
+{"variant": "seglixtago", "drug": "Cystagon", "count": 1, "reason": "far"}
+{"variant": "seinerise", "drug": "Cinryze", "count": 1, "reason": "far"}
+{"variant": "selubisque", "drug": "Celluvisc", "count": 1, "reason": "far"}
+{"variant": "sexigno", "drug": "Cystagon", "count": 1, "reason": "far"}
+{"variant": "sigrobe imkevii", "drug": "Symkevi", "count": 1, "reason": "far"}
+{"variant": "sili bilinco", "drug": "Cibinqo", "count": 1, "reason": "far"}
+{"variant": "siloxyncholyre", "drug": "Ciloxan", "count": 1, "reason": "far"}
+{"variant": "siutacuge", "drug": "Cutaquig", "count": 1, "reason": "far"}
+{"variant": "sous-cotélique", "drug": "Cotellic", "count": 1, "reason": "far"}
+{"variant": "sous-solaire", "drug": "Xolair", "count": 1, "reason": "far"}
+{"variant": "sous-symnaïales", "drug": "Sibnayal", "count": 1, "reason": "far"}
+{"variant": "sret amga", "drug": "Amglidia", "count": 1, "reason": "far"}
+{"variant": "styloépipènes", "drug": "Epipen", "count": 1, "reason": "far"}
+{"variant": "symbicor trapihaller", "drug": "Symbicort", "count": 1, "reason": "far"}
+{"variant": "synocyt", "drug": "Sunosi", "count": 1, "reason": "far"}
+{"variant": "taoletzeets", "drug": "Taltz", "count": 1, "reason": "far"}
+{"variant": "terfucremès", "drug": "Trophicreme", "count": 1, "reason": "far"}
+{"variant": "testing fi", "drug": "Infai", "count": 1, "reason": "far"}
+{"variant": "théorphin", "drug": "Tiorfan", "count": 1, "reason": "far"}
+{"variant": "tifimbu", "drug": "Trimbow", "count": 1, "reason": "far"}
+{"variant": "tiraois oes hirocryp lusanfoxis nampierdeprovexis d'art pénantico", "drug": "Thyrofix", "count": 1, "reason": "far"}
+{"variant": "tis ecseptef", "drug": "Thaissept", "count": 1, "reason": "far"}
+{"variant": "topipodalaire", "drug": "Podhaler", "count": 1, "reason": "far"}
+{"variant": "tout géodies", "drug": "Toujeo", "count": 1, "reason": "far"}
+{"variant": "travaux prostcoliaires", "drug": "travoprost", "count": 1, "reason": "far"}
+{"variant": "tue cisanais", "drug": "Tussidane", "count": 1, "reason": "far"}
+{"variant": "ultibrobrige allaire", "drug": "Breezhaler", "count": 1, "reason": "far"}
+{"variant": "un crusellipta", "drug": "Incruse", "count": 1, "reason": "far"}
+{"variant": "usinate", "drug": "Zinnat", "count": 1, "reason": "far"}
+{"variant": "usylbriscu", "drug": "Zilbrysq", "count": 1, "reason": "far"}
+{"variant": "utikielenfans", "drug": "enfants", "count": 1, "reason": "far"}
+{"variant": "vackanbcg", "drug": "vaccin", "count": 1, "reason": "far"}
+{"variant": "varns", "drug": "Invanz", "count": 1, "reason": "far"}
+{"variant": "veersit", "drug": "Vercyte", "count": 1, "reason": "far"}
+{"variant": "veille une pâte", "drug": "Vimpat", "count": 1, "reason": "far"}
+{"variant": "vemedigri", "drug": "Vemlidy", "count": 1, "reason": "far"}
+{"variant": "vigraine d'ackle", "drug": "Vyndaqel", "count": 1, "reason": "far"}
+{"variant": "vircuflim", "drug": "Yuflyma", "count": 1, "reason": "far"}
+{"variant": "vistailles", "drug": "Evista", "count": 1, "reason": "far"}
+{"variant": "voisin là", "drug": "Wezenla", "count": 1, "reason": "far"}
+{"variant": "vouid", "drug": "Veyvondi", "count": 1, "reason": "far"}
+{"variant": "wiiufli emma", "drug": "Yuflyma", "count": 1, "reason": "far"}
+{"variant": "x zenposheim", "drug": "Xenpozyme", "count": 1, "reason": "far"}
+{"variant": "xelgee", "drug": "Xeljanz", "count": 1, "reason": "far"}
+{"variant": "zelphaz", "drug": "Elfasette", "count": 1, "reason": "far"}
+{"variant": "ziggrus", "drug": "Zydus", "count": 1, "reason": "far"}
+{"variant": "zériède", "drug": "Viread", "count": 1, "reason": "far"}
+{"variant": "étimibais", "drug": "ézétimibe", "count": 1, "reason": "far"}
+{"variant": "étrrols", "drug": "Ezetrol", "count": 1, "reason": "far"}
+{"variant": "nicoret", "drug": "Nicorette", "count": 10, "reason": "imprecise"}
+{"variant": "aemophilus", "drug": "haemophilus", "count": 4, "reason": "imprecise"}
+{"variant": "à sparte", "drug": "aspart", "count": 4, "reason": "imprecise"}
+{"variant": "ceftazidim", "drug": "ceftazidime", "count": 3, "reason": "imprecise"}
+{"variant": "fluororuracyl", "drug": "fluorouracile", "count": 3, "reason": "imprecise"}
+{"variant": "cholestéramine", "drug": "colestyramine", "count": 2, "reason": "imprecise"}
+{"variant": "relix", "drug": "Eurelix", "count": 2, "reason": "imprecise"}
+{"variant": "sulfamétoxazole", "drug": "sulfaméthoxazole", "count": 2, "reason": "imprecise"}
+{"variant": "bacavir", "drug": "abacavir", "count": 1, "reason": "imprecise"}
+{"variant": "cymbicor", "drug": "Symbicort", "count": 1, "reason": "imprecise"}
+{"variant": "fluororuracils", "drug": "fluorouracile", "count": 1, "reason": "imprecise"}
+{"variant": "fuquidine", "drug": "fucidine", "count": 1, "reason": "imprecise"}
+{"variant": "iraglutide", "drug": "liraglutide", "count": 1, "reason": "imprecise"}
+{"variant": "nirapari", "drug": "niraparib", "count": 1, "reason": "imprecise"}
+{"variant": "ple grid", "drug": "Plegridy", "count": 1, "reason": "imprecise"}
+{"variant": "queens", "drug": "quinze", "count": 1, "reason": "imprecise"}
+{"variant": "varicel", "drug": "varicelle", "count": 1, "reason": "imprecise"}
+{"variant": "vaudart", "drug": "Avodart", "count": 1, "reason": "imprecise"}
+{"variant": "vitrel", "drug": "Ovitrelle", "count": 1, "reason": "imprecise"}
+{"variant": "enfant", "drug": "enfants", "count": 43, "reason": "other_drug"}
+{"variant": "cholécalciférol", "drug": "colécalciférol", "count": 22, "reason": "other_drug"}
+{"variant": "immunoglobulines", "drug": "immunoglobuline", "count": 11, "reason": "other_drug"}
+{"variant": "conjugué", "drug": "conjugués", "count": 7, "reason": "other_drug"}
+{"variant": "antigène", "drug": "antigènes", "count": 6, "reason": "other_drug"}
+{"variant": "polysaccharidique", "drug": "polysaccharidiques", "count": 6, "reason": "other_drug"}
+{"variant": "facteur", "drug": "facteurs", "count": 4, "reason": "other_drug"}
+{"variant": "glatiramère", "drug": "Glatiramer", "count": 4, "reason": "other_drug"}
+{"variant": "ertapénem", "drug": "ertapénème", "count": 3, "reason": "other_drug"}
+{"variant": "facteurs", "drug": "facteur", "count": 3, "reason": "other_drug"}
+{"variant": "ertapénème", "drug": "ertapénem", "count": 2, "reason": "other_drug"}
+{"variant": "humain", "drug": "humains", "count": 2, "reason": "other_drug"}
+{"variant": "nalbufine", "drug": "nalbuphine", "count": 2, "reason": "other_drug"}
+{"variant": "action", "drug": "Hexyon", "count": 1, "reason": "other_drug"}
+{"variant": "diagnostic", "drug": "Diergospray", "count": 1, "reason": "other_drug"}
+{"variant": "enfants", "drug": "enfant", "count": 1, "reason": "other_drug"}
+{"variant": "humaine", "drug": "humaines", "count": 1, "reason": "other_drug"}
+{"variant": "humains", "drug": "humain", "count": 1, "reason": "other_drug"}
+{"variant": "immunoglobuline", "drug": "immunoglobulines", "count": 1, "reason": "other_drug"}
+{"variant": "vaccin", "drug": "Vaxigrip", "count": 1, "reason": "other_drug"}
+{"variant": "adulte", "drug": "adultes", "count": 48, "reason": "real_text"}
+{"variant": "béclométhasone", "drug": "béclométasone", "count": 28, "reason": "real_text"}
+{"variant": "nourrisson", "drug": "nourrissons", "count": 19, "reason": "real_text"}
+{"variant": "antiseptique", "drug": "antiseptiques", "count": 9, "reason": "real_text"}
+{"variant": "graines", "drug": "graine", "count": 9, "reason": "real_text"}
+{"variant": "alpha-calcidol", "drug": "alfacalcidol", "count": 8, "reason": "real_text"}
+{"variant": "flamazine", "drug": "Flammazine", "count": 8, "reason": "real_text"}
+{"variant": "cholestyramine", "drug": "colestyramine", "count": 7, "reason": "real_text"}
+{"variant": "céphalexine", "drug": "céfalexine", "count": 7, "reason": "real_text"}
+{"variant": "oxybutinine", "drug": "oxybutynine", "count": 7, "reason": "real_text"}
+{"variant": "oxyconazole", "drug": "oxiconazole", "count": 7, "reason": "real_text"}
+{"variant": "colique", "drug": "cholique", "count": 6, "reason": "real_text"}
+{"variant": "diméthylfumarate", "drug": "fumarate", "count": 6, "reason": "real_text"}
+{"variant": "gentamycine", "drug": "gentamicine", "count": 6, "reason": "real_text"}
+{"variant": "locales", "drug": "local", "count": 6, "reason": "real_text"}
+{"variant": "néphopam", "drug": "néfopam", "count": 6, "reason": "real_text"}
+{"variant": "syndrome", "drug": "Sintrom", "count": 6, "reason": "real_text"}
+{"variant": "écitalopram", "drug": "escitalopram", "count": 6, "reason": "real_text"}
+{"variant": "delamanide", "drug": "délamanid", "count": 5, "reason": "real_text"}
+{"variant": "mucolytique", "drug": "mucolytiques", "count": 5, "reason": "real_text"}
+{"variant": "multi-enzyme", "drug": "multienzymes", "count": 5, "reason": "real_text"}
+{"variant": "méropénème", "drug": "méropénem", "count": 5, "reason": "real_text"}
+{"variant": "nasale", "drug": "nasal", "count": 5, "reason": "real_text"}
+{"variant": "antitétaniques", "drug": "antitétanique", "count": 4, "reason": "real_text"}
+{"variant": "clotafact", "drug": "Clottafact", "count": 4, "reason": "real_text"}
+{"variant": "crayon", "drug": "Créon", "count": 4, "reason": "real_text"}
+{"variant": "durand", "drug": "Edurant", "count": 4, "reason": "real_text"}
+{"variant": "isétionate", "drug": "iséthionate", "count": 4, "reason": "real_text"}
+{"variant": "pollens", "drug": "pollen", "count": 4, "reason": "real_text"}
+{"variant": "antidote", "drug": "antidotes", "count": 3, "reason": "real_text"}
+{"variant": "atténuée", "drug": "atténué", "count": 3, "reason": "real_text"}
+{"variant": "bicarbonates", "drug": "bicarbonate", "count": 3, "reason": "real_text"}
+{"variant": "cingulaire", "drug": "Singulair", "count": 3, "reason": "real_text"}
+{"variant": "fluorures", "drug": "fluorure", "count": 3, "reason": "real_text"}
+{"variant": "hydrophiles", "drug": "hydrophile", "count": 3, "reason": "real_text"}
+{"variant": "innovaire", "drug": "Innovair", "count": 3, "reason": "real_text"}
+{"variant": "intraveineuses", "drug": "intraveineuse", "count": 3, "reason": "real_text"}
+{"variant": "ombre", "drug": "Onbrez", "count": 3, "reason": "real_text"}
+{"variant": "penfield", "drug": "Penfill", "count": 3, "reason": "real_text"}
+{"variant": "urso-désoxycholique", "drug": "ursodésoxycholique", "count": 3, "reason": "real_text"}
+{"variant": "activer", "drug": "active", "count": 2, "reason": "real_text"}
+{"variant": "activée", "drug": "active", "count": 2, "reason": "real_text"}
+{"variant": "agent", "drug": "agents", "count": 2, "reason": "real_text"}
+{"variant": "complexes", "drug": "complexe", "count": 2, "reason": "real_text"}
+{"variant": "cyclosporine", "drug": "ciclosporine", "count": 2, "reason": "real_text"}
+{"variant": "céfépim", "drug": "céfépime", "count": 2, "reason": "real_text"}
+{"variant": "fractionnée", "drug": "fractionne", "count": 2, "reason": "real_text"}
+{"variant": "hémicorps", "drug": "Amycor", "count": 2, "reason": "real_text"}
+{"variant": "hépatiques", "drug": "hépatique", "count": 2, "reason": "real_text"}
+{"variant": "imipénème", "drug": "imipénem", "count": 2, "reason": "real_text"}
+{"variant": "injectables", "drug": "injectable", "count": 2, "reason": "real_text"}
+{"variant": "l'îlot", "drug": "Leeloo", "count": 2, "reason": "real_text"}
+{"variant": "locale", "drug": "local", "count": 2, "reason": "real_text"}
+{"variant": "low dose", "drug": "Lodoz", "count": 2, "reason": "real_text"}
+{"variant": "luspathercept", "drug": "luspatercept", "count": 2, "reason": "real_text"}
+{"variant": "phosphoneurose", "drug": "Phosphoneuros", "count": 2, "reason": "real_text"}
+{"variant": "protéines", "drug": "protéine", "count": 2, "reason": "real_text"}
+{"variant": "repas", "drug": "repens", "count": 2, "reason": "real_text"}
+{"variant": "respiratoires", "drug": "respiratoire", "count": 2, "reason": "real_text"}
+{"variant": "retarde", "drug": "retard", "count": 2, "reason": "real_text"}
+{"variant": "sodiques", "drug": "sodique", "count": 2, "reason": "real_text"}
+{"variant": "stabilisés", "drug": "stabilisé", "count": 2, "reason": "real_text"}
+{"variant": "théralite", "drug": "Téralithe", "count": 2, "reason": "real_text"}
+{"variant": "tomates", "drug": "stomato", "count": 2, "reason": "real_text"}
+{"variant": "un crus", "drug": "Incruse", "count": 2, "reason": "real_text"}
+{"variant": "a total", "drug": "Aotal", "count": 1, "reason": "real_text"}
+{"variant": "activées", "drug": "active", "count": 1, "reason": "real_text"}
+{"variant": "activés", "drug": "active", "count": 1, "reason": "real_text"}
+{"variant": "alerte", "drug": "Zalerg", "count": 1, "reason": "real_text"}
+{"variant": "alphacalcidol", "drug": "alfacalcidol", "count": 1, "reason": "real_text"}
+{"variant": "artificielle", "drug": "artificielles", "count": 1, "reason": "real_text"}
+{"variant": "artérielles", "drug": "artérielle", "count": 1, "reason": "real_text"}
+{"variant": "atténuées", "drug": "atténué", "count": 1, "reason": "real_text"}
+{"variant": "au corps", "drug": "Zocor", "count": 1, "reason": "real_text"}
+{"variant": "audrick", "drug": "Odrik", "count": 1, "reason": "real_text"}
+{"variant": "biprofénid", "drug": "Profenid", "count": 1, "reason": "real_text"}
+{"variant": "caféinée", "drug": "caféine", "count": 1, "reason": "real_text"}
+{"variant": "clomiphène", "drug": "clomifène", "count": 1, "reason": "real_text"}
+{"variant": "comment", "drug": "Menthe", "count": 1, "reason": "real_text"}
+{"variant": "condyle", "drug": "Condyline", "count": 1, "reason": "real_text"}
+{"variant": "céréna", "drug": "serenoa", "count": 1, "reason": "real_text"}
+{"variant": "dipper", "drug": "Dipiperon", "count": 1, "reason": "real_text"}
+{"variant": "emla patch", "drug": "Emlapatch", "count": 1, "reason": "real_text"}
+{"variant": "en pic", "drug": "Ozempic", "count": 1, "reason": "real_text"}
+{"variant": "et durant", "drug": "Edurant", "count": 1, "reason": "real_text"}
+{"variant": "inactivée", "drug": "inactivé", "count": 1, "reason": "real_text"}
+{"variant": "insecte", "drug": "insectes", "count": 1, "reason": "real_text"}
+{"variant": "keystone", "drug": "Cayston", "count": 1, "reason": "real_text"}
+{"variant": "l'arme", "drug": "larmes", "count": 1, "reason": "real_text"}
+{"variant": "la ville", "drug": "Elavil", "count": 1, "reason": "real_text"}
+{"variant": "lipases", "drug": "lipase", "count": 1, "reason": "real_text"}
+{"variant": "lipophiles", "drug": "lipophile", "count": 1, "reason": "real_text"}
+{"variant": "liquide", "drug": "Helikit", "count": 1, "reason": "real_text"}
+{"variant": "locus", "drug": "Leeloo", "count": 1, "reason": "real_text"}
+{"variant": "lodin", "drug": "Lodine", "count": 1, "reason": "real_text"}
+{"variant": "maisons", "drug": "maison", "count": 1, "reason": "real_text"}
+{"variant": "neuro", "drug": "Neupro", "count": 1, "reason": "real_text"}
+{"variant": "patient", "drug": "Physiotens", "count": 1, "reason": "real_text"}
+{"variant": "poids", "drug": "Wakix", "count": 1, "reason": "real_text"}
+{"variant": "polyvalente", "drug": "polyvalentes", "count": 1, "reason": "real_text"}
+{"variant": "programme", "drug": "Provames", "count": 1, "reason": "real_text"}
+{"variant": "prolongé", "drug": "prolongée", "count": 1, "reason": "real_text"}
+{"variant": "protac", "drug": "Protopic", "count": 1, "reason": "real_text"}
+{"variant": "purifiée", "drug": "purifié", "count": 1, "reason": "real_text"}
+{"variant": "rapides", "drug": "rapide", "count": 1, "reason": "real_text"}
+{"variant": "requête", "drug": "Oroken", "count": 1, "reason": "real_text"}
+{"variant": "récidive", "drug": "Recivit", "count": 1, "reason": "real_text"}
+{"variant": "récit", "drug": "Recivit", "count": 1, "reason": "real_text"}
+{"variant": "scholler", "drug": "Xolair", "count": 1, "reason": "real_text"}
+{"variant": "sedan", "drug": "Ucedane", "count": 1, "reason": "real_text"}
+{"variant": "solaire", "drug": "Xolair", "count": 1, "reason": "real_text"}
+{"variant": "solutions", "drug": "solution", "count": 1, "reason": "real_text"}
+{"variant": "soutiennent", "drug": "Tyenne", "count": 1, "reason": "real_text"}
+{"variant": "spread", "drug": "spray", "count": 1, "reason": "real_text"}
+{"variant": "stabiliser", "drug": "stabilisé", "count": 1, "reason": "real_text"}
+{"variant": "stabilisée", "drug": "stabilisé", "count": 1, "reason": "real_text"}
+{"variant": "subtil", "drug": "Septeal", "count": 1, "reason": "real_text"}
+{"variant": "sucrée", "drug": "sucre", "count": 1, "reason": "real_text"}
+{"variant": "suivi", "drug": "Cuvitru", "count": 1, "reason": "real_text"}
+{"variant": "tablès", "drug": "Tavlesse", "count": 1, "reason": "real_text"}
+{"variant": "thymine", "drug": "thiamine", "count": 1, "reason": "real_text"}
+{"variant": "thérapeutiques", "drug": "thérapeutique", "count": 1, "reason": "real_text"}
+{"variant": "topiques", "drug": "topique", "count": 1, "reason": "real_text"}
+{"variant": "toujours", "drug": "Toujeo", "count": 1, "reason": "real_text"}
+{"variant": "tropine", "drug": "atropine", "count": 1, "reason": "real_text"}
+{"variant": "urinaires", "drug": "urinaire", "count": 1, "reason": "real_text"}
+{"variant": "utilisé", "drug": "utilisés", "count": 1, "reason": "real_text"}
+{"variant": "vaccin grippe", "drug": "Vaxigrip", "count": 1, "reason": "real_text"}
+{"variant": "vaxigrip tetra", "drug": "Vaxigriptetra", "count": 1, "reason": "real_text"}
+{"variant": "vista", "drug": "Evista", "count": 1, "reason": "real_text"}
+{"variant": "équipe", "drug": "Requip", "count": 1, "reason": "real_text"}
+{"variant": "évolution", "drug": "Evolugen", "count": 1, "reason": "real_text"}
+{"variant": "évoluè", "drug": "Evolugen", "count": 1, "reason": "real_text"}
+{"variant": "t9", "drug": "tenof", "count": 12, "reason": "short"}
+{"variant": "dili", "drug": "Daily", "count": 7, "reason": "short"}
+{"variant": "grip", "drug": "grippe", "count": 7, "reason": "short"}
+{"variant": "lilo", "drug": "Leeloo", "count": 7, "reason": "short"}
+{"variant": "type", "drug": "types", "count": 7, "reason": "short"}
+{"variant": "x", "drug": "Ixprim", "count": 5, "reason": "short"}
+{"variant": "alpha-1-antitrypsine", "drug": "antitrypsine", "count": 4, "reason": "short"}
+{"variant": "tvk", "drug": "Tivicay", "count": 4, "reason": "short"}
+{"variant": "7 mélanotides", "drug": "setmélanotide", "count": 3, "reason": "short"}
+{"variant": "aro", "drug": "Arrow", "count": 3, "reason": "short"}
+{"variant": "fema", "drug": "Fémara", "count": 3, "reason": "short"}
+{"variant": "iodé", "drug": "iodée", "count": 3, "reason": "short"}
+{"variant": "ment", "drug": "Menthe", "count": 3, "reason": "short"}
+{"variant": "ocor", "drug": "Zocor", "count": 3, "reason": "short"}
+{"variant": "ulio", "drug": "Hulio", "count": 3, "reason": "short"}
+{"variant": "25-hydroxyvitamine", "drug": "vitamine", "count": 2, "reason": "short"}
+{"variant": "alpha-1-antitripsine", "drug": "antitrypsine", "count": 2, "reason": "short"}
+{"variant": "bovu", "drug": "Beovu", "count": 2, "reason": "short"}
+{"variant": "fort", "drug": "forte", "count": 2, "reason": "short"}
+{"variant": "idfa", "drug": "Idhifa", "count": 2, "reason": "short"}
+{"variant": "jrel", "drug": "Gydrelle", "count": 2, "reason": "short"}
+{"variant": "tais", "drug": "Thais", "count": 2, "reason": "short"}
+{"variant": "tis", "drug": "Thais", "count": 2, "reason": "short"}
+{"variant": "wkx", "drug": "Wakix", "count": 2, "reason": "short"}
+{"variant": "xgva", "drug": "Xgeva", "count": 2, "reason": "short"}
+{"variant": "10 pipères", "drug": "Dipiperon", "count": 1, "reason": "short"}
+{"variant": "10 ulon", "drug": "Disulone", "count": 1, "reason": "short"}
+{"variant": "15", "drug": "quinze", "count": 1, "reason": "short"}
+{"variant": "17l", "drug": "Dicetel", "count": 1, "reason": "short"}
+{"variant": "30 silanées", "drug": "Transilane", "count": 1, "reason": "short"}
+{"variant": "6 cafluides", "drug": "Siccafluid", "count": 1, "reason": "short"}
+{"variant": "8ma", "drug": "Yuflyma", "count": 1, "reason": "short"}
+{"variant": "afx", "drug": "Zeffix", "count": 1, "reason": "short"}
+{"variant": "albé", "drug": "Albey", "count": 1, "reason": "short"}
+{"variant": "alphaz015", "drug": "Elfasette", "count": 1, "reason": "short"}
+{"variant": "antha 10", "drug": "Antadys", "count": 1, "reason": "short"}
+{"variant": "azy", "drug": "Azyter", "count": 1, "reason": "short"}
+{"variant": "bevu", "drug": "Beovu", "count": 1, "reason": "short"}
+{"variant": "bexel0", "drug": "Bexsero", "count": 1, "reason": "short"}
+{"variant": "car", "drug": "Mysildecard", "count": 1, "reason": "short"}
+{"variant": "cibe", "drug": "Ceziboe", "count": 1, "reason": "short"}
+{"variant": "cleric g250", "drug": "Clairyg", "count": 1, "reason": "short"}
+{"variant": "cord", "drug": "accord", "count": 1, "reason": "short"}
+{"variant": "coyr", "drug": "Cogyr", "count": 1, "reason": "short"}
+{"variant": "cpem", "drug": "Septem", "count": 1, "reason": "short"}
+{"variant": "cutac nxyn4", "drug": "Cutacnyl", "count": 1, "reason": "short"}
+{"variant": "do'ea", "drug": "Oprymea", "count": 1, "reason": "short"}
+{"variant": "dupic7", "drug": "Dupixent", "count": 1, "reason": "short"}
+{"variant": "efi", "drug": "Efient", "count": 1, "reason": "short"}
+{"variant": "elea", "drug": "Eylea", "count": 1, "reason": "short"}
+{"variant": "erl z", "drug": "Erelzi", "count": 1, "reason": "short"}
+{"variant": "exad", "drug": "Exjade", "count": 1, "reason": "short"}
+{"variant": "fevi", "drug": "Feiba", "count": 1, "reason": "short"}
+{"variant": "fiasp4", "drug": "Fiasp", "count": 1, "reason": "short"}
+{"variant": "frig", "drug": "Fyremadel", "count": 1, "reason": "short"}
+{"variant": "gids", "drug": "Jaydess", "count": 1, "reason": "short"}
+{"variant": "gly2", "drug": "Glydo", "count": 1, "reason": "short"}
+{"variant": "graz", "drug": "Grazax", "count": 1, "reason": "short"}
+{"variant": "hyda", "drug": "Hydrea", "count": 1, "reason": "short"}
+{"variant": "icar", "drug": "Isocard", "count": 1, "reason": "short"}
+{"variant": "imig", "drug": "Imiject", "count": 1, "reason": "short"}
+{"variant": "in fi", "drug": "Infai", "count": 1, "reason": "short"}
+{"variant": "inva11", "drug": "Invanz", "count": 1, "reason": "short"}
+{"variant": "inva1zet", "drug": "Invanz", "count": 1, "reason": "short"}
+{"variant": "iod", "drug": "iodée", "count": 1, "reason": "short"}
+{"variant": "isar", "drug": "Hyzaar", "count": 1, "reason": "short"}
+{"variant": "ivem", "drug": "Nivestim", "count": 1, "reason": "short"}
+{"variant": "jclk", "drug": "Jyseleca", "count": 1, "reason": "short"}
+{"variant": "jlyv", "drug": "Glivec", "count": 1, "reason": "short"}
+{"variant": "jrl", "drug": "Gydrelle", "count": 1, "reason": "short"}
+{"variant": "katl", "drug": "Cyteal", "count": 1, "reason": "short"}
+{"variant": "kinz", "drug": "quinze", "count": 1, "reason": "short"}
+{"variant": "knol", "drug": "Secnol", "count": 1, "reason": "short"}
+{"variant": "l'uda", "drug": "Ludéal", "count": 1, "reason": "short"}
+{"variant": "l'élo", "drug": "Leeloo", "count": 1, "reason": "short"}
+{"variant": "lab", "drug": "acetlab", "count": 1, "reason": "short"}
+{"variant": "lamy", "drug": "Lamisil", "count": 1, "reason": "short"}
+{"variant": "laon", "drug": "Ellaone", "count": 1, "reason": "short"}
+{"variant": "lio", "drug": "Hulio", "count": 1, "reason": "short"}
+{"variant": "liptruz1", "drug": "Liptruzet", "count": 1, "reason": "short"}
+{"variant": "lthirox1-henning", "drug": "Henning", "count": 1, "reason": "short"}
+{"variant": "ltl-grox1-henning", "drug": "Henning", "count": 1, "reason": "short"}
+{"variant": "lyo", "drug": "Hulio", "count": 1, "reason": "short"}
+{"variant": "lélo", "drug": "Leeloo", "count": 1, "reason": "short"}
+{"variant": "mand", "drug": "Menthe", "count": 1, "reason": "short"}
+{"variant": "miga", "drug": "miglustat", "count": 1, "reason": "short"}
+{"variant": "mipa", "drug": "Mimpara", "count": 1, "reason": "short"}
+{"variant": "mira", "drug": "Humira", "count": 1, "reason": "short"}
+{"variant": "mnvo", "drug": "Menveo", "count": 1, "reason": "short"}
+{"variant": "nax à", "drug": "Naaxia", "count": 1, "reason": "short"}
+{"variant": "naxi", "drug": "Naaxia", "count": 1, "reason": "short"}
+{"variant": "ngrx", "drug": "Engerix", "count": 1, "reason": "short"}
+{"variant": "odf1", "drug": "Odefsey", "count": 1, "reason": "short"}
+{"variant": "odrik4", "drug": "Odrik", "count": 1, "reason": "short"}
+{"variant": "olio", "drug": "Hulio", "count": 1, "reason": "short"}
+{"variant": "oméga-3", "drug": "oméga", "count": 1, "reason": "short"}
+{"variant": "onjl", "drug": "Onglyza", "count": 1, "reason": "short"}
+{"variant": "orca", "drug": "Orocal", "count": 1, "reason": "short"}
+{"variant": "orct", "drug": "Norset", "count": 1, "reason": "short"}
+{"variant": "p g o l", "drug": "pegol", "count": 1, "reason": "short"}
+{"variant": "p gol", "drug": "pegol", "count": 1, "reason": "short"}
+{"variant": "pari", "drug": "Pariet", "count": 1, "reason": "short"}
+{"variant": "pega6", "drug": "Pegasys", "count": 1, "reason": "short"}
+{"variant": "pgra", "drug": "Pyléra", "count": 1, "reason": "short"}
+{"variant": "pgum", "drug": "pygeum", "count": 1, "reason": "short"}
+{"variant": "por copinygri20", "drug": "Prokinyl", "count": 1, "reason": "short"}
+{"variant": "pore 3 dysbi", "drug": "Procysbi", "count": 1, "reason": "short"}
+{"variant": "prex", "drug": "Eprex", "count": 1, "reason": "short"}
+{"variant": "pza", "drug": "Pyzchiva", "count": 1, "reason": "short"}
+{"variant": "qad", "drug": "Qiade", "count": 1, "reason": "short"}
+{"variant": "qade", "drug": "Qiade", "count": 1, "reason": "short"}
+{"variant": "qia2", "drug": "Qiade", "count": 1, "reason": "short"}
+{"variant": "qiad", "drug": "Qiade", "count": 1, "reason": "short"}
+{"variant": "qpiv", "drug": "Quviviq", "count": 1, "reason": "short"}
+{"variant": "qtsnicl4", "drug": "Cutacnyl", "count": 1, "reason": "short"}
+{"variant": "remodule 1", "drug": "Remodulin", "count": 1, "reason": "short"}
+{"variant": "rise drona8", "drug": "risédronate", "count": 1, "reason": "short"}
+{"variant": "rlsi", "drug": "Erelzi", "count": 1, "reason": "short"}
+{"variant": "rlzi", "drug": "Erelzi", "count": 1, "reason": "short"}
+{"variant": "ro", "drug": "Arrow", "count": 1, "reason": "short"}
+{"variant": "ryeq", "drug": "Ryeqo", "count": 1, "reason": "short"}
+{"variant": "ryeqo40", "drug": "Ryeqo", "count": 1, "reason": "short"}
+{"variant": "ryq", "drug": "Ryeqo", "count": 1, "reason": "short"}
+{"variant": "s a w", "drug": "Sawis", "count": 1, "reason": "short"}
+{"variant": "s i c n", "drug": "Saizen", "count": 1, "reason": "short"}
+{"variant": "sckv", "drug": "Symkevi", "count": 1, "reason": "short"}
+{"variant": "takh0", "drug": "Takhzyro", "count": 1, "reason": "short"}
+{"variant": "talt", "drug": "Taltz", "count": 1, "reason": "short"}
+{"variant": "tene", "drug": "Tyenne", "count": 1, "reason": "short"}
+{"variant": "the", "drug": "Thais", "count": 1, "reason": "short"}
+{"variant": "ti7", "drug": "Thaissept", "count": 1, "reason": "short"}
+{"variant": "tict", "drug": "Thaissept", "count": 1, "reason": "short"}
+{"variant": "tir", "drug": "Tahor", "count": 1, "reason": "short"}
+{"variant": "tltz", "drug": "Taltz", "count": 1, "reason": "short"}
+{"variant": "tnof", "drug": "tenof", "count": 1, "reason": "short"}
+{"variant": "tns5", "drug": "Tyenne", "count": 1, "reason": "short"}
+{"variant": "trec", "drug": "Toprec", "count": 1, "reason": "short"}
+{"variant": "trto", "drug": "Tégrétol", "count": 1, "reason": "short"}
+{"variant": "tvki", "drug": "Tivicay", "count": 1, "reason": "short"}
+{"variant": "vacinc1", "drug": "vaccin", "count": 1, "reason": "short"}
+{"variant": "vax 9 ans", "drug": "Vaxneuvance", "count": 1, "reason": "short"}
+{"variant": "vdrp", "drug": "Vedrop", "count": 1, "reason": "short"}
+{"variant": "vfnd", "drug": "Vfend", "count": 1, "reason": "short"}
+{"variant": "vwid", "drug": "Veyvondi", "count": 1, "reason": "short"}
+{"variant": "vyndake8skikel", "drug": "Vyndaqel", "count": 1, "reason": "short"}
+{"variant": "vyndaql61", "drug": "Vyndaqel", "count": 1, "reason": "short"}
+{"variant": "wert", "drug": "verte", "count": 1, "reason": "short"}
+{"variant": "wxam", "drug": "Wystamm", "count": 1, "reason": "short"}
+{"variant": "xeva", "drug": "Xgeva", "count": 1, "reason": "short"}
+{"variant": "xlva", "drug": "Xelevia", "count": 1, "reason": "short"}
+{"variant": "xnol", "drug": "Secnol", "count": 1, "reason": "short"}
+{"variant": "xolaa m5", "drug": "Xolaam", "count": 1, "reason": "short"}
+{"variant": "xroc", "drug": "Xeroquel", "count": 1, "reason": "short"}
+{"variant": "xy", "drug": "Xyzall", "count": 1, "reason": "short"}
+{"variant": "xyal5", "drug": "Xyzall", "count": 1, "reason": "short"}
+{"variant": "xyzal5", "drug": "Xyzall", "count": 1, "reason": "short"}
+{"variant": "y5", "drug": "Hytrine", "count": 1, "reason": "short"}
+{"variant": "zfx", "drug": "Zeffix", "count": 1, "reason": "short"}
+{"variant": "zx", "drug": "Zeffix", "count": 1, "reason": "short"}
+{"variant": "état", "drug": "édétate", "count": 1, "reason": "short"}
+{"variant": "ézétimi b20", "drug": "ézétimibe", "count": 1, "reason": "short"}
