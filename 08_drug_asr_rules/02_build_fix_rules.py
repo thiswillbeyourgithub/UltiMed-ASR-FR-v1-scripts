@@ -17,7 +17,10 @@ A variant becomes a rule only if rewriting it can hardly be wrong. It is REJECTE
 - ``imprecise``: in the hypotheses file, the variant appears more often than it was an
   error for that drug (precision = error count / all hypothesis occurrences, below
   ``--min-precision``), so the model also writes it where the label has something else;
-- ``rare``: seen fewer than ``--min-count`` times.
+- ``rare``: seen fewer than ``--min-count`` times;
+- ``contains_target``: the variant already holds the whole target as its own word(s),
+  so the rule could only delete the neighbours (``anti-tnf-alpha`` -> ``alpha``,
+  ``sous-kardégic`` -> ``Kardégic``): a hyphenation slip of 01, not a misspelling.
 
 Matching and folding (lowercase, accents stripped) mirror 01: the pattern is
 case-insensitive, accent-insensitive on vowels and ``c``, allows a space or a hyphen
@@ -113,6 +116,18 @@ def _key(text: str) -> tuple[str, ...]:
     return tuple(fold(t) for t in tokens(text))
 
 
+def contains_target(variant: str, target: str) -> bool:
+    """True when ``variant`` has ``target`` as a run of its words (hyphens split words).
+
+    >>> contains_target("anti-TNF-alpha", "alpha"), contains_target("polyéthylène-glycol", "polyéthylène")
+    (True, True)
+    >>> contains_target("létoposide", "l'étoposide"), contains_target("mire tazapine", "mirtazapine")
+    (False, False)
+    """
+    v, t = (tuple(p for w in _key(x) for p in w.split("-") if p) for x in (variant, target))
+    return len(v) > len(t) and any(v[i:i + len(t)] == t for i in range(len(v) - len(t) + 1))
+
+
 def count_ngrams(texts, keys: set[tuple[str, ...]]) -> Counter:
     """How many times each key (a folded token tuple) occurs in ``texts``.
 
@@ -167,6 +182,8 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
         reason = None
         if len("".join(k).replace("'", "")) < min_len or re.search(r"\d", variant):
             reason = "short"
+        elif contains_target(variant, target):
+            reason = "contains_target"
         elif len(k) == 1 and k[0] in lex:
             reason = "other_drug"
         elif label_hits[k]:
