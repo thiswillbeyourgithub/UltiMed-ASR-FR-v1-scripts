@@ -49,7 +49,7 @@ uv run 08_drug_asr_rules/02_build_fix_rules.py ultimed/drugs_hyps.trainval.jsonl
     --labels 99_hf_release/data/NeMO_files/train.jsonl --labels 99_hf_release/data/NeMO_files/val.jsonl
 ```
 
-The `--labels` matter: the default `full.jsonl` includes the test labels. Result: 9,807 rules covering 23,315 train+val errors (rejected: 492 `far`, 325 `short`, 203 `real_text`, 173 `common_words`, 135 `ambiguous`, 79 `imprecise`, 65 `contains_target`, 21 `other_drug`).
+The `--labels` matter: the default `full.jsonl` includes the test labels. Result: 10,030 rules covering 23,876 train+val errors (rejected: 410 `far`, 323 `short`, 203 `real_text`, 173 `common_words`, 79 `imprecise`, 21 `other_drug`, 16 `ambiguous`, 3 `contains_target`). 807 of them restore more than the drug name: a word the misspelling swallowed (`soufflue oxétine` -> `sous fluoxétine`, `souvenent la vaccine` -> `sous venlafaxine`, `paraclasta` -> `par aclasta`) or a glued article (`létoposide` -> `l'étoposide`).
 
 How the defaults were chosen: every candidate rule set was applied in full to held-out test transcripts (word error rate, clips better / worse) and to every correct test label (59,151 across the five subsets, where any change is an overcorrection). On the 2,059 test drug clips:
 
@@ -60,7 +60,8 @@ How the defaults were chosen: every candidate rule set was applied in full to he
 | UltiMed | defaults | 5,372 | 2.81 % (521 / 0) | 10.08 % (475 / 0) | 0 |
 | parakeet-ultra | `--min-count-words 1` | 7,210 | 2.92 % (448 / 0) | 9.49 % (731 / 0) | 5 |
 | both | `--min-count-words 1` | 9,980 | 2.72 % (559 / 0) | 9.44 % (759 / 0) | 5 |
-| both (committed) | defaults | 9,807 | 2.73 % (557 / 0) | 9.47 % (753 / 0) | 3 |
+| both | defaults, before swallowed-word targets | 9,807 | 2.73 % (557 / 0) | 9.47 % (753 / 0) | 3 |
+| both (committed) | defaults | 10,030 | 2.70 % (566 / 0) | 9.45 % (758 / 0) | 3 |
 
 - `--min-count` 1 against 2 or 3 and `--min-ratio` 0 to 0.8 all changed 0 labels with the UltiMed rules, so the loosest won; the 0.5 ratio floor only drops garbled one-offs (`reea iutis aeec et are` -> `oméga`) for 3 clips.
 - `--min-count-words 2` removes the two real overcorrections of the parakeet-ultra rules (`café au lait unique` -> `Levunique`, `alpha sur bêta estimé` -> `bétahistine`). The 3 labels still changed name a drug the label spells another way (`méronème` -> `Meronem`, `médroxy-progestérone`, `alpha-calcidol` -> `alfacalcidol`).

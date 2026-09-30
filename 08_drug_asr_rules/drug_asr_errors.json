@@ -20,11 +20,13 @@
    "amptricitabine": 1,
    "entrécitabine": 1
   },
-  "targets": {}
+  "targets": {
+   "amtricitabine-ténofovir-alaphénamide": "emtricitabine ténofovir alafénamide"
+  }
  },
  "enfants": {
   "n_seen": 92,
-  "n_correct": 29,
+  "n_correct": 30,
   "n_deleted": 0,
   "errors": {
    "enfant": 43,
@@ -39,14 +41,20 @@
    "edeucythectrygillay-enfans": 1,
    "nfantes": 1,
    "enen founds": 1,
-   "fucidine-enfants": 1,
    "eeric-enfantz": 1,
    "eyrick-enfantz": 1,
    "niflurilenfant": 1,
    "dutectile-unfant": 1,
    "nfens": 1
   },
-  "targets": {}
+  "targets": {
+   "etnfans": "et enfants",
+   "etnfantz": "et enfants",
+   "nnifleurilenfant": "nifluril enfants",
+   "edeucythectrygillay-enfans": "eductyl enfants",
+   "niflurilenfant": "nifluril enfants",
+   "dutectile-unfant": "eductyl enfants"
+  }
  },
  "adultes": {
   "n_seen": 81,
@@ -59,7 +67,9 @@
    "adultus": 1,
    "polériad": 1
   },
-  "targets": {}
+  "targets": {
+   "polériad": "polery adultes"
+  }
  },
  "ézétimibe": {
   "n_seen": 59,
@@ -84,6 +94,7 @@
   },
   "targets": {
    "désétimib": "d'ézétimibe",
+   "ézétimi b20": "ézétimibe 20",
    "lésétimib": "l'ézétimibe"
   }
  },
@@ -140,7 +151,9 @@
    "d'izoproxyl": 1,
    "ténofovir-disoproxyl": 1
   },
-  "targets": {}
+  "targets": {
+   "ténofovir-disoproxyl": "ténofovir disoproxil"
+  }
  },
  "fluticasone": {
   "n_seen": 62,
@@ -174,7 +187,10 @@
    "gabiskonorrisons": 1,
    "nourisance": 1
   },
-  "targets": {}
+  "targets": {
+   "oroken-nurrisons": "oroken nourrissons",
+   "gabiskonorrisons": "gaviscon nourrissons"
+  }
  },
  "Breezhaler": {
   "n_seen": 39,
@@ -214,7 +230,22 @@
    "sébribézalaire": 1,
    "enerzair-brisaller": 1
   },
-  "targets": {}
+  "targets": {
+   "ultibrobrige allaire": "ultibro breezhaler",
+   "ultibro-brishaler": "ultibro breezhaler",
+   "ultibro-bre-jâleur": "ultibro breezhaler",
+   "ombrébrijalaire": "onbrez breezhaler",
+   "ohnbrez-brezhaler": "onbrez breezhaler",
+   "ombre-brisale": "onbrez breezhaler",
+   "cebri-braisaler": "seebri breezhaler",
+   "sébribalaire": "seebri breezhaler",
+   "cébribré à l'air": "seebri breezhaler",
+   "enerzheir-brisheiler": "enerzair breezhaler",
+   "miflonylbréjalaire": "miflonil breezhaler",
+   "miflonylbré à l'air": "miflonil breezhaler",
+   "sébribézalaire": "seebri breezhaler",
+   "enerzair-brisaller": "enerzair breezhaler"
+  }
  },
  "sitagliptine": {
   "n_seen": 32,
@@ -288,7 +319,10 @@
    "cérévendiscus": 1,
    "serévendiscus": 1
   },
-  "targets": {}
+  "targets": {
+   "cérévendiscus": "serevent diskus",
+   "serévendiscus": "serevent diskus"
+  }
  },
  "éfavirenz": {
   "n_seen": 25,
@@ -337,7 +371,11 @@
    "spioltorespimate": 6,
    "striverdirespimate": 4
   },
-  "targets": {}
+  "targets": {
+   "spirivarespimate": "spiriva respimat",
+   "spioltorespimate": "spiolto respimat",
+   "striverdirespimate": "striverdi respimat"
+  }
  },
  "tréprostinil": {
   "n_seen": 25,
@@ -349,7 +387,9 @@
    "tréprostinyle": 1,
    "sous-tré prostinyl": 1
   },
-  "targets": {}
+  "targets": {
+   "sous-tré prostinyl": "sous tréprostinil"
+  }
  },
  "dydrogestérone": {
   "n_seen": 23,
@@ -441,41 +481,6 @@
   },
   "targets": {}
  },
- "insuline": {
-  "n_seen": 159,
-  "n_correct": 138,
-  "n_deleted": 0,
-  "errors": {
-   "insuline-glargine": 11,
-   "insuline-glulisine": 4,
-   "insulinispro": 2,
-   "insuline-aspar": 1,
-   "insulinoglulizine": 1,
-   "insuline-glucide": 1,
-   "insulinlispro": 1
-  },
-  "targets": {}
- },
- "Ellipta": {
-  "n_seen": 54,
-  "n_correct": 34,
-  "n_deleted": 0,
-  "errors": {
-   "elipta": 5,
-   "et lipta": 3,
-   "anoro-ellipta": 2,
-   "eulebrato-elipta": 2,
-   "anoroelipta": 1,
-   "zanoro-elipta": 1,
-   "anoro-elipta": 1,
-   "incrusellipta": 1,
-   "elbrato-elipta": 1,
-   "elebratho-elipta": 1,
-   "olebrato-elipta": 1,
-   "crusellipta": 1
-  },
-  "targets": {}
- },
  "irbésartan": {
   "n_seen": 31,
   "n_correct": 11,
@@ -538,7 +543,13 @@
    "gaviscomment": 1,
    "ment de": 1
   },
-  "targets": {}
+  "targets": {
+   "nicopassement de": "nicopass menthe",
+   "nicopassmente": "nicopass menthe",
+   "nicopassement": "nicopass menthe",
+   "gaviskon-ment": "gaviscon menthe",
+   "gaviscomment": "gaviscon menthe"
+  }
  },
  "mofétil": {
   "n_seen": 42,
@@ -555,7 +566,16 @@
    "mofétylaro": 1,
    "mofétyl-biogaran": 1
   },
-  "targets": {}
+  "targets": {
+   "mofétylbiogarant": "mofetil biogaran",
+   "mofétylbiogarand": "mofetil biogaran",
+   "mofétylviatrice": "mofetil viatris",
+   "mofétilviatrice": "mofetil viatris",
+   "mofétilteva": "mofétil teva",
+   "mofétyl-teva": "mofétil teva",
+   "mofétylaro": "mofétil arrow",
+   "mofétyl-biogaran": "mofetil biogaran"
+  }
  },
  "Symbicort": {
   "n_seen": 19,
@@ -573,7 +593,13 @@
    "cymbicorthrapie": 1,
    "syndicort": 1
   },
-  "targets": {}
+  "targets": {
+   "symbicortrapihaler": "symbicort rapihaler",
+   "symbicor trapihaller": "symbicort rapihaler",
+   "simbicort-trapihaler": "symbicort rapihaler",
+   "cymbicor trapihaller": "symbicort rapihaler",
+   "cymbicorthrapie": "symbicort rapihaler"
+  }
  },
  "Viatris": {
   "n_seen": 27,
@@ -588,7 +614,10 @@
    "xiatrice": 1,
    "fiatrice": 1
   },
-  "targets": {}
+  "targets": {
+   "mofétylviatrice": "mofetil viatris",
+   "mofétilviatrice": "mofetil viatris"
+  }
  },
  "aprépitant": {
   "n_seen": 19,
@@ -623,7 +652,38 @@
    "atrov": 1,
    "atrevant": 1
   },
-  "targets": {}
+  "targets": {
+   "atrovennasal": "atrovent nasal"
+  }
+ },
+ "Ellipta": {
+  "n_seen": 54,
+  "n_correct": 36,
+  "n_deleted": 0,
+  "errors": {
+   "elipta": 5,
+   "et lipta": 3,
+   "eulebrato-elipta": 2,
+   "anoroelipta": 1,
+   "zanoro-elipta": 1,
+   "anoro-elipta": 1,
+   "incrusellipta": 1,
+   "elbrato-elipta": 1,
+   "elebratho-elipta": 1,
+   "olebrato-elipta": 1,
+   "crusellipta": 1
+  },
+  "targets": {
+   "anoroelipta": "anoro ellipta",
+   "zanoro-elipta": "anoro ellipta",
+   "anoro-elipta": "anoro ellipta",
+   "incrusellipta": "incruse ellipta",
+   "elbrato-elipta": "elebrato ellipta",
+   "elebratho-elipta": "elebrato ellipta",
+   "olebrato-elipta": "elebrato ellipta",
+   "eulebrato-elipta": "elebrato ellipta",
+   "crusellipta": "incruse ellipta"
+  }
  },
  "Umuline": {
   "n_seen": 21,
@@ -634,7 +694,9 @@
    "umulin": 1,
    "humuline-nph": 1
   },
-  "targets": {}
+  "targets": {
+   "humuline-nph": "umuline nph"
+  }
  },
  "ambrisentan": {
   "n_seen": 17,
@@ -672,19 +734,6 @@
   },
   "targets": {}
  },
- "turbuhaler": {
-  "n_seen": 26,
-  "n_correct": 9,
-  "n_deleted": 0,
-  "errors": {
-   "turbualaire": 8,
-   "turbuhalaire": 6,
-   "bricanyl-turbuhaler": 1,
-   "zur buhaler": 1,
-   "turbus halaire": 1
-  },
-  "targets": {}
- },
  "Voltarène": {
   "n_seen": 17,
   "n_correct": 0,
@@ -699,7 +748,11 @@
    "voltarenel": 1,
    "voltarénel": 1
   },
-  "targets": {}
+  "targets": {
+   "voltarénoral": "voltarène oral",
+   "voltaren-emulgell": "voltarène emulgel",
+   "voltaren-emulgel": "voltarène emulgel"
+  }
  },
  "Efferalganmed": {
   "n_seen": 17,
@@ -730,7 +783,11 @@
    "lasmellor-novolizer": 1,
    "asmeller-novalizer": 1
   },
-  "targets": {}
+  "targets": {
+   "asmellonovolizer": "asmelor novolizer",
+   "lasmellor-novolizer": "l'asmelor novolizer",
+   "asmeller-novalizer": "asmelor novolizer"
+  }
  },
  "ondansétron": {
   "n_seen": 17,
@@ -755,6 +812,21 @@
    "penphile": 2,
    "phiaspenfil": 1,
    "levemir-penfield": 1
+  },
+  "targets": {
+   "phiaspenfil": "fiasp penfill",
+   "levemir-penfield": "levemir penfill"
+  }
+ },
+ "turbuhaler": {
+  "n_seen": 26,
+  "n_correct": 10,
+  "n_deleted": 0,
+  "errors": {
+   "turbualaire": 8,
+   "turbuhalaire": 6,
+   "zur buhaler": 1,
+   "turbus halaire": 1
   },
   "targets": {}
  },
@@ -784,7 +856,9 @@
    "locus": 1,
    "liléocontinu": 1
   },
-  "targets": {}
+  "targets": {
+   "liléocontinu": "leeloo continu"
+  }
  },
  "Tresiba": {
   "n_seen": 15,
@@ -799,7 +873,11 @@
    "tréziba": 1,
    "tresciba": 1
   },
-  "targets": {}
+  "targets": {
+   "trésibaflextoche": "tresiba flextouch",
+   "tresybaflextouch": "tresiba flextouch",
+   "trezibaflextouch": "tresiba flextouch"
+  }
  },
  "triméthoprime": {
   "n_seen": 16,
@@ -818,7 +896,9 @@
    "verrapamil": 14,
    "duvérapamil": 1
   },
-  "targets": {}
+  "targets": {
+   "duvérapamil": "du vérapamil"
+  }
  },
  "Amycor": {
   "n_seen": 14,
@@ -845,7 +925,9 @@
    "à spar": 2,
    "insuline-aspar": 1
   },
-  "targets": {}
+  "targets": {
+   "insuline-aspar": "insuline aspart"
+  }
  },
  "degludec": {
   "n_seen": 16,
@@ -918,7 +1000,9 @@
    "erisone": 1,
    "nerf sonne": 1
   },
-  "targets": {}
+  "targets": {
+   "nerisonegra": "nerisone gras"
+  }
  },
  "noréthistérone": {
   "n_seen": 14,
@@ -933,17 +1017,6 @@
    "énorréthistérone": 1,
    "norrée-éthystérone": 1,
    "norréthistérone": 1
-  },
-  "targets": {}
- },
- "oméga": {
-  "n_seen": 16,
-  "n_correct": 2,
-  "n_deleted": 0,
-  "errors": {
-   "oméga-e": 12,
-   "reea iutis aeec et are": 1,
-   "oméga-3": 1
   },
   "targets": {}
  },
@@ -1012,7 +1085,11 @@
    "mofétylbiogarand": 1,
    "mofétyl-biogaran": 1
   },
-  "targets": {}
+  "targets": {
+   "mofétylbiogarant": "mofetil biogaran",
+   "mofétylbiogarand": "mofetil biogaran",
+   "mofétyl-biogaran": "mofetil biogaran"
+  }
  },
  "fénofibrate": {
   "n_seen": 13,
@@ -1036,7 +1113,11 @@
    "trezibaflextouch": 1,
    "flextoche": 1
   },
-  "targets": {}
+  "targets": {
+   "trésibaflextoche": "tresiba flextouch",
+   "tresybaflextouch": "tresiba flextouch",
+   "trezibaflextouch": "tresiba flextouch"
+  }
  },
  "Humalog": {
   "n_seen": 15,
@@ -1051,7 +1132,11 @@
    "umalog": 1,
    "umalogmix": 1
   },
-  "targets": {}
+  "targets": {
+   "malogmix": "humalog mix",
+   "humalogmix": "humalog mix",
+   "umalogmix": "humalog mix"
+  }
  },
  "Innovair": {
   "n_seen": 14,
@@ -1068,6 +1153,9 @@
    "linovert": 1
   },
   "targets": {
+   "inovernexthaler": "innovair nexthaler",
+   "innovernexthaler": "innovair nexthaler",
+   "innovair-nextaller": "innovair nexthaler",
    "linovert": "l'innovair"
   }
  },
@@ -1079,7 +1167,9 @@
    "nistatine": 12,
    "nistatinovule": 1
   },
-  "targets": {}
+  "targets": {
+   "nistatinovule": "nystatine ovule"
+  }
  },
  "Profenid": {
   "n_seen": 16,
@@ -1092,7 +1182,11 @@
    "biproféni": 1,
    "biprofénid": 1
   },
-  "targets": {}
+  "targets": {
+   "biprofénide": "bi profenid",
+   "biproféni": "bi profenid",
+   "biprofénid": "bi profenid"
+  }
  },
  "quétiapine": {
   "n_seen": 13,
@@ -1117,7 +1211,9 @@
    "cinemetlp": 2,
    "cinémète": 1
   },
-  "targets": {}
+  "targets": {
+   "cinemetlp": "sinemet lp"
+  }
  },
  "Synacthène": {
   "n_seen": 13,
@@ -1157,21 +1253,10 @@
    "vogalen-jok": 1,
    "vogalè": 1
   },
-  "targets": {}
- },
- "alafénamide": {
-  "n_seen": 35,
-  "n_correct": 23,
-  "n_deleted": 0,
-  "errors": {
-   "ténofovir-alafénamide": 5,
-   "ténofovir-alaphénamide": 2,
-   "alaphénamide": 2,
-   "ténofovir-alafhénamide": 1,
-   "amtricitabine-ténofovir-alaphénamide": 1,
-   "à la fénamide": 1
-  },
-  "targets": {}
+  "targets": {
+   "vogalen-lyok": "vogalene lyoc",
+   "vogalen-liyok": "vogalene lyoc"
+  }
  },
  "alendronique": {
   "n_seen": 12,
@@ -1211,7 +1296,9 @@
    "cbutidelp": 1,
    "c-butide": 1
   },
-  "targets": {}
+  "targets": {
+   "cbutidelp": "cebutid lp"
+  }
  },
  "célécoxib": {
   "n_seen": 12,
@@ -1277,8 +1364,10 @@
    "dutectile-unfant": 1
   },
   "targets": {
-   "deux uticliels": "d'eductyl",
-   "deux utikielenfans": "d'eductyl"
+   "ddutkil": "d'eductyl",
+   "deux utikielenfans": "eductyl enfants",
+   "edeucythectrygillay-enfans": "eductyl enfants",
+   "dutectile-unfant": "eductyl enfants"
   }
  },
  "Efluelda": {
@@ -1298,7 +1387,11 @@
    "dflulda": 1,
    "dfleulda": 1
   },
-  "targets": {}
+  "targets": {
+   "dfl-ulda": "d'efluelda",
+   "dflulda": "d'efluelda",
+   "dfleulda": "d'efluelda"
+  }
  },
  "haemophilus": {
   "n_seen": 13,
@@ -1311,7 +1404,10 @@
    "daemophilius": 1,
    "daemophilus": 1
   },
-  "targets": {}
+  "targets": {
+   "daemophilius": "d'haemophilus",
+   "daemophilus": "d'haemophilus"
+  }
  },
  "Haldol": {
   "n_seen": 14,
@@ -1355,7 +1451,9 @@
    "mestinone": 11,
    "arrêdumestinone": 1
   },
-  "targets": {}
+  "targets": {
+   "arrêdumestinone": "arrêt du mestinon"
+  }
  },
  "miglustat": {
   "n_seen": 16,
@@ -1368,22 +1466,6 @@
   },
   "targets": {}
  },
- "nasal": {
-  "n_seen": 92,
-  "n_correct": 80,
-  "n_deleted": 0,
-  "errors": {
-   "nasale": 5,
-   "spénasal": 1,
-   "prénasal": 1,
-   "spray-nasal": 1,
-   "spray-nasale": 1,
-   "atrovennasal": 1,
-   "pré-nasal": 1,
-   "prénasale": 1
-  },
-  "targets": {}
- },
  "Nicopass": {
   "n_seen": 13,
   "n_correct": 1,
@@ -1393,7 +1475,10 @@
    "nicopassement": 2,
    "nicopassmente": 2
   },
-  "targets": {}
+  "targets": {
+   "nicopassement": "nicopass menthe",
+   "nicopassmente": "nicopass menthe"
+  }
  },
  "ofloxacine": {
   "n_seen": 22,
@@ -1448,22 +1533,10 @@
    "cérévans": 1,
    "cérévent": 1
   },
-  "targets": {}
- },
- "stomato": {
-  "n_seen": 17,
-  "n_correct": 5,
-  "n_deleted": 0,
-  "errors": {
-   "tomato": 4,
-   "stomataux": 2,
-   "tomates": 2,
-   "tomateau": 1,
-   "stomato-locales": 1,
-   "stomato-local": 1,
-   "tomato-local": 1
-  },
-  "targets": {}
+  "targets": {
+   "cérévendiscus": "serevent diskus",
+   "serévendiscus": "serevent diskus"
+  }
  },
  "teicoplanine": {
   "n_seen": 12,
@@ -1520,7 +1593,10 @@
    "easy schaler": 1,
    "easy haller": 1
   },
-  "targets": {}
+  "targets": {
+   "jibiter-ezyhaler": "gibiter easyhaler",
+   "bemdrex-ezi-shaler": "bemedrex easyhaler"
+  }
  },
  "Efficort": {
   "n_seen": 12,
@@ -1531,15 +1607,6 @@
    "ficor": 3,
    "eficor": 3,
    "éficor": 1
-  },
-  "targets": {}
- },
- "glargine": {
-  "n_seen": 30,
-  "n_correct": 19,
-  "n_deleted": 0,
-  "errors": {
-   "insuline-glargine": 11
   },
   "targets": {}
  },
@@ -1582,7 +1649,9 @@
    "l'antus": 1,
    "alentus": 1
   },
-  "targets": {}
+  "targets": {
+   "alentus": "la lantus"
+  }
  },
  "liraglutide": {
   "n_seen": 14,
@@ -1595,19 +1664,6 @@
    "l'iraglutides": 1,
    "iraglutide": 1,
    "lyraglutide": 1
-  },
-  "targets": {}
- },
- "local": {
-  "n_seen": 163,
-  "n_correct": 152,
-  "n_deleted": 0,
-  "errors": {
-   "locales": 6,
-   "locale": 2,
-   "stomato-locales": 1,
-   "stomato-local": 1,
-   "tomato-local": 1
   },
   "targets": {}
  },
@@ -1647,7 +1703,10 @@
    "sous-mométhasone": 1,
    "indacatérol-hémométhasone": 1
   },
-  "targets": {}
+  "targets": {
+   "ammométasone": "la mométasone",
+   "sous-mométhasone": "sous mométasone"
+  }
  },
  "montélukast": {
   "n_seen": 11,
@@ -1658,6 +1717,24 @@
    "montélucast": 4
   },
   "targets": {}
+ },
+ "nasal": {
+  "n_seen": 92,
+  "n_correct": 81,
+  "n_deleted": 0,
+  "errors": {
+   "nasale": 5,
+   "spénasal": 1,
+   "prénasal": 1,
+   "spray-nasale": 1,
+   "atrovennasal": 1,
+   "pré-nasal": 1,
+   "prénasale": 1
+  },
+  "targets": {
+   "spray-nasale": "spray nasal",
+   "atrovennasal": "atrovent nasal"
+  }
  },
  "Ovitrelle": {
   "n_seen": 11,
@@ -1726,6 +1803,23 @@
   },
   "targets": {}
  },
+ "stomato": {
+  "n_seen": 17,
+  "n_correct": 6,
+  "n_deleted": 0,
+  "errors": {
+   "tomato": 4,
+   "stomataux": 2,
+   "tomates": 2,
+   "tomateau": 1,
+   "stomato-locales": 1,
+   "tomato-local": 1
+  },
+  "targets": {
+   "stomato-locales": "stomato local",
+   "tomato-local": "stomato local"
+  }
+ },
  "Substipharm": {
   "n_seen": 11,
   "n_correct": 0,
@@ -1736,20 +1830,6 @@
    "substafarm": 1,
    "substapfarm": 1,
    "substype afarm": 1
-  },
-  "targets": {}
- },
- "ténofovir": {
-  "n_seen": 122,
-  "n_correct": 111,
-  "n_deleted": 0,
-  "errors": {
-   "ténofovir-alafénamide": 5,
-   "ténofovir-alaphénamide": 2,
-   "ténofovir-alafhénamide": 1,
-   "amtricitabine-ténofovir-alaphénamide": 1,
-   "ténofobir": 1,
-   "ténofovir-disoproxyl": 1
   },
   "targets": {}
  },
@@ -1773,7 +1853,11 @@
    "guinotroside": 1,
    "trocides": 1
   },
-  "targets": {}
+  "targets": {
+   "guinotroside": "gyno trosyd",
+   "gynotroside": "gyno trosyd",
+   "trocidovule": "trosyd ovule"
+  }
  },
  "urapidil": {
   "n_seen": 11,
@@ -1782,22 +1866,6 @@
   "errors": {
    "urapidyl": 8,
    "rapidil": 3
-  },
-  "targets": {}
- },
- "willebrand": {
-  "n_seen": 24,
-  "n_correct": 13,
-  "n_deleted": 0,
-  "errors": {
-   "vilebrand": 3,
-   "villebrant": 2,
-   "villebrand": 1,
-   "willebrand-antigène": 1,
-   "villébrant": 1,
-   "villébrand": 1,
-   "willebrandt": 1,
-   "wilébrand": 1
   },
   "targets": {}
  },
@@ -1867,7 +1935,9 @@
    "chromoglycique": 9,
    "chromoglycticoral": 1
   },
-  "targets": {}
+  "targets": {
+   "chromoglycticoral": "cromoglicique oral"
+  }
  },
  "cyprotérone": {
   "n_seen": 10,
@@ -1937,7 +2007,10 @@
    "diroxymelfumarate": 3,
    "malfumarate": 1
   },
-  "targets": {}
+  "targets": {
+   "diméthylfumarate": "diméthyl fumarate",
+   "diroxymelfumarate": "diroximel fumarate"
+  }
  },
  "Glucagen": {
   "n_seen": 13,
@@ -1947,7 +2020,9 @@
    "glucagène": 8,
    "glucagenkite": 2
   },
-  "targets": {}
+  "targets": {
+   "glucagenkite": "glucagen kit"
+  }
  },
  "ispaghul": {
   "n_seen": 10,
@@ -1961,7 +2036,9 @@
    "hispagoule": 1,
    "dyspagul": 1
   },
-  "targets": {}
+  "targets": {
+   "dyspagul": "d'ispaghul"
+  }
  },
  "Izalgi": {
   "n_seen": 10,
@@ -1995,6 +2072,21 @@
   },
   "targets": {}
  },
+ "local": {
+  "n_seen": 163,
+  "n_correct": 153,
+  "n_deleted": 0,
+  "errors": {
+   "locales": 6,
+   "locale": 2,
+   "stomato-locales": 1,
+   "tomato-local": 1
+  },
+  "targets": {
+   "stomato-locales": "stomato local",
+   "tomato-local": "stomato local"
+  }
+ },
  "méthoxsalène": {
   "n_seen": 10,
   "n_correct": 0,
@@ -2014,7 +2106,9 @@
    "myandsérine": 2,
    "amiansérine": 2
   },
-  "targets": {}
+  "targets": {
+   "amiansérine": "la miansérine"
+  }
  },
  "naproxène": {
   "n_seen": 20,
@@ -2025,7 +2119,9 @@
    "aproxène": 2,
    "unaproxène": 1
   },
-  "targets": {}
+  "targets": {
+   "unaproxène": "du naproxène"
+  }
  },
  "Nexthaler": {
   "n_seen": 11,
@@ -2040,7 +2136,11 @@
    "innovair-nextaller": 1,
    "next halaire": 1
   },
-  "targets": {}
+  "targets": {
+   "inovernexthaler": "innovair nexthaler",
+   "innovernexthaler": "innovair nexthaler",
+   "innovair-nextaller": "innovair nexthaler"
+  }
  },
  "Nicorette": {
   "n_seen": 20,
@@ -2085,7 +2185,9 @@
    "sous-pulmicor": 1,
    "poulmicorps": 1
   },
-  "targets": {}
+  "targets": {
+   "sous-pulmicor": "sous pulmicort"
+  }
  },
  "quinapril": {
   "n_seen": 10,
@@ -2095,7 +2197,9 @@
    "kinapril": 9,
    "kinapri les": 1
   },
-  "targets": {}
+  "targets": {
+   "kinapri les": "quinapril et"
+  }
  },
  "tezacaftor": {
   "n_seen": 11,
@@ -2115,6 +2219,21 @@
    "thioconazole": 6,
    "thyoconazole": 3,
    "tuoconazole": 1
+  },
+  "targets": {}
+ },
+ "willebrand": {
+  "n_seen": 24,
+  "n_correct": 14,
+  "n_deleted": 0,
+  "errors": {
+   "vilebrand": 3,
+   "villebrant": 2,
+   "villebrand": 1,
+   "villébrant": 1,
+   "villébrand": 1,
+   "willebrandt": 1,
+   "wilébrand": 1
   },
   "targets": {}
  },
@@ -2149,7 +2268,9 @@
    "zeiprexavellotab": 1,
    "zalicprexa": 1
   },
-  "targets": {}
+  "targets": {
+   "zeiprexavellotab": "zyprexa velotab"
+  }
  },
  "Actrapid": {
   "n_seen": 10,
@@ -2170,16 +2291,6 @@
   "errors": {
    "alpha-calcidol": 8,
    "alphacalcidol": 1
-  },
-  "targets": {}
- },
- "aluminium": {
-  "n_seen": 13,
-  "n_correct": 4,
-  "n_deleted": 0,
-  "errors": {
-   "aluminium-phosphate": 5,
-   "aluminium-hydroxyde": 4
   },
   "targets": {}
  },
@@ -2228,7 +2339,9 @@
    "sétirizine": 8,
    "acétirizine": 1
   },
-  "targets": {}
+  "targets": {
+   "acétirizine": "la cétirizine"
+  }
  },
  "colestyramine": {
   "n_seen": 9,
@@ -2249,7 +2362,9 @@
    "purifi-conjugue": 1,
    "conjugu": 1
   },
-  "targets": {}
+  "targets": {
+   "purifi-conjugue": "purifié conjugué"
+  }
  },
  "Cozaar": {
   "n_seen": 9,
@@ -2695,7 +2810,10 @@
    "phiaspe": 1,
    "viazp": 1
   },
-  "targets": {}
+  "targets": {
+   "fiasp4": "fiasp 4",
+   "phiaspenfil": "fiasp penfill"
+  }
  },
  "Flammazine": {
   "n_seen": 8,
@@ -2720,7 +2838,12 @@
    "gaviscomment": 1,
    "gabiskonorrisons": 1
   },
-  "targets": {}
+  "targets": {
+   "gaviskon-ment": "gaviscon menthe",
+   "gavis comment": "gaviscon menthe",
+   "gaviscomment": "gaviscon menthe",
+   "gabiskonorrisons": "gaviscon nourrissons"
+  }
  },
  "glimépiride": {
   "n_seen": 8,
@@ -2741,7 +2864,9 @@
    "avalan": 1,
    "lavlane": 1
   },
-  "targets": {}
+  "targets": {
+   "lavlane": "l'havlane"
+  }
  },
  "héparine": {
   "n_seen": 38,
@@ -2751,7 +2876,9 @@
    "léparine": 7,
    "éparine": 1
   },
-  "targets": {}
+  "targets": {
+   "léparine": "l'héparine"
+  }
  },
  "Hexyon": {
   "n_seen": 8,
@@ -3075,7 +3202,13 @@
    "tildième": 1,
    "mono-tildi mlp": 1
   },
-  "targets": {}
+  "targets": {
+   "monothyldiem": "mono tildiem",
+   "monotildième": "mono tildiem",
+   "monothyldième": "mono tildiem",
+   "monotyldième": "mono tildiem",
+   "mono-tildi mlp": "mono tildiem lp"
+  }
  },
  "Tiorfanor": {
   "n_seen": 8,
@@ -3167,7 +3300,10 @@
    "allergues": 1,
    "allergollyre": 1
   },
-  "targets": {}
+  "targets": {
+   "usalerg": "du zalerg",
+   "allergollyre": "zalerg collyre"
+  }
  },
  "Zydus": {
   "n_seen": 8,
@@ -3233,6 +3369,23 @@
   },
   "targets": {}
  },
+ "alafénamide": {
+  "n_seen": 35,
+  "n_correct": 28,
+  "n_deleted": 0,
+  "errors": {
+   "ténofovir-alaphénamide": 2,
+   "alaphénamide": 2,
+   "ténofovir-alafhénamide": 1,
+   "amtricitabine-ténofovir-alaphénamide": 1,
+   "à la fénamide": 1
+  },
+  "targets": {
+   "ténofovir-alafhénamide": "ténofovir alafénamide",
+   "ténofovir-alaphénamide": "ténofovir alafénamide",
+   "amtricitabine-ténofovir-alaphénamide": "emtricitabine ténofovir alafénamide"
+  }
+ },
  "amiloride": {
   "n_seen": 7,
   "n_correct": 0,
@@ -3275,17 +3428,6 @@
   },
   "targets": {}
  },
- "antitrypsine": {
-  "n_seen": 13,
-  "n_correct": 6,
-  "n_deleted": 0,
-  "errors": {
-   "alpha-1-antitrypsine": 4,
-   "alpha-1-antitripsine": 2,
-   "antitripsine": 1
-  },
-  "targets": {}
- },
  "Arrow": {
   "n_seen": 25,
   "n_correct": 18,
@@ -3297,7 +3439,10 @@
    "ro": 1,
    "mofétylaro": 1
   },
-  "targets": {}
+  "targets": {
+   "aspirinaro": "aspirine arrow",
+   "mofétylaro": "mofétil arrow"
+  }
  },
  "Aturgyl": {
   "n_seen": 7,
@@ -3429,7 +3574,9 @@
    "bionolid": 1,
    "bionolithée": 1
   },
-  "targets": {}
+  "targets": {
+   "bionolitigé": "bionolyte g"
+  }
  },
  "Birodogyl": {
   "n_seen": 7,
@@ -3442,16 +3589,6 @@
    "birodo jiguil": 1,
    "birodogigla": 1,
    "birodogirill": 1
-  },
-  "targets": {}
- },
- "Bricanyl": {
-  "n_seen": 12,
-  "n_correct": 5,
-  "n_deleted": 0,
-  "errors": {
-   "bricanil": 6,
-   "bricanyl-turbuhaler": 1
   },
   "targets": {}
  },
@@ -3586,7 +3723,9 @@
    "siloxyncholyre": 1,
    "siloxan": 1
   },
-  "targets": {}
+  "targets": {
+   "siloxyncholyre": "ciloxan collyre"
+  }
  },
  "Cimzia": {
   "n_seen": 7,
@@ -3634,7 +3773,9 @@
    "cleric j": 1,
    "clairivi": 1
   },
-  "targets": {}
+  "targets": {
+   "cleric g250": "clairyg 250"
+  }
  },
  "Clomid": {
   "n_seen": 7,
@@ -3728,7 +3869,10 @@
    "qtsnicl4": 1,
    "cutacène mylène": 1
   },
-  "targets": {}
+  "targets": {
+   "cutac nxyn4": "cutacnyl 4",
+   "qtsnicl4": "cutacnyl 4"
+  }
  },
  "Cutaquig": {
   "n_seen": 7,
@@ -3862,7 +4006,9 @@
    "dexafré": 6,
    "dexafrhécollyre": 1
   },
-  "targets": {}
+  "targets": {
+   "dexafrhécollyre": "dexafree collyre"
+  }
  },
  "dexaméthasone": {
   "n_seen": 61,
@@ -3965,7 +4111,12 @@
    "elbrato": 1,
    "eelbrato": 1
   },
-  "targets": {}
+  "targets": {
+   "elbrato-elipta": "elebrato ellipta",
+   "elebratho-elipta": "elebrato ellipta",
+   "olebrato-elipta": "elebrato ellipta",
+   "eulebrato-elipta": "elebrato ellipta"
+  }
  },
  "Elfasette": {
   "n_seen": 7,
@@ -3979,7 +4130,9 @@
    "lphazet": 1,
    "lphazette": 1
   },
-  "targets": {}
+  "targets": {
+   "alphaz015": "elfasette 0 15"
+  }
  },
  "Enantone": {
   "n_seen": 8,
@@ -4009,7 +4162,9 @@
    "ngerx": 1,
    "engeryx": 1
   },
-  "targets": {}
+  "targets": {
+   "ngrixb": "engerix b"
+  }
  },
  "Enstilar": {
   "n_seen": 7,
@@ -4024,7 +4179,10 @@
    "hans tillard": 1,
    "enstillar": 1
   },
-  "targets": {}
+  "targets": {
+   "enstillarmous": "enstilar mousse",
+   "dans stylar": "d'enstilar"
+  }
  },
  "Epipen": {
   "n_seen": 8,
@@ -4036,7 +4194,9 @@
    "épipenne": 1,
    "styloépipènes": 1
   },
-  "targets": {}
+  "targets": {
+   "styloépipènes": "stylos epipen"
+  }
  },
  "Eryfluid": {
   "n_seen": 7,
@@ -4196,7 +4356,9 @@
    "genotonorme": 2,
    "genotonorminique": 1
   },
-  "targets": {}
+  "targets": {
+   "genotonorminique": "genotonorm miniquick"
+  }
  },
  "granisétron": {
   "n_seen": 7,
@@ -4280,7 +4442,9 @@
    "lumira": 2,
    "mira": 1
   },
-  "targets": {}
+  "targets": {
+   "lumira": "l'humira"
+  }
  },
  "Hydrea": {
   "n_seen": 7,
@@ -4315,7 +4479,9 @@
    "hipromélose": 1,
    "hypromélose": 1
   },
-  "targets": {}
+  "targets": {
+   "iproméloscollyre": "hypromellose collyre"
+  }
  },
  "Hyzaar": {
   "n_seen": 7,
@@ -4342,7 +4508,8 @@
    "hymatinib": 1
   },
   "targets": {
-   "limatinib": "l'imatinib"
+   "limatinib": "l'imatinib",
+   "lymatinib": "l'imatinib"
   }
  },
  "Incruse": {
@@ -4355,7 +4522,10 @@
    "incrusellipta": 1,
    "un crusellipta": 1
   },
-  "targets": {}
+  "targets": {
+   "incrusellipta": "incruse ellipta",
+   "un crusellipta": "incruse ellipta"
+  }
  },
  "Innohep": {
   "n_seen": 7,
@@ -4652,7 +4822,9 @@
    "anitizinone": 1,
    "nicisinone": 1
   },
-  "targets": {}
+  "targets": {
+   "anitizinone": "la nitisinone"
+  }
  },
  "Nootropyl": {
   "n_seen": 7,
@@ -4705,7 +4877,11 @@
    "ombre-brisale": 1,
    "onbers": 1
   },
-  "targets": {}
+  "targets": {
+   "ombrébrijalaire": "onbrez breezhaler",
+   "ohnbrez-brezhaler": "onbrez breezhaler",
+   "ombre-brisale": "onbrez breezhaler"
+  }
  },
  "Ontozry": {
   "n_seen": 7,
@@ -4747,7 +4923,9 @@
    "opselluracrème": 1,
    "obsellora": 1
   },
-  "targets": {}
+  "targets": {
+   "opselluracrème": "opzelura crème"
+  }
  },
  "Oralair": {
   "n_seen": 7,
@@ -4801,7 +4979,9 @@
    "zoxycontine": 1,
    "oxy contine": 1
   },
-  "targets": {}
+  "targets": {
+   "ouexi-continelp": "oxycontin lp"
+  }
  },
  "oxymétazoline": {
   "n_seen": 8,
@@ -4907,7 +5087,9 @@
    "por copinygri20": 1,
    "prokini": 1
   },
-  "targets": {}
+  "targets": {
+   "por copinygri20": "prokinyl 20"
+  }
  },
  "propafénone": {
   "n_seen": 7,
@@ -4974,7 +5156,9 @@
    "quinofry": 1,
    "quinofrit": 1
   },
-  "targets": {}
+  "targets": {
+   "quinofricollyre": "quinofree collyre"
+  }
  },
  "Quviviq": {
   "n_seen": 7,
@@ -5105,7 +5289,10 @@
    "souriocigua": 1,
    "souriosigua": 1
   },
-  "targets": {}
+  "targets": {
+   "souriocigua": "sous riociguat",
+   "souriosigua": "sous riociguat"
+  }
  },
  "Rizmoic": {
   "n_seen": 7,
@@ -5160,7 +5347,9 @@
    "sebri": 1,
    "sébribézalaire": 1
   },
-  "targets": {}
+  "targets": {
+   "cebri-braisaler": "seebri breezhaler"
+  }
  },
  "Siklos": {
   "n_seen": 7,
@@ -5229,7 +5418,11 @@
    "spasan": 1,
    "spasfaune": 1
   },
-  "targets": {}
+  "targets": {
+   "spasfonioc": "spasfon lyoc",
+   "spasfon-lyok": "spasfon lyoc",
+   "spasfonlioc": "spasfon lyoc"
+  }
  },
  "Spiolto": {
   "n_seen": 7,
@@ -5239,7 +5432,9 @@
    "spioltorespimate": 6,
    "spioulto": 1
   },
-  "targets": {}
+  "targets": {
+   "spioltorespimate": "spiolto respimat"
+  }
  },
  "Spiriva": {
   "n_seen": 15,
@@ -5248,22 +5443,9 @@
   "errors": {
    "spirivarespimate": 7
   },
-  "targets": {}
- },
- "spray": {
-  "n_seen": 106,
-  "n_correct": 99,
-  "n_deleted": 0,
-  "errors": {
-   "spénasal": 1,
-   "spread": 1,
-   "prénasal": 1,
-   "spray-nasal": 1,
-   "spray-nasale": 1,
-   "pré-nasal": 1,
-   "prénasale": 1
-  },
-  "targets": {}
+  "targets": {
+   "spirivarespimate": "spiriva respimat"
+  }
  },
  "sultiame": {
   "n_seen": 7,
@@ -5559,7 +5741,9 @@
    "vyndaql61": 1,
    "vyndake8skikel": 1
   },
-  "targets": {}
+  "targets": {
+   "vyndaql61": "vyndaqel 61"
+  }
  },
  "Xeljanz": {
   "n_seen": 7,
@@ -5574,7 +5758,9 @@
    "xeljaonz": 1,
    "xaljenz": 1
   },
-  "targets": {}
+  "targets": {
+   "xelgee": "xeljanz et"
+  }
  },
  "Xolair": {
   "n_seen": 7,
@@ -5588,7 +5774,10 @@
    "xoler": 1,
    "duxolaire": 1
   },
-  "targets": {}
+  "targets": {
+   "sous-solaire": "sous xolair",
+   "duxolaire": "du xolair"
+  }
  },
  "Xyzall": {
   "n_seen": 7,
@@ -5603,7 +5792,10 @@
    "ixygred all": 1,
    "xyxal": 1
   },
-  "targets": {}
+  "targets": {
+   "xyzal5": "xyzall 5",
+   "xyal5": "xyzall 5"
+  }
  },
  "Zophren": {
   "n_seen": 7,
@@ -5704,7 +5896,9 @@
    "adapalengel": 1,
    "dapalen": 1
   },
-  "targets": {}
+  "targets": {
+   "adapalengel": "adapalène gel"
+  }
  },
  "Adcirca": {
   "n_seen": 6,
@@ -5806,7 +6000,10 @@
    "allergodyl-collyre": 1,
    "alrgodil-collyre": 1
   },
-  "targets": {}
+  "targets": {
+   "allergodyl-collyre": "allergodil collyre",
+   "alrgodil-collyre": "allergodil collyre"
+  }
  },
  "Amgevita": {
   "n_seen": 7,
@@ -5837,7 +6034,9 @@
   "errors": {
    "méthylaminolévulinate": 6
   },
-  "targets": {}
+  "targets": {
+   "méthylaminolévulinate": "méthyle aminolévulinate"
+  }
  },
  "anagrélide": {
   "n_seen": 6,
@@ -5863,7 +6062,10 @@
    "andractine": 1,
    "andracym": 1
   },
-  "targets": {}
+  "targets": {
+   "andrachtimgel": "andractim gel",
+   "andractimgel": "andractim gel"
+  }
  },
  "anéthole": {
   "n_seen": 6,
@@ -5876,7 +6078,12 @@
    "anétholtrition": 1,
    "anétoltritione": 1
   },
-  "targets": {}
+  "targets": {
+   "anéthol-tritione": "anéthole trithione",
+   "anétholtritione": "anéthole trithione",
+   "anétholtrition": "anéthole trithione",
+   "anétoltritione": "anéthole trithione"
+  }
  },
  "antigènes": {
   "n_seen": 6,
@@ -5962,7 +6169,9 @@
    "robaggio": 1,
    "lobaggio": 1
   },
-  "targets": {}
+  "targets": {
+   "lobaggio": "l'aubagio"
+  }
  },
  "Befizal": {
   "n_seen": 6,
@@ -6073,6 +6282,15 @@
   },
   "targets": {}
  },
+ "Bricanyl": {
+  "n_seen": 12,
+  "n_correct": 6,
+  "n_deleted": 0,
+  "errors": {
+   "bricanil": 6
+  },
+  "targets": {}
+ },
  "bromfénac": {
   "n_seen": 6,
   "n_correct": 0,
@@ -6083,7 +6301,9 @@
    "bromfénax": 1,
    "bromphénac": 1
   },
-  "targets": {}
+  "targets": {
+   "brome phénaxodique": "bromfénac sodique"
+  }
  },
  "bromocriptine": {
   "n_seen": 6,
@@ -6130,7 +6350,9 @@
    "catiatis": 1,
    "cassite": 1
   },
-  "targets": {}
+  "targets": {
+   "lecacité": "le cacit"
+  }
  },
  "Cadron": {
   "n_seen": 7,
@@ -6142,7 +6364,11 @@
    "chibro-cadrone": 1,
    "chibrocadrome": 1
   },
-  "targets": {}
+  "targets": {
+   "chibrocadron": "chibro cadron",
+   "chibro-cadrone": "chibro cadron",
+   "chibrocadrome": "chibro cadron"
+  }
  },
  "Calciprat": {
   "n_seen": 6,
@@ -6296,7 +6522,10 @@
    "cotrimox azole": 2,
    "ducotrimoxazole": 1
   },
-  "targets": {}
+  "targets": {
+   "ducotrimoxazole": "du cotrimoxazole",
+   "cotrimox azolteva": "cotrimoxazole teva"
+  }
  },
  "Coversyl": {
   "n_seen": 7,
@@ -6379,7 +6608,9 @@
   "errors": {
    "diméthylfumarate": 6
   },
-  "targets": {}
+  "targets": {
+   "diméthylfumarate": "diméthyl fumarate"
+  }
  },
  "Diprosalic": {
   "n_seen": 7,
@@ -6400,7 +6631,10 @@
    "diroxymel": 2,
    "dyroxy malfumarate": 1
   },
-  "targets": {}
+  "targets": {
+   "diroxymelfumarate": "diroximel fumarate",
+   "dyroxy malfumarate": "diroximel fumarate"
+  }
  },
  "dolutégravir": {
   "n_seen": 79,
@@ -6637,7 +6871,12 @@
    "éthylloflazépat": 1,
    "éthylloflazépate": 1
   },
-  "targets": {}
+  "targets": {
+   "éthylloflazépat": "éthyle loflazépate",
+   "éthyloflazépate": "éthyle loflazépate",
+   "éthyl-loflazépate": "éthyle loflazépate",
+   "éthylloflazépate": "éthyle loflazépate"
+  }
  },
  "Eucreas": {
   "n_seen": 6,
@@ -6718,7 +6957,9 @@
    "fixe à post-collyre": 1,
    "fixa poste": 1
   },
-  "targets": {}
+  "targets": {
+   "fixe à post-collyre": "fixapost collyre"
+  }
  },
  "Flebogammadif": {
   "n_seen": 6,
@@ -6756,7 +6997,9 @@
    "flécainid": 1,
    "soufflé caïnide": 1
   },
-  "targets": {}
+  "targets": {
+   "soufflé caïnide": "sous flécaïnide"
+  }
  },
  "Fluanxol": {
   "n_seen": 12,
@@ -6901,17 +7144,6 @@
   },
   "targets": {}
  },
- "glulisine": {
-  "n_seen": 6,
-  "n_correct": 0,
-  "n_deleted": 0,
-  "errors": {
-   "insuline-glulisine": 4,
-   "insulinoglulizine": 1,
-   "glulizine": 1
-  },
-  "targets": {}
- },
  "Granocyte": {
   "n_seen": 7,
   "n_correct": 1,
@@ -6971,17 +7203,6 @@
    "liquide": 1,
    "achiliquite": 1,
    "héliquide": 1
-  },
-  "targets": {}
- },
- "hépatite": {
-  "n_seen": 108,
-  "n_correct": 102,
-  "n_deleted": 0,
-  "errors": {
-   "antihépatite": 4,
-   "antihépatiques": 1,
-   "anti-hépatite": 1
   },
   "targets": {}
  },
@@ -7101,6 +7322,25 @@
   },
   "targets": {}
  },
+ "insuline": {
+  "n_seen": 159,
+  "n_correct": 153,
+  "n_deleted": 0,
+  "errors": {
+   "insulinispro": 2,
+   "insuline-aspar": 1,
+   "insulinoglulizine": 1,
+   "insuline-glucide": 1,
+   "insulinlispro": 1
+  },
+  "targets": {
+   "insulinispro": "insuline lispro",
+   "insuline-aspar": "insuline aspart",
+   "insulinoglulizine": "insuline glulisine",
+   "insuline-glucide": "insuline glucides",
+   "insulinlispro": "insuline lispro"
+  }
+ },
  "Intelence": {
   "n_seen": 6,
   "n_correct": 0,
@@ -7136,7 +7376,9 @@
    "pentamidinicétionate": 1,
    "cétionate": 1
   },
-  "targets": {}
+  "targets": {
+   "pentamidinicétionate": "pentamidine iséthionate"
+  }
  },
  "Isturisa": {
   "n_seen": 6,
@@ -7412,7 +7654,12 @@
    "éthylloflazépat": 1,
    "éthylloflazépate": 1
   },
-  "targets": {}
+  "targets": {
+   "éthylloflazépat": "éthyle loflazépate",
+   "éthyloflazépate": "éthyle loflazépate",
+   "éthyl-loflazépate": "éthyle loflazépate",
+   "éthylloflazépate": "éthyle loflazépate"
+  }
  },
  "lormétazépam": {
   "n_seen": 10,
@@ -7489,7 +7736,10 @@
    "maioli": 2,
    "majolispindler": 1
   },
-  "targets": {}
+  "targets": {
+   "majoli-spindler": "mayoly spindler",
+   "majolispindler": "mayoly spindler"
+  }
  },
  "Mediatensyl": {
   "n_seen": 6,
@@ -7559,7 +7809,9 @@
    "méthyldoparacémique": 5,
    "méthyldopare": 1
   },
-  "targets": {}
+  "targets": {
+   "méthyldoparacémique": "méthyldopa racémique"
+  }
  },
  "méthyle": {
   "n_seen": 6,
@@ -7568,7 +7820,9 @@
   "errors": {
    "méthylaminolévulinate": 6
   },
-  "targets": {}
+  "targets": {
+   "méthylaminolévulinate": "méthyle aminolévulinate"
+  }
  },
  "Micardisplus": {
   "n_seen": 6,
@@ -7628,7 +7882,9 @@
    "movimia": 5,
    "dumovimia": 1
   },
-  "targets": {}
+  "targets": {
+   "dumovimia": "du movymia"
+  }
  },
  "mucolytiques": {
   "n_seen": 10,
@@ -7822,7 +8078,9 @@
    "ongl-gza": 1,
    "oengese à": 1
   },
-  "targets": {}
+  "targets": {
+   "duinzizea": "d'onglyza"
+  }
  },
  "onychoset": {
   "n_seen": 6,
@@ -7876,6 +8134,7 @@
   "targets": {
    "lorraine": "l'oroken",
    "loroken": "l'oroken",
+   "oroken-nurrisons": "oroken nourrissons",
    "lohrun": "l'oroken"
   }
  },
@@ -7890,7 +8149,9 @@
    "oerylm ytee": 1,
    "orylmyt": 1
   },
-  "targets": {}
+  "targets": {
+   "oerylm ytee": "orylmyte et"
+  }
  },
  "Otezla": {
   "n_seen": 6,
@@ -8030,16 +8291,6 @@
   },
   "targets": {}
  },
- "phosphate": {
-  "n_seen": 9,
-  "n_correct": 3,
-  "n_deleted": 0,
-  "errors": {
-   "aluminium-phosphate": 5,
-   "pyridoxal-phosphate": 1
-  },
-  "targets": {}
- },
  "pimozide": {
   "n_seen": 6,
   "n_correct": 0,
@@ -8048,7 +8299,9 @@
    "pimoside": 5,
    "arrêdupimoside": 1
   },
-  "targets": {}
+  "targets": {
+   "arrêdupimoside": "arrêt du pimozide"
+  }
  },
  "pirfénidone": {
   "n_seen": 6,
@@ -8204,7 +8457,9 @@
    "quince": 1,
    "kinz": 1
   },
-  "targets": {}
+  "targets": {
+   "viskenquanz": "visken quinze"
+  }
  },
  "Quitaxon": {
   "n_seen": 6,
@@ -8225,7 +8480,9 @@
    "méthyldoparacémique": 5,
    "ascénique": 1
   },
-  "targets": {}
+  "targets": {
+   "méthyldoparacémique": "méthyldopa racémique"
+  }
  },
  "Reblozyl": {
   "n_seen": 6,
@@ -8371,7 +8628,9 @@
    "ryeqo40": 1,
    "ryq": 1
   },
-  "targets": {}
+  "targets": {
+   "ryeqo40": "ryeqo 40"
+  }
  },
  "Sanmigran": {
   "n_seen": 7,
@@ -8527,6 +8786,26 @@
   },
   "targets": {}
  },
+ "spray": {
+  "n_seen": 106,
+  "n_correct": 100,
+  "n_deleted": 0,
+  "errors": {
+   "spénasal": 1,
+   "spread": 1,
+   "prénasal": 1,
+   "spray-nasale": 1,
+   "pré-nasal": 1,
+   "prénasale": 1
+  },
+  "targets": {
+   "spénasal": "spray nasal",
+   "prénasal": "spray nasal",
+   "spray-nasale": "spray nasal",
+   "pré-nasal": "spray nasal",
+   "prénasale": "spray nasal"
+  }
+ },
  "stabilisé": {
   "n_seen": 53,
   "n_correct": 47,
@@ -8641,6 +8920,24 @@
    "temeri duo": 1
   },
   "targets": {}
+ },
+ "ténofovir": {
+  "n_seen": 122,
+  "n_correct": 116,
+  "n_deleted": 0,
+  "errors": {
+   "ténofovir-alaphénamide": 2,
+   "ténofovir-alafhénamide": 1,
+   "amtricitabine-ténofovir-alaphénamide": 1,
+   "ténofobir": 1,
+   "ténofovir-disoproxyl": 1
+  },
+  "targets": {
+   "ténofovir-alafhénamide": "ténofovir alafénamide",
+   "ténofovir-alaphénamide": "ténofovir alafénamide",
+   "amtricitabine-ténofovir-alaphénamide": "emtricitabine ténofovir alafénamide",
+   "ténofovir-disoproxyl": "ténofovir disoproxil"
+  }
  },
  "Tenoretic": {
   "n_seen": 6,
@@ -8783,7 +9080,9 @@
    "travaux prostcoliaires": 1,
    "travauprost": 1
   },
-  "targets": {}
+  "targets": {
+   "travaux prostcoliaires": "travoprost collyre"
+  }
  },
  "Tremfya": {
   "n_seen": 6,
@@ -8806,7 +9105,12 @@
    "anétholtrition": 1,
    "anétoltritione": 1
   },
-  "targets": {}
+  "targets": {
+   "anéthol-tritione": "anéthole trithione",
+   "anétholtritione": "anéthole trithione",
+   "anétholtrition": "anéthole trithione",
+   "anétoltritione": "anéthole trithione"
+  }
  },
  "Tussipax": {
   "n_seen": 7,
@@ -8852,7 +9156,10 @@
    "tene": 1,
    "soutiennent": 1
   },
-  "targets": {}
+  "targets": {
+   "tns5": "tyenne 5",
+   "soutiennent": "sous tyenne"
+  }
  },
  "Uptravi": {
   "n_seen": 6,
@@ -9035,7 +9342,9 @@
    "xolaa m5": 1,
    "xoalaam": 1
   },
-  "targets": {}
+  "targets": {
+   "xolaa m5": "xolaam 5"
+  }
  },
  "Xyllomac": {
   "n_seen": 6,
@@ -9128,7 +9437,9 @@
    "bilify": 2,
    "abilifimaintena": 1
   },
-  "targets": {}
+  "targets": {
+   "abilifimaintena": "abilify maintena"
+  }
  },
  "Abrysvo": {
   "n_seen": 6,
@@ -9244,7 +9555,9 @@
    "aflavicollyre": 1,
    "flavyse": 1
   },
-  "targets": {}
+  "targets": {
+   "aflavicollyre": "aflavis collyre"
+  }
  },
  "Albey": {
   "n_seen": 6,
@@ -9255,18 +9568,6 @@
    "alberi": 1,
    "albé": 1,
    "albeg": 1
-  },
-  "targets": {}
- },
- "Anoro": {
-  "n_seen": 7,
-  "n_correct": 2,
-  "n_deleted": 0,
-  "errors": {
-   "anoro-ellipta": 2,
-   "anoroelipta": 1,
-   "zanoro-elipta": 1,
-   "anoro-elipta": 1
   },
   "targets": {}
  },
@@ -9313,28 +9614,6 @@
    "bemphola": 3,
    "bempholas": 1,
    "bemfolia": 1
-  },
-  "targets": {}
- },
- "benzathine": {
-  "n_seen": 5,
-  "n_correct": 0,
-  "n_deleted": 0,
-  "errors": {
-   "benzatine-benzyl-pénicilline": 3,
-   "benzathine-benzylpénicilline": 1,
-   "benzatine-benzylpénicilline": 1
-  },
-  "targets": {}
- },
- "benzylpénicilline": {
-  "n_seen": 5,
-  "n_correct": 0,
-  "n_deleted": 0,
-  "errors": {
-   "benzatine-benzyl-pénicilline": 3,
-   "benzathine-benzylpénicilline": 1,
-   "benzatine-benzylpénicilline": 1
   },
   "targets": {}
  },
@@ -9470,7 +9749,9 @@
    "séfuroximes": 1,
    "céfuroximes": 1
   },
-  "targets": {}
+  "targets": {
+   "cefuroximaxétyl": "céfuroxime axétil"
+  }
  },
  "celestene": {
   "n_seen": 7,
@@ -9527,7 +9808,11 @@
    "chibro-cadrone": 1,
    "chibrocadrome": 1
   },
-  "targets": {}
+  "targets": {
+   "chibrocadron": "chibro cadron",
+   "chibro-cadrone": "chibro cadron",
+   "chibrocadrome": "chibro cadron"
+  }
  },
  "Cinryze": {
   "n_seen": 5,
@@ -9563,7 +9848,9 @@
    "claudronique": 1,
    "claudronicacide": 1
   },
-  "targets": {}
+  "targets": {
+   "claudronicacide": "clodronique acide"
+  }
  },
  "Closalis": {
   "n_seen": 6,
@@ -9745,7 +10032,9 @@
    "ledéprénil": 1,
    "dprénil": 1
   },
-  "targets": {}
+  "targets": {
+   "ledéprénil": "le déprényl"
+  }
  },
  "Desferal": {
   "n_seen": 6,
@@ -9827,7 +10116,9 @@
    "d'hyphtérie": 3,
    "d'hyphtérie-tétanos-poliomyélite": 2
   },
-  "targets": {}
+  "targets": {
+   "d'hyphtérie-tétanos-poliomyélite": "diphtérie tétanos poliomyélite"
+  }
  },
  "Dipiperon": {
   "n_seen": 7,
@@ -9923,7 +10214,9 @@
    "amteriva": 1,
    "emt iva": 1
   },
-  "targets": {}
+  "targets": {
+   "dmtriva": "d'emtriva"
+  }
  },
  "Enerzair": {
   "n_seen": 6,
@@ -9937,7 +10230,9 @@
    "enerzair-brisaller": 1
   },
   "targets": {
-   "denerzeer": "d'enerzair"
+   "denerzeer": "d'enerzair",
+   "enerzheir-brisheiler": "enerzair breezhaler",
+   "enerzair-brisaller": "enerzair breezhaler"
   }
  },
  "entecavir": {
@@ -9969,9 +10264,7 @@
    "dentresto": 1,
    "intresto": 1
   },
-  "targets": {
-   "dentresto": "d'entresto"
-  }
+  "targets": {}
  },
  "Epidyolex": {
   "n_seen": 6,
@@ -10401,7 +10694,10 @@
    "ginergencafféine": 1,
    "ginergène": 1
   },
-  "targets": {}
+  "targets": {
+   "ginergencaféine": "gynergène caféine",
+   "ginergencafféine": "gynergène caféine"
+  }
  },
  "Hemangiol": {
   "n_seen": 5,
@@ -10414,7 +10710,22 @@
    "himangiol": 1,
    "achimangiol": 1
   },
-  "targets": {}
+  "targets": {
+   "léandangiol": "l'hemangiol"
+  }
+ },
+ "hépatite": {
+  "n_seen": 108,
+  "n_correct": 103,
+  "n_deleted": 0,
+  "errors": {
+   "antihépatite": 4,
+   "antihépatiques": 1
+  },
+  "targets": {
+   "antihépatite": "anti hépatite",
+   "antihépatiques": "anti hépatite"
+  }
  },
  "Hexatrione": {
   "n_seen": 6,
@@ -10451,7 +10762,9 @@
    "luckingdra": 1,
    "ukindra": 1
   },
-  "targets": {}
+  "targets": {
+   "luckingdra": "l'hukyndra"
+  }
  },
  "Idacio": {
   "n_seen": 6,
@@ -10582,21 +10895,6 @@
   },
   "targets": {}
  },
- "Indocollyre": {
-  "n_seen": 10,
-  "n_correct": 5,
-  "n_deleted": 0,
-  "errors": {
-   "endocollyre": 1,
-   "indo-collyre-collyre": 1,
-   "lindocollyre": 1,
-   "indocollyre-collyre": 1,
-   "endocollyre-collyre": 1
-  },
-  "targets": {
-   "lindocollyre": "l'indocollyre"
-  }
- },
  "Infanrixquinta": {
   "n_seen": 5,
   "n_correct": 0,
@@ -10691,7 +10989,8 @@
    "iodé-yopamiron": 1
   },
   "targets": {
-   "diopamiron": "d'iopamiron"
+   "diopamiron": "d'iopamiron",
+   "iodé-yopamiron": "iodé iopamiron"
   }
  },
  "ioxitalamique": {
@@ -10716,7 +11015,10 @@
    "dyscentresse": 1,
    "lyscentres": 1
   },
-  "targets": {}
+  "targets": {
+   "dyscentresse": "d'isentress",
+   "lyscentres": "l'isentress"
+  }
  },
  "Isocard": {
   "n_seen": 5,
@@ -10865,7 +11167,10 @@
    "calouble-icpen": 1,
    "kawikpen": 1
   },
-  "targets": {}
+  "targets": {
+   "nphkwen": "nph kwikpen",
+   "nphkwkipn": "nph kwikpen"
+  }
  },
  "Kyntheum": {
   "n_seen": 5,
@@ -10964,7 +11269,9 @@
    "levovta": 1,
    "lévopachta": 1
   },
-  "targets": {}
+  "targets": {
+   "lévopathacollyre": "levophta collyre"
+  }
  },
  "Libmyris": {
   "n_seen": 5,
@@ -10996,7 +11303,10 @@
    "lyspro": 1,
    "insulinlispro": 1
   },
-  "targets": {}
+  "targets": {
+   "insulinispro": "insuline lispro",
+   "insulinlispro": "insuline lispro"
+  }
  },
  "Livtencity": {
   "n_seen": 5,
@@ -11245,7 +11555,10 @@
    "bémycilor": 1,
    "micillore": 1
   },
-  "targets": {}
+  "targets": {
+   "béimicylor": "bi missilor",
+   "bémycilor": "bi missilor"
+  }
  },
  "mizolastine": {
   "n_seen": 7,
@@ -11305,7 +11618,9 @@
    "minocine": 4,
    "aminocine": 1
   },
-  "targets": {}
+  "targets": {
+   "aminocine": "la mynocine"
+  }
  },
  "Myrelez": {
   "n_seen": 5,
@@ -11365,7 +11680,9 @@
    "nepogène": 1,
    "néopogène": 1
   },
-  "targets": {}
+  "targets": {
+   "une oeil pogène": "du neupogen"
+  }
  },
  "Ngenla": {
   "n_seen": 5,
@@ -11622,7 +11939,8 @@
    "oxhexir nalp": 1
   },
   "targets": {
-   "doxycnia": "d'oxsynia"
+   "doxycnia": "d'oxsynia",
+   "oxhexir nalp": "oxsynia lp"
   }
  },
  "palonosétron": {
@@ -11745,7 +12063,10 @@
    "topipodalaire": 1,
    "podalaire": 1
   },
-  "targets": {}
+  "targets": {
+   "tobypodaler": "tobi podhaler",
+   "topipodalaire": "tobi podhaler"
+  }
  },
  "pollen": {
   "n_seen": 14,
@@ -11754,17 +12075,6 @@
   "errors": {
    "pollens": 4,
    "pollène": 1
-  },
-  "targets": {}
- },
- "polyéthylène": {
-  "n_seen": 7,
-  "n_correct": 2,
-  "n_deleted": 0,
-  "errors": {
-   "polyéthylène-glycol-époétine": 2,
-   "polyéthylène-glycol": 2,
-   "polyéthylène-glycolépoétine": 1
   },
   "targets": {}
  },
@@ -11928,7 +12238,11 @@
    "simbicort-trapihaler": 1,
    "cymbicorthrapie": 1
   },
-  "targets": {}
+  "targets": {
+   "symbicortrapihaler": "symbicort rapihaler",
+   "simbicort-trapihaler": "symbicort rapihaler",
+   "cymbicorthrapie": "symbicort rapihaler"
+  }
  },
  "Rekambys": {
   "n_seen": 5,
@@ -12038,7 +12352,9 @@
    "oxithromycine": 2,
    "aroxitromycine": 1
   },
-  "targets": {}
+  "targets": {
+   "aroxitromycine": "la roxithromycine"
+  }
  },
  "Rukobia": {
   "n_seen": 5,
@@ -12322,7 +12638,10 @@
    "terbina finoral": 1,
    "terbina fine": 1
   },
-  "targets": {}
+  "targets": {
+   "terbina finoral": "terbinafine orale",
+   "terbina finorale": "terbinafine orale"
+  }
  },
  "Tercian": {
   "n_seen": 7,
@@ -12450,7 +12769,9 @@
    "triamcinolonacétonide": 1,
    "triamcinolones": 1
   },
-  "targets": {}
+  "targets": {
+   "triamcinolonacétonide": "triamcinolone acétonide"
+  }
  },
  "Triplixam": {
   "n_seen": 5,
@@ -12475,7 +12796,10 @@
    "trixéoaérosphère": 1,
    "terixeo": 1
   },
-  "targets": {}
+  "targets": {
+   "ticoeroscre": "trixeo aerosphere",
+   "trixéoaérosphère": "trixeo aerosphere"
+  }
  },
  "Trusopt": {
   "n_seen": 7,
@@ -12785,7 +13109,9 @@
    "zinat": 1,
    "usinate": 1
   },
-  "targets": {}
+  "targets": {
+   "usinate": "du zinnat"
+  }
  },
  "Zofenil": {
   "n_seen": 5,
@@ -12898,7 +13224,12 @@
    "paracide": 1,
    "claudronicacide": 1
   },
-  "targets": {}
+  "targets": {
+   "acidniflumique": "acide niflumique",
+   "acidobéticholique": "acide obéticholique",
+   "paracide": "par acide",
+   "claudronicacide": "clodronique acide"
+  }
  },
  "Acupan": {
   "n_seen": 8,
@@ -12910,7 +13241,10 @@
    "sous-acupant": 1,
    "sous-accupant": 1
   },
-  "targets": {}
+  "targets": {
+   "sous-acupant": "sous acupan",
+   "sous-accupant": "sous acupan"
+  }
  },
  "Adénuric": {
   "n_seen": 6,
@@ -13094,8 +13428,10 @@
    "asmeller-novalizer": 1
   },
   "targets": {
+   "asmellonovolizer": "asmelor novolizer",
    "lasmellor": "l'asmelor",
-   "lasmellor-novolizer": "l'asmelor"
+   "lasmellor-novolizer": "l'asmelor novolizer",
+   "asmeller-novalizer": "asmelor novolizer"
   }
  },
  "Atenativ": {
@@ -13186,6 +13522,32 @@
   },
   "targets": {}
  },
+ "benzathine": {
+  "n_seen": 5,
+  "n_correct": 1,
+  "n_deleted": 0,
+  "errors": {
+   "benzatine-benzyl-pénicilline": 3,
+   "benzatine-benzylpénicilline": 1
+  },
+  "targets": {
+   "benzatine-benzyl-pénicilline": "benzathine benzylpénicilline",
+   "benzatine-benzylpénicilline": "benzathine benzylpénicilline"
+  }
+ },
+ "benzylpénicilline": {
+  "n_seen": 5,
+  "n_correct": 1,
+  "n_deleted": 0,
+  "errors": {
+   "benzatine-benzyl-pénicilline": 3,
+   "benzatine-benzylpénicilline": 1
+  },
+  "targets": {
+   "benzatine-benzyl-pénicilline": "benzathine benzylpénicilline",
+   "benzatine-benzylpénicilline": "benzathine benzylpénicilline"
+  }
+ },
  "Beovu": {
   "n_seen": 5,
   "n_correct": 1,
@@ -13194,18 +13556,6 @@
    "bovu": 2,
    "beveu": 1,
    "bevu": 1
-  },
-  "targets": {}
- },
- "bétadine": {
-  "n_seen": 17,
-  "n_correct": 13,
-  "n_deleted": 0,
-  "errors": {
-   "beatadine": 1,
-   "beétadine": 1,
-   "bétadine-scrub": 1,
-   "bétadine-skrib": 1
   },
   "targets": {}
  },
@@ -13271,7 +13621,10 @@
    "naltrexone-bromure": 1,
    "méthynaltrexone-bromure": 1
   },
-  "targets": {}
+  "targets": {
+   "naltrexone-bromure": "méthylnaltrexone bromure",
+   "méthynaltrexone-bromure": "méthylnaltrexone bromure"
+  }
  },
  "Bylvay": {
   "n_seen": 4,
@@ -13306,7 +13659,11 @@
    "ginergencafféine": 1,
    "claradolcaféine": 1
   },
-  "targets": {}
+  "targets": {
+   "ginergencaféine": "gynergène caféine",
+   "ginergencafféine": "gynergène caféine",
+   "claradolcaféine": "claradol caféine"
+  }
  },
  "Camzyos": {
   "n_seen": 6,
@@ -13508,7 +13865,9 @@
    "cotellique": 1,
    "cotélique": 1
   },
-  "targets": {}
+  "targets": {
+   "sous-cotélique": "sous cotellic"
+  }
  },
  "Créon": {
   "n_seen": 7,
@@ -13675,7 +14034,6 @@
    "délétriptan": 1
   },
   "targets": {
-   "létriptans": "l'élétriptan",
    "délétriptan": "d'élétriptan"
   }
  },
@@ -13715,7 +14073,10 @@
    "et mulgel": 1,
    "voltaren-emulgel": 1
   },
-  "targets": {}
+  "targets": {
+   "voltaren-emulgell": "voltarène emulgel",
+   "voltaren-emulgel": "voltarène emulgel"
+  }
  },
  "Emylif": {
   "n_seen": 4,
@@ -13764,6 +14125,7 @@
    "lendovella": 1
   },
   "targets": {
+   "landovella": "l'endovela",
    "lendovella": "l'endovela"
   }
  },
@@ -13836,6 +14198,7 @@
    "leptacoc": 1
   },
   "targets": {
+   "eptacocalpha": "eptacog alfa",
    "leptacoc": "l'eptacog"
   }
  },
@@ -13940,7 +14303,9 @@
    "herrings": 1,
    "fering": 1
   },
-  "targets": {}
+  "targets": {
+   "lhrhfrin": "lhrh ferring"
+  }
  },
  "Ferrostrane": {
   "n_seen": 7,
@@ -14068,7 +14433,9 @@
    "jibiter": 3,
    "jibiter-ezyhaler": 1
   },
-  "targets": {}
+  "targets": {
+   "jibiter-ezyhaler": "gibiter easyhaler"
+  }
  },
  "Givlaari": {
   "n_seen": 4,
@@ -14111,7 +14478,11 @@
    "lth-hyroxine-henning": 1,
    "lthirox1-henning": 1
   },
-  "targets": {}
+  "targets": {
+   "lthyroxine-henning": "l-thyroxin henning",
+   "lth-hyroxine-henning": "l-thyroxin henning",
+   "lthirox1-henning": "l-thyroxin henning"
+  }
  },
  "Hexvix": {
   "n_seen": 5,
@@ -14147,15 +14518,6 @@
   },
   "targets": {}
  },
- "hydroxyde": {
-  "n_seen": 8,
-  "n_correct": 4,
-  "n_deleted": 0,
-  "errors": {
-   "aluminium-hydroxyde": 4
-  },
-  "targets": {}
- },
  "Hyqvia": {
   "n_seen": 6,
   "n_correct": 2,
@@ -14177,7 +14539,9 @@
    "y5": 1,
    "titrine": 1
   },
-  "targets": {}
+  "targets": {
+   "y5": "hytrine 5"
+  }
  },
  "Ibrance": {
   "n_seen": 7,
@@ -14233,6 +14597,22 @@
   },
   "targets": {}
  },
+ "Indocollyre": {
+  "n_seen": 10,
+  "n_correct": 6,
+  "n_deleted": 0,
+  "errors": {
+   "endocollyre": 1,
+   "indo-collyre-collyre": 1,
+   "lindocollyre": 1,
+   "endocollyre-collyre": 1
+  },
+  "targets": {
+   "indo-collyre-collyre": "indocollyre collyre",
+   "lindocollyre": "l'indocollyre",
+   "endocollyre-collyre": "indocollyre collyre"
+  }
+ },
  "Infai": {
   "n_seen": 4,
   "n_correct": 0,
@@ -14243,7 +14623,9 @@
    "15": 1,
    "in fi": 1
   },
-  "targets": {}
+  "targets": {
+   "testing fi": "test infai"
+  }
  },
  "Instanyl": {
   "n_seen": 5,
@@ -14588,7 +14970,9 @@
    "loxnlp": 1,
    "l'oxène": 1
   },
-  "targets": {}
+  "targets": {
+   "loxnlp": "loxen lp"
+  }
  },
  "Lumigan": {
   "n_seen": 7,
@@ -14749,7 +15133,9 @@
    "mozobile": 3,
    "parmosobile": 1
   },
-  "targets": {}
+  "targets": {
+   "parmosobile": "par mozobil"
+  }
  },
  "Myfenax": {
   "n_seen": 5,
@@ -14790,7 +15176,11 @@
    "nnifleurilenfant": 1,
    "niflurilenfant": 1
   },
-  "targets": {}
+  "targets": {
+   "unifluril": "du nifluril",
+   "nnifleurilenfant": "nifluril enfants",
+   "niflurilenfant": "nifluril enfants"
+  }
  },
  "Nimenrix": {
   "n_seen": 7,
@@ -15047,7 +15437,9 @@
    "soupiportil": 1,
    "piportile": 1
   },
-  "targets": {}
+  "targets": {
+   "soupiportil": "sous piportil"
+  }
  },
  "Pirilene": {
   "n_seen": 4,
@@ -15277,7 +15669,9 @@
    "hisperidone": 3,
    "souris péridone": 1
   },
-  "targets": {}
+  "targets": {
+   "souris péridone": "sous rispéridone"
+  }
  },
  "Rulid": {
   "n_seen": 5,
@@ -15404,7 +15798,10 @@
    "majoli-spindler": 3,
    "majolispindler": 1
   },
-  "targets": {}
+  "targets": {
+   "majoli-spindler": "mayoly spindler",
+   "majolispindler": "mayoly spindler"
+  }
  },
  "Sprycel": {
   "n_seen": 4,
@@ -15436,7 +15833,9 @@
   "errors": {
    "striverdirespimate": 4
   },
-  "targets": {}
+  "targets": {
+   "striverdirespimate": "striverdi respimat"
+  }
  },
  "Sunlenca": {
   "n_seen": 4,
@@ -15614,7 +16013,10 @@
    "ultibro-brishaler": 1,
    "ultibro-bre-jâleur": 1
   },
-  "targets": {}
+  "targets": {
+   "ultibro-brishaler": "ultibro breezhaler",
+   "ultibro-bre-jâleur": "ultibro breezhaler"
+  }
  },
  "Umatrope": {
   "n_seen": 4,
@@ -15910,7 +16312,9 @@
    "zaveska": 1,
    "usavesca": 1
   },
-  "targets": {}
+  "targets": {
+   "usavesca": "du zavesca"
+  }
  },
  "Zeffix": {
   "n_seen": 4,
@@ -15934,7 +16338,9 @@
    "zil-briz sq": 1,
    "usylbriscu": 1
   },
-  "targets": {}
+  "targets": {
+   "usylbriscu": "du zilbrysq"
+  }
  },
  "Zocor": {
   "n_seen": 5,
@@ -15980,16 +16386,6 @@
   },
   "targets": {}
  },
- "acarbose": {
-  "n_seen": 6,
-  "n_correct": 3,
-  "n_deleted": 0,
-  "errors": {
-   "carbose": 2,
-   "sous-acarbose": 1
-  },
-  "targets": {}
- },
  "acétate": {
   "n_seen": 16,
   "n_correct": 13,
@@ -15997,7 +16393,9 @@
   "errors": {
    "zincacétate": 3
   },
-  "targets": {}
+  "targets": {
+   "zincacétate": "zinc acétate"
+  }
  },
  "acétylleucine": {
   "n_seen": 13,
@@ -16049,7 +16447,10 @@
    "trixéoaérosphère": 1,
    "et orosphère": 1
   },
-  "targets": {}
+  "targets": {
+   "ticoeroscre": "trixeo aerosphere",
+   "trixéoaérosphère": "trixeo aerosphere"
+  }
  },
  "aflibercept": {
   "n_seen": 9,
@@ -16117,16 +16518,6 @@
   "n_deleted": 0,
   "errors": {
    "alloplastine": 3
-  },
-  "targets": {}
- },
- "alpha": {
-  "n_seen": 23,
-  "n_correct": 20,
-  "n_deleted": 0,
-  "errors": {
-   "anti-tnf-alpha": 2,
-   "alpha-péguilé": 1
   },
   "targets": {}
  },
@@ -16204,7 +16595,24 @@
    "anestherme": 1,
    "anesderme": 1
   },
-  "targets": {}
+  "targets": {
+   "annez dermcrème": "anesderm crème"
+  }
+ },
+ "Anoro": {
+  "n_seen": 7,
+  "n_correct": 4,
+  "n_deleted": 0,
+  "errors": {
+   "anoroelipta": 1,
+   "zanoro-elipta": 1,
+   "anoro-elipta": 1
+  },
+  "targets": {
+   "anoroelipta": "anoro ellipta",
+   "zanoro-elipta": "anoro ellipta",
+   "anoro-elipta": "anoro ellipta"
+  }
  },
  "Antarène": {
   "n_seen": 7,
@@ -16227,6 +16635,18 @@
   },
   "targets": {}
  },
+ "antitrypsine": {
+  "n_seen": 13,
+  "n_correct": 10,
+  "n_deleted": 0,
+  "errors": {
+   "alpha-1-antitripsine": 2,
+   "antitripsine": 1
+  },
+  "targets": {
+   "alpha-1-antitripsine": "alpha-1 antitrypsine"
+  }
+ },
  "Aotal": {
   "n_seen": 6,
   "n_correct": 3,
@@ -16237,7 +16657,8 @@
    "paratotal": 1
   },
   "targets": {
-   "laotal": "l'aotal"
+   "laotal": "l'aotal",
+   "paratotal": "par aotal"
   }
  },
  "apraclonidine": {
@@ -16258,7 +16679,8 @@
    "laprovel": 1
   },
   "targets": {
-   "laprovel": "l'aprovel"
+   "laprovel": "l'aprovel",
+   "paraprovel": "par aprovel"
   }
  },
  "Aptivus": {
@@ -16298,17 +16720,6 @@
   "errors": {
    "artistial": 2,
    "articial": 1
-  },
-  "targets": {}
- },
- "aspirine": {
-  "n_seen": 92,
-  "n_correct": 89,
-  "n_deleted": 0,
-  "errors": {
-   "aspirinaro": 1,
-   "aspirinupsa": 1,
-   "aspirine-upsa": 1
   },
   "targets": {}
  },
@@ -16400,6 +16811,19 @@
    "bellatacept": 1
   },
   "targets": {}
+ },
+ "bétadine": {
+  "n_seen": 17,
+  "n_correct": 14,
+  "n_deleted": 0,
+  "errors": {
+   "beatadine": 1,
+   "beétadine": 1,
+   "bétadine-skrib": 1
+  },
+  "targets": {
+   "bétadine-skrib": "bétadine scrub"
+  }
  },
  "bexarotène": {
   "n_seen": 5,
@@ -16597,7 +17021,9 @@
    "concert alp": 2,
    "keoencerta": 1
   },
-  "targets": {}
+  "targets": {
+   "concert alp": "concerta lp"
+  }
  },
  "Condyline": {
   "n_seen": 6,
@@ -16648,7 +17074,9 @@
    "daivobedgel": 2,
    "daivo bet": 1
   },
-  "targets": {}
+  "targets": {
+   "daivobedgel": "daivobet gel"
+  }
  },
  "danaparoïde": {
   "n_seen": 8,
@@ -16678,7 +17106,9 @@
    "darbet poetine": 1,
    "darbépoétine-alpha": 1
   },
-  "targets": {}
+  "targets": {
+   "darbépoétine-alpha": "darbépoétine alfa"
+  }
  },
  "Decanoas": {
   "n_seen": 7,
@@ -16808,7 +17238,9 @@
    "ebgly-ss": 1,
    "ebgly ss": 1
   },
-  "targets": {}
+  "targets": {
+   "dbglyss": "d'ebglyss"
+  }
  },
  "édétate": {
   "n_seen": 8,
@@ -16818,9 +17250,7 @@
    "détates": 2,
    "état": 1
   },
-  "targets": {
-   "détates": "d'édétate"
-  }
+  "targets": {}
  },
  "Efavir": {
   "n_seen": 9,
@@ -16949,7 +17379,9 @@
    "relix": 2,
    "lurelix": 1
   },
-  "targets": {}
+  "targets": {
+   "lurelix": "l'eurelix"
+  }
  },
  "Evrenzo": {
   "n_seen": 5,
@@ -17000,7 +17432,9 @@
    "souffarestone": 1,
    "pharestan": 1
   },
-  "targets": {}
+  "targets": {
+   "souffarestone": "sous fareston"
+  }
  },
  "faricimab": {
   "n_seen": 6,
@@ -17172,17 +17606,6 @@
   },
   "targets": {}
  },
- "fucidine": {
-  "n_seen": 17,
-  "n_correct": 14,
-  "n_deleted": 0,
-  "errors": {
-   "futigine": 1,
-   "fucidine-enfants": 1,
-   "fuquidine": 1
-  },
-  "targets": {}
- },
  "Fungster": {
   "n_seen": 5,
   "n_correct": 2,
@@ -17287,7 +17710,9 @@
    "hypochloride": 2,
    "lipochloride": 1
   },
-  "targets": {}
+  "targets": {
+   "lipochloride": "l'hypochlorite"
+  }
  },
  "ibrutinib": {
   "n_seen": 7,
@@ -17418,8 +17843,7 @@
    "diopidine": 1
   },
   "targets": {
-   "liopidine": "l'iopidine",
-   "diopidine": "d'iopidine"
+   "liopidine": "l'iopidine"
   }
  },
  "iopromide": {
@@ -17495,16 +17919,6 @@
   "errors": {
    "calétra": 2,
    "caletra": 1
-  },
-  "targets": {}
- },
- "Kardégic": {
-  "n_seen": 21,
-  "n_correct": 18,
-  "n_deleted": 0,
-  "errors": {
-   "sous-kardégic": 2,
-   "sous-kardégique": 1
   },
   "targets": {}
  },
@@ -17631,7 +18045,10 @@
    "levemir-penfield": 1,
    "levmir": 1
   },
-  "targets": {}
+  "targets": {
+   "levemirflexpen": "levemir flexpen",
+   "levemir-penfield": "levemir penfill"
+  }
  },
  "Levunique": {
   "n_seen": 6,
@@ -17802,7 +18219,9 @@
    "med nutriflex": 1,
    "mednutriflexe": 1
   },
-  "targets": {}
+  "targets": {
+   "mednutriflexe": "mednutriflex e"
+  }
  },
  "Méthergin": {
   "n_seen": 3,
@@ -17842,7 +18261,9 @@
    "miflonylbréjalaire": 2,
    "miflonylbré": 1
   },
-  "targets": {}
+  "targets": {
+   "miflonylbréjalaire": "miflonil breezhaler"
+  }
  },
  "Migpriv": {
   "n_seen": 6,
@@ -17873,7 +18294,9 @@
    "momlotinib": 2,
    "soumomlotinib": 1
   },
-  "targets": {}
+  "targets": {
+   "soumomlotinib": "sous momelotinib"
+  }
  },
  "Monoflocet": {
   "n_seen": 5,
@@ -17916,7 +18339,9 @@
    "mupyrocine": 1,
    "mupirosine": 1
   },
-  "targets": {}
+  "targets": {
+   "mupirosintopique": "mupirocine topique"
+  }
  },
  "Myleran": {
   "n_seen": 3,
@@ -17948,7 +18373,9 @@
    "analtrexone": 2,
    "naltrexon": 1
   },
-  "targets": {}
+  "targets": {
+   "analtrexone": "la naltrexone"
+  }
  },
  "Nasonex": {
   "n_seen": 7,
@@ -17998,7 +18425,9 @@
    "une pro": 1,
    "neuro": 1
   },
-  "targets": {}
+  "targets": {
+   "une pro": "du neupro"
+  }
  },
  "Nicopatchlib": {
   "n_seen": 7,
@@ -18020,7 +18449,9 @@
    "soutenir matrelvir": 1,
    "nirmatrovir": 1
   },
-  "targets": {}
+  "targets": {
+   "soutenir matrelvir": "sous nirmatrelvir"
+  }
  },
  "Noxafil": {
   "n_seen": 5,
@@ -18064,7 +18495,8 @@
    "odrik4": 1
   },
   "targets": {
-   "lodric": "l'odrik"
+   "lodric": "l'odrik",
+   "odrik4": "odrik 4"
   }
  },
  "olopatadine": {
@@ -18168,7 +18600,9 @@
    "paracétamols": 1,
    "duparacétamol": 1
   },
-  "targets": {}
+  "targets": {
+   "duparacétamol": "du paracétamol"
+  }
  },
  "Paralyoc": {
   "n_seen": 4,
@@ -18240,7 +18674,9 @@
    "phényde butyrate": 1,
    "glycérolphénylbutyrate": 1
   },
-  "targets": {}
+  "targets": {
+   "glycérolphénylbutyrate": "glycérol phénylbutyrate"
+  }
  },
  "Phosphoneuros": {
   "n_seen": 7,
@@ -18291,6 +18727,18 @@
    "plérixaphore": 1
   },
   "targets": {}
+ },
+ "polyéthylène": {
+  "n_seen": 7,
+  "n_correct": 4,
+  "n_deleted": 0,
+  "errors": {
+   "polyéthylène-glycol": 2,
+   "polyéthylène-glycolépoétine": 1
+  },
+  "targets": {
+   "polyéthylène-glycolépoétine": "polyéthylène glycol-époétine"
+  }
  },
  "polysaccharidique": {
   "n_seen": 26,
@@ -18361,7 +18809,9 @@
    "dépoprodasone": 2,
    "prodazone": 1
   },
-  "targets": {}
+  "targets": {
+   "dépoprodasone": "depo prodasone"
+  }
  },
  "provera": {
   "n_seen": 4,
@@ -18370,7 +18820,9 @@
   "errors": {
    "depoprovera": 3
   },
-  "targets": {}
+  "targets": {
+   "depoprovera": "depo provera"
+  }
  },
  "pyrazinamide": {
   "n_seen": 22,
@@ -18475,16 +18927,6 @@
   },
   "targets": {}
  },
- "sacubitril": {
-  "n_seen": 13,
-  "n_correct": 10,
-  "n_deleted": 0,
-  "errors": {
-   "saccubitril": 2,
-   "sacubitril-valsartan": 1
-  },
-  "targets": {}
- },
  "Sawis": {
   "n_seen": 6,
   "n_correct": 3,
@@ -18492,17 +18934,6 @@
   "errors": {
    "sawiz": 2,
    "s a w": 1
-  },
-  "targets": {}
- },
- "scrub": {
-  "n_seen": 11,
-  "n_correct": 8,
-  "n_deleted": 0,
-  "errors": {
-   "cscub": 1,
-   "bétadine-scrub": 1,
-   "bétadine-skrib": 1
   },
   "targets": {}
  },
@@ -18567,7 +18998,9 @@
    "simnayal": 1,
    "simaial": 1
   },
-  "targets": {}
+  "targets": {
+   "sous-symnaïales": "sous sibnayal"
+  }
  },
  "Simponi": {
   "n_seen": 7,
@@ -18702,7 +19135,10 @@
    "antiamine": 1,
    "anti-amine": 1
   },
-  "targets": {}
+  "targets": {
+   "antiamine": "en thiamine",
+   "anti-amine": "en thiamine"
+  }
  },
  "Tibsovo": {
   "n_seen": 3,
@@ -18819,18 +19255,9 @@
    "vasec aen": 1,
    "vacinc1": 1
   },
-  "targets": {}
- },
- "valsartan": {
-  "n_seen": 40,
-  "n_correct": 37,
-  "n_deleted": 0,
-  "errors": {
-   "duvalsartan": 1,
-   "uvalsartan": 1,
-   "sacubitril-valsartan": 1
-  },
-  "targets": {}
+  "targets": {
+   "vackanbcg": "vaccin bcg"
+  }
  },
  "vancomycine": {
   "n_seen": 34,
@@ -18946,7 +19373,9 @@
    "zalastas": 1,
    "uzalasta": 1
   },
-  "targets": {}
+  "targets": {
+   "uzalasta": "du zalasta"
+  }
  },
  "Zeclar": {
   "n_seen": 5,
@@ -18977,6 +19406,15 @@
    "solpidème": 1,
    "olpidem": 1,
    "olpidème": 1
+  },
+  "targets": {}
+ },
+ "acarbose": {
+  "n_seen": 6,
+  "n_correct": 4,
+  "n_deleted": 0,
+  "errors": {
+   "carbose": 2
   },
   "targets": {}
  },
@@ -19017,7 +19455,9 @@
    "paraclasta": 1,
    "clasta": 1
   },
-  "targets": {}
+  "targets": {
+   "paraclasta": "par aclasta"
+  }
  },
  "Adrovance": {
   "n_seen": 5,
@@ -19180,16 +19620,6 @@
   },
   "targets": {}
  },
- "antigène": {
-  "n_seen": 53,
-  "n_correct": 51,
-  "n_deleted": 0,
-  "errors": {
-   "pneumoecocusnt gen": 1,
-   "willebrand-antigène": 1
-  },
-  "targets": {}
- },
  "apalutamide": {
   "n_seen": 6,
   "n_correct": 4,
@@ -19245,6 +19675,19 @@
   },
   "targets": {}
  },
+ "aspirine": {
+  "n_seen": 92,
+  "n_correct": 90,
+  "n_deleted": 0,
+  "errors": {
+   "aspirinaro": 1,
+   "aspirinupsa": 1
+  },
+  "targets": {
+   "aspirinaro": "aspirine arrow",
+   "aspirinupsa": "aspirine upsa"
+  }
+ },
  "Atectura": {
   "n_seen": 6,
   "n_correct": 4,
@@ -19299,7 +19742,9 @@
    "parasitromycine": 1,
    "zitromycine": 1
   },
-  "targets": {}
+  "targets": {
+   "parasitromycine": "par azithromycine"
+  }
  },
  "Bactroban": {
   "n_seen": 7,
@@ -19319,7 +19764,9 @@
    "bemdrex-ezi-shaler": 1,
    "bemrex": 1
   },
-  "targets": {}
+  "targets": {
+   "bemdrex-ezi-shaler": "bemedrex easyhaler"
+  }
  },
  "bempédoïque": {
   "n_seen": 4,
@@ -19339,7 +19786,9 @@
    "bérinerte": 1,
    "subérinaire": 1
   },
-  "targets": {}
+  "targets": {
+   "subérinaire": "sous berinert"
+  }
  },
  "Betaferon": {
   "n_seen": 4,
@@ -19426,7 +19875,9 @@
   "errors": {
    "dubrimonidine": 2
   },
-  "targets": {}
+  "targets": {
+   "dubrimonidine": "du brimonidine"
+  }
  },
  "Brukinsa": {
   "n_seen": 5,
@@ -19435,15 +19886,6 @@
   "errors": {
    "berukinsa": 1,
    "bruckinsa": 1
-  },
-  "targets": {}
- },
- "calcium": {
-  "n_seen": 98,
-  "n_correct": 96,
-  "n_deleted": 0,
-  "errors": {
-   "calcium-gluconate": 2
   },
   "targets": {}
  },
@@ -19581,17 +20023,9 @@
    "locus": 1,
    "liléocontinu": 1
   },
-  "targets": {}
- },
- "cooper": {
-  "n_seen": 8,
-  "n_correct": 6,
-  "n_deleted": 0,
-  "errors": {
-   "dakin-cooper": 1,
-   "daikin-cooper": 1
-  },
-  "targets": {}
+  "targets": {
+   "liléocontinu": "leeloo continu"
+  }
  },
  "coqueluche": {
   "n_seen": 14,
@@ -19630,16 +20064,6 @@
   "errors": {
    "dabiatran": 1,
    "daligatran": 1
-  },
-  "targets": {}
- },
- "Dakin": {
-  "n_seen": 10,
-  "n_correct": 8,
-  "n_deleted": 0,
-  "errors": {
-   "dakin-cooper": 1,
-   "daikin-cooper": 1
   },
   "targets": {}
  },
@@ -19719,7 +20143,10 @@
    "soudoravirine": 1,
    "adoravirine": 1
   },
-  "targets": {}
+  "targets": {
+   "soudoravirine": "sous doravirine",
+   "adoravirine": "la doravirine"
+  }
  },
  "dornase": {
   "n_seen": 5,
@@ -19738,7 +20165,9 @@
    "pedulaglutide": 1,
    "dulagutide": 1
   },
-  "targets": {}
+  "targets": {
+   "pedulaglutide": "de dulaglutide"
+  }
  },
  "Dulcilarmes": {
   "n_seen": 7,
@@ -19962,7 +20391,9 @@
   "errors": {
    "flectorgel": 2
   },
-  "targets": {}
+  "targets": {
+   "flectorgel": "flector gel"
+  }
  },
  "Flexpen": {
   "n_seen": 21,
@@ -19972,7 +20403,9 @@
    "flexpend": 1,
    "levemirflexpen": 1
   },
-  "targets": {}
+  "targets": {
+   "levemirflexpen": "levemir flexpen"
+  }
  },
  "flexpro": {
   "n_seen": 6,
@@ -20020,7 +20453,10 @@
    "flux concollyre": 1,
    "flux conchollyre": 1
   },
-  "targets": {}
+  "targets": {
+   "flux concollyre": "flucon collyre",
+   "flux conchollyre": "flucon collyre"
+  }
  },
  "fludarabine": {
   "n_seen": 3,
@@ -20107,6 +20543,16 @@
   },
   "targets": {}
  },
+ "fucidine": {
+  "n_seen": 17,
+  "n_correct": 15,
+  "n_deleted": 0,
+  "errors": {
+   "futigine": 1,
+   "fuquidine": 1
+  },
+  "targets": {}
+ },
  "furoate": {
   "n_seen": 19,
   "n_correct": 17,
@@ -20135,7 +20581,9 @@
    "gantcicloviroral": 1,
    "gants cyclovir": 1
   },
-  "targets": {}
+  "targets": {
+   "gantcicloviroral": "ganciclovir oral"
+  }
  },
  "géfitinib": {
   "n_seen": 3,
@@ -20175,14 +20623,17 @@
   },
   "targets": {}
  },
- "gluconate": {
-  "n_seen": 7,
-  "n_correct": 5,
+ "glulisine": {
+  "n_seen": 6,
+  "n_correct": 4,
   "n_deleted": 0,
   "errors": {
-   "calcium-gluconate": 2
+   "insulinoglulizine": 1,
+   "glulizine": 1
   },
-  "targets": {}
+  "targets": {
+   "insulinoglulizine": "insuline glulisine"
+  }
  },
  "Helicobacter": {
   "n_seen": 28,
@@ -20200,15 +20651,6 @@
   "n_deleted": 0,
   "errors": {
    "hépatiques": 2
-  },
-  "targets": {}
- },
- "hexafluorure": {
-  "n_seen": 6,
-  "n_correct": 4,
-  "n_deleted": 0,
-  "errors": {
-   "soufre-hexafluorure": 2
   },
   "targets": {}
  },
@@ -20345,7 +20787,8 @@
    "ivermectine-peros": 1
   },
   "targets": {
-   "livermectine": "l'ivermectine"
+   "livermectine": "l'ivermectine",
+   "ivermectine-peros": "ivermectine per os"
   }
  },
  "ixazomib": {
@@ -20445,7 +20888,10 @@
    "ledagagel": 1,
    "ledagagl": 1
   },
-  "targets": {}
+  "targets": {
+   "ledagagel": "ledaga gel",
+   "ledagagl": "ledaga gel"
+  }
  },
  "lénograstim": {
   "n_seen": 7,
@@ -20524,7 +20970,9 @@
    "liposique": 1,
    "liposiggel": 1
   },
-  "targets": {}
+  "targets": {
+   "liposiggel": "liposic gel"
+  }
  },
  "Locapred": {
   "n_seen": 4,
@@ -20629,7 +21077,10 @@
    "médecine naltrexone-bromure": 1,
    "méthynaltrexone-bromure": 1
   },
-  "targets": {}
+  "targets": {
+   "médecine naltrexone-bromure": "méthylnaltrexone bromure",
+   "méthynaltrexone-bromure": "méthylnaltrexone bromure"
+  }
  },
  "Metotab": {
   "n_seen": 7,
@@ -20657,17 +21108,9 @@
   "errors": {
    "amidodrine": 2
   },
-  "targets": {}
- },
- "minocycline": {
-  "n_seen": 7,
-  "n_correct": 5,
-  "n_deleted": 0,
-  "errors": {
-   "aminocycline": 1,
-   "sous-minocycline": 1
-  },
-  "targets": {}
+  "targets": {
+   "amidodrine": "la midodrine"
+  }
  },
  "Moclamine": {
   "n_seen": 6,
@@ -20677,7 +21120,9 @@
    "meklamine": 1,
    "humoclamine": 1
   },
-  "targets": {}
+  "targets": {
+   "humoclamine": "du moclamine"
+  }
  },
  "Myalepta": {
   "n_seen": 4,
@@ -20734,7 +21179,9 @@
    "une orale": 1,
    "nez oral": 1
   },
-  "targets": {}
+  "targets": {
+   "une orale": "du neoral"
+  }
  },
  "Nexplanon": {
   "n_seen": 6,
@@ -20926,7 +21373,9 @@
    "pentamédine": 1,
    "pentamidinicétionate": 1
   },
-  "targets": {}
+  "targets": {
+   "pentamidinicétionate": "pentamidine iséthionate"
+  }
  },
  "phénoxyméthylpénicilline": {
   "n_seen": 7,
@@ -20972,7 +21421,9 @@
   "errors": {
    "hyphtérie-tétanos-poliomyélite": 2
   },
-  "targets": {}
+  "targets": {
+   "hyphtérie-tétanos-poliomyélite": "diphtérie tétanos poliomyélite"
+  }
  },
  "posaconazole": {
   "n_seen": 25,
@@ -21049,7 +21500,9 @@
    "purifi-conjugue": 1,
    "purifiée": 1
   },
-  "targets": {}
+  "targets": {
+   "purifi-conjugue": "purifié conjugué"
+  }
  },
  "Qinlock": {
   "n_seen": 5,
@@ -21167,7 +21620,9 @@
    "rétonavir": 1,
    "érythonavir": 1
   },
-  "targets": {}
+  "targets": {
+   "érythonavir": "et ritonavir"
+  }
  },
  "Rocéphine": {
   "n_seen": 5,
@@ -21208,6 +21663,15 @@
   },
   "targets": {}
  },
+ "sacubitril": {
+  "n_seen": 13,
+  "n_correct": 11,
+  "n_deleted": 0,
+  "errors": {
+   "saccubitril": 2
+  },
+  "targets": {}
+ },
  "Scoburen": {
   "n_seen": 5,
   "n_correct": 3,
@@ -21217,6 +21681,18 @@
    "scoburène": 1
   },
   "targets": {}
+ },
+ "scrub": {
+  "n_seen": 11,
+  "n_correct": 9,
+  "n_deleted": 0,
+  "errors": {
+   "cscub": 1,
+   "bétadine-skrib": 1
+  },
+  "targets": {
+   "bétadine-skrib": "bétadine scrub"
+  }
  },
  "Selincro": {
   "n_seen": 6,
@@ -21255,7 +21731,9 @@
    "sim brinza": 1,
    "simbrinzacollyre": 1
   },
-  "targets": {}
+  "targets": {
+   "simbrinzacollyre": "simbrinza collyre"
+  }
  },
  "Smecta": {
   "n_seen": 7,
@@ -21283,15 +21761,6 @@
   "n_deleted": 0,
   "errors": {
    "sofidone": 2
-  },
-  "targets": {}
- },
- "soufre": {
-  "n_seen": 6,
-  "n_correct": 4,
-  "n_deleted": 0,
-  "errors": {
-   "soufre-hexafluorure": 2
   },
   "targets": {}
  },
@@ -21323,7 +21792,9 @@
    "sucrée": 1,
    "saint-sucre": 1
   },
-  "targets": {}
+  "targets": {
+   "saint-sucre": "sans sucre"
+  }
  },
  "sulfaméthoxazole": {
   "n_seen": 9,
@@ -21379,7 +21850,10 @@
    "tarkalp": 1,
    "arcalp": 1
   },
-  "targets": {}
+  "targets": {
+   "tarkalp": "tarka lp",
+   "arcalp": "tarka lp"
+  }
  },
  "Tégrétol": {
   "n_seen": 7,
@@ -21436,7 +21910,9 @@
   "errors": {
    "hyphtérie-tétanos-poliomyélite": 2
   },
-  "targets": {}
+  "targets": {
+   "hyphtérie-tétanos-poliomyélite": "diphtérie tétanos poliomyélite"
+  }
  },
  "thérapeutique": {
   "n_seen": 496,
@@ -21466,7 +21942,9 @@
    "thiapridal": 1,
    "partiapal": 1
   },
-  "targets": {}
+  "targets": {
+   "partiapal": "par tiapridal"
+  }
  },
  "Timoferol": {
   "n_seen": 7,
@@ -21515,7 +21993,9 @@
    "partofranil": 1,
    "topranil": 1
   },
-  "targets": {}
+  "targets": {
+   "partofranil": "par tofranil"
+  }
  },
  "topique": {
   "n_seen": 59,
@@ -21525,7 +22005,9 @@
    "mupirosintopique": 1,
    "topiques": 1
   },
-  "targets": {}
+  "targets": {
+   "mupirosintopique": "mupirocine topique"
+  }
  },
  "Toprec": {
   "n_seen": 6,
@@ -21591,7 +22073,9 @@
    "librurinaire": 1,
    "urinaires": 1
   },
-  "targets": {}
+  "targets": {
+   "librurinaire": "libre urinaire"
+  }
  },
  "Urorec": {
   "n_seen": 4,
@@ -21623,6 +22107,19 @@
   },
   "targets": {}
  },
+ "valsartan": {
+  "n_seen": 40,
+  "n_correct": 38,
+  "n_deleted": 0,
+  "errors": {
+   "duvalsartan": 1,
+   "uvalsartan": 1
+  },
+  "targets": {
+   "duvalsartan": "du valsartan",
+   "uvalsartan": "du valsartan"
+  }
+ },
  "vedolizumab": {
   "n_seen": 11,
   "n_correct": 9,
@@ -21641,7 +22138,9 @@
    "winorrelbin": 1,
    "vinorel binaurale": 1
   },
-  "targets": {}
+  "targets": {
+   "vinorel binaurale": "vinorelbine orale"
+  }
  },
  "Visken": {
   "n_seen": 11,
@@ -21651,7 +22150,9 @@
    "viskenquanz": 1,
    "viscène": 1
   },
-  "targets": {}
+  "targets": {
+   "viskenquanz": "visken quinze"
+  }
  },
  "vitamine": {
   "n_seen": 206,
@@ -21660,7 +22161,9 @@
   "errors": {
    "25-hydroxyvitamine": 2
   },
-  "targets": {}
+  "targets": {
+   "25-hydroxyvitamine": "25 hydroxy vitamine"
+  }
  },
  "vortioxetine": {
   "n_seen": 9,
@@ -21670,7 +22173,9 @@
    "avortioxétine": 1,
    "vorsioxétine": 1
   },
-  "targets": {}
+  "targets": {
+   "avortioxétine": "la vortioxetine"
+  }
  },
  "vosoritide": {
   "n_seen": 5,
@@ -21956,7 +22461,9 @@
   "errors": {
    "seusalectinib": 1
   },
-  "targets": {}
+  "targets": {
+   "seusalectinib": "sous alectinib"
+  }
  },
  "Alepsal": {
   "n_seen": 6,
@@ -21965,7 +22472,9 @@
   "errors": {
    "paralepsal": 1
   },
-  "targets": {}
+  "targets": {
+   "paralepsal": "par alepsal"
+  }
  },
  "alginique": {
   "n_seen": 10,
@@ -22002,6 +22511,17 @@
    "almogramme": 1
   },
   "targets": {}
+ },
+ "alpha": {
+  "n_seen": 23,
+  "n_correct": 22,
+  "n_deleted": 0,
+  "errors": {
+   "alpha-péguilé": 1
+  },
+  "targets": {
+   "alpha-péguilé": "alpha pégylé"
+  }
  },
  "altizide": {
   "n_seen": 8,
@@ -22060,6 +22580,17 @@
    "nidride": 1
   },
   "targets": {}
+ },
+ "antigène": {
+  "n_seen": 53,
+  "n_correct": 52,
+  "n_deleted": 0,
+  "errors": {
+   "pneumoecocusnt gen": 1
+  },
+  "targets": {
+   "pneumoecocusnt gen": "pneumococcus antigène"
+  }
  },
  "Arcoxia": {
   "n_seen": 6,
@@ -22356,7 +22887,9 @@
   "errors": {
    "duburinex": 1
   },
-  "targets": {}
+  "targets": {
+   "duburinex": "du burinex"
+  }
  },
  "butylscopolamine": {
   "n_seen": 6,
@@ -22374,7 +22907,9 @@
   "errors": {
    "butyrate-locian": 1
   },
-  "targets": {}
+  "targets": {
+   "butyrate-locian": "butyrate lotion"
+  }
  },
  "cabotégravir": {
   "n_seen": 8,
@@ -22473,7 +23008,9 @@
   "errors": {
    "claradolcaféine": 1
   },
-  "targets": {}
+  "targets": {
+   "claradolcaféine": "claradol caféine"
+  }
  },
  "Clarelux": {
   "n_seen": 10,
@@ -22547,6 +23084,17 @@
   },
   "targets": {}
  },
+ "cooper": {
+  "n_seen": 8,
+  "n_correct": 7,
+  "n_deleted": 0,
+  "errors": {
+   "daikin-cooper": 1
+  },
+  "targets": {
+   "daikin-cooper": "dakin cooper"
+  }
+ },
  "Cotriatec": {
   "n_seen": 6,
   "n_correct": 5,
@@ -22572,7 +23120,9 @@
   "errors": {
    "cyanocobalaminoral": 1
   },
-  "targets": {}
+  "targets": {
+   "cyanocobalaminoral": "cyanocobalamine orale"
+  }
  },
  "dabrafenib": {
   "n_seen": 6,
@@ -22601,6 +23151,17 @@
   },
   "targets": {}
  },
+ "Dakin": {
+  "n_seen": 10,
+  "n_correct": 9,
+  "n_deleted": 0,
+  "errors": {
+   "daikin-cooper": 1
+  },
+  "targets": {
+   "daikin-cooper": "dakin cooper"
+  }
+ },
  "Dalacine": {
   "n_seen": 8,
   "n_correct": 7,
@@ -22626,7 +23187,9 @@
   "errors": {
    "adépakine": 1
   },
-  "targets": {}
+  "targets": {
+   "adépakine": "la dépakine"
+  }
  },
  "Dermoval": {
   "n_seen": 7,
@@ -22635,7 +23198,9 @@
   "errors": {
    "dermovalcrème": 1
   },
-  "targets": {}
+  "targets": {
+   "dermovalcrème": "dermoval crème"
+  }
  },
  "desonide": {
   "n_seen": 10,
@@ -22698,7 +23263,9 @@
   "errors": {
    "adompéridone": 1
   },
-  "targets": {}
+  "targets": {
+   "adompéridone": "la dompéridone"
+  }
  },
  "Dovato": {
   "n_seen": 8,
@@ -23017,7 +23584,9 @@
   "errors": {
    "tuforsteo": 1
   },
-  "targets": {}
+  "targets": {
+   "tuforsteo": "du forstéo"
+  }
  },
  "France": {
   "n_seen": 4,
@@ -23089,7 +23658,9 @@
   "errors": {
    "gel temlp": 1
   },
-  "targets": {}
+  "targets": {
+   "gel temlp": "geltim lp"
+  }
  },
  "glycérol": {
   "n_seen": 7,
@@ -23098,7 +23669,9 @@
   "errors": {
    "glycérolphénylbutyrate": 1
   },
-  "targets": {}
+  "targets": {
+   "glycérolphénylbutyrate": "glycérol phénylbutyrate"
+  }
  },
  "Granpidam": {
   "n_seen": 6,
@@ -23235,7 +23808,9 @@
   "errors": {
    "influenzaeb": 1
   },
-  "targets": {}
+  "targets": {
+   "influenzaeb": "influenzae b"
+  }
  },
  "Inrebic": {
   "n_seen": 4,
@@ -23263,6 +23838,17 @@
    "yanuvia": 1
   },
   "targets": {}
+ },
+ "Kardégic": {
+  "n_seen": 21,
+  "n_correct": 20,
+  "n_deleted": 0,
+  "errors": {
+   "sous-kardégique": 1
+  },
+  "targets": {
+   "sous-kardégique": "sous kardégic"
+  }
  },
  "Kenzen": {
   "n_seen": 6,
@@ -23343,7 +23929,9 @@
   "errors": {
    "allévocabastine": 1
   },
-  "targets": {}
+  "targets": {
+   "allévocabastine": "la lévocabastine"
+  }
  },
  "Lévocarnil": {
   "n_seen": 7,
@@ -23397,7 +23985,9 @@
   "errors": {
    "butyrate-locian": 1
   },
-  "targets": {}
+  "targets": {
+   "butyrate-locian": "butyrate lotion"
+  }
  },
  "Lovenox": {
   "n_seen": 8,
@@ -23415,7 +24005,9 @@
   "errors": {
    "abilifimaintena": 1
   },
-  "targets": {}
+  "targets": {
+   "abilifimaintena": "abilify maintena"
+  }
  },
  "maison": {
   "n_seen": 14,
@@ -23442,7 +24034,9 @@
   "errors": {
    "amaprotiline": 1
   },
-  "targets": {}
+  "targets": {
+   "amaprotiline": "la maprotiline"
+  }
  },
  "maraviroc": {
   "n_seen": 5,
@@ -23550,7 +24144,9 @@
   "errors": {
    "genotonorminique": 1
   },
-  "targets": {}
+  "targets": {
+   "genotonorminique": "genotonorm miniquick"
+  }
  },
  "Minirinmelt": {
   "n_seen": 7,
@@ -23560,6 +24156,17 @@
    "mini-rinmelt": 1
   },
   "targets": {}
+ },
+ "minocycline": {
+  "n_seen": 7,
+  "n_correct": 6,
+  "n_deleted": 0,
+  "errors": {
+   "aminocycline": 1
+  },
+  "targets": {
+   "aminocycline": "la minocycline"
+  }
  },
  "Mircera": {
   "n_seen": 6,
@@ -23586,7 +24193,9 @@
   "errors": {
    "sumobic": 1
   },
-  "targets": {}
+  "targets": {
+   "sumobic": "sous mobic"
+  }
  },
  "moclobémide": {
   "n_seen": 7,
@@ -23624,15 +24233,6 @@
   },
   "targets": {}
  },
- "morphine": {
-  "n_seen": 40,
-  "n_correct": 39,
-  "n_deleted": 0,
-  "errors": {
-   "morphine-sulfate": 1
-  },
-  "targets": {}
- },
  "Movicol": {
   "n_seen": 11,
   "n_correct": 10,
@@ -23667,7 +24267,9 @@
   "errors": {
    "analoxone": 1
   },
-  "targets": {}
+  "targets": {
+   "analoxone": "la naloxone"
+  }
  },
  "Natulan": {
   "n_seen": 4,
@@ -23685,7 +24287,9 @@
   "errors": {
    "parnébilox": 1
   },
-  "targets": {}
+  "targets": {
+   "parnébilox": "par nebilox"
+  }
  },
  "nébivolol": {
   "n_seen": 20,
@@ -23730,7 +24334,9 @@
   "errors": {
    "acidniflumique": 1
   },
-  "targets": {}
+  "targets": {
+   "acidniflumique": "acide niflumique"
+  }
  },
  "nilutamide": {
   "n_seen": 4,
@@ -23829,7 +24435,9 @@
   "errors": {
    "acidobéticholique": 1
   },
-  "targets": {}
+  "targets": {
+   "acidobéticholique": "acide obéticholique"
+  }
  },
  "Octagam": {
   "n_seen": 4,
@@ -23873,6 +24481,15 @@
   "n_deleted": 0,
   "errors": {
    "olzalazine": 1
+  },
+  "targets": {}
+ },
+ "oméga": {
+  "n_seen": 16,
+  "n_correct": 15,
+  "n_deleted": 0,
+  "errors": {
+   "reea iutis aeec et are": 1
   },
   "targets": {}
  },
@@ -23984,7 +24601,9 @@
   "errors": {
    "sirodoxomémazine": 1
   },
-  "targets": {}
+  "targets": {
+   "sirodoxomémazine": "sirop d'oxomémazine"
+  }
  },
  "oxybate": {
   "n_seen": 12,
@@ -24155,7 +24774,9 @@
   "errors": {
    "laprexidine": 1
   },
-  "targets": {}
+  "targets": {
+   "laprexidine": "la prexidine"
+  }
  },
  "pristinamycine": {
   "n_seen": 18,
@@ -24344,7 +24965,9 @@
   "errors": {
    "sourisperdal": 1
   },
-  "targets": {}
+  "targets": {
+   "sourisperdal": "sous risperdal"
+  }
  },
  "Rixubis": {
   "n_seen": 2,
@@ -24550,15 +25173,6 @@
   "n_deleted": 0,
   "errors": {
    "sulfarlème": 1
-  },
-  "targets": {}
- },
- "sulfate": {
-  "n_seen": 24,
-  "n_correct": 23,
-  "n_deleted": 0,
-  "errors": {
-   "morphine-sulfate": 1
   },
   "targets": {}
  },
@@ -24920,7 +25534,9 @@
   "errors": {
    "zeiprexavellotab": 1
   },
-  "targets": {}
+  "targets": {
+   "zeiprexavellotab": "zyprexa velotab"
+  }
  },
  "velpatasvir": {
   "n_seen": 10,
@@ -24974,7 +25590,9 @@
   "errors": {
    "virgangel": 1
   },
-  "targets": {}
+  "targets": {
+   "virgangel": "virgan gel"
+  }
  },
  "vismodégib": {
   "n_seen": 4,
@@ -25324,6 +25942,13 @@
  "alprostadil": {
   "n_seen": 7,
   "n_correct": 7,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
+ "aluminium": {
+  "n_seen": 13,
+  "n_correct": 13,
   "n_deleted": 0,
   "errors": {},
   "targets": {}
@@ -25723,6 +26348,13 @@
  "calcitriol": {
   "n_seen": 14,
   "n_correct": 14,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
+ "calcium": {
+  "n_seen": 98,
+  "n_correct": 98,
   "n_deleted": 0,
   "errors": {},
   "targets": {}
@@ -26833,6 +27465,13 @@
   "errors": {},
   "targets": {}
  },
+ "glargine": {
+  "n_seen": 30,
+  "n_correct": 30,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
  "glatiramère": {
   "n_seen": 6,
   "n_correct": 6,
@@ -26841,6 +27480,13 @@
   "targets": {}
  },
  "glibenclamide": {
+  "n_seen": 7,
+  "n_correct": 7,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
+ "gluconate": {
   "n_seen": 7,
   "n_correct": 7,
   "n_deleted": 0,
@@ -26889,6 +27535,13 @@
   "errors": {},
   "targets": {}
  },
+ "hexafluorure": {
+  "n_seen": 6,
+  "n_correct": 6,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
  "huile": {
   "n_seen": 8,
   "n_correct": 8,
@@ -26927,6 +27580,13 @@
  "hydroxycarbamide": {
   "n_seen": 7,
   "n_correct": 7,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
+ "hydroxyde": {
+  "n_seen": 8,
+  "n_correct": 8,
   "n_deleted": 0,
   "errors": {},
   "targets": {}
@@ -27631,6 +28291,13 @@
   "errors": {},
   "targets": {}
  },
+ "morphine": {
+  "n_seen": 40,
+  "n_correct": 40,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
  "Moviprep": {
   "n_seen": 13,
   "n_correct": 13,
@@ -28089,6 +28756,13 @@
  "Phosphalugel": {
   "n_seen": 5,
   "n_correct": 5,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
+ "phosphate": {
+  "n_seen": 9,
+  "n_correct": 9,
   "n_deleted": 0,
   "errors": {},
   "targets": {}
@@ -28898,6 +29572,13 @@
   "errors": {},
   "targets": {}
  },
+ "soufre": {
+  "n_seen": 6,
+  "n_correct": 6,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
  "Sovaldi": {
   "n_seen": 3,
   "n_correct": 3,
@@ -29013,6 +29694,13 @@
  "sulfadiazine": {
   "n_seen": 13,
   "n_correct": 13,
+  "n_deleted": 0,
+  "errors": {},
+  "targets": {}
+ },
+ "sulfate": {
+  "n_seen": 24,
+  "n_correct": 24,
   "n_deleted": 0,
   "errors": {},
   "targets": {}
