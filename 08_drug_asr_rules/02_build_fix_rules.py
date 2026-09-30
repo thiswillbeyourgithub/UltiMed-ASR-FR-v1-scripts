@@ -260,6 +260,60 @@ def apply_rules(text: str, rules: list[dict]) -> str:
     return text
 
 
+_TOKEN_SPLIT = re.compile(rf"[^{_WORD}]+")
+
+
+def _tokens(text: str) -> set[str]:
+    return set(_TOKEN_SPLIT.split(fold(text))) - {""}
+
+
+def compile_rules(rules: list[dict]):
+    """A fast ``apply_rules``: returns ``fix(text)`` with the same output.
+
+    ``apply_rules`` runs every rule over every text (~1.6k regex scans per clip).
+    Here each rule is indexed by its anchor, the longest folded word of its variant,
+    which any text it matches must contain as a whole word, so a text only runs the
+    rules whose anchor it contains, still in rule order. After a rule changes the
+    text the word set is recomputed, so a replacement that feeds a later rule still
+    triggers it. A variant with a character outside ``_WORD`` has no reliable
+    anchor and runs on every text.
+
+    >>> rules = [{"variant": v, "pattern": variant_pattern(v), "replacement": t} for v, t in
+    ...          [("mire taz apine", "mirtazapine"), ("myrtazapine", "mirtazapine"), ("primperan", "Primpéran")]]
+    >>> fix = compile_rules(rules)
+    >>> sorted(fix.anchors)
+    ['apine', 'myrtazapine', 'primperan']
+    >>> texts = ["Mire-taz apine le soir.", "MYRTAZAPINE puis primpéran", "rien à voir"]
+    >>> [fix(t) for t in texts] == [apply_rules(t, rules) for t in texts]
+    True
+    """
+    by_anchor: dict[str, list[int]] = defaultdict(list)
+    always: list[int] = []
+    for i, r in enumerate(rules):
+        words = re.split(r"[\s'’-]+", fold(r.get("variant", "")).strip())
+        if all(w and not _TOKEN_SPLIT.search(w) for w in words):
+            by_anchor[max(words, key=len)].append(i)
+        else:
+            always.append(i)
+
+    def candidates(tokens: set[str], after: int) -> set[int]:
+        return {j for t in tokens & by_anchor.keys() for j in by_anchor[t] if j > after}
+
+    def fix(text: str) -> str:
+        todo, i = candidates(_tokens(text), -1) | set(always), -1
+        while todo:
+            i = min(todo)
+            todo.discard(i)
+            new = apply_rules(text, [rules[i]])
+            if new != text:
+                text = new
+                todo |= candidates(_tokens(text), i)
+        return text
+
+    fix.anchors = set(by_anchor)
+    return fix
+
+
 def _read_texts(path: Path, field: str):
     with path.open(encoding="utf-8") as f:
         for line in f:
