@@ -18,6 +18,8 @@ A variant becomes a rule only if rewriting it can hardly be wrong. It is REJECTE
   error for that drug (precision = error count / all hypothesis occurrences, below
   ``--min-precision``), so the model also writes it where the label has something else;
 - ``rare``: seen fewer than ``--min-count`` times;
+- ``common_words``: every word of it is a word the labels use (``lait unique`` -> ``Levunique``,
+  ``bêta estime`` -> ``bétahistine``) and it was seen fewer than ``--min-count-words`` times;
 - ``far``: its letters are too far from the target's (``similarity`` below ``--min-ratio``):
   ``myrtazapine`` or ``mire taz apine`` -> ``mirtazapine`` are slips, a garbled stretch like
   ``reea iutis aeec et are`` -> ``oméga`` is not;
@@ -163,9 +165,35 @@ def count_ngrams(texts, keys: set[tuple[str, ...]]) -> Counter:
     return out
 
 
+def merge_reports(reports) -> dict:
+    """Sum several 01 reports (one per model) into one: counts add, targets merge.
+
+    >>> a = {"mirtazapine": {"n_seen": 3, "n_correct": 1, "n_deleted": 0, "errors": {"myrtazapine": 2}, "targets": {}}}
+    >>> b = {"mirtazapine": {"n_seen": 2, "n_correct": 0, "n_deleted": 1, "errors": {"myrtazapine": 1}, "targets": {}},
+    ...      "étoposide": {"n_seen": 1, "n_correct": 0, "n_deleted": 0, "errors": {"létoposide": 1},
+    ...                    "targets": {"létoposide": "l'étoposide"}}}
+    >>> m = merge_reports([a, b])
+    >>> m["mirtazapine"]
+    {'n_seen': 5, 'n_correct': 1, 'n_deleted': 1, 'errors': {'myrtazapine': 3}, 'targets': {}}
+    >>> m["étoposide"]["targets"]
+    {'létoposide': "l'étoposide"}
+    """
+    out: dict = {}
+    for report in reports:
+        for drug, entry in report.items():
+            m = out.setdefault(drug, {"n_seen": 0, "n_correct": 0, "n_deleted": 0, "errors": {}, "targets": {}})
+            for k in ("n_seen", "n_correct", "n_deleted"):
+                m[k] += entry.get(k, 0)
+            for v, n in entry["errors"].items():
+                m["errors"][v] = m["errors"].get(v, 0) + n
+            m["targets"].update(entry.get("targets", {}))
+    return out
+
+
 def build_rules(report: dict, hyps: list[str], labels, lex: dict,
                 min_len: int = 5, min_count: int = 1, min_share: float = 0.9,
-                min_precision: float = 0.8, min_ratio: float = 0.5) -> tuple[list[dict], list[dict]]:
+                min_precision: float = 0.8, min_ratio: float = 0.5,
+                min_count_words: int = 2) -> tuple[list[dict], list[dict]]:
     """``(rules, rejected)`` from the 01 report, the hypotheses and the corpus labels.
 
     >>> report = {"mirtazapine": {"errors": {"mire tazapine": 2, "de mi": 1, "mirtazapinne": 1}, "targets": {}},
@@ -176,6 +204,15 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
     [('mire tazapine', 'mirtazapine'), ('létoposide', "l'étoposide")]
     >>> [(r["variant"], r["reason"]) for r in rej]
     [('mirtazapinne', 'rare'), ('de mi', 'short')]
+
+    A one-off made of ordinary words is dropped even though no label holds the phrase
+    (it changed "une tache café au lait unique" in the test split):
+
+    >>> lev = {"Levunique": {"errors": {"lait unique": 1}, "targets": {}}}
+    >>> build_rules(lev, ["lait unique"], ["du lait", "une forme unique"], {})[1][0]["reason"]
+    'common_words'
+    >>> len(build_rules(lev, ["lait unique"], ["du lait"], {})[0])
+    1
     """
     # Folded variant -> {target: count}; the displayed variant is its most frequent spelling.
     by_key: dict[tuple, Counter] = defaultdict(Counter)
@@ -188,7 +225,9 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             by_key[k][target] += n
             spelling[k][variant] += n
             drug_of[k][target] = drug
-    label_hits = count_ngrams(labels, set(by_key))
+    # Single words too: a variant made only of words the labels use is ordinary French
+    # ("lait unique" -> Levunique) and needs --min-count-words sightings.
+    label_hits = count_ngrams(labels, set(by_key) | {(w,) for k in by_key for w in k})
     hyp_hits = count_ngrams(hyps, set(by_key))
     rules, rejected = [], []
     for k, targets in by_key.items():
@@ -215,6 +254,8 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             reason = "rare"
         elif ratio < min_ratio:
             reason = "far"
+        elif n < min_count_words and all(label_hits[(w,)] for w in k):
+            reason = "common_words"
         row = {"variant": variant, "drug": drug_of[k][target], "count": n}
         if reason:
             rejected.append({**row, "reason": reason})
@@ -321,9 +362,10 @@ def _read_texts(path: Path, field: str):
 
 
 @click.command()
-@click.argument("hyps", type=click.Path(exists=True, path_type=Path))
-@click.option("--errors", default=str(DEFAULT_ERRORS), type=click.Path(exists=True, path_type=Path),
-              show_default="08_drug_asr_rules/drug_asr_errors.json")
+@click.argument("hyps", nargs=-1, required=True, type=click.Path(exists=True, path_type=Path))
+@click.option("--errors", "errors_paths", multiple=True, type=click.Path(exists=True, path_type=Path),
+              help="01 reports, one per model whose HYPS are given (repeatable, merged with "
+                   "merge_reports). Default: 08_drug_asr_rules/drug_asr_errors.json")
 @click.option("--labels", "labels_paths", multiple=True, type=click.Path(exists=True, path_type=Path),
               help="Manifests whose `text` counts as correct text (repeatable). "
                    "Default: 99_hf_release/data/NeMO_files/full.jsonl")
@@ -340,14 +382,18 @@ def _read_texts(path: Path, field: str):
 @click.option("--min-ratio", default=0.5, show_default=True,
               help="minimum similarity() of variant and target: drops garbled stretches like "
                    "\"reea iutis aeec et are\" -> oméga (0.11) for 3 of 524 fixed clips")
-def main(hyps: Path, errors: Path, labels_paths: tuple[Path, ...], out: Path, min_len: int,
-         min_count: int, min_share: float, min_precision: float, min_ratio: float) -> None:
+@click.option("--min-count-words", default=2, show_default=True,
+              help="minimum count of a variant made only of words the labels use: 2 drops "
+                   "\"lait unique\" -> Levunique, which the parakeet-ultra rules changed a correct test label with")
+def main(hyps: tuple[Path, ...], errors_paths: tuple[Path, ...], labels_paths: tuple[Path, ...], out: Path, min_len: int,
+         min_count: int, min_share: float, min_precision: float, min_ratio: float,
+         min_count_words: int) -> None:
     """Write the ordered drug fix rules."""
-    report = json.loads(errors.read_text(encoding="utf-8"))
+    report = merge_reports(json.loads(p.read_text(encoding="utf-8")) for p in errors_paths or (DEFAULT_ERRORS,))
     labels_paths = labels_paths or (DEFAULT_LABELS,)
     labels = (t for p in labels_paths for t in _read_texts(p, "text"))
-    rules, rejected = build_rules(report, list(_read_texts(hyps, "hyp")), labels, load_lexicon(),
-                                  min_len, min_count, min_share, min_precision, min_ratio)
+    rules, rejected = build_rules(report, [t for p in hyps for t in _read_texts(p, "hyp")], labels, load_lexicon(),
+                                  min_len, min_count, min_share, min_precision, min_ratio, min_count_words)
     logger.info(f"{len(rules)} rules covering {sum(r['count'] for r in rules)} errors; rejected "
                 f"{dict(Counter(r['reason'] for r in rejected))}")
     rejected_out = out.with_suffix(".rejected.jsonl")
