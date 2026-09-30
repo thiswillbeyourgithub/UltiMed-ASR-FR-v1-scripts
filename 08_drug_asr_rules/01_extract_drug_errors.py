@@ -41,9 +41,12 @@ For each occurrence the label and hypothesis are aligned word by word (difflib):
   ``demi tazapine``), a character-level alignment inside the stretch maps the drug's
   characters onto the hypothesis and the variant is widened to whole hypothesis words.
 
-When the model glues an elided article onto the drug (label ``l'étoposide``, hypothesis
-``létoposide``), the correction TARGET is ``l'étoposide``, not ``étoposide``, or the fix
-would eat the article. Such variants are listed under ``targets``.
+When the variant swallows a neighbouring label word (an elided article, label
+``l'étoposide``, hypothesis ``létoposide``; or a preposition, ``sous venlafaxine`` ->
+``souvenent la vaccine``), that word belongs to the correction TARGET (``l'étoposide``,
+``sous venlafaxine``), or the fix would eat it. A neighbour counts as swallowed when at
+least half of its letters align inside the variant. Such variants are listed under
+``targets``.
 
 Tokenization: lowercase, punctuation dropped, French elisions split off
 (``l'alfacalcidol`` -> ``l'`` ``alfacalcidol``) so the drug is its own token; a hyphen
@@ -92,6 +95,7 @@ _ELISION = re.compile(rf"\b({_ELIDED})'(?=\w)", re.IGNORECASE)
 _ELIDED_HEAD = re.compile(rf"{_ELIDED}'")
 # Anything that is not a letter, digit, apostrophe or hyphen separates words.
 _SEP = re.compile(r"[^\w'-]+")
+_HYPHEN_OR_SPACE = re.compile(r"[\s-]+")
 
 
 def fold(word: str) -> str:
@@ -150,39 +154,58 @@ def load_lexicon() -> dict[str, str | None]:
 
 
 def _hyp_span(ref: list[str], i1: int, i2: int, lo_i: int, hi_i: int,
-              hyp: list[str], j1: int, j2: int) -> list[str]:
-    """Hypothesis words standing for ``ref[lo_i:hi_i]`` inside a replaced stretch.
+              hyp: list[str], j1: int, j2: int) -> tuple[list[str], int, int]:
+    """Hypothesis words standing for ``ref[lo_i:hi_i]`` inside a replaced stretch, plus
+    the label range ``[lo, hi)`` those words actually cover.
 
     A stretch whose label side is exactly that span maps wholesale. Otherwise the
     stretch is aligned character by character and the hypothesis words overlapping the
-    span's characters are returned.
+    span's characters are returned. Those words can swallow a neighbouring label word
+    (``sous fluoxétine`` -> ``soufflue oxétine``): a neighbour with at least half of
+    its letters inside them joins the range, so the fix restores it instead of eating
+    it (``[lo, hi)`` then reaches past ``[lo_i, hi_i)``).
 
     >>> _hyp_span(["de", "mirtazapine"], 0, 2, 1, 2, ["demi", "tazapine"], 0, 2)
-    ['demi', 'tazapine']
+    (['demi', 'tazapine'], 0, 2)
     >>> _hyp_span(["prend", "mirtazapine", "le"], 0, 3, 1, 2, ["prend", "myrtazapine", "la"], 0, 3)
-    ['myrtazapine']
+    (['myrtazapine'], 1, 2)
+    >>> _hyp_span(["sous", "fluoxétine"], 0, 2, 1, 2, ["soufflue", "oxétine"], 0, 2)
+    (['soufflue', 'oxétine'], 0, 2)
     """
     if (lo_i, hi_i) == (i1, i2):
-        return hyp[j1:j2]
+        return hyp[j1:j2], lo_i, hi_i
     a = " ".join(ref[i1:i2])
     b_words = hyp[j1:j2]
     b = " ".join(b_words)
-    start = len(" ".join(ref[i1:lo_i])) + (1 if lo_i > i1 else 0)
-    end = start + len(" ".join(ref[lo_i:hi_i]))
-    mapped = []
+    starts, pos = [], 0
+    for w in ref[i1:i2]:
+        starts.append(pos)
+        pos += len(w) + 1
+    start, end = starts[lo_i - i1], starts[hi_i - 1 - i1] + len(ref[hi_i - 1])
+    to_b = {}
     for blk in difflib.SequenceMatcher(a=a, b=b, autojunk=False).get_matching_blocks():
-        lo, hi = max(blk.a, start), min(blk.a + blk.size, end)
-        if lo < hi:
-            mapped += [blk.b + (lo - blk.a), blk.b + (hi - 1 - blk.a)]
+        to_b.update((blk.a + k, blk.b + k) for k in range(blk.size))
+    mapped = [to_b[k] for k in range(start, end) if k in to_b]
     if not mapped:
-        return b_words
+        return b_words, lo_i, hi_i
     lo, hi = min(mapped), max(mapped)
     picked, pos = [], 0
     for w in b_words:
         if pos <= hi and pos + len(w) > lo:
             picked.append(w)
+            lo, hi = min(lo, pos), max(hi, pos + len(w) - 1)
         pos += len(w) + 1
-    return picked
+
+    def swallowed(k: int) -> bool:
+        letters = [starts[k - i1] + c for c, ch in enumerate(ref[k]) if ch not in "'-"]
+        inside = sum(lo <= to_b.get(c, -1) <= hi for c in letters)
+        return 2 * inside >= len(letters)
+
+    while lo_i > i1 and swallowed(lo_i - 1):
+        lo_i -= 1
+    while hi_i < i2 and swallowed(hi_i):
+        hi_i += 1
+    return picked, lo_i, hi_i
 
 
 def drug_outcomes(label: str, hyp: str, lex: dict[str, str | None]
@@ -200,6 +223,10 @@ def drug_outcomes(label: str, hyp: str, lex: dict[str, str | None]
     ''
     >>> drug_outcomes("arrêt de l'étoposide hier", "arrêt de létoposide hier", lex)
     [('etoposide', 'étoposide', 'létoposide', "l'étoposide")]
+    >>> drug_outcomes("traité sous venlafaxine depuis", "traité souvenent la vaccine depuis", {"venlafaxine": None})
+    [('venlafaxine', 'venlafaxine', 'souvenent la vaccine', 'sous venlafaxine')]
+    >>> drug_outcomes("un anti-TNF alpha", "un anti-TNF-alpha", {"alpha": None})[0][2] is None
+    True
     """
     ref, h = tokens(label), tokens(hyp)
     drugs = {i: fold(w) for i, w in enumerate(ref) if fold(w) in lex}
@@ -217,16 +244,15 @@ def drug_outcomes(label: str, hyp: str, lex: dict[str, str | None]
             if tag == "delete":
                 out.append((key, spelling, "", spelling))
                 continue
-            span = _hyp_span(ref, i1, i2, i, i + 1, h, j1, j2)
-            variant, target = join_tokens(span), spelling
-            head = ref[i - 1] if i - 1 >= i1 else ""
-            # "l'étoposide" -> "létoposide": the glued article belongs to the target.
-            if _ELIDED_HEAD.fullmatch(head) and fold(variant).startswith(fold(head[:-1] + spelling)[:2]) \
-                    and not any(t.endswith("'") for t in span):
-                target = head + spelling
-            # An accent or case slip is not a spelling error (and the drug casing pass
-            # of label_conventions already fixes those).
-            out.append((key, spelling, None if fold(variant) == key else variant, target))
+            span, lo, hi = _hyp_span(ref, i1, i2, i, i + 1, h, j1, j2)
+            # A label word the variant swallowed belongs to the target ("l'étoposide" ->
+            # "létoposide", "sous venlafaxine" -> "souvenent la vaccine").
+            variant, target = join_tokens(span), join_tokens(ref[lo:hi])
+            # An accent, case or hyphen-for-space slip is not a spelling error (the drug
+            # casing pass of label_conventions fixes the first two, and a rule for the
+            # third would match the label itself: its patterns accept either separator).
+            slip = _HYPHEN_OR_SPACE.sub(" ", fold(variant)) == _HYPHEN_OR_SPACE.sub(" ", fold(target))
+            out.append((key, spelling, None if slip else variant, target))
     return out
 
 
