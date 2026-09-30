@@ -51,6 +51,7 @@ import importlib.util
 import json
 import re
 from collections import Counter, defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 import click
@@ -187,6 +188,22 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
     return rules, rejected
 
 
+@lru_cache(maxsize=None)
+def _compiled(pattern: str) -> re.Pattern:
+    """Each rule compiled once.
+
+    re's own cache holds 512 patterns: past that (a full rule set is ~1.6k), every
+    re.sub call recompiled every rule, about 2 s per transcript.
+
+    >>> _compiled.cache_clear()
+    >>> many = [{"pattern": variant_pattern(f"drogue{i:04d}x"), "replacement": "x"} for i in range(600)]
+    >>> _ = [apply_rules("rien", many) for _ in range(3)]
+    >>> _compiled.cache_info().misses
+    600
+    """
+    return re.compile(pattern, re.IGNORECASE)
+
+
 def apply_rules(text: str, rules: list[dict]) -> str:
     """Apply the ordered rules to one transcript.
 
@@ -201,7 +218,7 @@ def apply_rules(text: str, rules: list[dict]) -> str:
         def _sub(m: re.Match, rep: str = rep) -> str:
             return rep[0].upper() + rep[1:] if m.group(0)[0].isupper() and rep[0].islower() else rep
 
-        text = re.sub(r["pattern"], _sub, text, flags=re.IGNORECASE)
+        text = _compiled(r["pattern"]).sub(_sub, text)
     return text
 
 
