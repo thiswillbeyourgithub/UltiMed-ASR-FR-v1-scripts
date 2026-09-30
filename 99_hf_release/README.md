@@ -90,6 +90,9 @@ configs:
 
 # UltiMed-ASR-FR-v1
 
+> [!IMPORTANT]
+> **Want faster improvements?** This project is entirely self-funded on my minimum-wage salary, and every training run competes for a single consumer GPU. If you or your organisation can donate an **RTX 5090**, or the money to buy one second-hand, it would directly speed up the next versions of the dataset and the fine-tuned models. Reach out via [olicorne.org](https://olicorne.org) or open a discussion on this page.
+
 > [!TIP]
 > **More improvements are planned for October 2026, stay tuned.**
 
