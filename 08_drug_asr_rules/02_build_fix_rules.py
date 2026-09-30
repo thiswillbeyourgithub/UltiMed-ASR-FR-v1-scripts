@@ -23,7 +23,8 @@ Matching and folding (lowercase, accents stripped) mirror 01: the pattern is
 case-insensitive, accent-insensitive on vowels and ``c``, allows a space or a hyphen
 between the variant's words (``alpha-calcidol`` also catches ``alpha calcidol``), an
 optional space after an elided article (``d' hexaméthasone``), and is bounded so it never
-fires inside a longer word: ``(?<![\\w'-])...(?![\\w-])``.
+fires inside a longer word: ``(?<![<letter>'-])...(?![<letter>-])``, with the letter
+class spelled out so the pattern behaves the same in JavaScript (see ``_WORD``).
 
 Rules are ORDERED so a longer variant is applied before any shorter one it contains
 (``mire tazapine`` before a hypothetical ``tazapine``): word count desc, then length
@@ -68,6 +69,10 @@ DEFAULT_LABELS = _HERE.parent / "99_hf_release" / "data" / "NeMO_files" / "full.
 # Every accented form a folded letter stands for, so a rule written from "phélodipine"
 # also fixes "phelodipine" (01 already treats an accent slip as correct).
 _ACCENTS = {"a": "aàâä", "e": "eéèêë", "i": "iîï", "o": "oôö", "u": "uùûü", "c": "cç", "y": "yÿ"}
+# A word character for the rule bounds, spelled out (ASCII, Latin-1 and Latin Extended-A/B
+# letters, so œ too) because ``\w`` is Unicode in Python but ASCII-only in JavaScript.
+# The ``\\uXXXX`` escapes stay literal in the pattern: both engines read them.
+_WORD = r"0-9A-Za-z_\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F"
 
 
 def variant_pattern(variant: str) -> str:
@@ -78,6 +83,15 @@ def variant_pattern(variant: str) -> str:
     (True, False)
     >>> bool(re.search(variant_pattern("d'hexaméthasone"), "sous d' hexamethasone", re.I))
     True
+
+    The word bounds spell out their letters instead of using ``\\w``, which is Unicode
+    in Python but ASCII-only in JavaScript: there ``\\w`` would let a rule fire right
+    after an accented letter ("émirtazapine"). The pattern must behave the same in both.
+
+    >>> "\\w" in variant_pattern("mirtazapine")
+    False
+    >>> bool(re.search(variant_pattern("mirtazapine"), "émirtazapine", re.I))
+    False
     """
     words = []
     for w in re.split(r"[\s-]+", variant.strip()):
@@ -90,7 +104,7 @@ def variant_pattern(variant: str) -> str:
             else:
                 parts.append(re.escape(ch))
         words.append("".join(parts))
-    return r"(?<![\w'-])" + r"[\s-]+".join(words) + r"(?![\w-])"
+    return rf"(?<![{_WORD}'-])" + r"[\s-]+".join(words) + rf"(?![{_WORD}-])"
 
 
 def _key(text: str) -> tuple[str, ...]:
