@@ -118,8 +118,15 @@ def variant_pattern(variant: str) -> str:
 
 
 def _key(text: str) -> tuple[str, ...]:
-    """Folded token tuple used to compare a variant with label / hypothesis n-grams."""
-    return tuple(fold(t) for t in tokens(text))
+    """Folded token tuple used to compare a variant with label / hypothesis n-grams.
+
+    Hyphens split words, as in ``variant_pattern``, whose rule matches both spellings:
+    otherwise a ``sous-antidote`` variant would miss the label text ``sous antidote``.
+
+    >>> _key("Sous-antidote"), _key("sous antidote")
+    (('sous', 'antidote'), ('sous', 'antidote'))
+    """
+    return tuple(p for t in tokens(text) for p in fold(t).split("-") if p)
 
 
 def contains_target(variant: str, target: str) -> bool:
@@ -224,6 +231,13 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
     >>> two = merge_reports([lev, lev])
     >>> build_rules(two, ["lait unique"] * 2, ["du lait", "une forme unique"], {})[1][0]["reason"]
     'common_words'
+
+    A hyphenated variant is real text when a label spells it with a space, since its rule
+    matches both (``sous-antidote`` -> ``sous antidotes`` changed "évolution sous antidote"):
+
+    >>> anti = {"antidotes": {"errors": {"sous-antidote": 3}, "targets": {}}}
+    >>> build_rules(anti, ["sous-antidote"] * 3, ["évolution sous antidote"], {})[1][0]["reason"]
+    'real_text'
     """
     # Folded variant -> {target: count}; the displayed variant is its most frequent spelling.
     by_key: dict[tuple, Counter] = defaultdict(Counter)
