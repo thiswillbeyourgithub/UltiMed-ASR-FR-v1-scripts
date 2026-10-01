@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["click", "loguru", "litellm", "tiktoken", "tqdm", "tenacity", "rapidfuzz"]
+# dependencies = ["click", "loguru", "litellm", "tiktoken", "tqdm", "tenacity", "rapidfuzz", "wordfreq"]
 # ///
 """Collect how an ASR model misspells each drug name, from a hypotheses file.
 
@@ -88,6 +88,7 @@ DRUG_CASING = _ROOT / "utils" / "drug_casing.json"
 DRUG_ENTRIES = _ROOT / "02_drugs" / "drugs_freq_dosages.jsonl"
 DRUG_STAGE = _ROOT / "02_drugs" / "01_generate_drug_texts.py"
 MIN_DRUG_LEN = 5
+MAX_TERM_ZIPF = 3.0
 
 _ELIDED = r"(?:[cdjlmnst]|qu|jusqu|lorsqu|puisqu)"
 # Only the forms French actually elides, so an apostrophe inside a name is not cut.
@@ -139,9 +140,28 @@ def _stage02_anchor_words() -> set[str]:
     return words
 
 
-def load_lexicon() -> dict[str, str | None]:
+def term_words(path: Path, max_zipf: float = MAX_TERM_ZIPF) -> set[str]:
+    """Folded words of the ``term`` field of a JSONL lexicon (e.g. ``01_dictionnary/original_dictionnary.jsonl``),
+    kept only when rarer in French than ``max_zipf`` (wordfreq Zipf scale), so a term like "syndrome de
+    Brugada" adds ``brugada`` but not ``syndrome``: errors on everyday words are not term errors.
+
+    >>> import tempfile; f = Path(tempfile.mkstemp(suffix=".jsonl")[1])
+    >>> _ = f.write_text('{"term": "syndrome de Brugada"}\\n{"term": "l’acardiacie"}\\n'.replace("’", "'"), encoding="utf-8")
+    >>> sorted(term_words(f))
+    ['acardiacie', 'brugada']
+    """
+    from wordfreq import zipf_frequency
+    words = set()
+    for line in path.open(encoding="utf-8"):
+        for w in tokens(json.loads(line)["term"]):
+            if not _ELIDED_HEAD.fullmatch(w) and zipf_frequency(w, "fr") < max_zipf:
+                words.add(fold(w))
+    return words
+
+
+def load_lexicon(extra: tuple[Path, ...] = (), max_term_zipf: float = MAX_TERM_ZIPF) -> dict[str, str | None]:
     """Folded drug word -> canonical spelling (``None`` when only stage 02 knows it, the
-    label's own spelling is then used)."""
+    label's own spelling is then used), plus the ``term_words`` of each ``extra`` lexicon (``None`` too)."""
     data = json.loads(DRUG_CASING.read_text(encoding="utf-8"))
     lex: dict[str, str | None] = {}
     for canon in data["caps"].values():
@@ -150,6 +170,9 @@ def load_lexicon() -> dict[str, str | None]:
         lex.setdefault(fold(spelling), canon)
     for w in _stage02_anchor_words():
         lex.setdefault(w, None)
+    for path in extra:
+        for w in term_words(path, max_term_zipf):
+            lex.setdefault(w, None)
     return {w: c for w, c in lex.items() if len(w) >= MIN_DRUG_LEN and not re.search(r"\d", w)}
 
 
@@ -285,19 +308,29 @@ def collect(pairs, lex: dict[str, str | None]) -> dict[str, dict]:
     return report
 
 
+def lexicon_options(f):
+    """``--lexicon`` / ``--max-term-zipf``, shared with 02 so both scripts see the same lexicon."""
+    f = click.option("--max-term-zipf", default=MAX_TERM_ZIPF, show_default=True,
+                     help="a --lexicon word at least this frequent in French (wordfreq Zipf) is left out")(f)
+    return click.option("--lexicon", "lexicons", multiple=True, type=click.Path(exists=True, path_type=Path),
+                        help="extra JSONL term list (field 'term'), e.g. 01_dictionnary/original_dictionnary.jsonl: "
+                             "its rare words are tracked like drug names (repeatable)")(f)
+
+
 @click.command()
 @click.argument("hyps", type=click.Path(exists=True, path_type=Path))
 @click.argument("manifests", nargs=-1, required=True, type=click.Path(exists=True, path_type=Path))
 @click.option("--out", default=str(DEFAULT_OUT), show_default="08_drug_asr_rules/drug_asr_errors.json",
               type=click.Path(path_type=Path))
-def main(hyps: Path, manifests: tuple[Path, ...], out: Path) -> None:
+@lexicon_options
+def main(hyps: Path, manifests: tuple[Path, ...], out: Path, lexicons: tuple[Path, ...], max_term_zipf: float) -> None:
     """Write the per-drug misspelling report from a hypotheses file."""
     hyp_by_key = {}
     for line in hyps.open():
         r = json.loads(line)
         hyp_by_key[clip_key(r["audio"])] = r["hyp"]
-    lex = load_lexicon()
-    logger.info(f"drug lexicon: {len(lex)} words")
+    lex = load_lexicon(lexicons, max_term_zipf)
+    logger.info(f"lexicon: {len(lex)} words")
     pairs, seen_keys = [], set()
     for m in manifests:
         for row in read_jsonl(m):

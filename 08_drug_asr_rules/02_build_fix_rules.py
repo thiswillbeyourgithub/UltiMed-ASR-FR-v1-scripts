@@ -12,7 +12,7 @@ A variant becomes a rule only if rewriting it can hardly be wrong. It is REJECTE
 - ``real_text``: it occurs in a correct LABEL of the corpus (``--labels``, default the
   release-wide ``99_hf_release/data/NeMO_files/full.jsonl``), i.e. it is a real word or
   phrase someone wrote (``prednisone`` heard for ``prednisolone``, ``de mi`` ...);
-- ``other_drug``: it is itself a word of the drug lexicon;
+- ``other_term``: it is itself a word of the lexicon (drugs, plus any ``--lexicon`` term list);
 - ``ambiguous``: it stands for several drugs and none holds ``--min-share`` of its counts;
 - ``imprecise``: in the hypotheses file, the variant appears more often than it was an
   error for that drug (precision = error count / all hypothesis occurrences, below
@@ -280,7 +280,7 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
         elif contains_target(variant, target):
             reason = "contains_target"
         elif len(k) == 1 and k[0] in lex:
-            reason = "other_drug"
+            reason = "other_term"
         elif label_hits[k]:
             reason = "real_text"
         elif len(k) == 1 and zipf_frequency(variant.lower(), "fr") >= max_word_zipf:
@@ -428,14 +428,15 @@ def _read_texts(path: Path, field: str):
               help="a one-word variant at least this frequent in French (wordfreq Zipf scale, 2.5 = "
                    "about 1 per 3 million words) is real text: drops tienne -> Tyenne and "
                    "Brexit -> Brexin, which changed VoxPopuli fr references, but keeps discus -> Diskus")
+@extract.lexicon_options
 def main(hyps: tuple[Path, ...], errors_paths: tuple[Path, ...], labels_paths: tuple[Path, ...], out: Path, min_len: int,
          min_count: int, min_share: float, min_precision: float, min_ratio: float,
-         min_count_words: int, max_word_zipf: float) -> None:
+         min_count_words: int, max_word_zipf: float, lexicons: tuple[Path, ...], max_term_zipf: float) -> None:
     """Write the ordered drug fix rules."""
     report = merge_reports(json.loads(p.read_text(encoding="utf-8")) for p in errors_paths or (DEFAULT_ERRORS,))
     labels_paths = labels_paths or (DEFAULT_LABELS,)
     labels = (t for p in labels_paths for t in _read_texts(p, "text"))
-    rules, rejected = build_rules(report, [t for p in hyps for t in _read_texts(p, "hyp")], labels, load_lexicon(),
+    rules, rejected = build_rules(report, [t for p in hyps for t in _read_texts(p, "hyp")], labels, load_lexicon(lexicons, max_term_zipf),
                                   min_len, min_count, min_share, min_precision, min_ratio, min_count_words,
                                   max_word_zipf)
     logger.info(f"{len(rules)} rules covering {sum(r['count'] for r in rules)} errors; rejected "
