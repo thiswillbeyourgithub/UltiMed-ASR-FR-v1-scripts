@@ -32,24 +32,25 @@ This writes `08_drug_asr_rules/drug_asr_errors.json`, most errors first. Any man
 uv run 08_drug_asr_rules/02_build_fix_rules.py drugs_hyps.jsonl
 ```
 
-This writes `08_drug_asr_rules/drug_fix_rules.jsonl` (one rule per line, apply top to bottom) and `drug_fix_rules.rejected.jsonl` (with the reason, for review). Scanning the 600k corpus labels for `real_text` takes about 1.5 min. The guards (`short`, `contains_target`, `other_drug`, `real_text`, `ambiguous`, `imprecise`, `rare`, `far`, `common_words`) and their thresholds are in the script docstring and `--help`. Several models can feed one rule set: give each model's hyps file as HYPS and its 01 report with a repeated `--errors`, and `merge_reports` sums them.
+This writes `08_drug_asr_rules/drug_fix_rules.jsonl` (one rule per line, apply top to bottom) and `drug_fix_rules.rejected.jsonl` (with the reason, for review). Scanning the 600k corpus labels for `real_text` takes about 1.5 min. The guards (`short`, `contains_target`, `other_drug`, `real_text`, `ambiguous`, `imprecise`, `rare`, `far`, `common_words`) and their thresholds are in the script docstring and `--help`. Several models can feed one rule set: give each model's hyps file as HYPS and its 01 report with a repeated `--errors`, and `merge_reports` sums them. The `rare` and `common_words` thresholds count distinct clips (the most any single model wrote the variant), not the sum: every model transcribes the same audio, so the same slip from several models on one clip is one clip of evidence.
 
 Apply the rules with `fix = compile_rules(rules)` then `fix(text)` from `02_build_fix_rules.py` (`load_rules(path)` reads the JSONL). `compile_rules` indexes each rule by its anchor, the longest accent-folded word of its variant, so a text only runs the few rules whose anchor it contains: same output as `apply_rules(text, rules)` (every rule in order, the reference implementation) but about 150x faster (0.11 ms against 16.9 ms per text, measured with 1.6k rules). You can also copy the patterns into any regex engine that supports lookbehind. Each pattern is case-insensitive: compile it with the `i` flag, plus `u` in JavaScript (`new RegExp(pattern, 'giu')`), and when the matched text starts with a capital and the replacement does not, capitalise the replacement (`Myrtazapine` -> `Mirtazapine`). The word bounds spell out their letter class instead of using `\w`, so the patterns behave the same in Python and JavaScript. `scripts/bench/regex-rescore.mjs` in the [parakeet-tdt-0.6b-v3-ultra-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-ultra-onnx) repo is a JavaScript port, anchor index included (0 mismatches against Python on 41,743 transcripts).
 
-## Committed rules (2026-09-30)
+## Committed rules (2026-10-01)
 
-The rules learn from two models' misspellings, which both help: `drug_asr_errors.json` comes from the released UltiMed model (run 1.7.0, steps 13255 and 14255 averaged), `drug_asr_errors.ultra.json` from parakeet-ultra, its base (the fp32 `.nemo` the ultra ONNX is exported from). Both are built from the train and val splits ONLY, so the test split stays an honest check:
+The rules learn from four models' misspellings, which all help: `drug_asr_errors.json` comes from the released UltiMed model (run 1.7.0, steps 13255 and 14255 averaged), `drug_asr_errors.ultra.json` from parakeet-ultra, its base (the fp32 `.nemo` the ultra ONNX is exported from), and `drug_asr_errors.ultra-int8.json` / `drug_asr_errors.ultra-w4a8.json` from the int8 and w4a8 ONNX builds of parakeet-ultra (transcribed on CUDA with onnx-asr; the w4a8 encoder runs with the int8 decoder, since w4a8 ships none). All are built from the train and val splits ONLY, so the test split stays an honest check:
 
 ```bash
 # per model: drugs_hyps.jsonl from step 1, drugs_hyps.trainval.jsonl = the same minus the test clips
 uv run 08_drug_asr_rules/01_extract_drug_errors.py drugs_hyps.trainval.jsonl \
     99_hf_release/data/NeMO_files/drugs/{train,val}.jsonl --out <drug_asr_errors.json or drug_asr_errors.ultra.json>
-uv run 08_drug_asr_rules/02_build_fix_rules.py ultimed/drugs_hyps.trainval.jsonl ultra/drugs_hyps.trainval.jsonl \
+uv run 08_drug_asr_rules/02_build_fix_rules.py {ultimed,ultra,ultra-int8,ultra-w4a8}/drugs_hyps.trainval.jsonl \
     --errors 08_drug_asr_rules/drug_asr_errors.json --errors 08_drug_asr_rules/drug_asr_errors.ultra.json \
+    --errors 08_drug_asr_rules/drug_asr_errors.ultra-int8.json --errors 08_drug_asr_rules/drug_asr_errors.ultra-w4a8.json \
     --labels 99_hf_release/data/NeMO_files/train.jsonl --labels 99_hf_release/data/NeMO_files/val.jsonl
 ```
 
-The `--labels` matter: the default `full.jsonl` includes the test labels. Result: 10,030 rules covering 23,876 train+val errors (rejected: 410 `far`, 323 `short`, 203 `real_text`, 173 `common_words`, 79 `imprecise`, 21 `other_drug`, 16 `ambiguous`, 3 `contains_target`). 807 of them restore more than the drug name: a word the misspelling swallowed (`soufflue oxétine` -> `sous fluoxétine`, `souvenent la vaccine` -> `sous venlafaxine`, `paraclasta` -> `par aclasta`) or a glued article (`létoposide` -> `l'étoposide`).
+The `--labels` matter: the default `full.jsonl` includes the test labels. Result: 13,626 rules covering 51,539 train+val errors (rejected: 647 `far`, 483 `short`, 270 `common_words`, 242 `real_text`, 158 `imprecise`, 23 `ambiguous`, 23 `other_drug`, 3 `contains_target`). 1,171 of them restore more than the drug name: a word the misspelling swallowed (`soufflue oxétine` -> `sous fluoxétine`, `souvenent la vaccine` -> `sous venlafaxine`, `paraclasta` -> `par aclasta`) or a glued article (`létoposide` -> `l'étoposide`).
 
 How the defaults were chosen: every candidate rule set was applied in full to held-out test transcripts (word error rate, clips better / worse) and to every correct test label (59,151 across the five subsets, where any change is an overcorrection). On the 2,059 test drug clips:
 
@@ -61,9 +62,21 @@ How the defaults were chosen: every candidate rule set was applied in full to he
 | parakeet-ultra | `--min-count-words 1` | 7,210 | 2.92 % (448 / 0) | 9.49 % (731 / 0) | 5 |
 | both | `--min-count-words 1` | 9,980 | 2.72 % (559 / 0) | 9.44 % (759 / 0) | 5 |
 | both | defaults, before swallowed-word targets | 9,807 | 2.73 % (557 / 0) | 9.47 % (753 / 0) | 3 |
-| both (committed) | defaults | 10,030 | 2.70 % (566 / 0) | 9.45 % (758 / 0) | 3 |
+| both | defaults | 10,030 | 2.70 % (566 / 0) | 9.45 % (758 / 0) | 3 |
+
+Adding the parakeet-ultra int8 and w4a8 ONNX transcripts (2026-10-01), scored the same way with a slightly different text normalization (so compare within this table only; int8 and w4a8 are the ultra ONNX builds):
+
+| rules learned from | rules | UltiMed | ultra fp32 | ultra int8 | ultra w4a8 | correct labels changed |
+|---|---|---|---|---|---|---|
+| none | 0 | 3.69 % | 10.79 % | 11.00 % | 11.59 % | |
+| UltiMed + ultra fp32 | 10,030 | 2.66 % (570 / 0) | 9.22 % (769 / 0) | 9.47 % (750 / 0) | 10.15 % (713 / 0) | 3 |
+| + int8 | 11,691 | 2.65 % (577 / 0) | 9.17 % (788 / 0) | 9.41 % (778 / 0) | 10.08 % (747 / 0) | 3 |
+| + int8 + w4a8 (committed) | 13,626 | 2.63 % (584 / 0) | 9.12 % (811 / 0) | 9.35 % (802 / 0) | 9.96 % (795 / 0) | 3 |
+
+On the boosted UltiMed int8 browser transcripts the committed rules bring test_drugs from 3.56 % to 2.70 % (10,030 rules: 2.73 %) and the drug sentences from 3.59 % to 2.82 % (3.02 %); FLEURS French is unchanged and FLEURS English moves by at most 0.05 WER point (one extra rewrite, `program` -> `Prograf`; apply the rules to French only).
 
 - `--min-count` 1 against 2 or 3 and `--min-ratio` 0 to 0.8 all changed 0 labels with the UltiMed rules, so the loosest won; the 0.5 ratio floor only drops garbled one-offs (`reea iutis aeec et are` -> `oméga`) for 3 clips.
+- Before the distinct-clip count, a third model pushed the same one-off slips over `--min-count-words` (`lait unique` 3 times = 1 clip x 3 models) and the two overcorrections below came back.
 - `--min-count-words 2` removes the two real overcorrections of the parakeet-ultra rules (`café au lait unique` -> `Levunique`, `alpha sur bêta estimé` -> `bétahistine`). The 3 labels still changed name a drug the label spells another way (`méronème` -> `Meronem`, `médroxy-progestérone`, `alpha-calcidol` -> `alfacalcidol`).
 - On the UltiMed test_dictionary transcripts the rules also fix 50 clips (WER 2.82 % -> 2.79 %) and worsen none.
 - Before `contains_target`, 3 test clips got worse (`anti-TNF-alpha` -> `alpha`).
