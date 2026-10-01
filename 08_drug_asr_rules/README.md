@@ -32,13 +32,40 @@ This writes `08_drug_asr_rules/drug_asr_errors.json`, most errors first. Any man
 uv run 08_drug_asr_rules/02_build_fix_rules.py drugs_hyps.jsonl
 ```
 
-This writes `08_drug_asr_rules/drug_fix_rules.jsonl` (one rule per line, apply top to bottom) and `drug_fix_rules.rejected.jsonl` (with the reason, for review). Scanning the 600k corpus labels for `real_text` takes about 1.5 min. The guards (`short`, `contains_target`, `other_drug`, `real_text`, `ambiguous`, `imprecise`, `rare`, `far`, `common_words`) and their thresholds are in the script docstring and `--help`. Several models can feed one rule set: give each model's hyps file as HYPS and its 01 report with a repeated `--errors`, and `merge_reports` sums them. The `rare` and `common_words` thresholds count distinct clips (the most any single model wrote the variant), not the sum: every model transcribes the same audio, so the same slip from several models on one clip is one clip of evidence.
+This writes `08_drug_asr_rules/drug_fix_rules.jsonl` (one rule per line, apply top to bottom) and `drug_fix_rules.rejected.jsonl` (with the reason, for review). Scanning the 600k corpus labels for `real_text` takes about 1.5 min. The guards (`short`, `contains_target`, `other_drug`, `real_text`, `french_word`, `ambiguous`, `imprecise`, `rare`, `far`, `common_words`) and their thresholds are in the script docstring and `--help`. Several models can feed one rule set: give each model's hyps file as HYPS and its 01 report with a repeated `--errors`, and `merge_reports` sums them. The `rare` and `common_words` thresholds count distinct clips (the most any single model wrote the variant), not the sum: every model transcribes the same audio, so the same slip from several models on one clip is one clip of evidence.
 
 Apply the rules with `fix = compile_rules(rules)` then `fix(text)` from `02_build_fix_rules.py` (`load_rules(path)` reads the JSONL). `compile_rules` indexes each rule by its anchor, the longest accent-folded word of its variant, so a text only runs the few rules whose anchor it contains: same output as `apply_rules(text, rules)` (every rule in order, the reference implementation) but about 150x faster (0.11 ms against 16.9 ms per text, measured with 1.6k rules). You can also copy the patterns into any regex engine that supports lookbehind. Each pattern is case-insensitive: compile it with the `i` flag, plus `u` in JavaScript (`new RegExp(pattern, 'giu')`), and when the matched text starts with a capital and the replacement does not, capitalise the replacement (`Myrtazapine` -> `Mirtazapine`). The word bounds spell out their letter class instead of using `\w`, so the patterns behave the same in Python and JavaScript. `scripts/bench/regex-rescore.mjs` in the [parakeet-tdt-0.6b-v3-ultra-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-ultra-onnx) repo is a JavaScript port, anchor index included (0 mismatches against Python on 41,743 transcripts).
 
-## Committed rules (2026-10-01)
+## Committed rules (2026-10-01, all splits)
 
-The rules learn from four models' misspellings, which all help: `drug_asr_errors.json` comes from the released UltiMed model (run 1.7.0, steps 13255 and 14255 averaged), `drug_asr_errors.ultra.json` from parakeet-ultra, its base (the fp32 `.nemo` the ultra ONNX is exported from), and `drug_asr_errors.ultra-int8.json` / `drug_asr_errors.ultra-w4a8.json` from the int8 and w4a8 ONNX builds of parakeet-ultra (transcribed on CUDA with onnx-asr; the w4a8 encoder runs with the int8 decoder, since w4a8 ships none). All are built from the train and val splits ONLY, so the test split stays an honest check:
+The committed `drug_fix_rules.jsonl` (14,377 rules) is learned from ALL splits of the drugs subset (train, val AND test) and from four models: `drug_asr_errors.json` is the released UltiMed model (run 1.7.0, steps 13255 and 14255 averaged), `drug_asr_errors.ultra.json` the base parakeet-ultra (fp32 ONNX), `drug_asr_errors.ultra-int8.json` / `drug_asr_errors.ultra-w4a8.json` its int8 and w4a8 ONNX builds (transcribed on CUDA with onnx-asr; the w4a8 encoder runs with the int8 decoder).
+
+Why test is included: the rules are not a model, they are a list of fixes for every drug-name mistake the models make on this dataset. The claim they support is "fixes every seen mistake without overcorrection", so the test drug numbers below show coverage, not generalization (the held-out train+val build further down shows how well such rules generalize to unseen clips). Overcorrection is measured where it can be: on every correct label of every subset and split, and on texts the rules never saw.
+
+The build is scripted in the parakeet-ultra ONNX model repo (`scripts/drug-rules/`, written with Claude Code): `transcribe-drugs.sh` transcribes the drugs subset with one ONNX variant, `build-rules.sh` runs 01 and 02 on each model and then both checks (`evalrules.py` and `compare-rulesets.sh`):
+
+```bash
+# from the parakeet-tdt-0.6b-v3-ultra-onnx repo; each dir holds a drugs_hyps.jsonl
+TEXTS="local/voxpopuli-ignore_backups/fr-validation.txt local/voxpopuli-ignore_backups/en-validation.txt" \
+  bash scripts/drug-rules/build-rules.sh <out dir> UltiMed=<dir> ultra-fp32=<dir> ultra-int8=<dir> ultra-w4a8=<dir>
+```
+
+Results (test drug clips: WER, then clips better / worse; corpora: texts the rules change, any change is an overcorrection):
+
+| rules | rules count | UltiMed | ultra fp32 | ultra int8 | ultra w4a8 | correct labels changed (all splits) | VoxPopuli fr | VoxPopuli en |
+|---|---|---|---|---|---|---|---|---|
+| none | 0 | 3.69 % | 10.79 % | 11.00 % | 11.59 % | | | |
+| previous (train+val, R4) | 13,626 | 2.63 % (584 / 0) | 9.12 % (811 / 0) | 9.35 % (802 / 0) | 9.96 % (795 / 0) | 40 of 602,813 | 6 of 1,662 | 20 of 1,695 |
+| committed (all splits) | 14,377 | 2.04 % (864 / 0) | 8.28 % (1152 / 0) | 8.43 % (1149 / 0) | 9.04 % (1156 / 0) | 0 of 602,813 | 0 of 1,662 | 5 of 1,695 |
+
+- The 5 English VoxPopuli changes (`artificial` -> `artificielles` x3, `strength` -> `Strensiq`, `Cuban` -> `Kuvan`) are expected: the rules are meant for French output only, which is how the benchmarks apply them.
+- On boosted UltiMed int8 browser transcripts, test_drugs goes 3.56 % (no rules) -> 2.70 % (R4) -> 2.32 % (committed); FLEURS fr is unchanged and FLEURS en moves by at most 0.05 WER.
+- Two 02 fixes came with this build. Words are keyed with hyphens split, like `variant_pattern` matches them, so `sous antidote` in a label now blocks the `sous-antidote` variant (`real_text`; before, it rewrote the label). A one-word variant that is a common French word (`zipf_frequency >= --max-word-zipf`, default 2.5, e.g. `tienne`) is rejected as `french_word`: such words never appeared in a medical label, but VoxPopuli caught them.
+- Rejected (in `drug_fix_rules.rejected.jsonl`): far 706, short 525, common_words 317, real_text 278, imprecise 273, french_word 38, other_drug 24, ambiguous 22, contains_target 3.
+
+### Earlier train+val build (R4), held out
+
+Before the all-splits decision the rules were built on train+val only, keeping the test split as an honest check. Those numbers are the generalization estimate:
 
 ```bash
 # per model: drugs_hyps.jsonl from step 1, drugs_hyps.trainval.jsonl = the same minus the test clips
