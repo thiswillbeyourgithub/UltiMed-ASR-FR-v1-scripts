@@ -84,7 +84,7 @@ On the boosted UltiMed int8 browser transcripts the committed rules bring test_d
 ## Tests
 
 ```bash
-uv run --with click --with loguru --with litellm --with tiktoken --with tqdm --with tenacity --with rapidfuzz tests/test_drug_asr_rules.py
+uv run --with click --with loguru --with litellm --with tiktoken --with tqdm --with tenacity --with rapidfuzz --with wordfreq tests/test_drug_asr_rules.py
 ```
 
 ## Smoke test (2026-09-29)

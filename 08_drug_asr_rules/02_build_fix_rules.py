@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["click", "loguru", "litellm", "tiktoken", "tqdm", "tenacity", "rapidfuzz"]
+# dependencies = ["click", "loguru", "litellm", "tiktoken", "tqdm", "tenacity", "rapidfuzz", "wordfreq"]
 # ///
 """Turn the per-drug misspelling report of ``01_extract_drug_errors.py`` into ordered,
 conservative regex fix rules for ASR output.
@@ -18,6 +18,8 @@ A variant becomes a rule only if rewriting it can hardly be wrong. It is REJECTE
   error for that drug (precision = error count / all hypothesis occurrences, below
   ``--min-precision``), so the model also writes it where the label has something else;
 - ``rare``: seen fewer than ``--min-count`` times;
+- ``french_word``: a one-word variant that is an ordinary French word (``--max-word-zipf``:
+  ``tienne`` -> ``Tyenne``, ``Brexit`` -> ``Brexin``), even though no label holds it;
 - ``common_words``: every word of it is a word the labels use (``lait unique`` -> ``Levunique``,
   ``bêta estime`` -> ``bétahistine``) and it was seen fewer than ``--min-count-words`` times;
 - ``far``: its letters are too far from the target's (``similarity`` below ``--min-ratio``):
@@ -65,6 +67,7 @@ from pathlib import Path
 import click
 from loguru import logger
 from rapidfuzz.distance import Levenshtein
+from wordfreq import zipf_frequency
 
 _HERE = Path(__file__).resolve().parent
 _spec = importlib.util.spec_from_file_location("extract_drug_errors", _HERE / "01_extract_drug_errors.py")
@@ -204,7 +207,7 @@ def merge_reports(reports) -> dict:
 def build_rules(report: dict, hyps: list[str], labels, lex: dict,
                 min_len: int = 5, min_count: int = 1, min_share: float = 0.9,
                 min_precision: float = 0.8, min_ratio: float = 0.5,
-                min_count_words: int = 2) -> tuple[list[dict], list[dict]]:
+                min_count_words: int = 2, max_word_zipf: float = 2.5) -> tuple[list[dict], list[dict]]:
     """``(rules, rejected)`` from the 01 report, the hypotheses and the corpus labels.
 
     >>> report = {"mirtazapine": {"errors": {"mire tazapine": 2, "de mi": 1, "mirtazapinne": 1}, "targets": {}},
@@ -238,6 +241,13 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
     >>> anti = {"antidotes": {"errors": {"sous-antidote": 3}, "targets": {}}}
     >>> build_rules(anti, ["sous-antidote"] * 3, ["évolution sous antidote"], {})[1][0]["reason"]
     'real_text'
+
+    A one-word variant that is an ordinary French word is rejected even when no label holds
+    it: the medical labels never say "Brexit" or "qu'il tienne", VoxPopuli does:
+
+    >>> tyenne = {"Tyenne": {"errors": {"tienne": 8}, "targets": {}}}
+    >>> build_rules(tyenne, ["tienne"] * 8, [], {})[1][0]["reason"]
+    'french_word'
     """
     # Folded variant -> {target: count}; the displayed variant is its most frequent spelling.
     by_key: dict[tuple, Counter] = defaultdict(Counter)
@@ -273,6 +283,8 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             reason = "other_drug"
         elif label_hits[k]:
             reason = "real_text"
+        elif len(k) == 1 and zipf_frequency(variant.lower(), "fr") >= max_word_zipf:
+            reason = "french_word"
         elif n / total < min_share:
             reason = "ambiguous"
         elif precision < min_precision:
@@ -412,15 +424,20 @@ def _read_texts(path: Path, field: str):
 @click.option("--min-count-words", default=2, show_default=True,
               help="minimum count of a variant made only of words the labels use: 2 drops "
                    "\"lait unique\" -> Levunique, which the parakeet-ultra rules changed a correct test label with")
+@click.option("--max-word-zipf", default=2.5, show_default=True,
+              help="a one-word variant at least this frequent in French (wordfreq Zipf scale, 2.5 = "
+                   "about 1 per 3 million words) is real text: drops tienne -> Tyenne and "
+                   "Brexit -> Brexin, which changed VoxPopuli fr references, but keeps discus -> Diskus")
 def main(hyps: tuple[Path, ...], errors_paths: tuple[Path, ...], labels_paths: tuple[Path, ...], out: Path, min_len: int,
          min_count: int, min_share: float, min_precision: float, min_ratio: float,
-         min_count_words: int) -> None:
+         min_count_words: int, max_word_zipf: float) -> None:
     """Write the ordered drug fix rules."""
     report = merge_reports(json.loads(p.read_text(encoding="utf-8")) for p in errors_paths or (DEFAULT_ERRORS,))
     labels_paths = labels_paths or (DEFAULT_LABELS,)
     labels = (t for p in labels_paths for t in _read_texts(p, "text"))
     rules, rejected = build_rules(report, [t for p in hyps for t in _read_texts(p, "hyp")], labels, load_lexicon(),
-                                  min_len, min_count, min_share, min_precision, min_ratio, min_count_words)
+                                  min_len, min_count, min_share, min_precision, min_ratio, min_count_words,
+                                  max_word_zipf)
     logger.info(f"{len(rules)} rules covering {sum(r['count'] for r in rules)} errors; rejected "
                 f"{dict(Counter(r['reason'] for r in rejected))}")
     rejected_out = out.with_suffix(".rejected.jsonl")

@@ -3,7 +3,7 @@ drug spotting, the character-level mapping inside a multi-word replace, glued el
 and of 02_build_fix_rules.py (pattern bounds, rejection reasons, ordering, apply_rules).
 
     uv run --with click --with loguru --with litellm --with tiktoken --with tqdm \
-        --with tenacity --with rapidfuzz tests/test_drug_asr_rules.py
+        --with tenacity --with rapidfuzz --with wordfreq tests/test_drug_asr_rules.py
 
 This file was written by Claude Code.
 """
