@@ -167,6 +167,9 @@ def count_ngrams(texts, keys: set[tuple[str, ...]]) -> Counter:
 
 def merge_reports(reports) -> dict:
     """Sum several 01 reports (one per model) into one: counts add, targets merge.
+    ``clips`` keeps, per variant, the most any single model wrote it: every model
+    transcribes the same audio, so two models making the same slip on one clip is
+    one clip of evidence, not two. The count thresholds of build_rules use it.
 
     >>> a = {"mirtazapine": {"n_seen": 3, "n_correct": 1, "n_deleted": 0, "errors": {"myrtazapine": 2}, "targets": {}}}
     >>> b = {"mirtazapine": {"n_seen": 2, "n_correct": 0, "n_deleted": 1, "errors": {"myrtazapine": 1}, "targets": {}},
@@ -174,18 +177,19 @@ def merge_reports(reports) -> dict:
     ...                    "targets": {"létoposide": "l'étoposide"}}}
     >>> m = merge_reports([a, b])
     >>> m["mirtazapine"]
-    {'n_seen': 5, 'n_correct': 1, 'n_deleted': 1, 'errors': {'myrtazapine': 3}, 'targets': {}}
+    {'n_seen': 5, 'n_correct': 1, 'n_deleted': 1, 'errors': {'myrtazapine': 3}, 'targets': {}, 'clips': {'myrtazapine': 2}}
     >>> m["étoposide"]["targets"]
     {'létoposide': "l'étoposide"}
     """
     out: dict = {}
     for report in reports:
         for drug, entry in report.items():
-            m = out.setdefault(drug, {"n_seen": 0, "n_correct": 0, "n_deleted": 0, "errors": {}, "targets": {}})
+            m = out.setdefault(drug, {"n_seen": 0, "n_correct": 0, "n_deleted": 0, "errors": {}, "targets": {}, "clips": {}})
             for k in ("n_seen", "n_correct", "n_deleted"):
                 m[k] += entry.get(k, 0)
             for v, n in entry["errors"].items():
                 m["errors"][v] = m["errors"].get(v, 0) + n
+                m["clips"][v] = max(m["clips"].get(v, 0), n)
             m["targets"].update(entry.get("targets", {}))
     return out
 
@@ -213,11 +217,19 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
     'common_words'
     >>> len(build_rules(lev, ["lait unique"], ["du lait"], {})[0])
     1
+
+    The same one-off from two models is still one clip (it changed the same label once
+    the int8 hypotheses joined the rule set):
+
+    >>> two = merge_reports([lev, lev])
+    >>> build_rules(two, ["lait unique"] * 2, ["du lait", "une forme unique"], {})[1][0]["reason"]
+    'common_words'
     """
     # Folded variant -> {target: count}; the displayed variant is its most frequent spelling.
     by_key: dict[tuple, Counter] = defaultdict(Counter)
     spelling: dict[tuple, Counter] = defaultdict(Counter)
     drug_of: dict[tuple, dict[str, str]] = defaultdict(dict)
+    clips: dict[tuple, Counter] = defaultdict(Counter)
     for drug, entry in report.items():
         for variant, n in entry["errors"].items():
             k = _key(variant)
@@ -225,6 +237,7 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             by_key[k][target] += n
             spelling[k][variant] += n
             drug_of[k][target] = drug
+            clips[k][target] += entry.get("clips", {}).get(variant, n)
     # Single words too: a variant made only of words the labels use is ordinary French
     # ("lait unique" -> Levunique) and needs --min-count-words sightings.
     label_hits = count_ngrams(labels, set(by_key) | {(w,) for k in by_key for w in k})
@@ -250,11 +263,11 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             reason = "ambiguous"
         elif precision < min_precision:
             reason = "imprecise"
-        elif n < min_count:
+        elif clips[k][target] < min_count:
             reason = "rare"
         elif ratio < min_ratio:
             reason = "far"
-        elif n < min_count_words and all(label_hits[(w,)] for w in k):
+        elif clips[k][target] < min_count_words and all(label_hits[(w,)] for w in k):
             reason = "common_words"
         row = {"variant": variant, "drug": drug_of[k][target], "count": n}
         if reason:
