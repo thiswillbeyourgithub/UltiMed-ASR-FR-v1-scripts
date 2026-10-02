@@ -46,7 +46,7 @@ The build is scripted in the parakeet-ultra ONNX model repo (`scripts/drug-rules
 
 ```bash
 # from the parakeet-tdt-0.6b-v3-ultra-onnx repo; each dir holds a drugs_hyps.jsonl
-TEXTS="local/voxpopuli-ignore_backups/fr-validation.txt local/voxpopuli-ignore_backups/en-validation.txt" \
+TEXTS="voxpopuli-fr=local/voxpopuli-ignore_backups/fr-validation.txt voxpopuli-en=local/voxpopuli-ignore_backups/en-validation.txt" \
   bash scripts/drug-rules/build-rules.sh <out dir> UltiMed=<dir> ultra-fp32=<dir> ultra-int8=<dir> ultra-w4a8=<dir>
 ```
 
