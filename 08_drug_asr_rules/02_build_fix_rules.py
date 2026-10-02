@@ -86,6 +86,12 @@ _ACCENTS = {"a": "aàâä", "e": "eéèêë", "i": "iîï", "o": "oôö", "u": "
 # letters, so œ too) because ``\w`` is Unicode in Python but ASCII-only in JavaScript.
 # The ``\\uXXXX`` escapes stay literal in the pattern: both engines read them.
 _WORD = r"0-9A-Za-z_\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F"
+# Start bound: no letter or hyphen before the match, and an apostrophe only when it ends a
+# French elision (a lone d l n j m t s c, or qu as in jusqu'/lorsqu'), so "d'aménorée" is
+# fixed but a short variant never fires inside "aujourd'hui". Each lookbehind is fixed-width
+# (Python re) and the case-insensitive flag covers "D'"/"Qu'"; JavaScript accepts it as is.
+_START = (rf"(?<![{_WORD}-])"
+          rf"(?:(?<!['’])|(?<=(?<![{_WORD}])[dlnjmtsc]['’])|(?<=qu['’]))")
 
 
 def variant_pattern(variant: str) -> str:
@@ -96,6 +102,14 @@ def variant_pattern(variant: str) -> str:
     (True, False)
     >>> bool(re.search(variant_pattern("d'hexaméthasone"), "sous d' hexamethasone", re.I))
     True
+
+    A match may follow an elided article, but not any other apostrophe:
+
+    >>> p = re.compile(variant_pattern("aménorée"), re.IGNORECASE)
+    >>> [bool(p.search(t)) for t in ("12 semaines d'aménorée", "L’aménorée", "jusqu'aménorée")]
+    [True, True, True]
+    >>> [bool(re.search(variant_pattern("hui"), t, re.I)) for t in ("aujourd'hui", "prud'hui")]
+    [False, False]
 
     The word bounds spell out their letters instead of using ``\\w``, which is Unicode
     in Python but ASCII-only in JavaScript: there ``\\w`` would let a rule fire right
@@ -117,7 +131,7 @@ def variant_pattern(variant: str) -> str:
             else:
                 parts.append(re.escape(ch))
         words.append("".join(parts))
-    return rf"(?<![{_WORD}'-])" + r"[\s-]+".join(words) + rf"(?![{_WORD}-])"
+    return _START + r"[\s-]+".join(words) + rf"(?![{_WORD}-])"
 
 
 def _key(text: str) -> tuple[str, ...]:
