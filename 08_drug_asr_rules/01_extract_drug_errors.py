@@ -110,8 +110,14 @@ def tokens(text: str) -> list[str]:
 
     >>> tokens("Le patient prend de l'Alfacalcidol, 0,25 µg.")
     ['le', 'patient', 'prend', 'de', "l'", 'alfacalcidol', '0', '25', 'µg']
+
+    The typographic apostrophe counts as the straight one, or ``l’antivirus`` in a correct
+    text would not block the variant ``l'antivirus``:
+
+    >>> tokens("l’antivirus") == tokens("l'antivirus")
+    True
     """
-    text = _ELISION.sub(r"\1' ", text.lower())
+    text = _ELISION.sub(r"\1' ", text.lower().replace("’", "'"))
     out = []
     for w in _SEP.split(text):
         w = w.strip("-").lstrip("'")
