@@ -21,145 +21,307 @@
 {"variant": "sébribalaire", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
 {"variant": "sébribézalaire", "drug": "Breezhaler", "count": 1, "reason": "ambiguous"}
 {"variant": "air lada", "drug": "Erleada", "count": 4, "reason": "common_words"}
+{"variant": "aspect geek", "drug": "Aspegic", "count": 4, "reason": "common_words"}
 {"variant": "bases de haine", "drug": "Basdene", "count": 4, "reason": "common_words"}
 {"variant": "cerner vite", "drug": "Cernevit", "count": 4, "reason": "common_words"}
 {"variant": "corps garde", "drug": "Corgard", "count": 4, "reason": "common_words"}
+{"variant": "corps vassal", "drug": "Corvasal", "count": 4, "reason": "common_words"}
+{"variant": "edu ctl", "drug": "Eductyl", "count": 4, "reason": "common_words"}
+{"variant": "efe depuis elda", "drug": "Efluelda", "count": 4, "reason": "common_words"}
 {"variant": "fausses avances", "drug": "Fosavance", "count": 4, "reason": "common_words"}
 {"variant": "flux à fer", "drug": "Fumafer", "count": 4, "reason": "common_words"}
+{"variant": "forme pira", "drug": "Fampyra", "count": 4, "reason": "common_words"}
 {"variant": "imc ivré", "drug": "Imcivree", "count": 4, "reason": "common_words"}
 {"variant": "insuline-glucide", "drug": "insuline", "count": 4, "reason": "common_words"}
+{"variant": "isal ge", "drug": "Izalgi", "count": 4, "reason": "common_words"}
 {"variant": "la juxta", "drug": "Lojuxta", "count": 4, "reason": "common_words"}
+{"variant": "liv ten city", "drug": "Livtencity", "count": 4, "reason": "common_words"}
+{"variant": "loca pred", "drug": "Locapred", "count": 4, "reason": "common_words"}
+{"variant": "n brel", "drug": "Enbrel", "count": 4, "reason": "common_words"}
 {"variant": "na à bac", "drug": "Naabak", "count": 4, "reason": "common_words"}
 {"variant": "nicorette esprit", "drug": "NicoretteSpray", "count": 4, "reason": "common_words"}
 {"variant": "optique rond", "drug": "Opticron", "count": 4, "reason": "common_words"}
 {"variant": "prime per an", "drug": "Primpéran", "count": 4, "reason": "common_words"}
-{"variant": "récit uné", "drug": "Résitune", "count": 4, "reason": "common_words"}
+{"variant": "quai foral", "drug": "Keforal", "count": 4, "reason": "common_words"}
+{"variant": "récit und", "drug": "Résitune", "count": 4, "reason": "common_words"}
 {"variant": "saint-sucre", "drug": "sucre", "count": 4, "reason": "common_words"}
 {"variant": "sale migrant", "drug": "Sanmigran", "count": 4, "reason": "common_words"}
+{"variant": "tez spire", "drug": "Tezspire", "count": 4, "reason": "common_words"}
 {"variant": "tse spire", "drug": "Tezspire", "count": 4, "reason": "common_words"}
+{"variant": "un brisant", "drug": "ambrisentan", "count": 4, "reason": "common_words"}
 {"variant": "verre quasi à", "drug": "Verkazia", "count": 4, "reason": "common_words"}
 {"variant": "xy lo mac", "drug": "Xyllomac", "count": 4, "reason": "common_words"}
+{"variant": "zq relate", "drug": "Eqwilate", "count": 4, "reason": "common_words"}
+{"variant": "à carien", "drug": "acariens", "count": 4, "reason": "common_words"}
 {"variant": "act rapid", "drug": "Actrapid", "count": 3, "reason": "common_words"}
+{"variant": "ad cerca", "drug": "Adcirca", "count": 3, "reason": "common_words"}
 {"variant": "ami core", "drug": "Amycor", "count": 3, "reason": "common_words"}
 {"variant": "anès derme", "drug": "Anesderm", "count": 3, "reason": "common_words"}
+{"variant": "arte lac", "drug": "Artelac", "count": 3, "reason": "common_words"}
+{"variant": "ate native", "drug": "Atenativ", "count": 3, "reason": "common_words"}
+{"variant": "au clare", "drug": "Zeclar", "count": 3, "reason": "common_words"}
+{"variant": "auricule à rome", "drug": "auricularum", "count": 3, "reason": "common_words"}
+{"variant": "basse dn", "drug": "Basdene", "count": 3, "reason": "common_words"}
+{"variant": "beauté gravir", "drug": "cabotégravir", "count": 3, "reason": "common_words"}
+{"variant": "bf isal", "drug": "Befizal", "count": 3, "reason": "common_words"}
+{"variant": "bica fraise", "drug": "bicafres", "count": 3, "reason": "common_words"}
+{"variant": "bims alix", "drug": "Bimzelx", "count": 3, "reason": "common_words"}
 {"variant": "causant x", "drug": "Cosentyx", "count": 3, "reason": "common_words"}
-{"variant": "ces régimes", "drug": "Cérézyme", "count": 3, "reason": "common_words"}
+{"variant": "ce vila", "drug": "Cegfila", "count": 3, "reason": "common_words"}
+{"variant": "cette labe", "drug": "acetlab", "count": 3, "reason": "common_words"}
 {"variant": "chaud le calciférol", "drug": "cholécalciférol", "count": 3, "reason": "common_words"}
 {"variant": "colo peg", "drug": "Colopeg", "count": 3, "reason": "common_words"}
+{"variant": "danny copan", "drug": "danicopan", "count": 3, "reason": "common_words"}
 {"variant": "datée native", "drug": "Atenativ", "count": 3, "reason": "common_words"}
 {"variant": "dell prime", "drug": "Delprim", "count": 3, "reason": "common_words"}
+{"variant": "dem libra", "drug": "Hemlibra", "count": 3, "reason": "common_words"}
+{"variant": "dental nox", "drug": "Antalnox", "count": 3, "reason": "common_words"}
+{"variant": "dona cert", "drug": "Donasert", "count": 3, "reason": "common_words"}
+{"variant": "du ova", "drug": "Duova", "count": 3, "reason": "common_words"}
 {"variant": "duval sartan", "drug": "valsartan", "count": 3, "reason": "common_words"}
+{"variant": "délure sainte", "drug": "Delursan", "count": 3, "reason": "common_words"}
+{"variant": "effet d'herme", "drug": "Effederm", "count": 3, "reason": "common_words"}
+{"variant": "emt riva", "drug": "Emtriva", "count": 3, "reason": "common_words"}
+{"variant": "ep que le usa", "drug": "Epclusa", "count": 3, "reason": "common_words"}
 {"variant": "et les triptans", "drug": "élétriptan", "count": 3, "reason": "common_words"}
+{"variant": "fe le l'uad", "drug": "Fluad", "count": 3, "reason": "common_words"}
+{"variant": "fel des nœuds", "drug": "Feldene", "count": 3, "reason": "common_words"}
+{"variant": "femme prédine", "drug": "fampridine", "count": 3, "reason": "common_words"}
 {"variant": "fi compas", "drug": "Fycompa", "count": 3, "reason": "common_words"}
+{"variant": "finley e", "drug": "Finlee", "count": 3, "reason": "common_words"}
 {"variant": "fluide à bac", "drug": "Fluidabak", "count": 3, "reason": "common_words"}
 {"variant": "fluo au gel", "drug": "Fluogel", "count": 3, "reason": "common_words"}
 {"variant": "folie neurale", "drug": "Folinoral", "count": 3, "reason": "common_words"}
 {"variant": "forme duelle", "drug": "Formodual", "count": 3, "reason": "common_words"}
+{"variant": "fort ciga", "drug": "Forxiga", "count": 3, "reason": "common_words"}
+{"variant": "foum à faire", "drug": "Fumafer", "count": 3, "reason": "common_words"}
+{"variant": "gen zentra", "drug": "Hizentra", "count": 3, "reason": "common_words"}
 {"variant": "gpr iv", "drug": "Migpriv", "count": 3, "reason": "common_words"}
 {"variant": "granulé xx", "drug": "Granudoxy", "count": 3, "reason": "common_words"}
 {"variant": "gène tra", "drug": "Hizentra", "count": 3, "reason": "common_words"}
+{"variant": "hans tillard", "drug": "Enstilar", "count": 3, "reason": "common_words"}
 {"variant": "hb vax pro", "drug": "Hbvaxpro", "count": 3, "reason": "common_words"}
 {"variant": "im et th", "drug": "Imeth", "count": 3, "reason": "common_words"}
 {"variant": "imao vide", "drug": "Imnovid", "count": 3, "reason": "common_words"}
+{"variant": "jacques avi", "drug": "Jakavi", "count": 3, "reason": "common_words"}
 {"variant": "kestin lio", "drug": "Kestinlyo", "count": 3, "reason": "common_words"}
+{"variant": "l'air can", "drug": "Lercan", "count": 3, "reason": "common_words"}
 {"variant": "l'arrow xxi", "drug": "Laroxyl", "count": 3, "reason": "common_words"}
+{"variant": "l'île oo", "drug": "Leeloo", "count": 3, "reason": "common_words"}
+{"variant": "l'œuvre mentin", "drug": "Levmentin", "count": 3, "reason": "common_words"}
 {"variant": "la maligne", "drug": "Lamaline", "count": 3, "reason": "common_words"}
 {"variant": "lait d'aga", "drug": "Ledaga", "count": 3, "reason": "common_words"}
 {"variant": "lan de vie", "drug": "Lanvis", "count": 3, "reason": "common_words"}
+{"variant": "lavé mainte", "drug": "lavement", "count": 3, "reason": "common_words"}
 {"variant": "le juxta", "drug": "Lojuxta", "count": 3, "reason": "common_words"}
+{"variant": "les veaux solos", "drug": "Levosolo", "count": 3, "reason": "common_words"}
+{"variant": "ligne dilané", "drug": "Lindilane", "count": 3, "reason": "common_words"}
 {"variant": "lot sartan", "drug": "losartan", "count": 3, "reason": "common_words"}
 {"variant": "low presseur", "drug": "Lopressor", "count": 3, "reason": "common_words"}
+{"variant": "lévé tirer sétam", "drug": "lévétiracétam", "count": 3, "reason": "common_words"}
+{"variant": "maven clad", "drug": "Mavenclad", "count": 3, "reason": "common_words"}
+{"variant": "mickey cort", "drug": "Mikicort", "count": 3, "reason": "common_words"}
+{"variant": "missile de card", "drug": "Mysildecard", "count": 3, "reason": "common_words"}
+{"variant": "missiles de car", "drug": "Mysildecard", "count": 3, "reason": "common_words"}
 {"variant": "mode du crâne", "drug": "Moducrén", "count": 3, "reason": "common_words"}
+{"variant": "mode du crène", "drug": "Moducrén", "count": 3, "reason": "common_words"}
+{"variant": "mot d'opar", "drug": "Modopar", "count": 3, "reason": "common_words"}
 {"variant": "mot ventile", "drug": "Moventig", "count": 3, "reason": "common_words"}
 {"variant": "n spring", "drug": "Enspryng", "count": 3, "reason": "common_words"}
 {"variant": "naa bac", "drug": "Naabak", "count": 3, "reason": "common_words"}
+{"variant": "nati spray", "drug": "Natispray", "count": 3, "reason": "common_words"}
 {"variant": "nez oral", "drug": "Neoral", "count": 3, "reason": "common_words"}
+{"variant": "nico patch sleep", "drug": "Nicopatchlib", "count": 3, "reason": "common_words"}
+{"variant": "nira paris", "drug": "niraparib", "count": 3, "reason": "common_words"}
+{"variant": "niveau jiva", "drug": "Livogiva", "count": 3, "reason": "common_words"}
 {"variant": "nouveaux normes", "drug": "Novonorm", "count": 3, "reason": "common_words"}
+{"variant": "npl ate", "drug": "Nplate", "count": 3, "reason": "common_words"}
+{"variant": "névi rapine", "drug": "névirapine", "count": 3, "reason": "common_words"}
+{"variant": "nœud pro", "drug": "Neupro", "count": 3, "reason": "common_words"}
+{"variant": "ome jara", "drug": "Omjjara", "count": 3, "reason": "common_words"}
+{"variant": "on patro", "drug": "Onpattro", "count": 3, "reason": "common_words"}
 {"variant": "or amor", "drug": "Oramorph", "count": 3, "reason": "common_words"}
+{"variant": "ox lumo", "drug": "Oxlumo", "count": 3, "reason": "common_words"}
 {"variant": "paralyse à prix de", "drug": "alizapride", "count": 3, "reason": "common_words"}
 {"variant": "parking année", "drug": "Parkinane", "count": 3, "reason": "common_words"}
 {"variant": "peu varie l", "drug": "Pévaryl", "count": 3, "reason": "common_words"}
+{"variant": "ph sotens", "drug": "Physiotens", "count": 3, "reason": "common_words"}
 {"variant": "pic au prep", "drug": "Picoprep", "count": 3, "reason": "common_words"}
 {"variant": "pné u mo vax", "drug": "Pneumovax", "count": 3, "reason": "common_words"}
 {"variant": "prime perrin", "drug": "Primpéran", "count": 3, "reason": "common_words"}
+{"variant": "prix malan", "drug": "Primalan", "count": 3, "reason": "common_words"}
 {"variant": "prolongé deux", "drug": "prolongée", "count": 3, "reason": "common_words"}
+{"variant": "pur gone", "drug": "Puregon", "count": 3, "reason": "common_words"}
+{"variant": "queue madine", "drug": "Coumadine", "count": 3, "reason": "common_words"}
 {"variant": "qui n'a pris les", "drug": "quinapril", "count": 3, "reason": "common_words"}
+{"variant": "rani visio", "drug": "Ranivisio", "count": 3, "reason": "common_words"}
 {"variant": "rapi à l'heure", "drug": "rapihaler", "count": 3, "reason": "common_words"}
+{"variant": "ren vla", "drug": "Renvela", "count": 3, "reason": "common_words"}
 {"variant": "rice donut", "drug": "risédronate", "count": 3, "reason": "common_words"}
+{"variant": "riz mactan", "drug": "Rimactan", "count": 3, "reason": "common_words"}
 {"variant": "roque gel", "drug": "Rocgel", "count": 3, "reason": "common_words"}
+{"variant": "rta pnm", "drug": "ertapénem", "count": 3, "reason": "common_words"}
+{"variant": "réseau gra crème", "drug": "Rozacreme", "count": 3, "reason": "common_words"}
+{"variant": "saisi boe", "drug": "Ceziboe", "count": 3, "reason": "common_words"}
 {"variant": "san dose", "drug": "Sandoz", "count": 3, "reason": "common_words"}
 {"variant": "sel top", "drug": "Celltop", "count": 3, "reason": "common_words"}
+{"variant": "ses ibe", "drug": "Ceziboe", "count": 3, "reason": "common_words"}
 {"variant": "ses protéins", "drug": "Ceprotin", "count": 3, "reason": "common_words"}
+{"variant": "si frolle", "drug": "Sifrol", "count": 3, "reason": "common_words"}
 {"variant": "silo dix", "drug": "Silodyx", "count": 3, "reason": "common_words"}
+{"variant": "so et du vit", "drug": "Soluvit", "count": 3, "reason": "common_words"}
 {"variant": "somme verte", "drug": "Somavert", "count": 3, "reason": "common_words"}
+{"variant": "souillé l'ox", "drug": "Yellox", "count": 3, "reason": "common_words"}
+{"variant": "steady varga", "drug": "Stivarga", "count": 3, "reason": "common_words"}
+{"variant": "suma triptan", "drug": "sumatriptan", "count": 3, "reason": "common_words"}
+{"variant": "sur mon tille", "drug": "Surmontil", "count": 3, "reason": "common_words"}
 {"variant": "ta règle", "drug": "Tareg", "count": 3, "reason": "common_words"}
 {"variant": "taille sept", "drug": "Thaissept", "count": 3, "reason": "common_words"}
 {"variant": "testing fi", "drug": "Infai", "count": 3, "reason": "common_words"}
 {"variant": "thèse spire", "drug": "Tezspire", "count": 3, "reason": "common_words"}
+{"variant": "tou géo", "drug": "Toujeo", "count": 3, "reason": "common_words"}
 {"variant": "trafic rem", "drug": "Trophicreme", "count": 3, "reason": "common_words"}
+{"variant": "trophique crémet", "drug": "Trophicreme", "count": 3, "reason": "common_words"}
 {"variant": "ts spire", "drug": "Tezspire", "count": 3, "reason": "common_words"}
+{"variant": "tv cai", "drug": "Tivicay", "count": 3, "reason": "common_words"}
 {"variant": "types ovo", "drug": "Tibsovo", "count": 3, "reason": "common_words"}
+{"variant": "ultra viste", "drug": "Ultravist", "count": 3, "reason": "common_words"}
+{"variant": "urso falque", "drug": "Ursofalk", "count": 3, "reason": "common_words"}
+{"variant": "use pruvot", "drug": "Uzpruvo", "count": 3, "reason": "common_words"}
 {"variant": "val acyclovir", "drug": "valaciclovir", "count": 3, "reason": "common_words"}
+{"variant": "vil enterol", "drug": "vilantérol", "count": 3, "reason": "common_words"}
+{"variant": "vitrac v", "drug": "Vitrakvi", "count": 3, "reason": "common_words"}
+{"variant": "wei livra", "drug": "Waylivra", "count": 3, "reason": "common_words"}
+{"variant": "xe et lé via", "drug": "Xelevia", "count": 3, "reason": "common_words"}
+{"variant": "zane extra", "drug": "Zanextra", "count": 3, "reason": "common_words"}
+{"variant": "zi g à fluor", "drug": "Zymafluor", "count": 3, "reason": "common_words"}
 {"variant": "élan de va", "drug": "Elonva", "count": 3, "reason": "common_words"}
+{"variant": "ad circa", "drug": "Adcirca", "count": 2, "reason": "common_words"}
 {"variant": "adam pass", "drug": "Adempas", "count": 2, "reason": "common_words"}
+{"variant": "air leda", "drug": "Erleada", "count": 2, "reason": "common_words"}
+{"variant": "amm au naps", "drug": "Ammonaps", "count": 2, "reason": "common_words"}
+{"variant": "arika ic", "drug": "Arikayce", "count": 2, "reason": "common_words"}
+{"variant": "atena tv", "drug": "Atenativ", "count": 2, "reason": "common_words"}
+{"variant": "atur ggl", "drug": "Aturgyl", "count": 2, "reason": "common_words"}
+{"variant": "bai clochette", "drug": "Beclojet", "count": 2, "reason": "common_words"}
+{"variant": "bea santan", "drug": "bosentan", "count": 2, "reason": "common_words"}
+{"variant": "bex serro", "drug": "Bexsero", "count": 2, "reason": "common_words"}
+{"variant": "bic t-gravir", "drug": "bictégravir", "count": 2, "reason": "common_words"}
 {"variant": "big tard y", "drug": "Biktarvy", "count": 2, "reason": "common_words"}
+{"variant": "bis élevé ay", "drug": "Bylvay", "count": 2, "reason": "common_words"}
+{"variant": "bite-gravir", "drug": "bictégravir", "count": 2, "reason": "common_words"}
 {"variant": "butyl scopolamine", "drug": "butylscopolamine", "count": 2, "reason": "common_words"}
+{"variant": "by levay", "drug": "Bylvay", "count": 2, "reason": "common_words"}
+{"variant": "bêta gane", "drug": "Betagan", "count": 2, "reason": "common_words"}
 {"variant": "c protéins", "drug": "Ceprotin", "count": 2, "reason": "common_words"}
+{"variant": "carden ciel", "drug": "Cardensiel", "count": 2, "reason": "common_words"}
 {"variant": "cel top", "drug": "Celltop", "count": 2, "reason": "common_words"}
 {"variant": "cerne vit", "drug": "Cernevit", "count": 2, "reason": "common_words"}
 {"variant": "ces rénaux à", "drug": "serenoa", "count": 2, "reason": "common_words"}
 {"variant": "cette irisine", "drug": "cétirizine", "count": 2, "reason": "common_words"}
 {"variant": "clair ivy", "drug": "Clairyg", "count": 2, "reason": "common_words"}
+{"variant": "combe begun", "drug": "Combigan", "count": 2, "reason": "common_words"}
+{"variant": "combo d'art", "drug": "Combodart", "count": 2, "reason": "common_words"}
 {"variant": "contrat mal", "drug": "Contramal", "count": 2, "reason": "common_words"}
-{"variant": "corps basal", "drug": "Corvasal", "count": 2, "reason": "common_words"}
+{"variant": "cosa à euré", "drug": "Cozaar", "count": 2, "reason": "common_words"}
+{"variant": "coso opt", "drug": "Cosopt", "count": 2, "reason": "common_words"}
+{"variant": "cosso opté", "drug": "Cosopt", "count": 2, "reason": "common_words"}
 {"variant": "dal presse", "drug": "Alpress", "count": 2, "reason": "common_words"}
 {"variant": "dao nil", "drug": "Daonil", "count": 2, "reason": "common_words"}
 {"variant": "de l'argine", "drug": "glargine", "count": 2, "reason": "common_words"}
 {"variant": "dent au corps", "drug": "Entocort", "count": 2, "reason": "common_words"}
+{"variant": "dmt-riva", "drug": "Emtriva", "count": 2, "reason": "common_words"}
+{"variant": "doe dopa", "drug": "Duodopa", "count": 2, "reason": "common_words"}
 {"variant": "dont ne pas trop", "drug": "Onpattro", "count": 2, "reason": "common_words"}
+{"variant": "dose perso", "drug": "Osperzo", "count": 2, "reason": "common_words"}
 {"variant": "dp peron", "drug": "Dipiperon", "count": 2, "reason": "common_words"}
+{"variant": "due au trave", "drug": "Duotrav", "count": 2, "reason": "common_words"}
+{"variant": "duma log", "drug": "Humalog", "count": 2, "reason": "common_words"}
 {"variant": "dune orale", "drug": "Neoral", "count": 2, "reason": "common_words"}
 {"variant": "duo dopa", "drug": "Duodopa", "count": 2, "reason": "common_words"}
 {"variant": "dégât réx", "drug": "dégarélix", "count": 2, "reason": "common_words"}
+{"variant": "easy haler", "drug": "Easyhaler", "count": 2, "reason": "common_words"}
+{"variant": "efe virens", "drug": "éfavirenz", "count": 2, "reason": "common_words"}
+{"variant": "effet d'erme", "drug": "Effederm", "count": 2, "reason": "common_words"}
 {"variant": "ery ja", "drug": "Erynja", "count": 2, "reason": "common_words"}
-{"variant": "esprit à", "drug": "Respreeza", "count": 2, "reason": "common_words"}
+{"variant": "estré à", "drug": "Estreva", "count": 2, "reason": "common_words"}
 {"variant": "euro biol", "drug": "Eurobiol", "count": 2, "reason": "common_words"}
+{"variant": "expo vieux", "drug": "Nexpovio", "count": 2, "reason": "common_words"}
+{"variant": "flag jl", "drug": "Flagyl", "count": 2, "reason": "common_words"}
 {"variant": "flux ad", "drug": "Fluad", "count": 2, "reason": "common_words"}
 {"variant": "forme a dual", "drug": "Formodual", "count": 2, "reason": "common_words"}
+{"variant": "fort modul", "drug": "Formodual", "count": 2, "reason": "common_words"}
+{"variant": "fort trance", "drug": "Fortrans", "count": 2, "reason": "common_words"}
+{"variant": "fx campa", "drug": "Fycompa", "count": 2, "reason": "common_words"}
 {"variant": "gamma garde", "drug": "Gammagard", "count": 2, "reason": "common_words"}
+{"variant": "gemme libra", "drug": "Hemlibra", "count": 2, "reason": "common_words"}
+{"variant": "gives laharie", "drug": "Givlaari", "count": 2, "reason": "common_words"}
+{"variant": "jason tra", "drug": "Hizentra", "count": 2, "reason": "common_words"}
+{"variant": "l'odine", "drug": "Lodine", "count": 2, "reason": "common_words"}
+{"variant": "laid d'aga", "drug": "Ledaga", "count": 2, "reason": "common_words"}
 {"variant": "lata z", "drug": "Latazed", "count": 2, "reason": "common_words"}
+{"variant": "lindy lan", "drug": "Lindilane", "count": 2, "reason": "common_words"}
 {"variant": "lot dose", "drug": "Lodoz", "count": 2, "reason": "common_words"}
+{"variant": "lyric à", "drug": "Lyrica", "count": 2, "reason": "common_words"}
+{"variant": "lère capresse", "drug": "Lercapress", "count": 2, "reason": "common_words"}
 {"variant": "lèvre table", "drug": "Alevetabs", "count": 2, "reason": "common_words"}
 {"variant": "lèvre unique", "drug": "Levunique", "count": 2, "reason": "common_words"}
+{"variant": "main vo", "drug": "Menveo", "count": 2, "reason": "common_words"}
 {"variant": "mi crème co skin", "drug": "Mycoskin", "count": 2, "reason": "common_words"}
 {"variant": "mi font", "drug": "Rimifon", "count": 2, "reason": "common_words"}
+{"variant": "mikey kurt", "drug": "Mikicort", "count": 2, "reason": "common_words"}
 {"variant": "mim para", "drug": "Mimpara", "count": 2, "reason": "common_words"}
+{"variant": "mini quique", "drug": "miniquick", "count": 2, "reason": "common_words"}
 {"variant": "mène que à défi", "drug": "Menquadfi", "count": 2, "reason": "common_words"}
 {"variant": "neu pro", "drug": "Neupro", "count": 2, "reason": "common_words"}
 {"variant": "next alaire", "drug": "Nexthaler", "count": 2, "reason": "common_words"}
 {"variant": "next à l'air", "drug": "Nexthaler", "count": 2, "reason": "common_words"}
+{"variant": "ni flugel", "drug": "Niflugel", "count": 2, "reason": "common_words"}
+{"variant": "nn-tone", "drug": "Enantone", "count": 2, "reason": "common_words"}
 {"variant": "nouveau normes", "drug": "Novonorm", "count": 2, "reason": "common_words"}
+{"variant": "novo heut", "drug": "Novoeight", "count": 2, "reason": "common_words"}
 {"variant": "novo norme", "drug": "Novonorm", "count": 2, "reason": "common_words"}
+{"variant": "nt gen", "drug": "antigène", "count": 2, "reason": "common_words"}
 {"variant": "nu reflex", "drug": "Nureflex", "count": 2, "reason": "common_words"}
+{"variant": "ordi pache à", "drug": "Ordipha", "count": 2, "reason": "common_words"}
+{"variant": "ordi pca", "drug": "Ordipha", "count": 2, "reason": "common_words"}
+{"variant": "ordi pièche à", "drug": "Ordipha", "count": 2, "reason": "common_words"}
+{"variant": "pain de lol", "drug": "pindolol", "count": 2, "reason": "common_words"}
 {"variant": "pec filgrastim", "drug": "pegfilgrastim", "count": 2, "reason": "common_words"}
 {"variant": "peg filgrastim", "drug": "pegfilgrastim", "count": 2, "reason": "common_words"}
+{"variant": "peu vary il", "drug": "Pévaryl", "count": 2, "reason": "common_words"}
 {"variant": "pipe en pérone", "drug": "pipampérone", "count": 2, "reason": "common_words"}
+{"variant": "py z shiva", "drug": "Pyzchiva", "count": 2, "reason": "common_words"}
+{"variant": "qv viki", "drug": "Quviviq", "count": 2, "reason": "common_words"}
+{"variant": "r leda", "drug": "Erleada", "count": 2, "reason": "common_words"}
 {"variant": "ratio gras-team", "drug": "Ratiograstim", "count": 2, "reason": "common_words"}
+{"variant": "ren vela", "drug": "Renvela", "count": 2, "reason": "common_words"}
 {"variant": "res prise à", "drug": "Respreeza", "count": 2, "reason": "common_words"}
 {"variant": "riff en piscine", "drug": "rifampicine", "count": 2, "reason": "common_words"}
+{"variant": "rise donut", "drug": "risédronate", "count": 2, "reason": "common_words"}
 {"variant": "risperdal costa", "drug": "Risperdalconsta", "count": 2, "reason": "common_words"}
+{"variant": "riz luté", "drug": "Rilutek", "count": 2, "reason": "common_words"}
 {"variant": "rythme dane", "drug": "Rythmodan", "count": 2, "reason": "common_words"}
 {"variant": "récit vite", "drug": "Recivit", "count": 2, "reason": "common_words"}
+{"variant": "sa brille", "drug": "Sabril", "count": 2, "reason": "common_words"}
 {"variant": "sal migrant", "drug": "Sanmigran", "count": 2, "reason": "common_words"}
 {"variant": "san migrant", "drug": "Sanmigran", "count": 2, "reason": "common_words"}
 {"variant": "silo dx", "drug": "Silodyx", "count": 2, "reason": "common_words"}
+{"variant": "sla nito", "drug": "Slenyto", "count": 2, "reason": "common_words"}
 {"variant": "solu vit", "drug": "Soluvit", "count": 2, "reason": "common_words"}
 {"variant": "somme vert", "drug": "Somavert", "count": 2, "reason": "common_words"}
+{"variant": "sony gib", "drug": "sonidegib", "count": 2, "reason": "common_words"}
 {"variant": "souffle ct", "drug": "Oflocet", "count": 2, "reason": "common_words"}
 {"variant": "souffle une à résine", "drug": "flunarizine", "count": 2, "reason": "common_words"}
+{"variant": "soumise d'eau drine", "drug": "midodrine", "count": 2, "reason": "common_words"}
 {"variant": "soutient pris de", "drug": "tiapride", "count": 2, "reason": "common_words"}
+{"variant": "spy cra sel", "drug": "Sprycel", "count": 2, "reason": "common_words"}
+{"variant": "steve arga", "drug": "Stivarga", "count": 2, "reason": "common_words"}
 {"variant": "stil knox", "drug": "Stilnox", "count": 2, "reason": "common_words"}
+{"variant": "sto veste", "drug": "Steovess", "count": 2, "reason": "common_words"}
+{"variant": "strain sikh", "drug": "Strensiq", "count": 2, "reason": "common_words"}
 {"variant": "suivi tri", "drug": "Cuvitru", "count": 2, "reason": "common_words"}
+{"variant": "sun lenka", "drug": "Sunlenca", "count": 2, "reason": "common_words"}
 {"variant": "suv rsa", "drug": "Suvreza", "count": 2, "reason": "common_words"}
 {"variant": "t aérosol", "drug": "Thyrozol", "count": 2, "reason": "common_words"}
 {"variant": "tar différent", "drug": "Tardyferon", "count": 2, "reason": "common_words"}
@@ -168,36 +330,68 @@
 {"variant": "terre bio", "drug": "Terebyo", "count": 2, "reason": "common_words"}
 {"variant": "teva gras team", "drug": "Tevagrastim", "count": 2, "reason": "common_words"}
 {"variant": "toll vaptan", "drug": "tolvaptan", "count": 2, "reason": "common_words"}
+{"variant": "tru va", "drug": "truvada", "count": 2, "reason": "common_words"}
+{"variant": "très léger gré", "drug": "Trelegy", "count": 2, "reason": "common_words"}
+{"variant": "très légis", "drug": "Trelegy", "count": 2, "reason": "common_words"}
+{"variant": "tss spire", "drug": "Tezspire", "count": 2, "reason": "common_words"}
 {"variant": "tu e s i pax", "drug": "Tussipax", "count": 2, "reason": "common_words"}
 {"variant": "tu si dané", "drug": "Tussidane", "count": 2, "reason": "common_words"}
 {"variant": "turbo à l'air", "drug": "turbuhaler", "count": 2, "reason": "common_words"}
+{"variant": "tusi danné", "drug": "Tussidane", "count": 2, "reason": "common_words"}
+{"variant": "twain sta", "drug": "Twynsta", "count": 2, "reason": "common_words"}
+{"variant": "un appè", "drug": "Anapen", "count": 2, "reason": "common_words"}
 {"variant": "une orale", "drug": "Neoral", "count": 2, "reason": "common_words"}
 {"variant": "ur solvant", "drug": "Ursolvan", "count": 2, "reason": "common_words"}
 {"variant": "vaccin tétra", "drug": "Vaxigriptetra", "count": 2, "reason": "common_words"}
 {"variant": "vax an", "drug": "vaccin", "count": 2, "reason": "common_words"}
+{"variant": "vel cpt", "drug": "Velsipity", "count": 2, "reason": "common_words"}
 {"variant": "vent à vie", "drug": "Ventavis", "count": 2, "reason": "common_words"}
 {"variant": "volta rené", "drug": "Voltarène", "count": 2, "reason": "common_words"}
+{"variant": "x tendit", "drug": "Xtandi", "count": 2, "reason": "common_words"}
+{"variant": "x veva", "drug": "Xgeva", "count": 2, "reason": "common_words"}
+{"variant": "xle via", "drug": "Xelevia", "count": 2, "reason": "common_words"}
 {"variant": "xo à la ham", "drug": "Xolaam", "count": 2, "reason": "common_words"}
+{"variant": "xy zala", "drug": "Xyzall", "count": 2, "reason": "common_words"}
 {"variant": "z clara", "drug": "Zyclara", "count": 2, "reason": "common_words"}
+{"variant": "zed clara", "drug": "Zyclara", "count": 2, "reason": "common_words"}
 {"variant": "zig clara", "drug": "Zyclara", "count": 2, "reason": "common_words"}
+{"variant": "zoph n", "drug": "Zophren", "count": 2, "reason": "common_words"}
+{"variant": "zy amdo", "drug": "Zymaduo", "count": 2, "reason": "common_words"}
 {"variant": "à trop vent", "drug": "Atrovent", "count": 2, "reason": "common_words"}
 {"variant": "élan va", "drug": "Elonva", "count": 2, "reason": "common_words"}
 {"variant": "éto lac", "drug": "étodolac", "count": 2, "reason": "common_words"}
 {"variant": "a extra", "drug": "Arixtra", "count": 1, "reason": "common_words"}
 {"variant": "a fluide", "drug": "Siccafluid", "count": 1, "reason": "common_words"}
+{"variant": "abr y svo", "drug": "Abrysvo", "count": 1, "reason": "common_words"}
 {"variant": "act rapides", "drug": "Actrapid", "count": 1, "reason": "common_words"}
 {"variant": "adc-rca", "drug": "Adcirca", "count": 1, "reason": "common_words"}
-{"variant": "adulte sa", "drug": "adultes", "count": 1, "reason": "common_words"}
 {"variant": "ai durand", "drug": "Edurant", "count": 1, "reason": "common_words"}
 {"variant": "ai durant", "drug": "Edurant", "count": 1, "reason": "common_words"}
-{"variant": "air durant", "drug": "Edurant", "count": 1, "reason": "common_words"}
-{"variant": "an à peine", "drug": "Anapen", "count": 1, "reason": "common_words"}
+{"variant": "air aux agel", "drug": "Rozagel", "count": 1, "reason": "common_words"}
+{"variant": "al une brig", "drug": "Alunbrig", "count": 1, "reason": "common_words"}
+{"variant": "allergo-commode", "drug": "Allergocomod", "count": 1, "reason": "common_words"}
+{"variant": "almo grand", "drug": "Almogran", "count": 1, "reason": "common_words"}
+{"variant": "alun brig", "drug": "Alunbrig", "count": 1, "reason": "common_words"}
+{"variant": "ammo naps", "drug": "Ammonaps", "count": 1, "reason": "common_words"}
 {"variant": "ana peine", "drug": "Anapen", "count": 1, "reason": "common_words"}
 {"variant": "anal de médine", "drug": "naldemedine", "count": 1, "reason": "common_words"}
 {"variant": "après python", "drug": "aprépitant", "count": 1, "reason": "common_words"}
+{"variant": "après-piton", "drug": "aprépitant", "count": 1, "reason": "common_words"}
+{"variant": "ari extra", "drug": "Arixtra", "count": 1, "reason": "common_words"}
+{"variant": "aric aic", "drug": "Arikayce", "count": 1, "reason": "common_words"}
+{"variant": "aspect gic", "drug": "Aspegic", "count": 1, "reason": "common_words"}
+{"variant": "aspect jic", "drug": "Aspegic", "count": 1, "reason": "common_words"}
+{"variant": "ato h à laire", "drug": "Autohaler", "count": 1, "reason": "common_words"}
 {"variant": "auné grand", "drug": "Zonegran", "count": 1, "reason": "common_words"}
+{"variant": "auto à l'he", "drug": "Autohaler", "count": 1, "reason": "common_words"}
 {"variant": "auto-aller", "drug": "Autohaler", "count": 1, "reason": "common_words"}
 {"variant": "auto-hal", "drug": "Autohaler", "count": 1, "reason": "common_words"}
+{"variant": "ava copan", "drug": "avacopan", "count": 1, "reason": "common_words"}
+{"variant": "ava dart", "drug": "Avodart", "count": 1, "reason": "common_words"}
+{"variant": "avo d'art", "drug": "Avodart", "count": 1, "reason": "common_words"}
+{"variant": "ax extra", "drug": "Arixtra", "count": 1, "reason": "common_words"}
+{"variant": "azo pt", "drug": "Azopt", "count": 1, "reason": "common_words"}
+{"variant": "b égine", "drug": "Beagyne", "count": 1, "reason": "common_words"}
 {"variant": "b-clos prêt", "drug": "Beclospray", "count": 1, "reason": "common_words"}
 {"variant": "b-closs près", "drug": "Beclospray", "count": 1, "reason": "common_words"}
 {"variant": "bas d'aine", "drug": "Basdene", "count": 1, "reason": "common_words"}
@@ -207,135 +401,393 @@
 {"variant": "beau intra", "drug": "Bomyntra", "count": 1, "reason": "common_words"}
 {"variant": "beau sentant", "drug": "bosentan", "count": 1, "reason": "common_words"}
 {"variant": "bec sero", "drug": "Bexsero", "count": 1, "reason": "common_words"}
+{"variant": "beck osprey", "drug": "Beclospray", "count": 1, "reason": "common_words"}
 {"variant": "benzyle-pénicilline", "drug": "benzylpénicilline", "count": 1, "reason": "common_words"}
+{"variant": "bex cero", "drug": "Bexsero", "count": 1, "reason": "common_words"}
+{"variant": "bica fres", "drug": "bicafres", "count": 1, "reason": "common_words"}
 {"variant": "bio d'algiques", "drug": "Biodalgic", "count": 1, "reason": "common_words"}
 {"variant": "breeze a l'heure", "drug": "Breezhaler", "count": 1, "reason": "common_words"}
 {"variant": "breeze aller", "drug": "Breezhaler", "count": 1, "reason": "common_words"}
+{"variant": "breeze haler", "drug": "Breezhaler", "count": 1, "reason": "common_words"}
+{"variant": "brez haller", "drug": "Breezhaler", "count": 1, "reason": "common_words"}
 {"variant": "broncho-tual", "drug": "Bronchodual", "count": 1, "reason": "common_words"}
+{"variant": "bronco tual", "drug": "Bronchodual", "count": 1, "reason": "common_words"}
+{"variant": "but des oni", "drug": "budésonide", "count": 1, "reason": "common_words"}
 {"variant": "by lev à y", "drug": "Bylvay", "count": 1, "reason": "common_words"}
+{"variant": "bé clochette", "drug": "Beclojet", "count": 1, "reason": "common_words"}
+{"variant": "bêt clochette", "drug": "Beclojet", "count": 1, "reason": "common_words"}
+{"variant": "bêta estin", "drug": "bétahistine", "count": 1, "reason": "common_words"}
 {"variant": "bêta optique", "drug": "Betoptic", "count": 1, "reason": "common_words"}
+{"variant": "bêto optique", "drug": "Betoptic", "count": 1, "reason": "common_words"}
+{"variant": "cabot et gravir", "drug": "cabotégravir", "count": 1, "reason": "common_words"}
 {"variant": "calci fortes", "drug": "Calciforte", "count": 1, "reason": "common_words"}
 {"variant": "calque sens", "drug": "Calquence", "count": 1, "reason": "common_words"}
+{"variant": "cari vita", "drug": "Crysvita", "count": 1, "reason": "common_words"}
 {"variant": "cast in lio", "drug": "Kestinlyo", "count": 1, "reason": "common_words"}
+{"variant": "ce villa", "drug": "Cegfila", "count": 1, "reason": "common_words"}
+{"variant": "ceg fila", "drug": "Cegfila", "count": 1, "reason": "common_words"}
+{"variant": "cerf alja", "drug": "Cerdelga", "count": 1, "reason": "common_words"}
 {"variant": "cerné vite", "drug": "Cernevit", "count": 1, "reason": "common_words"}
+{"variant": "ces resta", "drug": "Seresta", "count": 1, "reason": "common_words"}
 {"variant": "cet retire", "drug": "Cetrotide", "count": 1, "reason": "common_words"}
+{"variant": "champs pix", "drug": "Champix", "count": 1, "reason": "common_words"}
 {"variant": "chaud calciférol", "drug": "cholécalciférol", "count": 1, "reason": "common_words"}
+{"variant": "chlor médecine", "drug": "chlorméthine", "count": 1, "reason": "common_words"}
 {"variant": "chô les calciférol", "drug": "cholécalciférol", "count": 1, "reason": "common_words"}
+{"variant": "cica fluid", "drug": "Siccafluid", "count": 1, "reason": "common_words"}
 {"variant": "cl top", "drug": "Celltop", "count": 1, "reason": "common_words"}
+{"variant": "claus alice", "drug": "Closalis", "count": 1, "reason": "common_words"}
+{"variant": "co de terra kane", "drug": "Contracne", "count": 1, "reason": "common_words"}
 {"variant": "combat en train", "drug": "Combantrin", "count": 1, "reason": "common_words"}
+{"variant": "combe begon", "drug": "Combigan", "count": 1, "reason": "common_words"}
 {"variant": "combes en train", "drug": "Combantrin", "count": 1, "reason": "common_words"}
+{"variant": "combo dart", "drug": "Combodart", "count": 1, "reason": "common_words"}
+{"variant": "contra pneu", "drug": "Contracne", "count": 1, "reason": "common_words"}
+{"variant": "contra pneus", "drug": "Contracne", "count": 1, "reason": "common_words"}
+{"variant": "contrat pneu", "drug": "Contracne", "count": 1, "reason": "common_words"}
+{"variant": "cos et lugo", "drug": "Koselugo", "count": 1, "reason": "common_words"}
+{"variant": "coso opté", "drug": "Cosopt", "count": 1, "reason": "common_words"}
+{"variant": "cossé lugo", "drug": "Koselugo", "count": 1, "reason": "common_words"}
+{"variant": "counter acne", "drug": "Contracne", "count": 1, "reason": "common_words"}
 {"variant": "creux et calciférol", "drug": "cholécalciférol", "count": 1, "reason": "common_words"}
-{"variant": "deux brides", "drug": "Debridat", "count": 1, "reason": "common_words"}
+{"variant": "cul vars près", "drug": "Qvarspray", "count": 1, "reason": "common_words"}
+{"variant": "cum-bodart", "drug": "Combodart", "count": 1, "reason": "common_words"}
+{"variant": "céum bodart", "drug": "Combodart", "count": 1, "reason": "common_words"}
+{"variant": "deck en sicile", "drug": "Dectancyl", "count": 1, "reason": "common_words"}
+{"variant": "delp ram", "drug": "Delprim", "count": 1, "reason": "common_words"}
+{"variant": "deux pi aston", "drug": "duphaston", "count": 1, "reason": "common_words"}
 {"variant": "devis ken", "drug": "Visken", "count": 1, "reason": "common_words"}
+{"variant": "dio deo pa", "drug": "Duodopa", "count": 1, "reason": "common_words"}
 {"variant": "dip peron", "drug": "Dipiperon", "count": 1, "reason": "common_words"}
+{"variant": "dole et kéo", "drug": "Dolko", "count": 1, "reason": "common_words"}
+{"variant": "donne patro", "drug": "Onpattro", "count": 1, "reason": "common_words"}
+{"variant": "dont aux airy", "drug": "Ontozry", "count": 1, "reason": "common_words"}
+{"variant": "dose per zo", "drug": "Osperzo", "count": 1, "reason": "common_words"}
+{"variant": "du haut trave", "drug": "Duotrav", "count": 1, "reason": "common_words"}
+{"variant": "duo trave", "drug": "Duotrav", "count": 1, "reason": "common_words"}
 {"variant": "dur solvant", "drug": "Ursolvan", "count": 1, "reason": "common_words"}
+{"variant": "décape yel", "drug": "Décapeptyl", "count": 1, "reason": "common_words"}
 {"variant": "dû alk opt", "drug": "Dualkopt", "count": 1, "reason": "common_words"}
 {"variant": "e ar art t si mais", "drug": "Eurartésim", "count": 1, "reason": "common_words"}
 {"variant": "easy haller", "drug": "Easyhaler", "count": 1, "reason": "common_words"}
+{"variant": "easy schaler", "drug": "Easyhaler", "count": 1, "reason": "common_words"}
+{"variant": "edu ceti criel", "drug": "Eductyl", "count": 1, "reason": "common_words"}
 {"variant": "efferalgan med", "drug": "Efferalganmed", "count": 1, "reason": "common_words"}
+{"variant": "effet d'ermes", "drug": "Effederm", "count": 1, "reason": "common_words"}
+{"variant": "effie un", "drug": "Efient", "count": 1, "reason": "common_words"}
 {"variant": "elle sept", "drug": "Cellcept", "count": 1, "reason": "common_words"}
+{"variant": "elu drill périot", "drug": "Eludrilperio", "count": 1, "reason": "common_words"}
+{"variant": "em-teri iva", "drug": "Emtriva", "count": 1, "reason": "common_words"}
+{"variant": "emt iva", "drug": "Emtriva", "count": 1, "reason": "common_words"}
 {"variant": "en a la prise", "drug": "énalapril", "count": 1, "reason": "common_words"}
 {"variant": "en fans", "drug": "enfants", "count": 1, "reason": "common_words"}
+{"variant": "en spr ng", "drug": "Enspryng", "count": 1, "reason": "common_words"}
+{"variant": "ep clusa", "drug": "Epclusa", "count": 1, "reason": "common_words"}
+{"variant": "er art tsi mais", "drug": "Eurartésim", "count": 1, "reason": "common_words"}
+{"variant": "er art tsi mee", "drug": "Eurartésim", "count": 1, "reason": "common_words"}
+{"variant": "ergo calciférol", "drug": "ergocalciférol", "count": 1, "reason": "common_words"}
+{"variant": "erta pnm", "drug": "ertapénem", "count": 1, "reason": "common_words"}
+{"variant": "ery ga", "drug": "Erynja", "count": 1, "reason": "common_words"}
 {"variant": "espèce migrante", "drug": "Sanmigran", "count": 1, "reason": "common_words"}
 {"variant": "est en dô", "drug": "Istendo", "count": 1, "reason": "common_words"}
-{"variant": "et la ville", "drug": "Elavil", "count": 1, "reason": "common_words"}
-{"variant": "et tard", "drug": "retard", "count": 1, "reason": "common_words"}
+{"variant": "eu créase", "drug": "Eucreas", "count": 1, "reason": "common_words"}
+{"variant": "ezy schaller", "drug": "Easyhaler", "count": 1, "reason": "common_words"}
+{"variant": "face nra", "drug": "Fasenra", "count": 1, "reason": "common_words"}
 {"variant": "fausse levodopa", "drug": "foslevodopa", "count": 1, "reason": "common_words"}
+{"variant": "fausse timon kite", "drug": "Fostimonkit", "count": 1, "reason": "common_words"}
+{"variant": "fausse timon quitte", "drug": "Fostimonkit", "count": 1, "reason": "common_words"}
 {"variant": "faux amprénavir", "drug": "fosamprénavir", "count": 1, "reason": "common_words"}
 {"variant": "faux avances", "drug": "Fosavance", "count": 1, "reason": "common_words"}
+{"variant": "feld des nez", "drug": "Feldene", "count": 1, "reason": "common_words"}
 {"variant": "femme sept veaux", "drug": "Femseptevo", "count": 1, "reason": "common_words"}
+{"variant": "femme sept veux", "drug": "Femseptevo", "count": 1, "reason": "common_words"}
+{"variant": "femme septe evo", "drug": "Femseptevo", "count": 1, "reason": "common_words"}
+{"variant": "fi cumpa", "drug": "Fycompa", "count": 1, "reason": "common_words"}
+{"variant": "fik campa", "drug": "Fycompa", "count": 1, "reason": "common_words"}
 {"variant": "fin lée", "drug": "Finlee", "count": 1, "reason": "common_words"}
 {"variant": "fixa post", "drug": "Fixapost", "count": 1, "reason": "common_words"}
 {"variant": "fixa poste", "drug": "Fixapost", "count": 1, "reason": "common_words"}
 {"variant": "fixe à post-collyre", "drug": "Fixapost", "count": 1, "reason": "common_words"}
+{"variant": "flag gigli", "drug": "Flagyl", "count": 1, "reason": "common_words"}
+{"variant": "flex tosh", "drug": "Flextouch", "count": 1, "reason": "common_words"}
+{"variant": "flic savate", "drug": "Flixovate", "count": 1, "reason": "common_words"}
+{"variant": "flo xx frag", "drug": "Floxyfral", "count": 1, "reason": "common_words"}
 {"variant": "flow ct", "drug": "Oflocet", "count": 1, "reason": "common_words"}
 {"variant": "flux arx tétra", "drug": "Fluarixtetra", "count": 1, "reason": "common_words"}
+{"variant": "flux ax tetra", "drug": "Fluarixtetra", "count": 1, "reason": "common_words"}
+{"variant": "flux à rix tétra", "drug": "Fluarixtetra", "count": 1, "reason": "common_words"}
+{"variant": "folie noral", "drug": "Folinoral", "count": 1, "reason": "common_words"}
 {"variant": "force eto", "drug": "Forstéo", "count": 1, "reason": "common_words"}
+{"variant": "form or", "drug": "Formoair", "count": 1, "reason": "common_words"}
 {"variant": "forme duel", "drug": "Formodual", "count": 1, "reason": "common_words"}
 {"variant": "forme oar", "drug": "Formoair", "count": 1, "reason": "common_words"}
+{"variant": "forte has arre", "drug": "Fortzaar", "count": 1, "reason": "common_words"}
 {"variant": "fosse avance", "drug": "Fosavance", "count": 1, "reason": "common_words"}
+{"variant": "frt hart kit", "drug": "Fertistartkit", "count": 1, "reason": "common_words"}
+{"variant": "ful fila", "drug": "Fulphila", "count": 1, "reason": "common_words"}
 {"variant": "furo à de", "drug": "furoate", "count": 1, "reason": "common_words"}
 {"variant": "gain forts", "drug": "Ganfort", "count": 1, "reason": "common_words"}
+{"variant": "gal à fold", "drug": "Galafold", "count": 1, "reason": "common_words"}
+{"variant": "gala fold", "drug": "Galafold", "count": 1, "reason": "common_words"}
+{"variant": "gall à fold", "drug": "Galafold", "count": 1, "reason": "common_words"}
+{"variant": "gamma guard", "drug": "Gammagard", "count": 1, "reason": "common_words"}
+{"variant": "gamma normée", "drug": "Gammanorm", "count": 1, "reason": "common_words"}
+{"variant": "giv laharie", "drug": "Givlaari", "count": 1, "reason": "common_words"}
+{"variant": "gla gado", "drug": "Glydo", "count": 1, "reason": "common_words"}
 {"variant": "gène autonome", "drug": "Genotonorm", "count": 1, "reason": "common_words"}
 {"variant": "hla mine tox", "drug": "Helmintox", "count": 1, "reason": "common_words"}
+{"variant": "homme jara", "drug": "Omjjara", "count": 1, "reason": "common_words"}
+{"variant": "hor leda", "drug": "Erleada", "count": 1, "reason": "common_words"}
 {"variant": "hors du ph", "drug": "Ordipha", "count": 1, "reason": "common_words"}
+{"variant": "id benon", "drug": "idébénone", "count": 1, "reason": "common_words"}
+{"variant": "ide bénone", "drug": "idébénone", "count": 1, "reason": "common_words"}
+{"variant": "ifi masta", "drug": "Ifirmasta", "count": 1, "reason": "common_words"}
+{"variant": "il lui viane", "drug": "Iluvien", "count": 1, "reason": "common_words"}
+{"variant": "im civray", "drug": "Imcivree", "count": 1, "reason": "common_words"}
 {"variant": "indo-collyre-collyre", "drug": "Indocollyre", "count": 1, "reason": "common_words"}
+{"variant": "infanrix quanta", "drug": "Infanrixquinta", "count": 1, "reason": "common_words"}
 {"variant": "infanrix quinta", "drug": "Infanrixquinta", "count": 1, "reason": "common_words"}
+{"variant": "inno verre", "drug": "Innovair", "count": 1, "reason": "common_words"}
+{"variant": "intel nc", "drug": "Intelence", "count": 1, "reason": "common_words"}
+{"variant": "isa ar", "drug": "Hyzaar", "count": 1, "reason": "common_words"}
 {"variant": "j bon ti", "drug": "Jubbonti", "count": 1, "reason": "common_words"}
+{"variant": "jai des", "drug": "Jaydess", "count": 1, "reason": "common_words"}
+{"variant": "kayak salat", "drug": "Kayexalate", "count": 1, "reason": "common_words"}
+{"variant": "key foral", "drug": "Keforal", "count": 1, "reason": "common_words"}
+{"variant": "kin april", "drug": "quinapril", "count": 1, "reason": "common_words"}
+{"variant": "kosso opt", "drug": "Cosopt", "count": 1, "reason": "common_words"}
+{"variant": "l'anthus", "drug": "Lantus", "count": 1, "reason": "common_words"}
+{"variant": "l'aro xy hil", "drug": "Laroxyl", "count": 1, "reason": "common_words"}
+{"variant": "l'aro xy il", "drug": "Laroxyl", "count": 1, "reason": "common_words"}
 {"variant": "l'eau dine", "drug": "Lodine", "count": 1, "reason": "common_words"}
-{"variant": "la paris", "drug": "olaparib", "count": 1, "reason": "common_words"}
+{"variant": "l'erca presse", "drug": "Lercapress", "count": 1, "reason": "common_words"}
+{"variant": "l'her capresse", "drug": "Lercapress", "count": 1, "reason": "common_words"}
+{"variant": "l'herc à presse", "drug": "Lercapress", "count": 1, "reason": "common_words"}
+{"variant": "l'oca pred", "drug": "Locapred", "count": 1, "reason": "common_words"}
+{"variant": "l'opéra mide", "drug": "lopéramide", "count": 1, "reason": "common_words"}
+{"variant": "l'rk presse", "drug": "Lercapress", "count": 1, "reason": "common_words"}
+{"variant": "l-octa", "drug": "Elocta", "count": 1, "reason": "common_words"}
+{"variant": "lactis kenan", "drug": "Actiskenan", "count": 1, "reason": "common_words"}
 {"variant": "lait triptan", "drug": "élétriptan", "count": 1, "reason": "common_words"}
+{"variant": "lame lore", "drug": "Amlor", "count": 1, "reason": "common_words"}
+{"variant": "lei sanxia", "drug": "Lysanxia", "count": 1, "reason": "common_words"}
 {"variant": "les veaux norgestrel", "drug": "lévonorgestrel", "count": 1, "reason": "common_words"}
+{"variant": "levis de scène", "drug": "Levidcen", "count": 1, "reason": "common_words"}
+{"variant": "lip dj fil grâce tim", "drug": "Lipegfilgrastim", "count": 1, "reason": "common_words"}
+{"variant": "liv marli", "drug": "Livmarli", "count": 1, "reason": "common_words"}
 {"variant": "livre marly", "drug": "Livmarli", "count": 1, "reason": "common_words"}
 {"variant": "lo sartan", "drug": "losartan", "count": 1, "reason": "common_words"}
 {"variant": "longs surf", "drug": "Lonsurf", "count": 1, "reason": "common_words"}
+{"variant": "lune brig", "drug": "Alunbrig", "count": 1, "reason": "common_words"}
 {"variant": "lève table", "drug": "Alevetabs", "count": 1, "reason": "common_words"}
+{"variant": "lévi marli", "drug": "Livmarli", "count": 1, "reason": "common_words"}
+{"variant": "lévo fray", "drug": "Levofree", "count": 1, "reason": "common_words"}
+{"variant": "lévo frit", "drug": "Levofree", "count": 1, "reason": "common_words"}
+{"variant": "m lia lepta", "drug": "Myalepta", "count": 1, "reason": "common_words"}
 {"variant": "mag injectable", "drug": "Maginjectable", "count": 1, "reason": "common_words"}
+{"variant": "maj-injectable", "drug": "Maginjectable", "count": 1, "reason": "common_words"}
+{"variant": "mau du crâne", "drug": "Moducrén", "count": 1, "reason": "common_words"}
+{"variant": "max halt", "drug": "Maxalt", "count": 1, "reason": "common_words"}
+{"variant": "men qua défi", "drug": "Menquadfi", "count": 1, "reason": "common_words"}
 {"variant": "men que à défi", "drug": "Menquadfi", "count": 1, "reason": "common_words"}
 {"variant": "mime par à", "drug": "Mimpara", "count": 1, "reason": "common_words"}
 {"variant": "mine para à", "drug": "Mimpara", "count": 1, "reason": "common_words"}
+{"variant": "mini-rain melt", "drug": "Minirinmelt", "count": 1, "reason": "common_words"}
 {"variant": "mir sera", "drug": "Mircera", "count": 1, "reason": "common_words"}
+{"variant": "missile de cad", "drug": "Mysildecard", "count": 1, "reason": "common_words"}
+{"variant": "missile de carr", "drug": "Mysildecard", "count": 1, "reason": "common_words"}
 {"variant": "mix tard", "drug": "Mixtard", "count": 1, "reason": "common_words"}
+{"variant": "mixed hard", "drug": "Mixtard", "count": 1, "reason": "common_words"}
+{"variant": "modo par", "drug": "Modopar", "count": 1, "reason": "common_words"}
+{"variant": "mos comptine", "drug": "Moscontin", "count": 1, "reason": "common_words"}
 {"variant": "mot du crâne", "drug": "Moducrén", "count": 1, "reason": "common_words"}
 {"variant": "mot du crème", "drug": "Moducrén", "count": 1, "reason": "common_words"}
+{"variant": "méthil prednisolone", "drug": "méthylprednisolone", "count": 1, "reason": "common_words"}
+{"variant": "même vo", "drug": "Menveo", "count": 1, "reason": "common_words"}
+{"variant": "n expo vio", "drug": "Nexpovio", "count": 1, "reason": "common_words"}
+{"variant": "n-t gen", "drug": "antigène", "count": 1, "reason": "common_words"}
 {"variant": "na bac", "drug": "Naabak", "count": 1, "reason": "common_words"}
 {"variant": "nerf sonne", "drug": "Nerisone", "count": 1, "reason": "common_words"}
 {"variant": "next alère", "drug": "Nexthaler", "count": 1, "reason": "common_words"}
 {"variant": "ng en la", "drug": "Ngenla", "count": 1, "reason": "common_words"}
 {"variant": "nicopatch hib", "drug": "Nicopatchlib", "count": 1, "reason": "common_words"}
+{"variant": "niko patch lib", "drug": "Nicopatchlib", "count": 1, "reason": "common_words"}
 {"variant": "nis pro", "drug": "lispro", "count": 1, "reason": "common_words"}
+{"variant": "nive estim", "drug": "Nivestim", "count": 1, "reason": "common_words"}
+{"variant": "nord levo", "drug": "Norlevo", "count": 1, "reason": "common_words"}
+{"variant": "norm à col", "drug": "Normacol", "count": 1, "reason": "common_words"}
 {"variant": "norma col", "drug": "Normacol", "count": 1, "reason": "common_words"}
+{"variant": "norma coll", "drug": "Normacol", "count": 1, "reason": "common_words"}
 {"variant": "norme à col", "drug": "Normacol", "count": 1, "reason": "common_words"}
+{"variant": "nouveau norm", "drug": "Novonorm", "count": 1, "reason": "common_words"}
+{"variant": "novo norm", "drug": "Novonorm", "count": 1, "reason": "common_words"}
 {"variant": "novo rapide", "drug": "Novorapid", "count": 1, "reason": "common_words"}
+{"variant": "npl haiti", "drug": "Nplate", "count": 1, "reason": "common_words"}
+{"variant": "npl it", "drug": "Nplate", "count": 1, "reason": "common_words"}
+{"variant": "ntl it", "drug": "Nplate", "count": 1, "reason": "common_words"}
 {"variant": "nu logique", "drug": "Nulojix", "count": 1, "reason": "common_words"}
+{"variant": "o ravir", "drug": "Oravir", "count": 1, "reason": "common_words"}
 {"variant": "o tesla", "drug": "Otezla", "count": 1, "reason": "common_words"}
 {"variant": "on dans cet tronc", "drug": "ondansétron", "count": 1, "reason": "common_words"}
+{"variant": "ondan sétron", "drug": "ondansétron", "count": 1, "reason": "common_words"}
 {"variant": "onde pas trop", "drug": "Onpattro", "count": 1, "reason": "common_words"}
+{"variant": "one patro", "drug": "Onpattro", "count": 1, "reason": "common_words"}
+{"variant": "onné grand", "drug": "Zonegran", "count": 1, "reason": "common_words"}
+{"variant": "onto z", "drug": "Ontozry", "count": 1, "reason": "common_words"}
+{"variant": "onto zer y", "drug": "Ontozry", "count": 1, "reason": "common_words"}
 {"variant": "opri méa", "drug": "Oprymea", "count": 1, "reason": "common_words"}
+{"variant": "ordi pa h", "drug": "Ordipha", "count": 1, "reason": "common_words"}
+{"variant": "ordi pcha", "drug": "Ordipha", "count": 1, "reason": "common_words"}
+{"variant": "ordi ph a", "drug": "Ordipha", "count": 1, "reason": "common_words"}
+{"variant": "oren cia", "drug": "Orencia", "count": 1, "reason": "common_words"}
+{"variant": "orla de yo", "drug": "Orladeyo", "count": 1, "reason": "common_words"}
+{"variant": "orval citée", "drug": "Rovalcyte", "count": 1, "reason": "common_words"}
+{"variant": "oxique duo", "drug": "Xigduo", "count": 1, "reason": "common_words"}
 {"variant": "oxy continent", "drug": "Oxycontin", "count": 1, "reason": "common_words"}
+{"variant": "parlo d'elle", "drug": "Parlodel", "count": 1, "reason": "common_words"}
 {"variant": "parmi la s'y prend", "drug": "milnacipran", "count": 1, "reason": "common_words"}
 {"variant": "pec fil gras-team", "drug": "pegfilgrastim", "count": 1, "reason": "common_words"}
+{"variant": "pec fil gras-tim", "drug": "pegfilgrastim", "count": 1, "reason": "common_words"}
 {"variant": "peint à vac", "drug": "Pentavac", "count": 1, "reason": "common_words"}
+{"variant": "pel meg", "drug": "Pelmeg", "count": 1, "reason": "common_words"}
+{"variant": "pin de lolol", "drug": "pindolol", "count": 1, "reason": "common_words"}
+{"variant": "pix saban", "drug": "apixaban", "count": 1, "reason": "common_words"}
+{"variant": "pmp c cart", "drug": "PumpCart", "count": 1, "reason": "common_words"}
+{"variant": "pmp ccarte", "drug": "PumpCart", "count": 1, "reason": "common_words"}
 {"variant": "pon steel", "drug": "Ponstyl", "count": 1, "reason": "common_words"}
 {"variant": "pon style", "drug": "Ponstyl", "count": 1, "reason": "common_words"}
 {"variant": "pont style", "drug": "Ponstyl", "count": 1, "reason": "common_words"}
+{"variant": "pont vory", "drug": "Ponvory", "count": 1, "reason": "common_words"}
+{"variant": "praz et pam", "drug": "prazépam", "count": 1, "reason": "common_words"}
 {"variant": "prx chiva", "drug": "Pyzchiva", "count": 1, "reason": "common_words"}
+{"variant": "prx shiva", "drug": "Pyzchiva", "count": 1, "reason": "common_words"}
+{"variant": "pump ccarte", "drug": "PumpCart", "count": 1, "reason": "common_words"}
+{"variant": "pur gon", "drug": "Puregon", "count": 1, "reason": "common_words"}
+{"variant": "pury viste", "drug": "Purivist", "count": 1, "reason": "common_words"}
 {"variant": "père en panel", "drug": "pérampanel", "count": 1, "reason": "common_words"}
+{"variant": "qui loga", "drug": "Quiloga", "count": 1, "reason": "common_words"}
+{"variant": "qui pos", "drug": "Kipos", "count": 1, "reason": "common_words"}
+{"variant": "ratio gras-tim", "drug": "Ratiograstim", "count": 1, "reason": "common_words"}
+{"variant": "rem cima", "drug": "Remsima", "count": 1, "reason": "common_words"}
 {"variant": "rif fluides", "drug": "Eryfluid", "count": 1, "reason": "common_words"}
 {"variant": "rif à terre", "drug": "Rifater", "count": 1, "reason": "common_words"}
 {"variant": "roc gel", "drug": "Rocgel", "count": 1, "reason": "common_words"}
+{"variant": "ry e ko", "drug": "Ryeqo", "count": 1, "reason": "common_words"}
+{"variant": "ry e kyo", "drug": "Ryeqo", "count": 1, "reason": "common_words"}
+{"variant": "ry uqo", "drug": "Ryeqo", "count": 1, "reason": "common_words"}
+{"variant": "ré plagale", "drug": "Replagal", "count": 1, "reason": "common_words"}
+{"variant": "s awis", "drug": "Sawis", "count": 1, "reason": "common_words"}
+{"variant": "sa lex", "drug": "Sotalex", "count": 1, "reason": "common_words"}
 {"variant": "saint jardin", "drug": "Synjardy", "count": 1, "reason": "common_words"}
+{"variant": "sand dose", "drug": "Sandoz", "count": 1, "reason": "common_words"}
 {"variant": "sans doses", "drug": "Sandoz", "count": 1, "reason": "common_words"}
 {"variant": "sc iowa", "drug": "Scyova", "count": 1, "reason": "common_words"}
+{"variant": "scr-ub", "drug": "scrub", "count": 1, "reason": "common_words"}
+{"variant": "sevre et dol", "drug": "Sevredol", "count": 1, "reason": "common_words"}
+{"variant": "shin-rix", "drug": "Shingrix", "count": 1, "reason": "common_words"}
+{"variant": "sima kevy", "drug": "Symkevi", "count": 1, "reason": "common_words"}
 {"variant": "sl ito", "drug": "Slenyto", "count": 1, "reason": "common_words"}
+{"variant": "sle naïto", "drug": "Slenyto", "count": 1, "reason": "common_words"}
+{"variant": "slm ito", "drug": "Slenyto", "count": 1, "reason": "common_words"}
+{"variant": "solu vites", "drug": "Soluvit", "count": 1, "reason": "common_words"}
 {"variant": "soma vert", "drug": "Somavert", "count": 1, "reason": "common_words"}
 {"variant": "son lanka", "drug": "Sunlenca", "count": 1, "reason": "common_words"}
+{"variant": "soon patro", "drug": "Onpattro", "count": 1, "reason": "common_words"}
+{"variant": "souda navire", "drug": "darunavir", "count": 1, "reason": "common_words"}
+{"variant": "soufflent l'odile", "drug": "Flodil", "count": 1, "reason": "common_words"}
+{"variant": "souléva dopâ", "drug": "lévodopa", "count": 1, "reason": "common_words"}
+{"variant": "soumet au table", "drug": "Metotab", "count": 1, "reason": "common_words"}
+{"variant": "sous-adule", "drug": "Zejula", "count": 1, "reason": "common_words"}
 {"variant": "sous-bossent ans", "drug": "bosentan", "count": 1, "reason": "common_words"}
+{"variant": "sous-tougé", "drug": "Toujeo", "count": 1, "reason": "common_words"}
+{"variant": "spy cra sell", "drug": "Sprycel", "count": 1, "reason": "common_words"}
+{"variant": "stage id", "drug": "Stagid", "count": 1, "reason": "common_words"}
+{"variant": "strain seek", "drug": "Strensiq", "count": 1, "reason": "common_words"}
+{"variant": "strain sik", "drug": "Strensiq", "count": 1, "reason": "common_words"}
+{"variant": "stylo nox", "drug": "Stilnox", "count": 1, "reason": "common_words"}
+{"variant": "subst farm", "drug": "Substipharm", "count": 1, "reason": "common_words"}
 {"variant": "suv rosa", "drug": "Suvreza", "count": 1, "reason": "common_words"}
+{"variant": "suv rusa", "drug": "Suvreza", "count": 1, "reason": "common_words"}
+{"variant": "t-verbe", "drug": "Tyverb", "count": 1, "reason": "common_words"}
+{"variant": "ta cigna", "drug": "Tasigna", "count": 1, "reason": "common_words"}
+{"variant": "tai rosol", "drug": "Thyrozol", "count": 1, "reason": "common_words"}
+{"variant": "tak géro", "drug": "Takhzyro", "count": 1, "reason": "common_words"}
 {"variant": "tar fixe", "drug": "Thyrofix", "count": 1, "reason": "common_words"}
 {"variant": "taï c sept", "drug": "Thaissept", "count": 1, "reason": "common_words"}
+{"variant": "taïse et sept", "drug": "Thaissept", "count": 1, "reason": "common_words"}
+{"variant": "tel misard temps", "drug": "telmisartan", "count": 1, "reason": "common_words"}
 {"variant": "tel mise à temps", "drug": "telmisartan", "count": 1, "reason": "common_words"}
+{"variant": "tel zir", "drug": "Telzir", "count": 1, "reason": "common_words"}
+{"variant": "tensio norm", "drug": "Tensionorme", "count": 1, "reason": "common_words"}
+{"variant": "terre imbue", "drug": "Trimbow", "count": 1, "reason": "common_words"}
 {"variant": "terre loméxin", "drug": "Terlomexin", "count": 1, "reason": "common_words"}
+{"variant": "terry bayo", "drug": "Terebyo", "count": 1, "reason": "common_words"}
 {"variant": "terry bio", "drug": "Terebyo", "count": 1, "reason": "common_words"}
+{"variant": "terré byo", "drug": "Terebyo", "count": 1, "reason": "common_words"}
+{"variant": "tet modis", "drug": "Tetmodis", "count": 1, "reason": "common_words"}
+{"variant": "tez spar", "drug": "Tezspire", "count": 1, "reason": "common_words"}
+{"variant": "theré bayo", "drug": "Terebyo", "count": 1, "reason": "common_words"}
+{"variant": "thym accor", "drug": "Timacor", "count": 1, "reason": "common_words"}
 {"variant": "thym accord", "drug": "Timacor", "count": 1, "reason": "common_words"}
+{"variant": "thème le zic", "drug": "Temgesic", "count": 1, "reason": "common_words"}
 {"variant": "ti aérosol", "drug": "Thyrozol", "count": 1, "reason": "common_words"}
+{"variant": "ti glut", "drug": "Teglutik", "count": 1, "reason": "common_words"}
 {"variant": "tic-tar", "drug": "Tixtar", "count": 1, "reason": "common_words"}
+{"variant": "tocco lion", "drug": "Tocolion", "count": 1, "reason": "common_words"}
 {"variant": "toco lion", "drug": "Tocolion", "count": 1, "reason": "common_words"}
 {"variant": "toco-lyon", "drug": "Tocolion", "count": 1, "reason": "common_words"}
+{"variant": "toin sta", "drug": "Twynsta", "count": 1, "reason": "common_words"}
+{"variant": "toko lion", "drug": "Tocolion", "count": 1, "reason": "common_words"}
 {"variant": "tout go", "drug": "Toujeo", "count": 1, "reason": "common_words"}
 {"variant": "toux go", "drug": "Toujeo", "count": 1, "reason": "common_words"}
 {"variant": "tran date", "drug": "Trandate", "count": 1, "reason": "common_words"}
+{"variant": "trolle au vol", "drug": "Trolovol", "count": 1, "reason": "common_words"}
+{"variant": "trolle vol", "drug": "Trolovol", "count": 1, "reason": "common_words"}
+{"variant": "trophy crème", "drug": "Trophicreme", "count": 1, "reason": "common_words"}
+{"variant": "tru vada", "drug": "truvada", "count": 1, "reason": "common_words"}
 {"variant": "très légig", "drug": "Trelegy", "count": 1, "reason": "common_words"}
-{"variant": "un cru", "drug": "Incruse", "count": 1, "reason": "common_words"}
+{"variant": "tss spir", "drug": "Tezspire", "count": 1, "reason": "common_words"}
+{"variant": "tu esi pax", "drug": "Tussipax", "count": 1, "reason": "common_words"}
+{"variant": "tu si danné", "drug": "Tussidane", "count": 1, "reason": "common_words"}
+{"variant": "turbine infine", "drug": "terbinafine", "count": 1, "reason": "common_words"}
+{"variant": "tusi dané", "drug": "Tussidane", "count": 1, "reason": "common_words"}
+{"variant": "tv cayé", "drug": "Tivicay", "count": 1, "reason": "common_words"}
+{"variant": "twi-cor", "drug": "Twicor", "count": 1, "reason": "common_words"}
+{"variant": "tête maudit", "drug": "Tetmodis", "count": 1, "reason": "common_words"}
+{"variant": "uef lima", "drug": "Yuflyma", "count": 1, "reason": "common_words"}
+{"variant": "un cruze", "drug": "Incruse", "count": 1, "reason": "common_words"}
+{"variant": "une lita", "drug": "Inlyta", "count": 1, "reason": "common_words"}
+{"variant": "ursa désoxycholique", "drug": "ursodésoxycholique", "count": 1, "reason": "common_words"}
 {"variant": "v caps", "drug": "Uvecaps", "count": 1, "reason": "common_words"}
 {"variant": "vaccin grippe-tétra", "drug": "Vaxigriptetra", "count": 1, "reason": "common_words"}
 {"variant": "vente à vie", "drug": "Ventavis", "count": 1, "reason": "common_words"}
+{"variant": "vis ried", "drug": "Viread", "count": 1, "reason": "common_words"}
+{"variant": "vo galène", "drug": "Vogalene", "count": 1, "reason": "common_words"}
+{"variant": "voc vie", "drug": "Vosevi", "count": 1, "reason": "common_words"}
+{"variant": "vogal ne", "drug": "Vogalene", "count": 1, "reason": "common_words"}
+{"variant": "volta nlp", "drug": "Voltarène", "count": 1, "reason": "common_words"}
+{"variant": "volta r nlp", "drug": "Voltarène", "count": 1, "reason": "common_words"}
 {"variant": "volta rennes", "drug": "Voltarène", "count": 1, "reason": "common_words"}
 {"variant": "volta règne", "drug": "Voltarène", "count": 1, "reason": "common_words"}
+{"variant": "von cento", "drug": "Voncento", "count": 1, "reason": "common_words"}
 {"variant": "vp arrivée", "drug": "Vpriv", "count": 1, "reason": "common_words"}
+{"variant": "vy nda kul", "drug": "Vyndaqel", "count": 1, "reason": "common_words"}
+{"variant": "vê de robe", "drug": "Vedrop", "count": 1, "reason": "common_words"}
+{"variant": "wii ouf l'éma", "drug": "Yuflyma", "count": 1, "reason": "common_words"}
 {"variant": "x-forge", "drug": "Exforge", "count": 1, "reason": "common_words"}
+{"variant": "xe levi à", "drug": "Xelevia", "count": 1, "reason": "common_words"}
+{"variant": "xe via", "drug": "Xelevia", "count": 1, "reason": "common_words"}
+{"variant": "xo sell aam", "drug": "Xolaam", "count": 1, "reason": "common_words"}
+{"variant": "xo spata", "drug": "Xospata", "count": 1, "reason": "common_words"}
 {"variant": "xy ale", "drug": "Xyzall", "count": 1, "reason": "common_words"}
+{"variant": "xy lo nac", "drug": "Xyllomac", "count": 1, "reason": "common_words"}
+{"variant": "zil-briz sq", "drug": "Zilbrysq", "count": 1, "reason": "common_words"}
+{"variant": "âge y gré à", "drug": "Hydrea", "count": 1, "reason": "common_words"}
+{"variant": "âme libra", "drug": "Hemlibra", "count": 1, "reason": "common_words"}
+{"variant": "âme lorre", "drug": "Amlor", "count": 1, "reason": "common_words"}
 {"variant": "éco-bec", "drug": "Ecobec", "count": 1, "reason": "common_words"}
+{"variant": "éludril périod", "drug": "Eludrilperio", "count": 1, "reason": "common_words"}
+{"variant": "éludril périot", "drug": "Eludrilperio", "count": 1, "reason": "common_words"}
 {"variant": "éto de laque", "drug": "étodolac", "count": 1, "reason": "common_words"}
 {"variant": "pré-nasal", "drug": "nasal", "count": 4, "reason": "contains_target"}
 {"variant": "polyéthylène-glycol", "drug": "polyéthylène", "count": 2, "reason": "contains_target"}
@@ -391,7 +843,6 @@
 {"variant": "seinerise", "drug": "Cinryze", "count": 4, "reason": "far"}
 {"variant": "théorphin", "drug": "Tiorfan", "count": 4, "reason": "far"}
 {"variant": "vircuflim", "drug": "Yuflyma", "count": 4, "reason": "far"}
-{"variant": "voisin là", "drug": "Wezenla", "count": 4, "reason": "far"}
 {"variant": "xelgee", "drug": "Xeljanz", "count": 4, "reason": "far"}
 {"variant": "zériède", "drug": "Viread", "count": 4, "reason": "far"}
 {"variant": "achibrec cuvia", "drug": "Hyqvia", "count": 3, "reason": "far"}
@@ -579,11 +1030,9 @@
 {"variant": "terre imbu", "drug": "Trimbow", "count": 2, "reason": "far"}
 {"variant": "tew keys", "drug": "Tukysa", "count": 2, "reason": "far"}
 {"variant": "tew kiss", "drug": "Tukysa", "count": 2, "reason": "far"}
-{"variant": "thienen", "drug": "Tyenne", "count": 2, "reason": "far"}
 {"variant": "thymol", "drug": "timolol", "count": 2, "reason": "far"}
 {"variant": "thyurphin", "drug": "Tiorfan", "count": 2, "reason": "far"}
 {"variant": "thème legique", "drug": "Temgesic", "count": 2, "reason": "far"}
-{"variant": "touché aux", "drug": "Toujeo", "count": 2, "reason": "far"}
 {"variant": "très légigigré", "drug": "Trelegy", "count": 2, "reason": "far"}
 {"variant": "tue cisanais", "drug": "Tussidane", "count": 2, "reason": "far"}
 {"variant": "un maqueur", "drug": "Amycor", "count": 2, "reason": "far"}
@@ -771,7 +1220,6 @@
 {"variant": "hachrymose", "drug": "Hyrimoz", "count": 1, "reason": "far"}
 {"variant": "harry keys", "drug": "Arikayce", "count": 1, "reason": "far"}
 {"variant": "hchigrimose", "drug": "Hyrimoz", "count": 1, "reason": "far"}
-{"variant": "heider", "drug": "Azyter", "count": 1, "reason": "far"}
 {"variant": "heitekund", "drug": "Hytacand", "count": 1, "reason": "far"}
 {"variant": "helligrectigobi", "drug": "Lytgobi", "count": 1, "reason": "far"}
 {"variant": "hespereiricacel", "drug": "Sprycel", "count": 1, "reason": "far"}
@@ -813,7 +1261,6 @@
 {"variant": "kaloublé ycpen", "drug": "Kwikpen", "count": 1, "reason": "far"}
 {"variant": "kaloublé ypen", "drug": "Kwikpen", "count": 1, "reason": "far"}
 {"variant": "kalublé ycpen", "drug": "Kwikpen", "count": 1, "reason": "far"}
-{"variant": "kazim", "drug": "Quasym", "count": 1, "reason": "far"}
 {"variant": "keazim", "drug": "Quasym", "count": 1, "reason": "far"}
 {"variant": "khetz dix", "drug": "Ketazed", "count": 1, "reason": "far"}
 {"variant": "ki crétri", "drug": "Kytril", "count": 1, "reason": "far"}
@@ -856,7 +1303,6 @@
 {"variant": "lohrun", "drug": "Oroken", "count": 1, "reason": "far"}
 {"variant": "lphazet", "drug": "Elfasette", "count": 1, "reason": "far"}
 {"variant": "lutac", "drug": "Rilutek", "count": 1, "reason": "far"}
-{"variant": "mandes", "drug": "Menthe", "count": 1, "reason": "far"}
 {"variant": "maubique", "drug": "Mobic", "count": 1, "reason": "far"}
 {"variant": "maïphenaks", "drug": "Myfenax", "count": 1, "reason": "far"}
 {"variant": "mentes", "drug": "Emend", "count": 1, "reason": "far"}
@@ -876,7 +1322,6 @@
 {"variant": "nous véhicules", "drug": "Nuwiq", "count": 1, "reason": "far"}
 {"variant": "nouveau viq", "drug": "Nuwiq", "count": 1, "reason": "far"}
 {"variant": "nouvelle iq", "drug": "Nuwiq", "count": 1, "reason": "far"}
-{"variant": "novik", "drug": "Nuwiq", "count": 1, "reason": "far"}
 {"variant": "nylmdau", "drug": "Nilemdo", "count": 1, "reason": "far"}
 {"variant": "nœudile", "drug": "Neuleptil", "count": 1, "reason": "far"}
 {"variant": "occycdu", "drug": "Xigduo", "count": 1, "reason": "far"}
@@ -1040,50 +1485,14 @@
 {"variant": "ziggliej", "drug": "Zydelig", "count": 1, "reason": "far"}
 {"variant": "zizea", "drug": "Onglyza", "count": 1, "reason": "far"}
 {"variant": "zofényl trente", "drug": "Zofenil", "count": 1, "reason": "far"}
-{"variant": "zygmunt", "drug": "Zymad", "count": 1, "reason": "far"}
 {"variant": "ésialaire", "drug": "Easyhaler", "count": 1, "reason": "far"}
 {"variant": "étimibais", "drug": "ézétimibe", "count": 1, "reason": "far"}
 {"variant": "éto laque", "drug": "étodolac", "count": 1, "reason": "far"}
 {"variant": "étrrols", "drug": "Ezetrol", "count": 1, "reason": "far"}
 {"variant": "îles briscu", "drug": "Zilbrysq", "count": 1, "reason": "far"}
-{"variant": "mente", "drug": "Menthe", "count": 21, "reason": "french_word"}
-{"variant": "messire", "drug": "Mecir", "count": 11, "reason": "french_word"}
-{"variant": "parier", "drug": "Pariet", "count": 11, "reason": "french_word"}
-{"variant": "topic", "drug": "topique", "count": 10, "reason": "french_word"}
-{"variant": "queens", "drug": "quinze", "count": 8, "reason": "french_word"}
-{"variant": "tienne", "drug": "Tyenne", "count": 8, "reason": "french_word"}
-{"variant": "défiant", "drug": "Efient", "count": 6, "reason": "french_word"}
-{"variant": "hydra", "drug": "Hydrea", "count": 6, "reason": "french_word"}
-{"variant": "franz", "drug": "France", "count": 5, "reason": "french_word"}
-{"variant": "repense", "drug": "repens", "count": 5, "reason": "french_word"}
-{"variant": "sparte", "drug": "aspart", "count": 5, "reason": "french_word"}
-{"variant": "brexit", "drug": "Brexin", "count": 4, "reason": "french_word"}
-{"variant": "chocolate", "drug": "chocolat", "count": 4, "reason": "french_word"}
-{"variant": "fable", "drug": "faible", "count": 4, "reason": "french_word"}
-{"variant": "mainte", "drug": "Menthe", "count": 4, "reason": "french_word"}
-{"variant": "parié", "drug": "Pariet", "count": 4, "reason": "french_word"}
 {"variant": "récup", "drug": "Requip", "count": 4, "reason": "french_word"}
-{"variant": "august", "drug": "Ogast", "count": 3, "reason": "french_word"}
-{"variant": "calcite", "drug": "Cacit", "count": 3, "reason": "french_word"}
-{"variant": "cheap", "drug": "Requip", "count": 3, "reason": "french_word"}
-{"variant": "ravir", "drug": "Oravir", "count": 3, "reason": "french_word"}
-{"variant": "alert", "drug": "Zalerg", "count": 2, "reason": "french_word"}
-{"variant": "attaquant", "drug": "Atacand", "count": 2, "reason": "french_word"}
-{"variant": "mante", "drug": "Menthe", "count": 2, "reason": "french_word"}
 {"variant": "bisou", "drug": "Bisoce", "count": 1, "reason": "french_word"}
-{"variant": "bisous", "drug": "Bisoce", "count": 1, "reason": "french_word"}
 {"variant": "bossant", "drug": "bosentan", "count": 1, "reason": "french_word"}
-{"variant": "crayons", "drug": "Créon", "count": 1, "reason": "french_word"}
-{"variant": "djihad", "drug": "Juluca", "count": 1, "reason": "french_word"}
-{"variant": "finley", "drug": "Finlee", "count": 1, "reason": "french_word"}
-{"variant": "fresh", "drug": "fraîche", "count": 1, "reason": "french_word"}
-{"variant": "infant", "drug": "enfants", "count": 1, "reason": "french_word"}
-{"variant": "innover", "drug": "Innovair", "count": 1, "reason": "french_word"}
-{"variant": "journey", "drug": "Gardasil", "count": 1, "reason": "french_word"}
-{"variant": "maintes", "drug": "Emend", "count": 1, "reason": "french_word"}
-{"variant": "myles", "drug": "Myrelez", "count": 1, "reason": "french_word"}
-{"variant": "program", "drug": "Prograf", "count": 1, "reason": "french_word"}
-{"variant": "synopsis", "drug": "Sunosi", "count": 1, "reason": "french_word"}
 {"variant": "formothérol", "drug": "formotérol", "count": 43, "reason": "imprecise"}
 {"variant": "cholestéramine", "drug": "colestyramine", "count": 28, "reason": "imprecise"}
 {"variant": "hémophilus", "drug": "haemophilus", "count": 27, "reason": "imprecise"}
@@ -1095,13 +1504,11 @@
 {"variant": "à la phénamide", "drug": "alafénamide", "count": 12, "reason": "imprecise"}
 {"variant": "aemophilus", "drug": "haemophilus", "count": 10, "reason": "imprecise"}
 {"variant": "mycardis", "drug": "Micardis", "count": 10, "reason": "imprecise"}
-{"variant": "à sparte", "drug": "aspart", "count": 10, "reason": "imprecise"}
 {"variant": "castine", "drug": "Kestin", "count": 9, "reason": "imprecise"}
 {"variant": "cyclovir", "drug": "aciclovir", "count": 8, "reason": "imprecise"}
 {"variant": "d'hyphtérie", "drug": "diphtérie", "count": 8, "reason": "imprecise"}
 {"variant": "eau vitrelle", "drug": "Ovitrelle", "count": 8, "reason": "imprecise"}
 {"variant": "la phénamide", "drug": "alafénamide", "count": 8, "reason": "imprecise"}
-{"variant": "relix", "drug": "Eurelix", "count": 8, "reason": "imprecise"}
 {"variant": "respreza", "drug": "Respreeza", "count": 8, "reason": "imprecise"}
 {"variant": "certicant", "drug": "Certican", "count": 7, "reason": "imprecise"}
 {"variant": "filgrastime", "drug": "filgrastim", "count": 7, "reason": "imprecise"}
@@ -1134,7 +1541,6 @@
 {"variant": "ténofovir-disoproxyl", "drug": "ténofovir", "count": 4, "reason": "imprecise"}
 {"variant": "acupant", "drug": "Acupan", "count": 3, "reason": "imprecise"}
 {"variant": "amtricitabine-ténofovir-alaphénamide", "drug": "ténofovir", "count": 3, "reason": "imprecise"}
-{"variant": "artan", "drug": "Artane", "count": 3, "reason": "imprecise"}
 {"variant": "asmeller", "drug": "Asmelor", "count": 3, "reason": "imprecise"}
 {"variant": "basaglar", "drug": "Abasaglar", "count": 3, "reason": "imprecise"}
 {"variant": "bemdrex", "drug": "Bemedrex", "count": 3, "reason": "imprecise"}
@@ -1148,7 +1554,6 @@
 {"variant": "d'iphtérie", "drug": "diphtérie", "count": 3, "reason": "imprecise"}
 {"variant": "elbrato", "drug": "Elebrato", "count": 3, "reason": "imprecise"}
 {"variant": "eulebrato", "drug": "Elebrato", "count": 3, "reason": "imprecise"}
-{"variant": "fence", "drug": "enfants", "count": 3, "reason": "imprecise"}
 {"variant": "flossée", "drug": "Oflocet", "count": 3, "reason": "imprecise"}
 {"variant": "gestrol", "drug": "mégestrol", "count": 3, "reason": "imprecise"}
 {"variant": "indocolir", "drug": "Indocollyre", "count": 3, "reason": "imprecise"}
@@ -1181,11 +1586,9 @@
 {"variant": "dexatopie à", "drug": "Dexatopia", "count": 2, "reason": "imprecise"}
 {"variant": "eferalgan", "drug": "Efferalganmed", "count": 2, "reason": "imprecise"}
 {"variant": "emulgell", "drug": "emulgel", "count": 2, "reason": "imprecise"}
-{"variant": "enfans", "drug": "enfants", "count": 2, "reason": "imprecise"}
 {"variant": "ezyhaler", "drug": "Easyhaler", "count": 2, "reason": "imprecise"}
 {"variant": "fance", "drug": "enfants", "count": 2, "reason": "imprecise"}
 {"variant": "fil gras team", "drug": "filgrastim", "count": 2, "reason": "imprecise"}
-{"variant": "flugel", "drug": "Fluogel", "count": 2, "reason": "imprecise"}
 {"variant": "givelarie", "drug": "Givlaari", "count": 2, "reason": "imprecise"}
 {"variant": "hydrochlorotia", "drug": "hydrochlorothiazide", "count": 2, "reason": "imprecise"}
 {"variant": "hydrogestérone", "drug": "dydrogestérone", "count": 2, "reason": "imprecise"}
@@ -1202,10 +1605,8 @@
 {"variant": "médecine naltrexone", "drug": "méthylnaltrexone", "count": 2, "reason": "imprecise"}
 {"variant": "nazine", "drug": "Xenazine", "count": 2, "reason": "imprecise"}
 {"variant": "prokiné", "drug": "Prokinyl", "count": 2, "reason": "imprecise"}
-{"variant": "pruvot", "drug": "Uzpruvo", "count": 2, "reason": "imprecise"}
 {"variant": "retarte", "drug": "retard", "count": 2, "reason": "imprecise"}
 {"variant": "secnidazol", "drug": "secnidazole", "count": 2, "reason": "imprecise"}
-{"variant": "sereno", "drug": "serenoa", "count": 2, "reason": "imprecise"}
 {"variant": "solumédrole", "drug": "Solumédrol", "count": 2, "reason": "imprecise"}
 {"variant": "souris perdal", "drug": "Risperdal", "count": 2, "reason": "imprecise"}
 {"variant": "souris perdale", "drug": "Risperdal", "count": 2, "reason": "imprecise"}
@@ -1216,7 +1617,6 @@
 {"variant": "stadrops", "drug": "Cystadrops", "count": 2, "reason": "imprecise"}
 {"variant": "stagies", "drug": "Stagid", "count": 2, "reason": "imprecise"}
 {"variant": "synacté", "drug": "Synacthène", "count": 2, "reason": "imprecise"}
-{"variant": "séréna", "drug": "serenoa", "count": 2, "reason": "imprecise"}
 {"variant": "tanganyil", "drug": "Tanganil", "count": 2, "reason": "imprecise"}
 {"variant": "tanganyl", "drug": "Tanganil", "count": 2, "reason": "imprecise"}
 {"variant": "tomato-local", "drug": "local", "count": 2, "reason": "imprecise"}
@@ -1248,7 +1648,6 @@
 {"variant": "cinerie", "drug": "Cinryze", "count": 1, "reason": "imprecise"}
 {"variant": "cinéris", "drug": "Cinryze", "count": 1, "reason": "imprecise"}
 {"variant": "citinib", "drug": "axitinib", "count": 1, "reason": "imprecise"}
-{"variant": "céréno", "drug": "serenoa", "count": 1, "reason": "imprecise"}
 {"variant": "céréno à", "drug": "serenoa", "count": 1, "reason": "imprecise"}
 {"variant": "d'abseux", "drug": "Firdapse", "count": 1, "reason": "imprecise"}
 {"variant": "d'hiphtérie", "drug": "diphtérie", "count": 1, "reason": "imprecise"}
@@ -1261,7 +1660,6 @@
 {"variant": "dépal", "drug": "Adepal", "count": 1, "reason": "imprecise"}
 {"variant": "eau flossée", "drug": "Oflocet", "count": 1, "reason": "imprecise"}
 {"variant": "eau vitrel", "drug": "Ovitrelle", "count": 1, "reason": "imprecise"}
-{"variant": "effie", "drug": "Efient", "count": 1, "reason": "imprecise"}
 {"variant": "elebratho", "drug": "Elebrato", "count": 1, "reason": "imprecise"}
 {"variant": "en désartant", "drug": "candésartan", "count": 1, "reason": "imprecise"}
 {"variant": "endocolir", "drug": "Indocollyre", "count": 1, "reason": "imprecise"}
@@ -1383,12 +1781,15 @@
 {"variant": "proteine", "drug": "Prothiaden", "count": 1, "reason": "other_term"}
 {"variant": "adulte", "drug": "adultes", "count": 223, "reason": "real_text"}
 {"variant": "cyclosporine", "drug": "ciclosporine", "count": 110, "reason": "real_text"}
+{"variant": "discus", "drug": "Diskus", "count": 98, "reason": "real_text"}
 {"variant": "nourrisson", "drug": "nourrissons", "count": 74, "reason": "real_text"}
 {"variant": "sanguines", "drug": "sanguine", "count": 54, "reason": "real_text"}
 {"variant": "diméthylfumarate", "drug": "diméthyl", "count": 52, "reason": "real_text"}
 {"variant": "influencé", "drug": "influenzae", "count": 51, "reason": "real_text"}
 {"variant": "antiseptique", "drug": "antiseptiques", "count": 45, "reason": "real_text"}
+{"variant": "aspar", "drug": "aspart", "count": 43, "reason": "real_text"}
 {"variant": "polyvalente", "drug": "polyvalentes", "count": 43, "reason": "real_text"}
+{"variant": "aldol", "drug": "Haldol", "count": 41, "reason": "real_text"}
 {"variant": "alpha-calcidol", "drug": "alfacalcidol", "count": 38, "reason": "real_text"}
 {"variant": "graines", "drug": "graine", "count": 38, "reason": "real_text"}
 {"variant": "hépatiques", "drug": "hépatique", "count": 35, "reason": "real_text"}
@@ -1398,6 +1799,7 @@
 {"variant": "oxybutinine", "drug": "oxybutynine", "count": 31, "reason": "real_text"}
 {"variant": "crayon", "drug": "Créon", "count": 28, "reason": "real_text"}
 {"variant": "syndrome", "drug": "Sintrom", "count": 28, "reason": "real_text"}
+{"variant": "témérite", "drug": "Temerit", "count": 27, "reason": "real_text"}
 {"variant": "flamazine", "drug": "Flammazine", "count": 25, "reason": "real_text"}
 {"variant": "locales", "drug": "local", "count": 25, "reason": "real_text"}
 {"variant": "protéines", "drug": "protéine", "count": 25, "reason": "real_text"}
@@ -1405,11 +1807,18 @@
 {"variant": "délamanide", "drug": "délamanid", "count": 24, "reason": "real_text"}
 {"variant": "urso-désoxycholique", "drug": "ursodésoxycholique", "count": 24, "reason": "real_text"}
 {"variant": "innovaire", "drug": "Innovair", "count": 23, "reason": "real_text"}
+{"variant": "épidiolex", "drug": "Epidyolex", "count": 23, "reason": "real_text"}
+{"variant": "infants", "drug": "enfants", "count": 21, "reason": "real_text"}
+{"variant": "mente", "drug": "Menthe", "count": 21, "reason": "real_text"}
 {"variant": "oxyconazole", "drug": "oxiconazole", "count": 21, "reason": "real_text"}
 {"variant": "écitalopram", "drug": "escitalopram", "count": 21, "reason": "real_text"}
+{"variant": "cyclos", "drug": "Siklos", "count": 20, "reason": "real_text"}
 {"variant": "nasale", "drug": "nasal", "count": 20, "reason": "real_text"}
 {"variant": "multi-enzyme", "drug": "multienzymes", "count": 19, "reason": "real_text"}
+{"variant": "mégas", "drug": "Mégace", "count": 19, "reason": "real_text"}
+{"variant": "séris", "drug": "Ceris", "count": 19, "reason": "real_text"}
 {"variant": "colique", "drug": "cholique", "count": 18, "reason": "real_text"}
+{"variant": "fort module", "drug": "Formodual", "count": 18, "reason": "real_text"}
 {"variant": "isétionate", "drug": "iséthionate", "count": 18, "reason": "real_text"}
 {"variant": "néphopam", "drug": "néfopam", "count": 18, "reason": "real_text"}
 {"variant": "actives", "drug": "active", "count": 17, "reason": "real_text"}
@@ -1417,8 +1826,10 @@
 {"variant": "méropénème", "drug": "méropénem", "count": 17, "reason": "real_text"}
 {"variant": "penfield", "drug": "Penfill", "count": 16, "reason": "real_text"}
 {"variant": "respiratoires", "drug": "respiratoire", "count": 16, "reason": "real_text"}
+{"variant": "siloxane", "drug": "Ciloxan", "count": 16, "reason": "real_text"}
 {"variant": "affinitor", "drug": "Afinitor", "count": 15, "reason": "real_text"}
 {"variant": "antidote", "drug": "antidotes", "count": 15, "reason": "real_text"}
+{"variant": "juluka", "drug": "Juluca", "count": 15, "reason": "real_text"}
 {"variant": "phosphoneurose", "drug": "Phosphoneuros", "count": 15, "reason": "real_text"}
 {"variant": "programme", "drug": "Provames", "count": 15, "reason": "real_text"}
 {"variant": "clotafact", "drug": "Clottafact", "count": 14, "reason": "real_text"}
@@ -1436,14 +1847,20 @@
 {"variant": "cingulaire", "drug": "Singulair", "count": 12, "reason": "real_text"}
 {"variant": "continue", "drug": "continu", "count": 11, "reason": "real_text"}
 {"variant": "intraveineuses", "drug": "intraveineuse", "count": 11, "reason": "real_text"}
+{"variant": "messire", "drug": "Mecir", "count": 11, "reason": "real_text"}
 {"variant": "méthyl", "drug": "méthyle", "count": 11, "reason": "real_text"}
+{"variant": "parier", "drug": "Pariet", "count": 11, "reason": "real_text"}
 {"variant": "artificielle", "drug": "artificielles", "count": 10, "reason": "real_text"}
 {"variant": "au corps", "drug": "Zocor", "count": 10, "reason": "real_text"}
 {"variant": "fluorures", "drug": "fluorure", "count": 10, "reason": "real_text"}
 {"variant": "hydrophiles", "drug": "hydrophile", "count": 10, "reason": "real_text"}
 {"variant": "profile", "drug": "profil", "count": 10, "reason": "real_text"}
 {"variant": "qui pose", "drug": "Kipos", "count": 10, "reason": "real_text"}
+{"variant": "repent", "drug": "repens", "count": 10, "reason": "real_text"}
 {"variant": "sodiques", "drug": "sodique", "count": 10, "reason": "real_text"}
+{"variant": "topic", "drug": "topique", "count": 10, "reason": "real_text"}
+{"variant": "à sparte", "drug": "aspart", "count": 10, "reason": "real_text"}
+{"variant": "daquin", "drug": "Dakin", "count": 9, "reason": "real_text"}
 {"variant": "hydrochlorotiazide", "drug": "hydrochlorothiazide", "count": 9, "reason": "real_text"}
 {"variant": "imipénème", "drug": "imipénem", "count": 9, "reason": "real_text"}
 {"variant": "l'arme", "drug": "larmes", "count": 9, "reason": "real_text"}
@@ -1453,13 +1870,20 @@
 {"variant": "agent", "drug": "agents", "count": 8, "reason": "real_text"}
 {"variant": "antitétaniques", "drug": "antitétanique", "count": 8, "reason": "real_text"}
 {"variant": "cholestyramine", "drug": "colestyramine", "count": 8, "reason": "real_text"}
+{"variant": "cosar", "drug": "Cozaar", "count": 8, "reason": "real_text"}
 {"variant": "fractionnée", "drug": "fractionne", "count": 8, "reason": "real_text"}
 {"variant": "hélicis", "drug": "Eliquis", "count": 8, "reason": "real_text"}
+{"variant": "l'escole", "drug": "Lescol", "count": 8, "reason": "real_text"}
 {"variant": "méronème", "drug": "Meronem", "count": 8, "reason": "real_text"}
+{"variant": "queens", "drug": "quinze", "count": 8, "reason": "real_text"}
+{"variant": "relix", "drug": "Eurelix", "count": 8, "reason": "real_text"}
 {"variant": "stabilisés", "drug": "stabilisé", "count": 8, "reason": "real_text"}
 {"variant": "thioguanine", "drug": "tioguanine", "count": 8, "reason": "real_text"}
+{"variant": "tienne", "drug": "Tyenne", "count": 8, "reason": "real_text"}
+{"variant": "un extra", "drug": "Zanextra", "count": 8, "reason": "real_text"}
 {"variant": "urinaires", "drug": "urinaire", "count": 8, "reason": "real_text"}
 {"variant": "activer", "drug": "active", "count": 7, "reason": "real_text"}
+{"variant": "attaquante", "drug": "Atacand", "count": 7, "reason": "real_text"}
 {"variant": "comment", "drug": "Menthe", "count": 7, "reason": "real_text"}
 {"variant": "immovane", "drug": "Imovane", "count": 7, "reason": "real_text"}
 {"variant": "locale", "drug": "local", "count": 7, "reason": "real_text"}
@@ -1470,9 +1894,12 @@
 {"variant": "acido", "drug": "acide", "count": 6, "reason": "real_text"}
 {"variant": "arbres", "drug": "arbre", "count": 6, "reason": "real_text"}
 {"variant": "bicarbonates", "drug": "bicarbonate", "count": 6, "reason": "real_text"}
+{"variant": "ces récords", "drug": "Serecor", "count": 6, "reason": "real_text"}
 {"variant": "clomiphène", "drug": "clomifène", "count": 6, "reason": "real_text"}
 {"variant": "dispersibles", "drug": "dispersible", "count": 6, "reason": "real_text"}
 {"variant": "durant", "drug": "Edurant", "count": 6, "reason": "real_text"}
+{"variant": "défiant", "drug": "Efient", "count": 6, "reason": "real_text"}
+{"variant": "hydra", "drug": "Hydrea", "count": 6, "reason": "real_text"}
 {"variant": "hydroxyvitamine", "drug": "vitamine", "count": 6, "reason": "real_text"}
 {"variant": "interférent", "drug": "interféron", "count": 6, "reason": "real_text"}
 {"variant": "low dose", "drug": "Lodoz", "count": 6, "reason": "real_text"}
@@ -1486,28 +1913,48 @@
 {"variant": "complexes", "drug": "complexe", "count": 5, "reason": "real_text"}
 {"variant": "darbepoétin", "drug": "darbepoetine", "count": 5, "reason": "real_text"}
 {"variant": "enfance", "drug": "enfants", "count": 5, "reason": "real_text"}
+{"variant": "franz", "drug": "France", "count": 5, "reason": "real_text"}
 {"variant": "hémicorps", "drug": "Amycor", "count": 5, "reason": "real_text"}
 {"variant": "hépatites", "drug": "hépatite", "count": 5, "reason": "real_text"}
 {"variant": "insulin", "drug": "insuline", "count": 5, "reason": "real_text"}
 {"variant": "paraffines", "drug": "paraffine", "count": 5, "reason": "real_text"}
 {"variant": "purifiée", "drug": "purifié", "count": 5, "reason": "real_text"}
+{"variant": "quipos", "drug": "Kipos", "count": 5, "reason": "real_text"}
+{"variant": "repense", "drug": "repens", "count": 5, "reason": "real_text"}
+{"variant": "roken", "drug": "Oroken", "count": 5, "reason": "real_text"}
+{"variant": "septème", "drug": "Septem", "count": 5, "reason": "real_text"}
 {"variant": "solaire", "drug": "Xolair", "count": 5, "reason": "real_text"}
+{"variant": "sparte", "drug": "aspart", "count": 5, "reason": "real_text"}
 {"variant": "tablès", "drug": "Tavlesse", "count": 5, "reason": "real_text"}
+{"variant": "trove", "drug": "Atrovent", "count": 5, "reason": "real_text"}
 {"variant": "zythromax", "drug": "Zithromax", "count": 5, "reason": "real_text"}
+{"variant": "avelane", "drug": "Havlane", "count": 4, "reason": "real_text"}
 {"variant": "benzatine-benzylpénicilline", "drug": "benzylpénicilline", "count": 4, "reason": "real_text"}
+{"variant": "brexit", "drug": "Brexin", "count": 4, "reason": "real_text"}
+{"variant": "carlone", "drug": "Kerlone", "count": 4, "reason": "real_text"}
+{"variant": "chocolate", "drug": "chocolat", "count": 4, "reason": "real_text"}
 {"variant": "chéno-désoxycholique", "drug": "chénodésoxycholique", "count": 4, "reason": "real_text"}
 {"variant": "condyle", "drug": "Condyline", "count": 4, "reason": "real_text"}
 {"variant": "durand", "drug": "Edurant", "count": 4, "reason": "real_text"}
 {"variant": "emla patch", "drug": "Emlapatch", "count": 4, "reason": "real_text"}
 {"variant": "et durant", "drug": "Edurant", "count": 4, "reason": "real_text"}
+{"variant": "fable", "drug": "faible", "count": 4, "reason": "real_text"}
 {"variant": "insulines", "drug": "insuline", "count": 4, "reason": "real_text"}
+{"variant": "kerlon", "drug": "Kerlone", "count": 4, "reason": "real_text"}
+{"variant": "l'oppresseur", "drug": "Lopressor", "count": 4, "reason": "real_text"}
 {"variant": "la ville", "drug": "Elavil", "count": 4, "reason": "real_text"}
 {"variant": "liquide", "drug": "Helikit", "count": 4, "reason": "real_text"}
 {"variant": "lorraine", "drug": "Oroken", "count": 4, "reason": "real_text"}
+{"variant": "mainte", "drug": "Menthe", "count": 4, "reason": "real_text"}
 {"variant": "maisons", "drug": "maison", "count": 4, "reason": "real_text"}
 {"variant": "méningocoques", "drug": "méningocoque", "count": 4, "reason": "real_text"}
+{"variant": "orcet", "drug": "Norset", "count": 4, "reason": "real_text"}
+{"variant": "parié", "drug": "Pariet", "count": 4, "reason": "real_text"}
+{"variant": "prosac", "drug": "Prozac", "count": 4, "reason": "real_text"}
 {"variant": "protac", "drug": "Protopic", "count": 4, "reason": "real_text"}
+{"variant": "protique", "drug": "Protopic", "count": 4, "reason": "real_text"}
 {"variant": "rapides", "drug": "rapide", "count": 4, "reason": "real_text"}
+{"variant": "récit uné", "drug": "Résitune", "count": 4, "reason": "real_text"}
 {"variant": "scène", "drug": "scanner", "count": 4, "reason": "real_text"}
 {"variant": "soutiennent", "drug": "Tyenne", "count": 4, "reason": "real_text"}
 {"variant": "stabilisée", "drug": "stabilisé", "count": 4, "reason": "real_text"}
@@ -1515,25 +1962,41 @@
 {"variant": "tantôt", "drug": "Atanto", "count": 4, "reason": "real_text"}
 {"variant": "topiques", "drug": "topique", "count": 4, "reason": "real_text"}
 {"variant": "tropine", "drug": "atropine", "count": 4, "reason": "real_text"}
+{"variant": "turfan", "drug": "Tiorfan", "count": 4, "reason": "real_text"}
 {"variant": "une pro", "drug": "Neupro", "count": 4, "reason": "real_text"}
 {"variant": "utilisé", "drug": "utilisés", "count": 4, "reason": "real_text"}
 {"variant": "vaxigrip tetra", "drug": "Vaxigriptetra", "count": 4, "reason": "real_text"}
+{"variant": "voisin là", "drug": "Wezenla", "count": 4, "reason": "real_text"}
 {"variant": "épargne", "drug": "héparine", "count": 4, "reason": "real_text"}
 {"variant": "activées", "drug": "active", "count": 3, "reason": "real_text"}
+{"variant": "adults", "drug": "adultes", "count": 3, "reason": "real_text"}
 {"variant": "akineto", "drug": "Akineton", "count": 3, "reason": "real_text"}
 {"variant": "antagonistes", "drug": "antagoniste", "count": 3, "reason": "real_text"}
+{"variant": "artan", "drug": "Artane", "count": 3, "reason": "real_text"}
 {"variant": "asparte", "drug": "aspart", "count": 3, "reason": "real_text"}
+{"variant": "audric", "drug": "Odrik", "count": 3, "reason": "real_text"}
+{"variant": "august", "drug": "Ogast", "count": 3, "reason": "real_text"}
+{"variant": "aurius", "drug": "Aerius", "count": 3, "reason": "real_text"}
 {"variant": "bêta estime", "drug": "bétahistine", "count": 3, "reason": "real_text"}
+{"variant": "calcite", "drug": "Cacit", "count": 3, "reason": "real_text"}
+{"variant": "castin", "drug": "Kestin", "count": 3, "reason": "real_text"}
+{"variant": "ces régimes", "drug": "Cérézyme", "count": 3, "reason": "real_text"}
+{"variant": "cheap", "drug": "Requip", "count": 3, "reason": "real_text"}
 {"variant": "de rang", "drug": "Edurant", "count": 3, "reason": "real_text"}
 {"variant": "en pique", "drug": "Ozempic", "count": 3, "reason": "real_text"}
 {"variant": "epiderme", "drug": "Mupiderm", "count": 3, "reason": "real_text"}
 {"variant": "est-il", "drug": "éthyle", "count": 3, "reason": "real_text"}
 {"variant": "evolution", "drug": "Evolugen", "count": 3, "reason": "real_text"}
+{"variant": "fence", "drug": "enfants", "count": 3, "reason": "real_text"}
+{"variant": "fountain", "drug": "Comtan", "count": 3, "reason": "real_text"}
 {"variant": "keystone", "drug": "Cayston", "count": 3, "reason": "real_text"}
+{"variant": "kinemax", "drug": "Quinimax", "count": 3, "reason": "real_text"}
 {"variant": "kinine", "drug": "quinine", "count": 3, "reason": "real_text"}
 {"variant": "lait unique", "drug": "Levunique", "count": 3, "reason": "real_text"}
 {"variant": "les lots", "drug": "Leeloo", "count": 3, "reason": "real_text"}
+{"variant": "lirica", "drug": "Lyrica", "count": 3, "reason": "real_text"}
 {"variant": "locaux", "drug": "local", "count": 3, "reason": "real_text"}
+{"variant": "menores", "drug": "Imenor", "count": 3, "reason": "real_text"}
 {"variant": "nourrissant", "drug": "nourrissons", "count": 3, "reason": "real_text"}
 {"variant": "orale", "drug": "Neoral", "count": 3, "reason": "real_text"}
 {"variant": "panel", "drug": "pérampanel", "count": 3, "reason": "real_text"}
@@ -1541,122 +2004,205 @@
 {"variant": "portal", "drug": "Importal", "count": 3, "reason": "real_text"}
 {"variant": "programmes", "drug": "Provames", "count": 3, "reason": "real_text"}
 {"variant": "pulmonaires", "drug": "pulmonaire", "count": 3, "reason": "real_text"}
+{"variant": "ravir", "drug": "Oravir", "count": 3, "reason": "real_text"}
 {"variant": "repas", "drug": "repens", "count": 3, "reason": "real_text"}
 {"variant": "requin", "drug": "Oroken", "count": 3, "reason": "real_text"}
+{"variant": "ses récords", "drug": "Serecor", "count": 3, "reason": "real_text"}
 {"variant": "solutions", "drug": "solution", "count": 3, "reason": "real_text"}
 {"variant": "spread", "drug": "spray", "count": 3, "reason": "real_text"}
 {"variant": "stabiliser", "drug": "stabilisé", "count": 3, "reason": "real_text"}
 {"variant": "trouve", "drug": "Atrovent", "count": 3, "reason": "real_text"}
 {"variant": "éthique", "drug": "éthyle", "count": 3, "reason": "real_text"}
 {"variant": "adult", "drug": "adultes", "count": 2, "reason": "real_text"}
+{"variant": "alert", "drug": "Zalerg", "count": 2, "reason": "real_text"}
 {"variant": "alphabet", "drug": "Elfasette", "count": 2, "reason": "real_text"}
 {"variant": "alère", "drug": "Zalerg", "count": 2, "reason": "real_text"}
+{"variant": "arius", "drug": "Aerius", "count": 2, "reason": "real_text"}
+{"variant": "assigna", "drug": "Tasigna", "count": 2, "reason": "real_text"}
+{"variant": "attaquant", "drug": "Atacand", "count": 2, "reason": "real_text"}
 {"variant": "audrick", "drug": "Odrik", "count": 2, "reason": "real_text"}
 {"variant": "augmentant", "drug": "Augmentin", "count": 2, "reason": "real_text"}
+{"variant": "bromures", "drug": "bromure", "count": 2, "reason": "real_text"}
 {"variant": "bénéfique", "drug": "Benefix", "count": 2, "reason": "real_text"}
 {"variant": "calories", "drug": "Kaleorid", "count": 2, "reason": "real_text"}
 {"variant": "cerne", "drug": "Cernevit", "count": 2, "reason": "real_text"}
 {"variant": "clara", "drug": "Zyclara", "count": 2, "reason": "real_text"}
+{"variant": "corps basal", "drug": "Corvasal", "count": 2, "reason": "real_text"}
 {"variant": "céfépim", "drug": "céfépime", "count": 2, "reason": "real_text"}
 {"variant": "d'habitat", "drug": "dabigatran", "count": 2, "reason": "real_text"}
 {"variant": "des zones de", "drug": "desonide", "count": 2, "reason": "real_text"}
+{"variant": "diluvienne", "drug": "Iluvien", "count": 2, "reason": "real_text"}
+{"variant": "défiante", "drug": "Efient", "count": 2, "reason": "real_text"}
 {"variant": "dépacking", "drug": "Dépakine", "count": 2, "reason": "real_text"}
 {"variant": "dérivé", "drug": "dérivés", "count": 2, "reason": "real_text"}
+{"variant": "enfans", "drug": "enfants", "count": 2, "reason": "real_text"}
 {"variant": "esprit", "drug": "Esbriet", "count": 2, "reason": "real_text"}
+{"variant": "esprit à", "drug": "Respreeza", "count": 2, "reason": "real_text"}
 {"variant": "fin lé", "drug": "Finlee", "count": 2, "reason": "real_text"}
+{"variant": "flugel", "drug": "Fluogel", "count": 2, "reason": "real_text"}
 {"variant": "fluide", "drug": "Siccafluid", "count": 2, "reason": "real_text"}
+{"variant": "haining", "drug": "Henning", "count": 2, "reason": "real_text"}
+{"variant": "hyder", "drug": "Azyter", "count": 2, "reason": "real_text"}
+{"variant": "hypertens", "drug": "Iperten", "count": 2, "reason": "real_text"}
+{"variant": "l'arcane", "drug": "Lercan", "count": 2, "reason": "real_text"}
 {"variant": "laudine", "drug": "Lodine", "count": 2, "reason": "real_text"}
 {"variant": "lilou", "drug": "Leeloo", "count": 2, "reason": "real_text"}
+{"variant": "mante", "drug": "Menthe", "count": 2, "reason": "real_text"}
+{"variant": "marelle", "drug": "Amarel", "count": 2, "reason": "real_text"}
 {"variant": "ment un", "drug": "Menthe", "count": 2, "reason": "real_text"}
 {"variant": "méthode", "drug": "Metotab", "count": 2, "reason": "real_text"}
 {"variant": "méthyl-aminolévulinate", "drug": "méthyle", "count": 2, "reason": "real_text"}
+{"variant": "nativel", "drug": "nativelle", "count": 2, "reason": "real_text"}
+{"variant": "nikitine", "drug": "Niquitin", "count": 2, "reason": "real_text"}
+{"variant": "pantol", "drug": "Eupantol", "count": 2, "reason": "real_text"}
 {"variant": "parasite", "drug": "acide", "count": 2, "reason": "real_text"}
 {"variant": "piscine", "drug": "rifampicine", "count": 2, "reason": "real_text"}
 {"variant": "priori", "drug": "Priorix", "count": 2, "reason": "real_text"}
+{"variant": "progestatives", "drug": "progestatifs", "count": 2, "reason": "real_text"}
 {"variant": "protéases", "drug": "protéase", "count": 2, "reason": "real_text"}
+{"variant": "pruvot", "drug": "Uzpruvo", "count": 2, "reason": "real_text"}
 {"variant": "reprend", "drug": "repens", "count": 2, "reason": "real_text"}
 {"variant": "récit", "drug": "Recivit", "count": 2, "reason": "real_text"}
+{"variant": "sereno", "drug": "serenoa", "count": 2, "reason": "real_text"}
+{"variant": "spira", "drug": "Spiriva", "count": 2, "reason": "real_text"}
 {"variant": "suivi", "drug": "Cuvitru", "count": 2, "reason": "real_text"}
 {"variant": "symphony", "drug": "Simponi", "count": 2, "reason": "real_text"}
+{"variant": "séréna", "drug": "serenoa", "count": 2, "reason": "real_text"}
+{"variant": "thienen", "drug": "Tyenne", "count": 2, "reason": "real_text"}
+{"variant": "tienen", "drug": "Tyenne", "count": 2, "reason": "real_text"}
 {"variant": "tomates", "drug": "stomato", "count": 2, "reason": "real_text"}
+{"variant": "touché aux", "drug": "Toujeo", "count": 2, "reason": "real_text"}
+{"variant": "tremec", "drug": "Triumeq", "count": 2, "reason": "real_text"}
 {"variant": "vista", "drug": "Evista", "count": 2, "reason": "real_text"}
 {"variant": "x-geva", "drug": "Xgeva", "count": 2, "reason": "real_text"}
 {"variant": "a pris des", "drug": "tiapride", "count": 1, "reason": "real_text"}
 {"variant": "a total", "drug": "Aotal", "count": 1, "reason": "real_text"}
 {"variant": "accorde", "drug": "accord", "count": 1, "reason": "real_text"}
+{"variant": "adulte sa", "drug": "adultes", "count": 1, "reason": "real_text"}
+{"variant": "air durant", "drug": "Edurant", "count": 1, "reason": "real_text"}
 {"variant": "alaire", "drug": "Zalerg", "count": 1, "reason": "real_text"}
+{"variant": "albeiro", "drug": "Albey", "count": 1, "reason": "real_text"}
 {"variant": "alerte", "drug": "Zalerg", "count": 1, "reason": "real_text"}
 {"variant": "aller", "drug": "Zalerg", "count": 1, "reason": "real_text"}
 {"variant": "alphacalcidol", "drug": "alfacalcidol", "count": 1, "reason": "real_text"}
+{"variant": "an à peine", "drug": "Anapen", "count": 1, "reason": "real_text"}
 {"variant": "arrivage", "drug": "Erivedge", "count": 1, "reason": "real_text"}
+{"variant": "artificial", "drug": "artificielles", "count": 1, "reason": "real_text"}
 {"variant": "artérielles", "drug": "artérielle", "count": 1, "reason": "real_text"}
 {"variant": "au gastro", "drug": "Ogastoro", "count": 1, "reason": "real_text"}
 {"variant": "aucune", "drug": "Oroken", "count": 1, "reason": "real_text"}
+{"variant": "augment", "drug": "Augmentin", "count": 1, "reason": "real_text"}
 {"variant": "auprès de", "drug": "Prezista", "count": 1, "reason": "real_text"}
 {"variant": "aussi d'", "drug": "Trosyd", "count": 1, "reason": "real_text"}
+{"variant": "baclou", "drug": "Baclocur", "count": 1, "reason": "real_text"}
+{"variant": "bigne", "drug": "Beagyne", "count": 1, "reason": "real_text"}
 {"variant": "biprofénid", "drug": "Profenid", "count": 1, "reason": "real_text"}
+{"variant": "bisous", "drug": "Bisoce", "count": 1, "reason": "real_text"}
 {"variant": "break", "drug": "Breakyl", "count": 1, "reason": "real_text"}
 {"variant": "caféinée", "drug": "caféine", "count": 1, "reason": "real_text"}
+{"variant": "caston", "drug": "Cayston", "count": 1, "reason": "real_text"}
 {"variant": "chlorures", "drug": "chlorure", "count": 1, "reason": "real_text"}
 {"variant": "christophe", "drug": "Cristers", "count": 1, "reason": "real_text"}
 {"variant": "christopher", "drug": "Cristers", "count": 1, "reason": "real_text"}
 {"variant": "claire", "drug": "Clairyg", "count": 1, "reason": "real_text"}
+{"variant": "clymène", "drug": "Climene", "count": 1, "reason": "real_text"}
 {"variant": "comme temps", "drug": "Comtan", "count": 1, "reason": "real_text"}
+{"variant": "convivir", "drug": "Combivir", "count": 1, "reason": "real_text"}
 {"variant": "corps", "drug": "Rhinocort", "count": 1, "reason": "real_text"}
+{"variant": "crayons", "drug": "Créon", "count": 1, "reason": "real_text"}
+{"variant": "cuban", "drug": "Kuvan", "count": 1, "reason": "real_text"}
 {"variant": "céréna", "drug": "serenoa", "count": 1, "reason": "real_text"}
+{"variant": "céréno", "drug": "serenoa", "count": 1, "reason": "real_text"}
 {"variant": "darbépoétine-alpha", "drug": "darbepoetine", "count": 1, "reason": "real_text"}
 {"variant": "de faits", "drug": "Odefsey", "count": 1, "reason": "real_text"}
 {"variant": "debris d'", "drug": "Debridat", "count": 1, "reason": "real_text"}
+{"variant": "deux brides", "drug": "Debridat", "count": 1, "reason": "real_text"}
 {"variant": "dipper", "drug": "Dipiperon", "count": 1, "reason": "real_text"}
+{"variant": "djihad", "drug": "Juluca", "count": 1, "reason": "real_text"}
 {"variant": "dépendances", "drug": "dépendance", "count": 1, "reason": "real_text"}
+{"variant": "effie", "drug": "Efient", "count": 1, "reason": "real_text"}
 {"variant": "en pic", "drug": "Ozempic", "count": 1, "reason": "real_text"}
 {"variant": "enfin", "drug": "enfants", "count": 1, "reason": "real_text"}
 {"variant": "estrogènes", "drug": "estrogène", "count": 1, "reason": "real_text"}
+{"variant": "et la ville", "drug": "Elavil", "count": 1, "reason": "real_text"}
+{"variant": "et tard", "drug": "retard", "count": 1, "reason": "real_text"}
 {"variant": "famille", "drug": "Avamys", "count": 1, "reason": "real_text"}
+{"variant": "finley", "drug": "Finlee", "count": 1, "reason": "real_text"}
+{"variant": "fresh", "drug": "fraîche", "count": 1, "reason": "real_text"}
 {"variant": "fuseau", "drug": "Fuzeon", "count": 1, "reason": "real_text"}
+{"variant": "gamard", "drug": "Gammagard", "count": 1, "reason": "real_text"}
+{"variant": "heider", "drug": "Azyter", "count": 1, "reason": "real_text"}
 {"variant": "hépathique", "drug": "hépatique", "count": 1, "reason": "real_text"}
 {"variant": "important", "drug": "Importal", "count": 1, "reason": "real_text"}
 {"variant": "inactivée", "drug": "inactivé", "count": 1, "reason": "real_text"}
+{"variant": "infant", "drug": "enfants", "count": 1, "reason": "real_text"}
 {"variant": "injectes", "drug": "Imiject", "count": 1, "reason": "real_text"}
+{"variant": "innover", "drug": "Innovair", "count": 1, "reason": "real_text"}
 {"variant": "insecte", "drug": "insectes", "count": 1, "reason": "real_text"}
+{"variant": "journey", "drug": "Gardasil", "count": 1, "reason": "real_text"}
+{"variant": "kazim", "drug": "Quasym", "count": 1, "reason": "real_text"}
 {"variant": "knoll", "drug": "Secnol", "count": 1, "reason": "real_text"}
 {"variant": "l'iléo", "drug": "Leeloo", "count": 1, "reason": "real_text"}
+{"variant": "l'oranie", "drug": "Loramyc", "count": 1, "reason": "real_text"}
+{"variant": "la paris", "drug": "olaparib", "count": 1, "reason": "real_text"}
 {"variant": "larme", "drug": "larmes", "count": 1, "reason": "real_text"}
 {"variant": "lehmann", "drug": "Emend", "count": 1, "reason": "real_text"}
+{"variant": "licencia", "drug": "Lysanxia", "count": 1, "reason": "real_text"}
 {"variant": "lipases", "drug": "lipase", "count": 1, "reason": "real_text"}
 {"variant": "lipophiles", "drug": "lipophile", "count": 1, "reason": "real_text"}
 {"variant": "locus", "drug": "Leeloo", "count": 1, "reason": "real_text"}
 {"variant": "lumière", "drug": "Humira", "count": 1, "reason": "real_text"}
+{"variant": "maintes", "drug": "Emend", "count": 1, "reason": "real_text"}
+{"variant": "mande", "drug": "Menthe", "count": 1, "reason": "real_text"}
+{"variant": "mandes", "drug": "Menthe", "count": 1, "reason": "real_text"}
 {"variant": "mende", "drug": "Menthe", "count": 1, "reason": "real_text"}
 {"variant": "ment de", "drug": "Menthe", "count": 1, "reason": "real_text"}
 {"variant": "milieu", "drug": "Myleran", "count": 1, "reason": "real_text"}
+{"variant": "minique", "drug": "miniquick", "count": 1, "reason": "real_text"}
+{"variant": "myles", "drug": "Myrelez", "count": 1, "reason": "real_text"}
+{"variant": "méder", "drug": "Médrol", "count": 1, "reason": "real_text"}
 {"variant": "neuro", "drug": "Anoro", "count": 1, "reason": "real_text"}
 {"variant": "normal col", "drug": "Normacol", "count": 1, "reason": "real_text"}
+{"variant": "novik", "drug": "Nuwiq", "count": 1, "reason": "real_text"}
+{"variant": "ocale", "drug": "Orocal", "count": 1, "reason": "real_text"}
 {"variant": "patient", "drug": "Physiotens", "count": 1, "reason": "real_text"}
 {"variant": "pegasus", "drug": "Pegasys", "count": 1, "reason": "real_text"}
 {"variant": "poids", "drug": "Wakix", "count": 1, "reason": "real_text"}
 {"variant": "primal", "drug": "Primalan", "count": 1, "reason": "real_text"}
+{"variant": "program", "drug": "Prograf", "count": 1, "reason": "real_text"}
 {"variant": "propanolol", "drug": "propranolol", "count": 1, "reason": "real_text"}
+{"variant": "quince", "drug": "quinze", "count": 1, "reason": "real_text"}
+{"variant": "racon", "drug": "Raxone", "count": 1, "reason": "real_text"}
+{"variant": "raler", "drug": "Oralair", "count": 1, "reason": "real_text"}
 {"variant": "requête", "drug": "Oroken", "count": 1, "reason": "real_text"}
 {"variant": "resolvant", "drug": "Ursolvan", "count": 1, "reason": "real_text"}
 {"variant": "récidive", "drug": "Recivit", "count": 1, "reason": "real_text"}
 {"variant": "salaire", "drug": "Zalerg", "count": 1, "reason": "real_text"}
 {"variant": "scholler", "drug": "Xolair", "count": 1, "reason": "real_text"}
 {"variant": "sedan", "drug": "Ucedane", "count": 1, "reason": "real_text"}
+{"variant": "sento", "drug": "Slenyto", "count": 1, "reason": "real_text"}
 {"variant": "sequestrant", "drug": "Questran", "count": 1, "reason": "real_text"}
+{"variant": "serena à", "drug": "serenoa", "count": 1, "reason": "real_text"}
 {"variant": "sous-antidote", "drug": "antidotes", "count": 1, "reason": "real_text"}
 {"variant": "sous-estimée", "drug": "Estima", "count": 1, "reason": "real_text"}
+{"variant": "strength", "drug": "Strensiq", "count": 1, "reason": "real_text"}
 {"variant": "sucrée", "drug": "sucre", "count": 1, "reason": "real_text"}
+{"variant": "synopsis", "drug": "Sunosi", "count": 1, "reason": "real_text"}
 {"variant": "système", "drug": "Istendo", "count": 1, "reason": "real_text"}
 {"variant": "systémiques", "drug": "systémique", "count": 1, "reason": "real_text"}
 {"variant": "tablette", "drug": "Tavlesse", "count": 1, "reason": "real_text"}
 {"variant": "tesla", "drug": "Otezla", "count": 1, "reason": "real_text"}
 {"variant": "thymine", "drug": "thiamine", "count": 1, "reason": "real_text"}
+{"variant": "tilde", "drug": "Tildiem", "count": 1, "reason": "real_text"}
 {"variant": "toujours", "drug": "Toujeo", "count": 1, "reason": "real_text"}
 {"variant": "trouvant", "drug": "Atrovent", "count": 1, "reason": "real_text"}
+{"variant": "un cru", "drug": "Incruse", "count": 1, "reason": "real_text"}
 {"variant": "vaccin grippe", "drug": "Vaxigrip", "count": 1, "reason": "real_text"}
 {"variant": "varus", "drug": "Divarius", "count": 1, "reason": "real_text"}
+{"variant": "velletri", "drug": "Veletri", "count": 1, "reason": "real_text"}
+{"variant": "versol", "drug": "ioversol", "count": 1, "reason": "real_text"}
 {"variant": "vitamines", "drug": "vitamine", "count": 1, "reason": "real_text"}
+{"variant": "zygmunt", "drug": "Zymad", "count": 1, "reason": "real_text"}
 {"variant": "éthyl", "drug": "éthyle", "count": 1, "reason": "real_text"}
 {"variant": "évoluè", "drug": "Evolugen", "count": 1, "reason": "real_text"}
 {"variant": "t9", "drug": "tenof", "count": 58, "reason": "short"}

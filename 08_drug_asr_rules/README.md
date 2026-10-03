@@ -52,18 +52,20 @@ TEXTS="voxpopuli-fr=local/voxpopuli-ignore_backups/fr-validation.txt voxpopuli-e
 
 Results (test drug clips: WER, then clips better / worse; corpora: texts the rules change, any change is an overcorrection):
 
-| rules | rules count | UltiMed | ultra fp32 | ultra int8 | ultra w4a8 | correct labels changed (all splits) | VoxPopuli fr | VoxPopuli en |
-|---|---|---|---|---|---|---|---|---|
-| none | 0 | 3.69 % | 10.79 % | 11.00 % | 11.59 % | | | |
-| previous (train+val, R4) | 13,626 | 2.63 % (584 / 0) | 9.12 % (811 / 0) | 9.35 % (802 / 0) | 9.96 % (795 / 0) | 40 of 602,813 | 6 of 1,662 | 20 of 1,695 |
-| previous (all splits, before the elision fix) | 14,377 | 2.04 % (864 / 0) | 8.28 % (1152 / 0) | 8.43 % (1149 / 0) | 9.04 % (1156 / 0) | 0 of 602,813 | 0 of 1,662 | 5 of 1,695 |
-| committed (all splits, elision-aware) | 14,377 | 1.86 % (957 / 0) | 8.03 % (1259 / 0) | 8.19 % (1257 / 0) | 8.81 % (1261 / 0) | 0 of 602,813 | 0 of 1,662 | 5 of 1,695 |
+| rules | rules count | UltiMed | ultra fp32 | ultra int8 | ultra w4a8 | correct labels changed (all splits) | VoxPopuli fr | VoxPopuli en | fr news (held out) | fr Wikipedia (guard) | en Wikipedia |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| none | 0 | 3.69 % | 10.79 % | 11.00 % | 11.59 % | | | | | | |
+| previous (train+val, R4) | 13,626 | 2.63 % (584 / 0) | 9.12 % (811 / 0) | 9.35 % (802 / 0) | 9.96 % (795 / 0) | 40 of 602,813 | 6 of 1,662 | 20 of 1,695 | | | |
+| previous (all splits, before the elision fix) | 14,377 | 2.04 % (864 / 0) | 8.28 % (1152 / 0) | 8.43 % (1149 / 0) | 9.04 % (1156 / 0) | 0 of 602,813 | 0 of 1,662 | 5 of 1,695 | | | |
+| previous (all splits, elision-aware) | 14,377 | 1.86 % (957 / 0) | 8.03 % (1259 / 0) | 8.19 % (1257 / 0) | 8.81 % (1261 / 0) | 0 of 602,813 | 0 of 1,662 | 5 of 1,695 | 14 of 100,000 | 242 of 1,000,000 | 4,935 of 1,000,000 |
+| committed (all splits, elision-aware, Wikipedia guard) | 13,831 | 1.91 % (939 / 0) | 8.12 % (1230 / 0) | 8.28 % (1226 / 0) | 8.92 % (1226 / 0) | 0 of 602,813 | 0 of 1,662 | 0 of 1,695 | 1 of 100,000 | 0 of 1,000,000 | 756 of 1,000,000 |
 
-- The 5 English VoxPopuli changes (`artificial` -> `artificielles` x3, `strength` -> `Strensiq`, `Cuban` -> `Kuvan`) are expected: the rules are meant for French output only, which is how the benchmarks apply them.
-- On boosted UltiMed browser transcripts, test_drugs goes 3.56 % (no rules) -> 2.70 % (R4) -> 2.32 % (previous) -> 2.19 % (committed) with the fp32 build, and 3.56 % -> 2.34 % (previous) -> 2.21 % (committed) with int8; FLEURS fr is unchanged and FLEURS en moves by at most 0.05 WER. Over the 48 benchmark cell and set pairs re-scored (`compare-rulesets.sh`), the committed rules beat the previous ones on 19 and lose on none.
+- The committed build adds French Wikipedia as correct text (2026-10-03, with Claude Code): the 1M-sentence [Leipzig](https://wortschatz.uni-leipzig.de/en/download) `fra_wikipedia_2021_1M` file goes to 02 as an extra `--labels` (a `.txt` file counts one sentence per line; `GUARDS` in the ultra repo's `build-rules.sh`), so a variant that occurs in it is rejected like one found in a corpus label. Leipzig's `fra_news_2023_100K` stays held out to measure what the guard misses (1 sentence left: `l’attaquante` -> `l’Atacand`). Cost: 546 fewer rules and about +0.05 WER on test_drugs (boosted UltiMed int8 2.21 % -> 2.26 %); FLEURS en goes back to its no-rules WER. The same build fixed the tokenizer, which split `l’antivirus` (typographic apostrophe) differently from `l'antivirus`, so a correct text spelled with `’` never blocked a variant spelled with `'`.
+- The 5 English VoxPopuli changes of the previous builds (`artificial` -> `artificielles` x3, `strength` -> `Strensiq`, `Cuban` -> `Kuvan`) are expected: the rules are meant for French output only, which is how the benchmarks apply them.
+- On boosted UltiMed browser transcripts, test_drugs goes 3.56 % (no rules) -> 2.70 % (R4) -> 2.32 % (before the elision fix) -> 2.19 % (elision-aware) -> 2.24 % (committed, Wikipedia guard) with the fp32 build, and 3.56 % -> 2.34 % -> 2.21 % -> 2.26 % with int8; FLEURS fr is unchanged and FLEURS en moves by at most 0.05 WER. Over the 48 benchmark cell and set pairs re-scored (`compare-rulesets.sh`), the elision fix beat the rules before it on 19 and lost on none; the Wikipedia guard then wins 6 (FLEURS en, back to its no-rules WER) and loses 6 (test_drugs, +0.02 to +0.09).
 - The committed build fixes the rule start bound for elided words (2026-10-02, with Claude Code). A pattern used to refuse to start right after an apostrophe, so `12 semaines d'aménorée`, `L’aménorée` or `jusqu'aménorée` were never fixed; it now starts after a French elision (`d' l' n' j' m' t' s' c' qu'`) and still not inside a word like `aujourd'hui`. Same rule count, more matches: the gain is the row above.
 - Two 02 fixes came with this build. Words are keyed with hyphens split, like `variant_pattern` matches them, so `sous antidote` in a label now blocks the `sous-antidote` variant (`real_text`; before, it rewrote the label). A one-word variant that is a common French word (`zipf_frequency >= --max-word-zipf`, default 2.5, e.g. `tienne`) is rejected as `french_word`: such words never appeared in a medical label, but VoxPopuli caught them.
-- Rejected (in `drug_fix_rules.rejected.jsonl`): far 706, short 525, common_words 317, real_text 278, imprecise 273, french_word 38, other_term 24, ambiguous 22, contains_target 3.
+- Rejected (in `drug_fix_rules.rejected.jsonl`): common_words 769, far 698, short 525, real_text 426, imprecise 262, other_term 24, ambiguous 22, contains_target 3, french_word 3. Wikipedia moves many rejections to `real_text` and `common_words` (one-off variants made of words Wikipedia uses), which is why `french_word` falls from 38 to 3.
 
 ### Earlier train+val build (R4), held out
 
