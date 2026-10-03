@@ -409,9 +409,24 @@ def compile_rules(rules: list[dict]):
 
 
 def _read_texts(path: Path, field: str):
+    """Yield `field` of each JSONL row, or each non-empty line of a plain `.txt` file (one sentence per line).
+
+    >>> import tempfile, os
+    >>> d = tempfile.mkdtemp()
+    >>> _ = Path(d, "w.txt").write_text("L'abbé est venu.\\n\\ns'il vient\\n", encoding="utf-8")
+    >>> list(_read_texts(Path(d, "w.txt"), "text"))
+    ["L'abbé est venu.", "s'il vient"]
+    >>> _ = Path(d, "m.jsonl").write_text('{"text": "a"}\\n', encoding="utf-8")
+    >>> list(_read_texts(Path(d, "m.jsonl"), "text"))
+    ['a']
+    """
     with path.open(encoding="utf-8") as f:
         for line in f:
-            yield json.loads(line)[field]
+            if path.suffix == ".txt":
+                if line.strip():
+                    yield line.rstrip("\n")
+            else:
+                yield json.loads(line)[field]
 
 
 @click.command()
@@ -420,7 +435,8 @@ def _read_texts(path: Path, field: str):
               help="01 reports, one per model whose HYPS are given (repeatable, merged with "
                    "merge_reports). Default: 08_drug_asr_rules/drug_asr_errors.json")
 @click.option("--labels", "labels_paths", multiple=True, type=click.Path(exists=True, path_type=Path),
-              help="Manifests whose `text` counts as correct text (repeatable). "
+              help="Manifests whose `text` counts as correct text, or plain .txt files of one correct sentence "
+                   "per line, e.g. Wikipedia sentences (repeatable). "
                    "Default: 99_hf_release/data/NeMO_files/full.jsonl")
 @click.option("--out", default=str(DEFAULT_OUT), type=click.Path(path_type=Path),
               show_default="08_drug_asr_rules/drug_fix_rules.jsonl",
