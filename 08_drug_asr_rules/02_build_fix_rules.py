@@ -94,6 +94,36 @@ _START = (rf"(?<![{_WORD}-])"
           rf"(?:(?<!['’])|(?<=(?<![{_WORD}])[dlnjmtsc]['’])|(?<=qu['’]))")
 
 
+# Titles written before a person's name. A rule whose variant is also a French name (--names) gets one
+# negative lookbehind per title, each fixed width (Python) and with its own left word bound (so "calcium. X"
+# is not read as "M. X"): the surname stays after a title, the rule still fires everywhere else.
+_TITLES = ("docteur", "docteure", "dr", "dr.", "pr", "pr.", "professeur", "professeure",
+           "monsieur", "m.", "madame", "mme", "mademoiselle", "mlle")
+_AFTER_TITLE = "".join(rf"(?<!(?<![{_WORD}]){re.escape(t)} )" for t in _TITLES)
+
+
+def guard_names(rules: list[dict], names: set[str]) -> int:
+    """Keep the rules whose variant is a name (``fold``-ed, in ``names``) from firing right after a title.
+
+    The pattern gets the ``_AFTER_TITLE`` lookbehinds and the rule ``"name": true``; returns how many.
+
+    >>> rules = [{"variant": v, "pattern": variant_pattern(v), "replacement": t} for v, t in
+    ...          [("mirat", "Humira"), ("myrtazapine", "mirtazapine")]]
+    >>> guard_names(rules, {"mirat", "dupont"}), [r.get("name") for r in rules]
+    (1, [True, None])
+    >>> [apply_rules(t, rules) for t in ("le docteur Mirat", "Mme Mirat", "Dr. Mirat", "M. Mirat est venu")]
+    ['le docteur Mirat', 'Mme Mirat', 'Dr. Mirat', 'M. Mirat est venu']
+    >>> [apply_rules(t, rules) for t in ("sous mirat depuis mai", "Mirat 40 mg", "du calcium. Mirat le soir")]
+    ['sous Humira depuis mai', 'Humira 40 mg', 'du calcium. Humira le soir']
+    """
+    n = 0
+    for r in rules:
+        if fold(r["variant"]).strip() in names:
+            r["pattern"], r["name"] = _AFTER_TITLE + r["pattern"], True
+            n += 1
+    return n
+
+
 def variant_pattern(variant: str) -> str:
     """Regex matching ``variant`` as whole words, case- and accent-insensitive.
 
@@ -458,10 +488,14 @@ def _read_texts(path: Path, field: str):
               help="a one-word variant at least this frequent in French (wordfreq Zipf scale, 2.5 = "
                    "about 1 per 3 million words) is real text: drops tienne -> Tyenne and "
                    "Brexit -> Brexin, which changed VoxPopuli fr references, but keeps discus -> Diskus")
+@click.option("--names", "names_paths", multiple=True, type=click.Path(exists=True, path_type=Path),
+              help="Plain text files of French names, one per line (e.g. INSEE surnames and first names): "
+                   "a rule whose variant is a name does not fire right after a title (docteur, M., Mme...).")
 @extract.lexicon_options
 def main(hyps: tuple[Path, ...], errors_paths: tuple[Path, ...], labels_paths: tuple[Path, ...], out: Path, min_len: int,
          min_count: int, min_share: float, min_precision: float, min_ratio: float,
-         min_count_words: int, max_word_zipf: float, lexicons: tuple[Path, ...], max_term_zipf: float) -> None:
+         min_count_words: int, max_word_zipf: float, names_paths: tuple[Path, ...], lexicons: tuple[Path, ...],
+         max_term_zipf: float) -> None:
     """Write the ordered drug fix rules."""
     report = merge_reports(json.loads(p.read_text(encoding="utf-8")) for p in errors_paths or (DEFAULT_ERRORS,))
     labels_paths = labels_paths or (DEFAULT_LABELS,)
@@ -471,6 +505,9 @@ def main(hyps: tuple[Path, ...], errors_paths: tuple[Path, ...], labels_paths: t
                                   max_word_zipf)
     logger.info(f"{len(rules)} rules covering {sum(r['count'] for r in rules)} errors; rejected "
                 f"{dict(Counter(r['reason'] for r in rejected))}")
+    if names_paths:
+        names = {fold(t).strip() for p in names_paths for t in _read_texts(p, "text")}
+        logger.info(f"{guard_names(rules, names)} rules are also French names: kept, but not after a title")
     rejected_out = out.with_suffix(".rejected.jsonl")
     for path, rows in ((out, rules), (rejected_out, rejected)):
         path.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
