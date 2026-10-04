@@ -113,6 +113,18 @@ On the boosted UltiMed int8 browser transcripts the committed rules bring test_d
 - On the UltiMed test_dictionary transcripts the rules also fix 50 clips (WER 2.82 % -> 2.79 %) and worsen none.
 - Before `contains_target`, 3 test clips got worse (`anti-TNF-alpha` -> `alpha`).
 
+## Merged rules (`03_merge_rules.py`, 2026-10-04)
+
+02 writes one rule per variant. `03_merge_rules.py` then folds the rules that write the same replacement (and share the name guard) into one rule, `"variants": [...]` with one alternation pattern, at the place of the group's first member. Merged and one-by-one rules are not always equivalent (a short member now fires before the rules that sat between it and the first member), so the script checks the merged file on every text it is given and splits back any group that changes one, until every text comes out exactly as before. The committed files are merged, checked on all hyps (drug and term runs, all models), every label of all splits plus PARROT, French and English Wikipedia (1M sentences each) and the held-out French news: 3,745,969 texts, 0 differences.
+
+| file | rules before | rules after | groups split back | size |
+|---|---|---|---|---|
+| `drug_fix_rules.jsonl` | 13,831 | 3,428 | 10 | 6.2 MB -> 2.0 MB |
+
+The merged file drops the per-variant statistics (`drug`, `precision`, `similarity`, `hyp_occurrences`; `count` is summed): the unmerged build output keeps them. Consumers index a merged rule under the anchor of each of its variants (`compile_rules`, and its JS port `scripts/bench/regex-rescore.mjs` in the ultra model repo, which on the merged drug rules matches Python on the original on all 70,398 drug hyps). Built with Claude Code.
+
+    uv run 08_drug_asr_rules/03_merge_rules.py <rules.jsonl> <merged.jsonl> --hyps <hyps.jsonl> ... --labels <manifest.jsonl or .txt> ...
+
 ## Medical-term rules (`term_fix_rules.jsonl`, 2026-10-04)
 
 A second, separate rule file for the dictionary terms (`syndrome de Brugada`, `ostéophyte`, `craniopharyngiome`...), built by the same 01 + 02 with `--lexicon 01_dictionnary/original_dictionnary.jsonl`. It is kept apart from `drug_fix_rules.jsonl` on purpose: apply it after the drug rules, or not at all. Built with Claude Code by `term-pilot-round.py <pilot dir> 99` in the ultra repo, from every clip of the dictionary (534,338), PARHAF (43,431) and PARROT (1,549) subsets transcribed by UltiMed (int8 encoder) and base parakeet-ultra (w4a8), with the same guards as the drug rules: the correct labels of all splits (PARROT included), the 1M French Wikipedia sentences, and `--names`.
