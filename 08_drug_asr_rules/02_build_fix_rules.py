@@ -12,6 +12,9 @@ A variant becomes a rule only if rewriting it can hardly be wrong. It is REJECTE
 - ``real_text``: it occurs in a correct LABEL of the corpus (``--labels``, default the
   release-wide ``99_hf_release/data/NeMO_files/full.jsonl`` plus ``PARROT/full.jsonl``, which it leaves out), i.e. it is a real word or
   phrase someone wrote (``prednisone`` heard for ``prednisolone``, ``de mi`` ...);
+- ``trailing_a``: it ends in a lone ``à`` / ``a`` and the rest is real text (a label holds
+  ``patelle``): the TTS read an odd label (``patella gauche``), the model heard ``patelle à
+  gauche``, and the rule would turn "luxation de la patelle à répétition" into "patella répétition";
 - ``other_term``: it is itself a word of the lexicon (drugs, plus any ``--lexicon`` term list);
 - ``ambiguous``: it stands for several drugs and none holds ``--min-share`` of its counts;
 - ``imprecise``: in the hypotheses file, the variant appears more often than it was an
@@ -294,6 +297,15 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
     >>> tyenne = {"Tyenne": {"errors": {"tienne": 8}, "targets": {}}}
     >>> build_rules(tyenne, ["tienne"] * 8, [], {})[1][0]["reason"]
     'french_word'
+
+    A variant that only adds a lone ``à`` to real text is the TTS misreading an odd label,
+    while dictation says "la patelle à répétition":
+
+    >>> pat = {"patella": {"errors": {"patelle à": 14}, "targets": {}}}
+    >>> build_rules(pat, ["patelle à gauche"] * 14, ["la patelle est luxée"], {})[1][0]["reason"]
+    'trailing_a'
+    >>> len(build_rules(pat, ["patelle à gauche"] * 14, [], {})[0])
+    1
     """
     # Folded variant -> {target: count}; the displayed variant is its most frequent spelling.
     by_key: dict[tuple, Counter] = defaultdict(Counter)
@@ -310,7 +322,9 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             clips[k][target] += entry.get("clips", {}).get(variant, n)
     # Single words too: a variant made only of words the labels use is ordinary French
     # ("lait unique" -> Levunique) and needs --min-count-words sightings.
-    label_hits = count_ngrams(labels, set(by_key) | {(w,) for k in by_key for w in k})
+    # And a variant minus its trailing lone "à": "patelle à" -> patella is blocked by "patelle".
+    label_hits = count_ngrams(labels, set(by_key) | {(w,) for k in by_key for w in k}
+                              | {k[:-1] for k in by_key if len(k) > 1 and k[-1] == "a"})
     hyp_hits = count_ngrams(hyps, set(by_key))
     rules, rejected = [], []
     for k, targets in by_key.items():
@@ -329,6 +343,8 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             reason = "other_term"
         elif label_hits[k]:
             reason = "real_text"
+        elif len(k) > 1 and k[-1] == "a" and label_hits[k[:-1]]:
+            reason = "trailing_a"
         elif len(k) == 1 and zipf_frequency(variant.lower(), "fr") >= max_word_zipf:
             reason = "french_word"
         elif n / total < min_share:
