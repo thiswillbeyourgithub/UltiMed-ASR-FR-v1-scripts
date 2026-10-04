@@ -10,7 +10,7 @@ A variant becomes a rule only if rewriting it can hardly be wrong. It is REJECTE
 
 - ``short``: under ``--min-len`` letters once folded (``isa``, ``lora``), or it holds a digit;
 - ``real_text``: it occurs in a correct LABEL of the corpus (``--labels``, default the
-  release-wide ``99_hf_release/data/NeMO_files/full.jsonl``), i.e. it is a real word or
+  release-wide ``99_hf_release/data/NeMO_files/full.jsonl`` plus ``PARROT/full.jsonl``, which it leaves out), i.e. it is a real word or
   phrase someone wrote (``prednisone`` heard for ``prednisolone``, ``de mi`` ...);
 - ``other_term``: it is itself a word of the lexicon (drugs, plus any ``--lexicon`` term list);
 - ``ambiguous``: it stands for several drugs and none holds ``--min-share`` of its counts;
@@ -77,7 +77,8 @@ fold, tokens, load_lexicon = extract.fold, extract.tokens, extract.load_lexicon
 
 DEFAULT_ERRORS = extract.DEFAULT_OUT
 DEFAULT_OUT = _HERE / "drug_fix_rules.jsonl"
-DEFAULT_LABELS = _HERE.parent / "99_hf_release" / "data" / "NeMO_files" / "full.jsonl"
+# Correct labels of all splits; the release-wide full.jsonl leaves out PARROT (eval-only), so its own is added.
+DEFAULT_LABELS = tuple(_HERE.parent / "99_hf_release" / "data" / "NeMO_files" / f for f in ("full.jsonl", "PARROT/full.jsonl"))
 
 # Every accented form a folded letter stands for, so a rule written from "phélodipine"
 # also fixes "phelodipine" (01 already treats an accent slip as correct).
@@ -498,7 +499,7 @@ def main(hyps: tuple[Path, ...], errors_paths: tuple[Path, ...], labels_paths: t
          max_term_zipf: float) -> None:
     """Write the ordered drug fix rules."""
     report = merge_reports(json.loads(p.read_text(encoding="utf-8")) for p in errors_paths or (DEFAULT_ERRORS,))
-    labels_paths = labels_paths or (DEFAULT_LABELS,)
+    labels_paths = labels_paths or DEFAULT_LABELS
     labels = (t for p in labels_paths for t in _read_texts(p, "text"))
     rules, rejected = build_rules(report, [t for p in hyps for t in _read_texts(p, "hyp")], labels, load_lexicon(lexicons, max_term_zipf),
                                   min_len, min_count, min_share, min_precision, min_ratio, min_count_words,
