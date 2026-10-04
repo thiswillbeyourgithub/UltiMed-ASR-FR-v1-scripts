@@ -401,7 +401,8 @@ def compile_rules(rules: list[dict]):
     rules whose anchor it contains, still in rule order. After a rule changes the
     text the word set is recomputed, so a replacement that feeds a later rule still
     triggers it. A variant with a character outside ``_WORD`` has no reliable
-    anchor and runs on every text.
+    anchor and runs on every text. ``fix(text, trace)`` also appends to the list
+    ``trace`` the index of every rule that changed the text, in firing order.
 
     >>> rules = [{"variant": v, "pattern": variant_pattern(v), "replacement": t} for v, t in
     ...          [("mire taz apine", "mirtazapine"), ("myrtazapine", "mirtazapine"), ("primperan", "Primpéran")]]
@@ -411,6 +412,9 @@ def compile_rules(rules: list[dict]):
     >>> texts = ["Mire-taz apine le soir.", "MYRTAZAPINE puis primpéran", "rien à voir"]
     >>> [fix(t) for t in texts] == [apply_rules(t, rules) for t in texts]
     True
+    >>> trace = []; fix("MYRTAZAPINE puis primpéran", trace); trace
+    'Mirtazapine puis Primpéran'
+    [1, 2]
     """
     by_anchor: dict[str, list[int]] = defaultdict(list)
     always: list[int] = []
@@ -424,7 +428,7 @@ def compile_rules(rules: list[dict]):
     def candidates(tokens: set[str], after: int) -> set[int]:
         return {j for t in tokens & by_anchor.keys() for j in by_anchor[t] if j > after}
 
-    def fix(text: str) -> str:
+    def fix(text: str, trace: list | None = None) -> str:
         todo, i = candidates(_tokens(text), -1) | set(always), -1
         while todo:
             i = min(todo)
@@ -432,6 +436,8 @@ def compile_rules(rules: list[dict]):
             new = apply_rules(text, [rules[i]])
             if new != text:
                 text = new
+                if trace is not None:
+                    trace.append(i)
                 todo |= candidates(_tokens(text), i)
         return text
 
