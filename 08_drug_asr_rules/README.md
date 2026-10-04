@@ -113,6 +113,31 @@ On the boosted UltiMed int8 browser transcripts the committed rules bring test_d
 - On the UltiMed test_dictionary transcripts the rules also fix 50 clips (WER 2.82 % -> 2.79 %) and worsen none.
 - Before `contains_target`, 3 test clips got worse (`anti-TNF-alpha` -> `alpha`).
 
+## Medical-term rules (`term_fix_rules.jsonl`, 2026-10-04)
+
+A second, separate rule file for the dictionary terms (`syndrome de Brugada`, `ostéophyte`, `craniopharyngiome`...), built by the same 01 + 02 with `--lexicon 01_dictionnary/original_dictionnary.jsonl`. It is kept apart from `drug_fix_rules.jsonl` on purpose: apply it after the drug rules, or not at all. Built with Claude Code by `term-pilot-round.py <pilot dir> 99` in the ultra repo, from every clip of the dictionary (534,338), PARHAF (43,431) and PARROT (1,549) subsets transcribed by UltiMed (int8 encoder) and base parakeet-ultra (w4a8), with the same guards as the drug rules: the correct labels of all splits (PARROT included), the 1M French Wikipedia sentences, and `--names`.
+
+- 78,850 rules covering 848,459 error occurrences; 624 carry the name title guard. Rejected (in `term_fix_rules.rejected.jsonl`): real_text 8,357, imprecise 5,238, common_words 3,271, other_term 2,619, short 2,521, far 2,001, ambiguous 1,316, contains_target 133, french_word 5.
+- Overcorrection: 0 of 602,813 correct labels, 13 of 1M French Wikipedia sentences (the guard; chained rules can still reach a few), 76 of 100k French news sentences (held out), 9,177 of 1M English Wikipedia sentences (French only, like the drug rules).
+- How much more transcription was worth it (the pilot, rules from chunks 1..k tested on unseen chunk k+1): coverage of the next chunk's term errors rose about 5.5 points per doubling of data, 22.4 % -> 33.7 % (UltiMed) and 41.4 % -> 51.0 % (ultra) from 1 to 4 chunks of about 13k dictionary clips; the full build has about 10 times more.
+- Names: 28 of the 109,728 test names are still rewritten, nearly all first names without a title (`Ilyan` -> `ilion`, `Manoé` -> `mannose`) or two-word surnames after a title (`le docteur Le Beller` -> `Le Böhler`, the guard only looks at the word right after the title).
+- Acronyms are not covered: the dictionary lexicon only tracks words of 5 letters or more.
+
+## Real-speech check (2026-10-04)
+
+Both rule files on real French speech with labels, clip by clip (WER, clips better / worse), by `evalrules.py --refs` in the ultra repo: FLEURS fr (all 1,665 clips, never used in training), 5,000 Common Voice fr clips the finetune never saw (a local train tar minus the rehearsal set), and the author's own 206 dictated medical clips (private).
+
+| set | model | no rules | drug rules | term rules |
+|---|---|---|---|---|
+| FLEURS fr | UltiMed | 5.11 % | 5.11 % (0 / 0) | 5.11 % (2 / 0) |
+| FLEURS fr | ultra w4a8 | 4.19 % | 4.19 % (0 / 0) | 4.19 % (0 / 0) |
+| Common Voice fr | UltiMed | 6.02 % | 6.02 % (0 / 0) | 6.02 % (3 / 1) |
+| Common Voice fr | ultra w4a8 | 5.43 % | 5.43 % (0 / 0) | 5.42 % (5 / 1) |
+| own medical dictation | UltiMed | 10.07 % | 9.06 % (31 / 0) | 9.17 % (28 / 0) |
+| own medical dictation | ultra w4a8 | 25.28 % | 23.34 % (63 / 0) | 22.94 % (69 / 0) |
+
+The drug rules make no clip worse. The term rules make 2 of about 13,700 scored clips worse, both already misheard: `éléments finis d'altair` heard `d appler` became `doppler`, and `le jarret` heard `jarré` became `lejars`.
+
 ## Tests
 
 ```bash
