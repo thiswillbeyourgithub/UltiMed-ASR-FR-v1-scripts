@@ -95,6 +95,7 @@ _START = (rf"(?<![{_WORD}-])"
           rf"(?:(?<!['’])|(?<=(?<![{_WORD}])[dlnjmtsc]['’])|(?<=qu['’]))")
 
 
+_END = rf"(?![{_WORD}-])"  # end bound: no letter or hyphen after the match
 # Titles written before a person's name. A rule whose variant is also a French name (--names) gets one
 # negative lookbehind per title, each fixed width (Python) and with its own left word bound (so "calcium. X"
 # is not read as "M. X"): the surname stays after a title, the rule still fires everywhere else.
@@ -162,7 +163,7 @@ def variant_pattern(variant: str) -> str:
             else:
                 parts.append(re.escape(ch))
         words.append("".join(parts))
-    return _START + r"[\s-]+".join(words) + rf"(?![{_WORD}-])"
+    return _START + r"[\s-]+".join(words) + _END
 
 
 def _key(text: str) -> tuple[str, ...]:
@@ -401,7 +402,8 @@ def compile_rules(rules: list[dict]):
     rules whose anchor it contains, still in rule order. After a rule changes the
     text the word set is recomputed, so a replacement that feeds a later rule still
     triggers it. A variant with a character outside ``_WORD`` has no reliable
-    anchor and runs on every text. ``fix(text, trace)`` also appends to the list
+    anchor and runs on every text. A merged rule (``variants``) is indexed under the anchor
+    of each variant. ``fix(text, trace)`` also appends to the list
     ``trace`` the index of every rule that changed the text, in firing order.
 
     >>> rules = [{"variant": v, "pattern": variant_pattern(v), "replacement": t} for v, t in
@@ -419,11 +421,16 @@ def compile_rules(rules: list[dict]):
     by_anchor: dict[str, list[int]] = defaultdict(list)
     always: list[int] = []
     for i, r in enumerate(rules):
-        words = re.split(r"[\s'’-]+", fold(r.get("variant", "")).strip())
-        if all(w and not _TOKEN_SPLIT.search(w) for w in words):
-            by_anchor[max(words, key=len)].append(i)
+        anchors = set()
+        for v in r.get("variants") or [r.get("variant", "")]:  # a merged rule (03_merge_rules.py) has several
+            words = re.split(r"[\s'’-]+", fold(v).strip())
+            if not all(w and not _TOKEN_SPLIT.search(w) for w in words):
+                always.append(i)
+                break
+            anchors.add(max(words, key=len))
         else:
-            always.append(i)
+            for t in anchors:
+                by_anchor[t].append(i)
 
     def candidates(tokens: set[str], after: int) -> set[int]:
         return {j for t in tokens & by_anchor.keys() for j in by_anchor[t] if j > after}

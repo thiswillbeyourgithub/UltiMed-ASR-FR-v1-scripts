@@ -31,6 +31,11 @@ def test_build_fix_rules() -> None:
     _run_doctests("02_build_fix_rules.py")
 
 
+def test_merge_rules() -> None:
+    _run_doctests("03_merge_rules.py")
+
+
 if __name__ == "__main__":
     test_extract_drug_errors()
     test_build_fix_rules()
+    test_merge_rules()
