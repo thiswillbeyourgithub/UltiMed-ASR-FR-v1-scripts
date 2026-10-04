@@ -120,6 +120,7 @@ On the boosted UltiMed int8 browser transcripts the committed rules bring test_d
 | file | rules before | rules after | groups split back | size |
 |---|---|---|---|---|
 | `drug_fix_rules.jsonl` | 13,831 | 3,428 | 10 | 6.2 MB -> 2.0 MB |
+| `term_fix_rules.jsonl` | 78,850 | 25,048 | 25 | 37.6 MB -> 15.3 MB |
 
 The merged file drops the per-variant statistics (`drug`, `precision`, `similarity`, `hyp_occurrences`; `count` is summed): the unmerged build output keeps them. Consumers index a merged rule under the anchor of each of its variants (`compile_rules`, and its JS port `scripts/bench/regex-rescore.mjs` in the ultra model repo, which on the merged drug rules matches Python on the original on all 70,398 drug hyps). Built with Claude Code.
 
