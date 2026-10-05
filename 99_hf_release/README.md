@@ -96,6 +96,12 @@ configs:
 > [!TIP]
 > **More improvements are planned for October 2026, stay tuned.**
 
+> [!NOTE]
+> **The UltiMed effort has three parts:**
+> - the **dataset** (this repository): [Olicorne/UltiMed-ASR-FR-v1](https://huggingface.co/datasets/Olicorne/UltiMed-ASR-FR-v1): 3,000+ hours of French medical dictation, to train or evaluate ASR models;
+> - the **finetuned model**: [Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx): parakeet-ultra finetuned on that dataset;
+> - the **regex fixes**: [regex-fixes/](https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx/tree/main/regex-fixes) in the finetune's repository: drug-name and medical-term fix rules that should catch many of the remaining errors at almost no cost (text substitution after decoding), and also help models that were not finetuned.
+
 *A large, fully documented French medical speech dataset for evaluating or training models, plus an open recipe to rebuild it in any language or topic.*
 
 ## Contents
@@ -359,6 +365,7 @@ UltiMed-ASR-FR-v1/
   parrot/      test-*.parquet                                                      # config "parrot_CC_BY-NC-SA_4.0", eval-only
   scripts/     build_parquet.py   parquet_to_nemo.py
   preview_samples/  dictionary/  drugs/  parhaf/  acronyms/  parrot/                # 5 clips + manifest.jsonl each
+  regex-fixes/ MOVED.txt                                                          # points to the fix rules in the finetuned model repo
 ```
 
 - **`<source>/<split>-NNNNN-of-NNNNN.parquet`**: ~2,500 clips each. Every row embeds the **original FLAC bytes verbatim** (byte-identical round-trip) in the `datasets` `Audio` feature, plus `text`, `duration`, `category`, provenance (`group_id`, `group_mode`, `item_index`), `filename` and the quality-control columns (`cer`, `cer_tail`, `stt_transcript`, `stt_model`, `n_stt_check`, `cfg_alpha`, `regenerated`, `qc_status`). Rebuild with `uv run scripts/build_parquet.py`, after `uv run 03_sync_hotfix_results.py --apply` has carried stage 06's results into the manifests. To drop the known-weak `exhausted` clips and the val/test clips whose text repeats a training text first, run `uv run 04_drop_bad_rows.py --apply` between those two steps (script written with Claude Code). Then `uv run 05_normalize_text.py --apply` writes every percentage as `%` in the label and `pourcent` in the TTS text, collapses whitespace, replaces the few characters the Parakeet tokenizer cannot represent as written, and applies the label conventions of `utils/label_conventions.py` to both texts (one spelling per drug name, titles written out, dates in digits, clock times as `14 heures 30`; also Claude Code). `04` also drops labels holding an ellipsis.

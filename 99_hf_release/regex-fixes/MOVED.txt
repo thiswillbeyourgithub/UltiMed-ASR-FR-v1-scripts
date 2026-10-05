@@ -1,0 +1,9 @@
+The UltiMed regex fixes live in the finetuned model's repository:
+https://huggingface.co/Olicorne/parakeet-tdt-0.6b-v3-UltiMed-onnx/tree/main/regex-fixes
+
+They are two lists of regular expressions (drug names, medical terms) that rewrite the
+misspellings a parakeet model still makes on French medical vocabulary, for example
+"veine la faxine" -> "venlafaxine". They were learned from the errors of the finetune and
+of its base model on this dataset, so they also help models that were not finetuned.
+Their README there explains how they were built and how to apply them.
+The scripts that build them: https://github.com/thiswillbeyourgithub/UltiMed-ASR-FR-v1-scripts/tree/public/08_drug_asr_rules
