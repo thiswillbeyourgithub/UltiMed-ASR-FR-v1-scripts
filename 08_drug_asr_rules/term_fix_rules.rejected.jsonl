@@ -2299,7 +2299,6 @@
 {"variant": "cytidine di-phospho-éthanolamine", "drug": "cytidine-diphospho-éthanolamine", "count": 1, "reason": "common_words"}
 {"variant": "cytidine di-phosphoéthanolamine", "drug": "cytidine-diphospho-éthanolamine", "count": 1, "reason": "common_words"}
 {"variant": "cyto diagnostic", "drug": "cytodiagnostic", "count": 1, "reason": "common_words"}
-{"variant": "cédille à", "drug": "sédillot", "count": 1, "reason": "common_words"}
 {"variant": "cédillé au", "drug": "sédillot", "count": 1, "reason": "common_words"}
 {"variant": "céphalé un temps", "drug": "céphalées", "count": 1, "reason": "common_words"}
 {"variant": "céramides dihexoside", "drug": "céramide-dihexoside", "count": 1, "reason": "common_words"}
@@ -2672,7 +2671,6 @@
 {"variant": "globuline urie", "drug": "globulinurie", "count": 1, "reason": "common_words"}
 {"variant": "globulines émis", "drug": "dysglobulinémie", "count": 1, "reason": "common_words"}
 {"variant": "glomérule aux néphrites", "drug": "glomérulonéphrite", "count": 1, "reason": "common_words"}
-{"variant": "glossine à", "drug": "glossina", "count": 1, "reason": "common_words"}
 {"variant": "glosso-staphylin", "drug": "glossostaphylin", "count": 1, "reason": "common_words"}
 {"variant": "glutamine mi", "drug": "glutaminémie", "count": 1, "reason": "common_words"}
 {"variant": "glutathione peroxydase", "drug": "glutathion-peroxydase", "count": 1, "reason": "common_words"}
@@ -3508,7 +3506,6 @@
 {"variant": "nulle hypers", "drug": "nullipare", "count": 1, "reason": "common_words"}
 {"variant": "nulle y geste", "drug": "nulligeste", "count": 1, "reason": "common_words"}
 {"variant": "nulli part", "drug": "nullipare", "count": 1, "reason": "common_words"}
-{"variant": "nymphée à", "drug": "nymphéale", "count": 1, "reason": "common_words"}
 {"variant": "né à veil", "drug": "neavei", "count": 1, "reason": "common_words"}
 {"variant": "néo-rétinol", "drug": "néorétinol", "count": 1, "reason": "common_words"}
 {"variant": "néo-rétinène", "drug": "néorétinène", "count": 1, "reason": "common_words"}
@@ -3980,7 +3977,6 @@
 {"variant": "saccharose émis", "drug": "saccharosémie", "count": 1, "reason": "common_words"}
 {"variant": "sacro-coccygiens", "drug": "sacro-coccygien", "count": 1, "reason": "common_words"}
 {"variant": "sacro-cotyloïdien", "drug": "sacrocotyloïdien", "count": 1, "reason": "common_words"}
-{"variant": "sagit à", "drug": "sagitta", "count": 1, "reason": "common_words"}
 {"variant": "said-mayer", "drug": "seidlmayer", "count": 1, "reason": "common_words"}
 {"variant": "saint-bicorps", "drug": "Symbicort", "count": 1, "reason": "common_words"}
 {"variant": "saint-des-mose", "drug": "syndesmose", "count": 1, "reason": "common_words"}
@@ -4008,7 +4004,6 @@
 {"variant": "saut m ring", "drug": "soemmering", "count": 1, "reason": "common_words"}
 {"variant": "sauval-soffer", "drug": "sohval-soffer", "count": 1, "reason": "common_words"}
 {"variant": "scan aura", "drug": "scanora", "count": 1, "reason": "common_words"}
-{"variant": "scaphe à", "drug": "scapha", "count": 1, "reason": "common_words"}
 {"variant": "scapho-triquétrale", "drug": "scapho-triquétral", "count": 1, "reason": "common_words"}
 {"variant": "scarfe bloom", "drug": "scarff-bloom", "count": 1, "reason": "common_words"}
 {"variant": "scarm d", "drug": "scarmd", "count": 1, "reason": "common_words"}
@@ -7367,7 +7362,6 @@
 {"variant": "codoplaires", "drug": "échodoppler", "count": 9, "reason": "imprecise"}
 {"variant": "cofochirurgie", "drug": "cophochirurgie", "count": 9, "reason": "imprecise"}
 {"variant": "colanique", "drug": "cholanique", "count": 9, "reason": "imprecise"}
-{"variant": "craches à", "drug": "crachats", "count": 9, "reason": "imprecise"}
 {"variant": "cérébeleux", "drug": "cérébelleux", "count": 9, "reason": "imprecise"}
 {"variant": "digvé", "drug": "dyggve", "count": 9, "reason": "imprecise"}
 {"variant": "dioctrie", "drug": "dioptrie", "count": 9, "reason": "imprecise"}
@@ -8750,7 +8744,6 @@
 {"variant": "épicage", "drug": "épissage", "count": 3, "reason": "imprecise"}
 {"variant": "épididimodéférentielle", "drug": "épididymodéférentielle", "count": 3, "reason": "imprecise"}
 {"variant": "épiphyso-métaphysière", "drug": "épiphysométaphysaire", "count": 3, "reason": "imprecise"}
-{"variant": "épithéliome à", "drug": "épithélioma", "count": 3, "reason": "imprecise"}
 {"variant": "érytheème", "drug": "érythème", "count": 3, "reason": "imprecise"}
 {"variant": "érythroférèse", "drug": "érythrophérèse", "count": 3, "reason": "imprecise"}
 {"variant": "éréthémateuse", "drug": "érythémateuse", "count": 3, "reason": "imprecise"}
@@ -10221,7 +10214,6 @@
 {"variant": "caséuses", "drug": "caséeuse", "count": 1, "reason": "imprecise"}
 {"variant": "catalasie", "drug": "acatalasie", "count": 1, "reason": "imprecise"}
 {"variant": "catalasique", "drug": "acatalasique", "count": 1, "reason": "imprecise"}
-{"variant": "cataract à", "drug": "cataracte-alopécie-sclérodactylie", "count": 1, "reason": "imprecise"}
 {"variant": "cataryl", "drug": "catarrhale", "count": 1, "reason": "imprecise"}
 {"variant": "cathécol", "drug": "catéchol", "count": 1, "reason": "imprecise"}
 {"variant": "cathécole", "drug": "catéchol", "count": 1, "reason": "imprecise"}
@@ -11138,7 +11130,6 @@
 {"variant": "n formulées", "drug": "n-formylé", "count": 1, "reason": "imprecise"}
 {"variant": "nagell", "drug": "nagel", "count": 1, "reason": "imprecise"}
 {"variant": "narine encéphalie", "drug": "arhinencéphalie", "count": 1, "reason": "imprecise"}
-{"variant": "naso a", "drug": "nasaux", "count": 1, "reason": "imprecise"}
 {"variant": "naso-antéro", "drug": "nasaux", "count": 1, "reason": "imprecise"}
 {"variant": "naso-frontales", "drug": "naso-frontale", "count": 1, "reason": "imprecise"}
 {"variant": "nervoid", "drug": "nævoid", "count": 1, "reason": "imprecise"}
@@ -11525,7 +11516,6 @@
 {"variant": "schermer", "drug": "shirmer", "count": 1, "reason": "imprecise"}
 {"variant": "scheuermann-frust", "drug": "scheuermann", "count": 1, "reason": "imprecise"}
 {"variant": "schiogren", "drug": "sjögren", "count": 1, "reason": "imprecise"}
-{"variant": "schistosome à", "drug": "schistosoma", "count": 1, "reason": "imprecise"}
 {"variant": "schizoaffectifs", "drug": "schizo-affectif", "count": 1, "reason": "imprecise"}
 {"variant": "schonleini", "drug": "schoenleinii", "count": 1, "reason": "imprecise"}
 {"variant": "schullmann", "drug": "shulman", "count": 1, "reason": "imprecise"}
@@ -11922,7 +11912,6 @@
 {"variant": "écubitus", "drug": "décubitus", "count": 1, "reason": "imprecise"}
 {"variant": "édulaire", "drug": "médullaire", "count": 1, "reason": "imprecise"}
 {"variant": "éhiscence", "drug": "déhiscence", "count": 1, "reason": "imprecise"}
-{"variant": "électro-encéphalographie à", "drug": "électroencéphalographie", "count": 1, "reason": "imprecise"}
 {"variant": "éleutéromélien", "drug": "éleuthéromélien", "count": 1, "reason": "imprecise"}
 {"variant": "éliqué", "drug": "Eliquis", "count": 1, "reason": "imprecise"}
 {"variant": "élixe", "drug": "hélix", "count": 1, "reason": "imprecise"}
@@ -25459,3 +25448,19 @@
 {"variant": "γ2", "drug": "gamma", "count": 1, "reason": "short"}
 {"variant": "γ3a", "drug": "gamma", "count": 1, "reason": "short"}
 {"variant": "γrt", "drug": "gamma", "count": 1, "reason": "short"}
+{"variant": "craches à", "drug": "crachats", "count": 9, "reason": "trailing_a"}
+{"variant": "patelle à", "drug": "patella", "count": 9, "reason": "trailing_a"}
+{"variant": "scarpe à", "drug": "scarpa", "count": 5, "reason": "trailing_a"}
+{"variant": "pelvique à", "drug": "pelvica", "count": 4, "reason": "trailing_a"}
+{"variant": "fibule à", "drug": "fibula", "count": 3, "reason": "trailing_a"}
+{"variant": "plique à", "drug": "plica", "count": 3, "reason": "trailing_a"}
+{"variant": "épithéliome à", "drug": "épithélioma", "count": 3, "reason": "trailing_a"}
+{"variant": "cataract à", "drug": "cataracte-alopécie-sclérodactylie", "count": 1, "reason": "trailing_a"}
+{"variant": "cédille à", "drug": "sédillot", "count": 1, "reason": "trailing_a"}
+{"variant": "glossine à", "drug": "glossina", "count": 1, "reason": "trailing_a"}
+{"variant": "naso a", "drug": "nasaux", "count": 1, "reason": "trailing_a"}
+{"variant": "nymphée à", "drug": "nymphéale", "count": 1, "reason": "trailing_a"}
+{"variant": "sagit à", "drug": "sagitta", "count": 1, "reason": "trailing_a"}
+{"variant": "scaphe à", "drug": "scapha", "count": 1, "reason": "trailing_a"}
+{"variant": "schistosome à", "drug": "schistosoma", "count": 1, "reason": "trailing_a"}
+{"variant": "électro-encéphalographie à", "drug": "électroencéphalographie", "count": 1, "reason": "trailing_a"}
