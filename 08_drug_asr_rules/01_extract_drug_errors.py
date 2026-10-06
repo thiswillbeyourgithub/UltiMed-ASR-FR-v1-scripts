@@ -256,6 +256,15 @@ def drug_outcomes(label: str, hyp: str, lex: dict[str, str | None]
     [('venlafaxine', 'venlafaxine', 'souvenent la vaccine', 'sous venlafaxine')]
     >>> drug_outcomes("un anti-TNF alpha", "un anti-TNF-alpha", {"alpha": None})[0][2] is None
     True
+
+    A variant holding the decoder's ``<unk>`` token (which tokenizing turns into the word
+    ``unk``) is dropped: no runtime output ever matches it (onnx-asr glues ``<unk>`` to
+    the next word, the web decoder deletes it), so a rule learned from it is dead.
+
+    >>> drug_outcomes("Arrêt de la mirtazapine.", "Arrêt de la <unk>tazapine.", lex)
+    []
+    >>> drug_outcomes("Arrêt de la mirtazapine.", "Arrêt de la myrta <unk>", lex)
+    []
     """
     ref, h = tokens(label), tokens(hyp)
     drugs = {i: fold(w) for i, w in enumerate(ref) if fold(w) in lex}
@@ -277,6 +286,8 @@ def drug_outcomes(label: str, hyp: str, lex: dict[str, str | None]
             # A label word the variant swallowed belongs to the target ("l'étoposide" ->
             # "létoposide", "sous venlafaxine" -> "souvenent la vaccine").
             variant, target = join_tokens(span), join_tokens(ref[lo:hi])
+            if "unk" in span:
+                continue
             # An accent, case or hyphen-for-space slip is not a spelling error (the drug
             # casing pass of label_conventions fixes the first two, and a rule for the
             # third would match the label itself: its patterns accept either separator).
