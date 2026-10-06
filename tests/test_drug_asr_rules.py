@@ -1,6 +1,7 @@
 """Tests for 08_drug_asr_rules: the doctests of 01_extract_drug_errors.py (tokenizing,
 drug spotting, the character-level mapping inside a multi-word replace, glued elisions)
-and of 02_build_fix_rules.py (pattern bounds, rejection reasons, ordering, apply_rules).
+and of 02_build_fix_rules.py (pattern bounds, rejection reasons, ordering, apply_rules),
+03_merge_rules.py and 04_drop_unk_variants.py.
 
     uv run --with click --with loguru --with litellm --with tiktoken --with tqdm \
         --with tenacity --with rapidfuzz --with wordfreq tests/test_drug_asr_rules.py
@@ -35,7 +36,12 @@ def test_merge_rules() -> None:
     _run_doctests("03_merge_rules.py")
 
 
+def test_drop_unk_variants() -> None:
+    _run_doctests("04_drop_unk_variants.py")
+
+
 if __name__ == "__main__":
     test_extract_drug_errors()
     test_build_fix_rules()
     test_merge_rules()
+    test_drop_unk_variants()
