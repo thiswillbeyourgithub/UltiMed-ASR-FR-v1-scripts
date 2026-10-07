@@ -1,0 +1,4 @@
+# variant<TAB>replacement, one per line. Hand-written fixes, applied BEFORE drug_fix_rules.jsonl and term_fix_rules.jsonl. Build: uv run 05_build_manual_rules.py
+ceresta	Seresta
+lodose	lowdose
+lodoses	lowdose

@@ -136,6 +136,14 @@ The decoder emits `<unk>` for characters missing from its vocab (`°`, `+`, some
 
 A rule's end bound lets it fire right before an apostrophe, which real fixes need (`mésangio d'IgA` -> `mésangiaux d'IgA`, `étoposie d'orale`). But `01`'s tokenizer writes the label `fait part d'un` as (`part`, `d'`), so the `real_text` guard never matched it against the variant `part d`, and the redux rebuild shipped `part d` -> `pardee`, which rewrote 16 correct labels into `fait pardee'un`. `02` now also looks a variant up with an apostrophe on an elidable last word (`_elided`), and `04 --labels` drops such variants from files built before. On the committed files it removed one variant, `face l` -> `fas-l` (French Wikipedia has `en face l'usine`, and two UltiMed labels write `face l'odex`): term 25,042 -> 25,041 rules, drug unchanged. A first attempt that refused any match before an apostrophe killed the real fixes instead (on the 10 hyps it changed, 32 -> 42 word errors) and was reverted. Built with Claude Code.
 
+## Hand-written rules (`05_build_manual_rules.py`, 2026-10-07)
+
+`manual_fixes.tsv` lists fixes the author asked for directly (`variant<TAB>replacement`), and `05_build_manual_rules.py` turns it into `manual_fix_rules.jsonl` with the same patterns and merging as the learned rules. Consumers apply it FIRST, before `drug_fix_rules.jsonl` and `term_fix_rules.jsonl`, so a hand fix wins on the same words: `lodose` / `lodoses` -> `lowdose` (the learned drug rules turned `lodose` into the brand `Lodoz`), and `ceresta` -> `Seresta` (already learned, kept explicit). These rules are not mined or overcorrection-checked like the others, and the published benchmarks ran without them. Add a line to the TSV and rerun:
+
+```bash
+uv run 08_drug_asr_rules/05_build_manual_rules.py
+```
+
 ## Medical-term rules (`term_fix_rules.jsonl`, 2026-10-04)
 
 A second, separate rule file for the dictionary terms (`syndrome de Brugada`, `ostéophyte`, `craniopharyngiome`...), built by the same 01 + 02 with `--lexicon 01_dictionnary/original_dictionnary.jsonl`. It is kept apart from `drug_fix_rules.jsonl` on purpose: apply it after the drug rules, or not at all. Built with Claude Code by `term-pilot-round.py <pilot dir> 99` in the ultra repo, from every clip of the dictionary (534,338), PARHAF (43,431) and PARROT (1,549) subsets transcribed by UltiMed (int8 encoder) and base parakeet-ultra (w4a8), with the same guards as the drug rules: the correct labels of all splits (PARROT included), the 1M French Wikipedia sentences, and `--names`.
