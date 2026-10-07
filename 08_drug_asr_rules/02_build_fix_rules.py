@@ -98,12 +98,7 @@ _START = (rf"(?<![{_WORD}-])"
           rf"(?:(?<!['’])|(?<=(?<![{_WORD}])[dlnjmtsc]['’])|(?<=qu['’]))")
 
 
-# End bound: no letter, hyphen or apostrophe after the match. The apostrophe matters because
-# ``tokens`` keeps an elision glued to its word ("part d'un" is ("part", "d'un")), so the
-# correct-label guard never sees the variant "part d" there; without it the rule would fire anyway.
-_END = rf"(?![{_WORD}'’-])"
-# The end bound of the rules files built before 2026-10-07; ``load_rules`` upgrades it.
-_OLD_END = rf"(?![{_WORD}-])"
+_END = rf"(?![{_WORD}-])"  # end bound: no letter or hyphen after the match
 # Titles written before a person's name. A rule whose variant is also a French name (--names) gets one
 # negative lookbehind per title, each fixed width (Python) and with its own left word bound (so "calcium. X"
 # is not read as "M. X"): the surname stays after a title, the rule still fires everywhere else.
@@ -150,12 +145,6 @@ def variant_pattern(variant: str) -> str:
     [True, True, True]
     >>> [bool(re.search(variant_pattern("hui"), t, re.I)) for t in ("aujourd'hui", "prud'hui")]
     [False, False]
-
-    Nor end right before one: the guard reads "fait part d'un" as ("part", "d'un"), so the
-    variant "part d" (redux's "pardee") must not fire there.
-
-    >>> [bool(re.search(variant_pattern("part d"), t, re.I)) for t in ("fait part d'un stress", "fait part d’un", "la part d ee")]
-    [False, False, True]
 
     The word bounds spell out their letters instead of using ``\\w``, which is Unicode
     in Python but ASCII-only in JavaScript: there ``\\w`` would let a rule fire right
@@ -556,21 +545,9 @@ def main(hyps: tuple[Path, ...], errors_paths: tuple[Path, ...], labels_paths: t
 
 
 def load_rules(path: Path) -> list[dict]:
-    """The ordered rules of a ``drug_fix_rules.jsonl``, a pre-2026-10-07 end bound upgraded to ``_END``.
-
-    >>> import tempfile
-    >>> old = variant_pattern("part d")[:-len(_END)] + _OLD_END
-    >>> with tempfile.NamedTemporaryFile("w", suffix=".jsonl", delete=False) as f:
-    ...     _ = f.write(json.dumps({"pattern": old, "replacement": "pardee"}) + "\\n")
-    >>> load_rules(f.name)[0]["pattern"] == variant_pattern("part d")
-    True
-    """
+    """The ordered rules of a ``drug_fix_rules.jsonl``."""
     with Path(path).open(encoding="utf-8") as f:
-        rules = [json.loads(line) for line in f if line.strip()]
-    for r in rules:
-        if r["pattern"].endswith(_OLD_END):
-            r["pattern"] = r["pattern"][:-len(_OLD_END)] + _END
-    return rules
+        return [json.loads(line) for line in f if line.strip()]
 
 
 if __name__ == "__main__":
