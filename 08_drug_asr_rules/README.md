@@ -130,7 +130,11 @@ The merged file drops the per-variant statistics (`drug`, `precision`, `similari
 
 The decoder emits `<unk>` for characters missing from its vocab (`°`, `+`, some apostrophes), and `01`'s tokenizer used to split it into the word `unk`, so a few variants read `unk sophagienne` or `d unk orsum`. No runtime output can match them (onnx-asr glues `<unk>` to the next word, the web decoder deletes it), so they were dead weight. `01` now skips any error span holding `<unk>`, and `04` removed the existing ones from the committed files, rebuilding each merged pattern from its remaining variants exactly as `03` builds it: drug 1 variant (3,428 rules kept), term 42 variants (25,045 -> 25,042 rules). Built with Claude Code.
 
-    uv run 08_drug_asr_rules/04_drop_unk_variants.py <rules.jsonl> <out.jsonl>
+    uv run 08_drug_asr_rules/04_drop_unk_variants.py <rules.jsonl> <out.jsonl> [--labels <manifest.jsonl or .txt> ...]
+
+## Elided last letters (2026-10-07)
+
+A rule's end bound lets it fire right before an apostrophe, which real fixes need (`mésangio d'IgA` -> `mésangiaux d'IgA`, `étoposie d'orale`). But `01`'s tokenizer writes the label `fait part d'un` as (`part`, `d'`), so the `real_text` guard never matched it against the variant `part d`, and the redux rebuild shipped `part d` -> `pardee`, which rewrote 16 correct labels into `fait pardee'un`. `02` now also looks a variant up with an apostrophe on an elidable last word (`_elided`), and `04 --labels` drops such variants from files built before. On the committed files it removed one variant, `face l` -> `fas-l` (French Wikipedia has `en face l'usine`, and two UltiMed labels write `face l'odex`): term 25,042 -> 25,041 rules, drug unchanged. A first attempt that refused any match before an apostrophe killed the real fixes instead (on the 10 hyps it changed, 32 -> 42 word errors) and was reverted. Built with Claude Code.
 
 ## Medical-term rules (`term_fix_rules.jsonl`, 2026-10-04)
 
