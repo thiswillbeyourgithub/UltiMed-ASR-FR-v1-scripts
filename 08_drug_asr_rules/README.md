@@ -154,6 +154,26 @@ A second, separate rule file for the dictionary terms (`syndrome de Brugada`, `o
 - Names: 28 of the 109,728 test names are still rewritten, nearly all first names without a title (`Ilyan` -> `ilion`, `Manoé` -> `mannose`) or two-word surnames after a title (`le docteur Le Beller` -> `Le Böhler`, the guard only looks at the word right after the title).
 - Acronyms are not covered: the dictionary lexicon only tracks words of 5 letters or more.
 
+## Redux rebuild (2026-10-07, committed)
+
+The committed drug and term files were rebuilt with the 1.58-bit parakeet-redux (int8 encoder) as a third model, so they also fix the mistakes it makes. Every clip of the drugs, dictionary, PARHAF and PARROT subsets was transcribed with redux. The drug rules come from the v7 build (`01` + `02` on the five drug hyps files: UltiMed, ultra fp32 / int8 / w4a8, redux int8). The term rules come from `term-pilot-round.py <pilot dir> 99 --tag=-redux` with the same flags as the 2026-10-04 build. Both were merged by `03` (checked on all hyps, every label, French and English Wikipedia and French news: 4,335,271 texts) and then cleaned by `04 --labels` (the elided `part d` variant, see "Elided last letters"). The driver is `local/helpers/redux-rules-20261006.sh` in the ultra repo. Built with Claude Code.
+
+| file | variants | rules (merged) | before |
+|---|---|---|---|
+| `drug_fix_rules.jsonl` | 19,032 | 3,963 | 3,428 |
+| `term_fix_rules.jsonl` | 138,430 | 35,996 | 25,041 |
+
+WER on the test splits, raw -> drug + term rules (in parentheses: the previous files), `evalrules.py` via `redux-eval-20261005.sh`:
+
+| model | drugs | PARROT | PARHAF | dictionary |
+|---|---|---|---|---|
+| redux int8 | 14.24 -> 9.92 (11.71) | 11.32 -> 9.36 (10.28) | 9.83 -> 7.72 (8.48) | 12.09 -> 9.24 (10.41) |
+| ultra w4a8 | 11.59 -> 8.43 | 8.15 -> 7.25 | 7.83 -> 6.71 | 7.74 -> 6.20 (6.19) |
+| UltiMed (drugs: .nemo, else int8) | 3.69 -> 1.83 | 4.20 -> 3.93 | 3.06 -> 2.74 | 2.74 -> 2.13 (2.13) |
+
+- Overcorrection: 0 of 602,813 correct labels. On the 100k held-out French news sentences, 96 are rewritten (75 with the previous files), nearly all by term rules (the drug file alone: 2). Examples: `cryptos` -> `cryptes`, the town `Mamer` -> `Mammaire`, `paqueter` -> `plaquettaire`.
+- Worse clips (a fix that raises a clip's WER) stay at 3 to 5 per model and slice, the same as before: they are word-boundary changes like `pyridoxal-phosphate` -> `pyridoxal phosphate` against a hyphenated label.
+
 ## Real-speech check (2026-10-04)
 
 Both rule files on real French speech with labels, clip by clip (WER, clips better / worse), by `evalrules.py --refs` in the ultra repo: FLEURS fr (all 1,665 clips, never used in training), 5,000 Common Voice fr clips the finetune never saw (a local train tar minus the rehearsal set), and the author's own 206 dictated medical clips (private).
