@@ -207,6 +207,15 @@ def similarity(variant: str, target: str) -> float:
     return Levenshtein.normalized_similarity(v, t)
 
 
+def _elided(k: tuple[str, ...]) -> tuple[str, ...]:
+    """``k`` with an apostrophe on a last word that French elides, as ``tokens`` writes it.
+
+    >>> _elided(("part", "d")), _elided(("mesangio",))
+    (('part', "d'"), ('mesangio',))
+    """
+    return k[:-1] + (k[-1] + "'",) if extract._ELIDED_HEAD.fullmatch(k[-1] + "'") else k
+
+
 def count_ngrams(texts, keys: set[tuple[str, ...]]) -> Counter:
     """How many times each key (a folded token tuple) occurs in ``texts``.
 
@@ -306,6 +315,14 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
     'trailing_a'
     >>> len(build_rules(pat, ["patelle à gauche"] * 14, [], {})[0])
     1
+
+    A variant ending in a bare elidable letter also fires right before an apostrophe (the end
+    bound allows it, which "étoposie d'orale" -> "étoposide" needs), so the label "fait part
+    d'un", tokenized ("part", "d'"), blocks the variant "part d" like real text:
+
+    >>> pardee = {"pardee": {"errors": {"part d": 8}, "targets": {}}}
+    >>> build_rules(pardee, ["part d ee"] * 8, ["il nous fait part d'un stress"], {})[1][0]["reason"]
+    'real_text'
     """
     # Folded variant -> {target: count}; the displayed variant is its most frequent spelling.
     by_key: dict[tuple, Counter] = defaultdict(Counter)
@@ -323,8 +340,10 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
     # Single words too: a variant made only of words the labels use is ordinary French
     # ("lait unique" -> Levunique) and needs --min-count-words sightings.
     # And a variant minus its trailing lone "à": "patelle à" -> patella is blocked by "patelle".
+    # And a variant ending in an elidable letter, with its apostrophe: see the "part d" doctest.
     label_hits = count_ngrams(labels, set(by_key) | {(w,) for k in by_key for w in k}
-                              | {k[:-1] for k in by_key if len(k) > 1 and k[-1] == "a"})
+                              | {k[:-1] for k in by_key if len(k) > 1 and k[-1] == "a"}
+                              | {_elided(k) for k in by_key})
     hyp_hits = count_ngrams(hyps, set(by_key))
     rules, rejected = [], []
     for k, targets in by_key.items():
@@ -341,7 +360,7 @@ def build_rules(report: dict, hyps: list[str], labels, lex: dict,
             reason = "contains_target"
         elif len(k) == 1 and k[0] in lex:
             reason = "other_term"
-        elif label_hits[k]:
+        elif label_hits[k] or label_hits[_elided(k)]:
             reason = "real_text"
         elif len(k) > 1 and k[-1] == "a" and label_hits[k[:-1]]:
             reason = "trailing_a"
